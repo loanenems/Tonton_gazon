@@ -17,6 +17,8 @@ class CreateAdvertTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('idAuthor')->unsigned();
             $table->bigInteger('idGarden')->unsigned();
+            $table->foreign('idAuthor')->references('id')->on('users');
+            $table->foreign('idGarden')->references('id')->on('garden');
             $table->string('title');
             $table->longText('description');
             $table->tinyInteger('state');

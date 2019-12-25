@@ -15,7 +15,7 @@ class CreateGardenTable extends Migration
     {
         Schema::create('garden', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('idOwner');
+            $table->bigInteger('idOwner')->unsigned();
             $table->foreign('idOwner')->references('id')->on('users');
             $table->longText('description');
             $table->integer('size');
