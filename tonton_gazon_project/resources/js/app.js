@@ -8,6 +8,7 @@ import Register from './components/register'
 import Home from './components/home'
 import Forgot from './components/forgot'
 import Reset from './components/reset'
+import Garden from './components/Garden'
 
 
 ReactDOM.render(
@@ -18,6 +19,7 @@ ReactDOM.render(
             <Route path='/register' component={Register}/>
             <Route path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
+            <Route path='/Garden' component={Garden}/>
             <Route path='/password/reset/:token' component={Reset}/>
         </Switch>
     </Router>,

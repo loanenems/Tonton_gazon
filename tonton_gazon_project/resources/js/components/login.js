@@ -22,7 +22,6 @@ class Login extends Component {
             password
         })
             .then(response=> {
-                console.log(response);
                 this.setState({err: false});
                 this.props.history.push("home") ;
 

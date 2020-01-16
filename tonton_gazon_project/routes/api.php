@@ -16,4 +16,5 @@ Route::group(['middleware' => ['web']], function () {
     Route::post('logout','Auth\LoginController@logout');
     Route::post('password/email','Auth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('password/reset','Auth\ResetPasswordController@reset');
+    Route::post('createGarden','HomeController@createGarden');
 });
