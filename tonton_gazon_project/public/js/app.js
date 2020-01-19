@@ -72993,12 +72993,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/home */ "./resources/js/components/home.js");
 /* harmony import */ var _components_forgot__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/forgot */ "./resources/js/components/forgot.js");
 /* harmony import */ var _components_reset__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/reset */ "./resources/js/components/reset.js");
-/* harmony import */ var _components_Garden__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/Garden */ "./resources/js/components/Garden.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
-
+ //Routes
 
 
 
@@ -73022,9 +73021,6 @@ react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/forgotpassword",
   component: _components_forgot__WEBPACK_IMPORTED_MODULE_7__["default"]
-}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
-  path: "/Garden",
-  component: _components_Garden__WEBPACK_IMPORTED_MODULE_9__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/password/reset/:token",
   component: _components_reset__WEBPACK_IMPORTED_MODULE_8__["default"]
@@ -73079,94 +73075,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
-
-/***/ }),
-
-/***/ "./resources/js/components/Garden.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Garden.js ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Garden; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
-
-function Garden() {
-  var postData = function postData(e) {
-    e.preventDefault();
-    var formulaire = {
-      description: document.getElementById('description').value,
-      size: parseInt(document.getElementById('size').value),
-      movableObstacle: document.getElementById('movable_obstacles').checked,
-      unmovableObstacle: document.getElementById('unmovable_obstacles').checked,
-      pets: document.getElementById('animals').checked,
-      equipment: document.getElementById('equipments').value
-    };
-    console.log(formulaire);
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/createGarden', {
-      formulaire: formulaire
-    }).then(function (response) {
-      console.log(response);
-    });
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    "for": "description"
-  }, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
-    id: "description",
-    name: "description",
-    placeholder: "Description du jardin"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "size"
-  }, "Taille du jardin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "number",
-    id: "size",
-    name: "size"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "movable_obstacles"
-  }, "Obstacle(s) pouvant \xEAtre d\xE9plac\xE9(s)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox",
-    id: "movable_obstacles",
-    name: "movable_obstacles"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "unmovable_obstacles"
-  }, "Obstacle(s) ne pouvant pas \xEAtre d\xE9plac\xE9(s)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox",
-    id: "unmovable_obstacles",
-    name: "unmovable_obstacles"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "animals"
-  }, "Animaux"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "checkbox",
-    id: "animals",
-    name: "animals"
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
-    htmlFor: "equipments"
-  }, "Equipement(s)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
-    id: "equipments",
-    name: "equipments"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "test_1"
-  }, "test_1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "test_2"
-  }, "test_2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "test_3"
-  }, "test_3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "test_4"
-  }, "test_4")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    type: "submit",
-    onClick: function onClick(e) {
-      return postData(e);
-    }
-  }, "Post"));
-}
 
 /***/ }),
 
@@ -73386,54 +73294,17 @@ function (_Component) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar */ "./resources/js/components/navbar.js");
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
 
 
-
-
-var Index =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(Index, _Component);
-
-  function Index() {
-    _classCallCheck(this, Index);
-
-    return _possibleConstructorReturn(this, _getPrototypeOf(Index).apply(this, arguments));
-  }
-
-  _createClass(Index, [{
-    key: "render",
-    value: function render() {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container text-center  title"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Laravel + React  Basic Authentication ")));
-    }
-  }]);
-
-  return Index;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-/* harmony default export */ __webpack_exports__["default"] = (Index);
+function Index() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container text-center  title"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Accueil ")));
+}
 
 /***/ }),
 
@@ -74152,8 +74023,8 @@ function (_Component) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\Projets\Tonton_gazon\tonton_gazon_project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Projets\Tonton_gazon\tonton_gazon_project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
