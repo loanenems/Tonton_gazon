@@ -12,5 +12,3 @@
 Route::get('/{path?}', function() {
     return view('index');
 });
-
-Auth::routes();

@@ -1,7 +1,8 @@
 require('./bootstrap');
+
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {  BrowserRouter, Switch, Route} from 'react-router-dom';
+import {  BrowserRouter, Switch, Route} from 'react-router-dom'
 
 //Routes
 import Index from './components/index'
@@ -22,7 +23,7 @@ ReactDOM.render(
             <Route path='/register' component={Register}/>
             <Route path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
-            <Route path='/password/reset/:token' component={Reset}/>
+            <Route path='/resetPassword' component={Reset}/>
             <Route exact={false} component={Error404}/>
         </Switch>
     </BrowserRouter>,
