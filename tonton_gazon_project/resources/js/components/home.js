@@ -10,5 +10,5 @@ export default function Home() {
                 <h1>Vous êtes connecté !</h1>
             </div>
         </div>
-    )
+    );
 }

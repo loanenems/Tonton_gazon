@@ -10,6 +10,6 @@ export default function Index() {
                 <h1>Accueil !</h1>
             </div>
         </div>
-    )
+    );
 }
 
