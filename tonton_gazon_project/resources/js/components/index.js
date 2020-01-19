@@ -7,7 +7,7 @@ export default function Index() {
         <div>
             <Nav/>
             <div className="container text-center  title">
-                <h1>Accueil </h1>
+                <h1>Accueil !</h1>
             </div>
         </div>
     )

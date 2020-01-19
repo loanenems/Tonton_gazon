@@ -11,6 +11,8 @@ import Home from './components/home'
 import Forgot from './components/forgot'
 import Reset from './components/reset'
 
+import Error404 from './components/error404';
+
 
 ReactDOM.render(
     <BrowserRouter>
@@ -21,6 +23,7 @@ ReactDOM.render(
             <Route path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/password/reset/:token' component={Reset}/>
+            <Route exact={false} component={Error404}/>
         </Switch>
     </BrowserRouter>,
     document.getElementById('app')
