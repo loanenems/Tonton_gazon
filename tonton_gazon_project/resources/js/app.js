@@ -6,11 +6,11 @@ import {  BrowserRouter, Switch, Route} from 'react-router-dom'
 
 //Routes
 import Index from './components/index'
-import Login from './components/login'
-import Register from './components/register'
+import Login from './components/auth/login'
+import Register from './components/auth/register'
 import Home from './components/home'
-import Forgot from './components/forgot'
-import Reset from './components/reset'
+import Forgot from './components/auth/forgot'
+import Reset from './components/auth/reset'
 
 import Error404 from './components/error404';
 

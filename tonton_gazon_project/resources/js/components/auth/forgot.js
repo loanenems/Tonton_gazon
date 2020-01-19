@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './navbar'
+import Nav from '../navbar'
 
 
 export default function Forgot() {
