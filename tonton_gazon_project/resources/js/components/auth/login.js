@@ -1,9 +1,32 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Nav from '../navbar'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
+import axios from 'axios';
 
 
 export default function Login() {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    let history = useHistory();
+
+    let submit = (e) => {
+        e.preventDefault();
+
+        axios.post(
+            'api/login', {
+                email,
+                password
+            }).then(response => {
+            console.log(response);
+        }).catch(error => {
+            console.log(error);
+        });
+    };
+
+    let change = (e) => {
+        e.target.name === "email" ? setEmail(e.target.value) : setPassword(e.target.value);
+    };
+
     return (
         <div>
             <Nav/>
@@ -18,15 +41,17 @@ export default function Login() {
                                         <label htmlFor="email" className="col-md-4 control-label">Adresse mail</label>
                                         <div className="col-md-6">
                                             <input id="email" type="email" className="form-control" name="email"
+                                                   onChange={(e) => change(e)}
                                                    required/>
                                         </div>
                                     </div>
 
                                     <div className="form-group">
-                                        <label htmlFor="password" className="col-md-4 control-label">Mot de passe</label>
+                                        <label htmlFor="password" className="col-md-4 control-label">Mot de
+                                            passe</label>
                                         <div className="col-md-6">
                                             <input id="password" type="password" className="form-control"
-                                                   name="password" required/>
+                                                   name="password" onChange={(e) => change(e)} required/>
                                         </div>
                                     </div>
 
@@ -42,7 +67,8 @@ export default function Login() {
 
                                     <div className="form-group">
                                         <div className="col-md-8 col-md-offset-4">
-                                            <button type="submit" className="btn btn-primary">
+                                            <button type="submit" className="btn btn-primary"
+                                                    onClick={(e) => submit(e)}>
                                                 Se connecter
                                             </button>
                                             <li className="btn btn-link">
