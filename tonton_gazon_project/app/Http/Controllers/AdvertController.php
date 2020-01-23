@@ -37,7 +37,7 @@ class AdvertController extends Controller
      */
     public function fetchAdvertByAuthor($id)
     {
-        $advert = Advert::where('idAuthor',$id)->get();
+        $advert = Advert::where('idAuthor', $id)->get();
 
         return response(['advert' => $advert], 200);
     }
