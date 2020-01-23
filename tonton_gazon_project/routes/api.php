@@ -18,5 +18,5 @@ Route::post('register', 'Auth\RegisterController@register');
 Route::post('logout', 'Auth\LoginController@logout');
 Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
-Route::get('garden', 'GardenController@fetchGarden');
+Route::get('garden', 'GardenController@fetchGardenById');
 
