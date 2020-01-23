@@ -25,6 +25,9 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
+        "gulp": "^4.0.2",
+        "gulp-sass": "^4.0.2",
+        "gulp-watch": "^5.0.1",
         "react-router-dom": "^5.1.2"
     }
 }

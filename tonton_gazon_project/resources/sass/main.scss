@@ -1,0 +1,51 @@
+// Architecture
+//
+// sass
+// |- base          ~~      Project base
+// |  |- _fonts.scss
+// |  |- _functions.scss
+// |  |- _mixins.scss
+// |  |- _normalize.scss
+// |  |- _utilities.scss
+// |  |- _variables.scss
+// |
+// |- components     ~~    Réccurent element
+// |  |- _buttons.scss
+// |  |- _footer.scss
+// |  |- _form.scss
+// |  |- _header.scss
+// |
+// |- pages          ~~    Specific scss for one page
+// |  |- _contact.scss    
+// |  |- _home.scss
+// |
+// |- vendors        ~~    Contain external scss like Bootstrap, slick...
+// |  |- _anyName.scss  
+
+
+// Only "main.scss" is classic, other files are prefixed by an underscore
+
+// Nothing should by written in this file
+// Exept comment and imports
+
+// Alway import file in order - base / vendors / pages / components
+// When you import a file, don't place the "_" and ".scss"
+// Only one import per line
+// Seperate by a space import from different directories
+
+@import 'base/variables';
+@import 'base/mixins';
+@import 'base/fonts';
+@import 'base/utilities';
+@import 'base/functions';
+@import 'base/normalize';
+
+// @import 'vendors/file';
+
+@import 'pages/contact';
+@import 'pages/home';
+
+@import 'components/buttons';
+@import 'components/form';
+@import 'components/footer';
+@import 'components/header';
