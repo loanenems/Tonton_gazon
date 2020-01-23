@@ -26,7 +26,6 @@ class GardenController extends Controller
      */
     public function fetchGardenById($id)
     {
-        dd($id);
         $garden = Garden::find($id);
 
         return response((['jardin' => $garden]), 200);
