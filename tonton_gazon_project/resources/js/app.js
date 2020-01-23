@@ -2,7 +2,8 @@ require('./bootstrap');
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {  BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {PrivateRoute} from './components/helpers/PrivateRoute'
 
 //Routes
 import Index from './components/index'
@@ -21,7 +22,7 @@ ReactDOM.render(
             <Route exact path='/' component={Index}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
-            <Route path='/home' component={Home}/>
+            <PrivateRoute exact path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
             <Route exact={false} component={Error404}/>

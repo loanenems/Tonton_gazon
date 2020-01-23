@@ -7,7 +7,7 @@ import axios from 'axios';
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let history = useHistory();
+    const history = useHistory();
 
     let submit = (e) => {
         e.preventDefault();
@@ -17,7 +17,8 @@ export default function Login() {
                 email,
                 password
             }).then(response => {
-            console.log(response);
+            localStorage.setItem('access_token',response.data['access_token']);
+            history.push('/home');
         }).catch(error => {
             console.log(error);
         });
