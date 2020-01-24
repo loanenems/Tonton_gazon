@@ -14,7 +14,7 @@ class GardenController extends Controller
      */
     public function fetchGarden()
     {
-        $garden = Garden::where('idOwner', 1)->get();
+        $garden = Garden::where('idOwner', 10)->get();
 
         return response(['jardins' => $garden], 200);
     }
@@ -29,5 +29,34 @@ class GardenController extends Controller
         $garden = Garden::find($id);
 
         return response((['jardin' => $garden]), 200);
+    }
+
+    public function addGarden(Request $request) {
+        $validateData = $request->validate([
+            'description' => 'required|max:5000',
+            'size' => 'numeric|gt:0|lt:2000',
+            'movableObstacle' => 'required',
+            'unmovableObstacle' => 'required',
+            'pets' => 'required',
+            'equipment' => 'required',
+        ]);
+
+        Garden::insert(
+            [
+                'idOwner' => 10,
+                'description' => $validateData['description'],
+                'size' => $validateData['size'],
+                'movableObstacle' => $validateData['movableObstacle'],
+                'unmovableObstacle' => $validateData['unmovableObstacle'],
+                'pets' => $validateData['pets'],
+                'equipment' => $validateData['equipment'],
+            ]
+        );
+
+        return response(['status' => '200'],200);
+
+
+
+
     }
 }
