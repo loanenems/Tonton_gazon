@@ -72995,9 +72995,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/home */ "./resources/js/components/home.js");
 /* harmony import */ var _components_forgot__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/forgot */ "./resources/js/components/forgot.js");
 /* harmony import */ var _components_reset__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/reset */ "./resources/js/components/reset.js");
-/* harmony import */ var _script_form_animation__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./script/form-animation */ "./resources/js/script/form-animation.js");
+/* harmony import */ var _components_garden_Garden__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/garden/Garden */ "./resources/js/components/garden/Garden.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+__webpack_require__(/*! ./script/form-animation */ "./resources/js/script/form-animation.js");
 
 
 
@@ -73007,7 +73008,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
- // import Garden from './components/Garden'
+
 
 
 react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
@@ -73026,6 +73027,9 @@ react_dom__WEBPACK_IMPORTED_MODULE_2___default.a.render(react__WEBPACK_IMPORTED_
 }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
   path: "/forgotpassword",
   component: _components_forgot__WEBPACK_IMPORTED_MODULE_8__["default"]
+}), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
+  path: "/garden",
+  component: _components_garden_Garden__WEBPACK_IMPORTED_MODULE_10__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_1___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Route"], {
   path: "/password/reset/:token",
   component: _components_reset__WEBPACK_IMPORTED_MODULE_9__["default"]
@@ -73225,6 +73229,214 @@ function (_Component) {
 }(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
 
 /* harmony default export */ __webpack_exports__["default"] = (Forgot);
+
+/***/ }),
+
+/***/ "./resources/js/components/garden/Garden.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/garden/Garden.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Garden; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _Garden_create__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Garden_create */ "./resources/js/components/garden/Garden_create.js");
+
+
+
+function Garden() {
+  // The `path` lets us build <Route> paths that are
+  // relative to the parent route, while the `url` lets
+  // us build relative links.
+  var _useRouteMatch = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["useRouteMatch"])(),
+      path = _useRouteMatch.path,
+      url = _useRouteMatch.url;
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "".concat(url, "/garden_create")
+  }, "Cr\xE9er un jardin"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "".concat(path, "/garden_create")
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Garden_create__WEBPACK_IMPORTED_MODULE_2__["default"], null))));
+}
+
+/***/ }),
+
+/***/ "./resources/js/components/garden/Garden_create.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/garden/Garden_create.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Garden_create; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+function Garden_create() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState2 = _slicedToArray(_useState, 2),
+      description = _useState2[0],
+      setDescription = _useState2[1];
+
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState4 = _slicedToArray(_useState3, 2),
+      size = _useState4[0],
+      setSize = _useState4[1];
+
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState6 = _slicedToArray(_useState5, 2),
+      movableObstacle = _useState6[0],
+      setMovableObstacle = _useState6[1];
+
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState8 = _slicedToArray(_useState7, 2),
+      unmovableObstacle = _useState8[0],
+      setUnmovableObstacle = _useState8[1];
+
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState10 = _slicedToArray(_useState9, 2),
+      pets = _useState10[0],
+      setPets = _useState10[1];
+
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
+      _useState12 = _slicedToArray(_useState11, 2),
+      equipment = _useState12[0],
+      setEquipment = _useState12[1];
+
+  var submit = function submit(e) {
+    e.preventDefault();
+    axios({
+      method: 'post',
+      url: 'api/garden_add',
+      data: {
+        description: description,
+        size: size,
+        movableObstacle: movableObstacle,
+        unmovableObstacle: unmovableObstacle,
+        pets: pets,
+        equipment: equipment
+      }
+    }).then(function (reponse) {
+      //On traite la réponse envoyée par le serveur
+      console.log(reponse);
+    })["catch"](function (erreur) {
+      //On traite ici les erreurs éventuellement survenues
+      console.log(erreur);
+    });
+  };
+
+  var change = function change(e) {
+    switch (e.target.name) {
+      case 'description':
+        setDescription(e.target.value);
+        break;
+
+      case 'size':
+        setSize(e.target.value);
+        break;
+
+      case 'movableObstacle':
+        setMovableObstacle(e.target.value);
+        break;
+
+      case 'unmovableObstacle':
+        setUnmovableObstacle(e.target.value);
+        break;
+
+      case 'pets':
+        setPets(e.target.value);
+        break;
+
+      case 'equipment':
+        setEquipment(e.target.value);
+        break;
+    }
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      return submit(e);
+    },
+    method: "post"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "description"
+  }, "description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "description",
+    name: "description",
+    value: description,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "size"
+  }, "size"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "number",
+    id: "size",
+    name: "size",
+    value: size,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "movableObstacle"
+  }, "movableObstacle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "movableObstacle",
+    name: "movableObstacle",
+    value: movableObstacle,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "unmovableObstacle"
+  }, "unmovableObstacle"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "unmovableObstacle",
+    name: "unmovableObstacle",
+    value: unmovableObstacle,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "pets"
+  }, "pets"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "pets",
+    name: "pets",
+    value: pets,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "equipment"
+  }, "equipment"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "equipment",
+    name: "equipment",
+    value: equipment,
+    onChange: function onChange(e) {
+      return change(e);
+    }
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "submit"
+  }, "Envoyer")));
+}
 
 /***/ }),
 
