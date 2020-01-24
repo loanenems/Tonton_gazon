@@ -22,5 +22,6 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 Route::post('garden_add', 'GardenController@addGarden');
 
 Route::get('garden', 'GardenController@fetchGarden');
+Route::get('adverts', 'AdvertController@fetchAdvert');
 
 

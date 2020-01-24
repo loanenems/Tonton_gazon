@@ -13,7 +13,7 @@ import Home from './components/home'
 import Forgot from './components/forgot'
 import Reset from './components/reset'
 
-
+import Advert from './components/adverts/Advert'
 import Garden from './components/garden/Garden'
 
 
@@ -25,7 +25,10 @@ ReactDOM.render(
             <Route path='/register' component={Register}/>
             <Route path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
+
             <Route path='/garden' component={Garden}/>
+            <Route path='/adverts' component={Advert}/>
+
             <Route path='/password/reset/:token' component={Reset}/>
         </Switch>
     </Router>,

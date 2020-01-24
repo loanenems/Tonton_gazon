@@ -32,6 +32,7 @@ class GardenController extends Controller
     }
 
     public function addGarden(Request $request) {
+        dd('test');
         $validateData = $request->validate([
             'description' => 'required|max:5000',
             'size' => 'numeric|gt:0|lt:2000',
