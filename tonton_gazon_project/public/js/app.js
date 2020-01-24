@@ -72988,20 +72988,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_helpers_PrivateRoute__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/helpers/PrivateRoute */ "./resources/js/components/helpers/PrivateRoute.js");
-/* harmony import */ var _components_index__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/index */ "./resources/js/components/index.js");
-/* harmony import */ var _components_auth_login__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/auth/login */ "./resources/js/components/auth/login.js");
-/* harmony import */ var _components_auth_register__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/auth/register */ "./resources/js/components/auth/register.js");
-/* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/home */ "./resources/js/components/home.js");
-/* harmony import */ var _components_auth_forgot__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/auth/forgot */ "./resources/js/components/auth/forgot.js");
-/* harmony import */ var _components_auth_reset__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/auth/reset */ "./resources/js/components/auth/reset.js");
-/* harmony import */ var _components_error404__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./components/error404 */ "./resources/js/components/error404.js");
+/* harmony import */ var _components_auth_login__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/auth/login */ "./resources/js/components/auth/login.js");
+/* harmony import */ var _components_auth_register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/auth/register */ "./resources/js/components/auth/register.js");
+/* harmony import */ var _components_home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/home */ "./resources/js/components/home.js");
+/* harmony import */ var _components_auth_forgot__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/auth/forgot */ "./resources/js/components/auth/forgot.js");
+/* harmony import */ var _components_auth_reset__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/auth/reset */ "./resources/js/components/auth/reset.js");
+/* harmony import */ var _components_error404__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/error404 */ "./resources/js/components/error404.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
 
 
  //Routes
-
+// import Index from './components/index'
 
 
 
@@ -73012,26 +73011,22 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 react_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["BrowserRouter"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   exact: true,
   path: "/",
-  component: _components_index__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _components_home__WEBPACK_IMPORTED_MODULE_6__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/login",
-  component: _components_auth_login__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _components_auth_login__WEBPACK_IMPORTED_MODULE_4__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/register",
-  component: _components_auth_register__WEBPACK_IMPORTED_MODULE_6__["default"]
-}), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_helpers_PrivateRoute__WEBPACK_IMPORTED_MODULE_3__["PrivateRoute"], {
-  exact: true,
-  path: "/home",
-  component: _components_home__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _components_auth_register__WEBPACK_IMPORTED_MODULE_5__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/forgotpassword",
-  component: _components_auth_forgot__WEBPACK_IMPORTED_MODULE_8__["default"]
+  component: _components_auth_forgot__WEBPACK_IMPORTED_MODULE_7__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   path: "/resetPassword",
-  component: _components_auth_reset__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _components_auth_reset__WEBPACK_IMPORTED_MODULE_8__["default"]
 }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
   exact: false,
-  component: _components_error404__WEBPACK_IMPORTED_MODULE_10__["default"]
+  component: _components_error404__WEBPACK_IMPORTED_MODULE_9__["default"]
 }))), document.getElementById('app'));
 
 /***/ }),
@@ -73528,34 +73523,43 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Home() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "container container_home"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {
     link: "Logout"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container text-center title"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Vous \xEAtes connect\xE9 !")));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/index.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/index.js ***!
-  \******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar */ "./resources/js/components/navbar.js");
-
-
-function Index() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container text-center  title"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Accueil !")));
+    className: "bloc home_presentation"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Cuisinez du tr\xE8s bon couscous"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum ultrices lacus, et tincidunt tortor venenatis vitae."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: ""
+  }, "Commencez maintenant ->"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "",
+    alt: ""
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc home_recent"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc_title"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/waving-hand-sign.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Annonces r\xE9centes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: ""
+  }, "Voir toutes les annonces")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc home_explaination"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc_title"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/waving-hand-sign.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Comment \xE7a marche ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc home_tondeur"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc_title"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/waving-hand-sign.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Les tondeurs \xE0 la une"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: ""
+  }, "Voir tous les tondeurs")))));
 }
 
 /***/ }),
@@ -73577,21 +73581,35 @@ __webpack_require__.r(__webpack_exports__);
 
 function Nav() {
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    className: "navbar navbar-default"
+    className: "navbar"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "container-fluid"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "navbar-header"
+    className: "navbar_group navbar_brand"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "navbar-brand",
-    href: "#"
-  }, "Tonton Gazon")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "nav navbar-nav navbar-right"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/login"
-  }, "Login")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
-    to: "/register"
-  }, "Register")))));
+    className: "navbar_element navbar_brand_group",
+    href: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/logo_noir.png",
+    alt: "Logo Tonton Gazon",
+    className: "navbar_brand_logo"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "navbar_brand_name"
+  }, "Tonton Gazon"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbar_group navbar_links"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/login",
+    className: "navbar_element"
+  }, "Login"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register",
+    className: "navbar_element"
+  }, "Register")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "navbar_group navbar_authentication"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/login",
+    className: "navbar_element btn btn_secondary"
+  }, "Connexion"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/register",
+    className: "navbar_element btn btn_primary"
+  }, "Inscription")));
 }
 
 /***/ }),
@@ -73614,8 +73632,8 @@ function Nav() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! D:\wamp64\www\Tonton_gazon\tonton_gazon_project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\wamp64\www\Tonton_gazon\tonton_gazon_project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

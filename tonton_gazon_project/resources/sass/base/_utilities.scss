@@ -1,0 +1,29 @@
+.container {
+    margin:auto;
+    width: $container-width;
+}
+
+.bloc {
+    margin-bottom: $space-e-large;
+    .bloc_title {
+        display: flex;
+        align-items: center;
+        img {
+            height: 36px;
+        }
+        h3 {
+            font-size: $f-title-large;
+            margin: 0 $space-medium;
+        }
+        p {
+            a {
+                font-size: $f-text-small;
+                text-decoration: none;
+                color:$c-grey;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,54 @@
+// Commons
+$container-width: 1298px;
+
+// Colors
+
+    // c-l-color is 10% lighter then targeted color
+    // c-d-color is 10% darker then targeted color
+    // Use them for animation or contrast, etc...
+$c-primary: #1A936F;
+$c-l-primary: lighten( $c-primary, 10%);
+$c-d-primary: darken( $c-primary, 10%);
+$c-secondary: #F6F3EB;
+$c-l-secondary: lighten( $c-secondary, 10%);
+$c-d-secondary: darken( $c-secondary, 10%);
+$c-tertiary: #123434;
+$c-l-tertiary: lighten( $c-tertiary, 10%);
+$c-d-tertiary: darken( $c-tertiary, 10%);
+
+$c-white: #FFFFFF;
+// $c-lightGrey: #123434;
+$c-grey: #acacac;
+// $c-darkGrey: #123434;
+$c-black: #000000;
+
+// Font variables
+// by default, 1rem = 16px
+
+    // To define your line height based on thoose values
+    // use : "line-height: $f-title-medium*1.25"
+
+    // If some type of texte is frequently used on the website
+    // create a new variable for him
+    // Exemple : $f-quotation: 1rem;
+
+$f-title-small: 1rem;
+$f-title-medium: 1.500rem;
+$f-title-large: 2rem;
+
+$f-text-small: 0.750rem;
+$f-text-medium: 1rem;
+$f-text-large: 1.250rem;
+
+// Spacing
+// Used to get the same between every elements
+$space-small: 0.750rem;
+$space-e-small: $space-small*0.5;
+$space-medium: 1.250rem;
+$space-large: 2rem;
+$space-e-large: $space-large*2;
+
+// Break Points
+// Used for media query / responsive
+$break-mobile: 640px;
+$break-tablet: 1200px;

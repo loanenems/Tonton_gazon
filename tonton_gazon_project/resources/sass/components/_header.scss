@@ -1,0 +1,45 @@
+.navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    margin: $space-large 0;
+    .navbar_group {
+        display: flex;
+        a {
+            text-decoration: none;
+        }
+    }
+
+    .navbar_brand {
+        .navbar_brand_group {
+            display: flex;
+            align-items: center;
+            .navbar_brand_logo {
+                height: 24px;
+            }
+            .navbar_brand_name {
+                font-size: $f-title-medium;
+                font-weight: bold;
+                color: $c-black;
+                margin: 0 $space-e-small
+            }
+        }
+    }
+    .navbar_links {
+        align-items: center;
+        a.navbar_element {
+            margin: 0 $space-small;
+            color: $c-black;
+
+            &:hover { 
+                text-decoration: underline;
+            }
+        }
+    }
+    .navbar_authentication {
+        a.navbar_element {
+            
+        }
+    }
+}

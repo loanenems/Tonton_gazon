@@ -1,0 +1,38 @@
+.container_home {
+    .home_presentation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 100%;
+        height: 646px;
+        padding: 0 $space-e-large;
+
+        background-color: $c-primary;
+        border-radius: 2rem;
+
+        h2 {
+            max-width: 460px;
+
+            color: $c-white;
+            font-size: $f-title-large*1.50;
+            line-height: $f-title-large*1.35;
+            font-weight: 600;
+        }
+        p {
+            max-width: 360px;
+            color: $c-white;
+            margin: $space-medium 0;
+        }
+        a {
+            margin: $space-large 0;
+            color: $c-white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+
+    .home_recent {
+        
+    }
+}

@@ -1,0 +1,11 @@
+@mixin screen-sm() {
+    @media screen and (max-width: $break-mobile){
+        @content;
+    }
+}
+
+@mixin screen-sm() {
+    @media screen and (max-width: $break-mobile){
+        @content;
+    }
+}
