@@ -14,7 +14,7 @@ export default function Garden_create() {
 
         axios({
             method: 'post',
-            url: 'api/garden_add',
+            url: '/api/garden_add',
             data: {
                 description,
                 size,
