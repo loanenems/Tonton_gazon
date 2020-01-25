@@ -1,8 +1,7 @@
 .btn {
-    display: flex;
-    align-items: center;
-
-    padding: $space-e-small $space-large;
+    width: fit-content;
+    display: inline-flex;
+    padding: $space-small $space-large;
     margin: 0 $space-e-small;
     border-radius: 2rem;
 

@@ -33,6 +33,127 @@
     }
 
     .home_recent {
-        
+        .recent_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .recent_element {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                width: 30%;
+                img {
+                    width: 100%;
+                    margin-bottom: $space-small;
+                }
+                .garden_user {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .garden_username {
+                        font-weight: bold;
+                        font-size: $f-text-large;
+                    }
+                    .garden_userstats {
+                        b {
+                            font-size: $f-text-medium;
+                        }
+                        font-size: $f-text-small;
+                    }
+                }
+                .garden_stats {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    .garden_stats_price {
+                        font-size: $f-text-small;
+                        margin: 0;
+                    }
+                    .garden_stats_surface {
+                        font-size: $f-text-small;
+                        margin-top: $space-small;
+                    }
+                }
+            }
+        }
+    }
+
+    .home_explaination {
+        .explaination_steps {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+            height: 406px;
+            padding: 0 $space-e-large;
+
+            background-color: $c-primary;
+            border-radius: 2rem;
+
+            .explaination_step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .step {
+                    width: 80px;
+                    padding: 18px 0;
+    
+                    border-radius: 1.4rem;
+                    background-color: $c-white;
+                    color:$c-primary;
+
+                    font-weight: bold;
+                    font-size: $f-title-large;
+                    text-align: center;
+                }
+                .step_description {
+                    margin-top: $space-small;
+                    font-size: $f-text-large;
+                    color: $c-white;
+                }
+            }
+        }
+    }
+
+    .home_tondeurs {
+        .tondeurs_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .tondeur {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                
+                width: 26%;
+                img {
+
+                }
+                .tondeur_info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    .tondeur_username {
+                        font-size: $f-text-large;
+                        font-weight: bold;
+                    }
+                    .tondeur_userstats {
+                        b {
+                            font-size: $f-text-medium;
+                        }
+                        font-size: $f-text-small;
+                    }
+                    .tondeur_profil {
+                        font-size: $f-text-small;
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,0 +1,32 @@
+.footer {
+    background-color: $c-black;
+    color: $c-white;
+    a {
+        color: $c-white;
+    }
+
+    .footer_container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        padding: $space-e-large 0;
+        .footer_categorie {
+            display: flex;
+            flex-direction: column;
+            .footer_title {
+                margin: $space-small 0;
+                font-size: $f-title-medium*0.875;
+            }   
+            .footer_link {
+                color: $c-darkGrey;
+                margin: $space-e-small 0;
+            }
+        }
+    }
+
+    .footer_copryights {
+        font-size: $f-text-small;
+        padding: $space-large 0;
+    }
+}

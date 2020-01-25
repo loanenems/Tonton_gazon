@@ -3,11 +3,20 @@
     width: $container-width;
 }
 
+a {
+    text-decoration: none;
+    color: $c-black;
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
 .bloc {
     margin-bottom: $space-e-large;
     .bloc_title {
         display: flex;
         align-items: center;
+        margin-bottom: $space-large;
         img {
             height: 36px;
         }
@@ -18,7 +27,6 @@
         p {
             a {
                 font-size: $f-text-small;
-                text-decoration: none;
                 color:$c-grey;
                 &:hover {
                     text-decoration: underline;

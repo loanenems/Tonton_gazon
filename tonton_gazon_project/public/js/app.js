@@ -73466,6 +73466,77 @@ function Error404() {
 
 /***/ }),
 
+/***/ "./resources/js/components/footer.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/footer.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Nav; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+
+
+function Nav() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("footer", {
+    className: "footer"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_container"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_categorie"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "Tonton Gazon"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_categorie"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_title"
+  }, "Liens"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Qui sommes-nous ?"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Espace membre"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Contact"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Aide")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_categorie"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_title"
+  }, "Services"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Creer une annonce"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Parcourir les annonces")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_categorie"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_title"
+  }, "Legal"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Politique de cookies"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "Mentions l\xE9gales"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "footer_link"
+  }, "CGV"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "footer_copryights"
+  }, "\xA9 2019 Tontongazon.fr. Un site d\xE9velopp\xE9 par moi. Tous droits r\xE9serv\xE9s."));
+}
+
+/***/ }),
+
 /***/ "./resources/js/components/helpers/PrivateRoute.js":
 /*!*********************************************************!*\
   !*** ./resources/js/components/helpers/PrivateRoute.js ***!
@@ -73520,6 +73591,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./navbar */ "./resources/js/components/navbar.js");
+/* harmony import */ var _footer__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./footer */ "./resources/js/components/footer.js");
+
 
 
 function Home() {
@@ -73543,15 +73616,94 @@ function Home() {
     alt: ""
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Annonces r\xE9centes"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: ""
-  }, "Voir toutes les annonces")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, "Voir toutes les annonces"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recent_list"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recent_element"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/jardin.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_user"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "garden_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_stats_price btn btn_primary"
+  }, "10\u20AC/m\xB2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    "class": "garden_stats_surface"
+  }, "Superficie : ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "120m\xB2")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recent_element"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/jardin.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_user"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "garden_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_stats_price btn btn_primary"
+  }, "10\u20AC/m\xB2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    "class": "garden_stats_surface"
+  }, "Superficie : ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "120m\xB2")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recent_element"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/jardin.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_user"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "garden_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "garden_stats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "garden_stats_price btn btn_primary"
+  }, "10\u20AC/m\xB2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    "class": "garden_stats_surface"
+  }, "Superficie : ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "120m\xB2")))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bloc home_explaination"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bloc_title"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
     src: "./img/waving-hand-sign.png",
     alt: ""
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Comment \xE7a marche ?"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "bloc home_tondeur"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Comment \xE7a marche ?")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "explaination_steps"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "explaination_step explaination_step_one"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step step_one"
+  }, "01"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step_description step_descriptionone"
+  }, "Etape n\xB001 de Bonbon Lardon")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "explaination_step explaination_step_two"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step step_two"
+  }, "02"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step_description step_description_two"
+  }, "Etape n\xB001 de RonRon Lazon")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "explaination_step explaination_step_three"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step step_three"
+  }, "03"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "step_description step_description_three"
+  }, "Etape n\xB001 de LonLon Targon")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bloc home_tondeurs"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "bloc_title"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
@@ -73559,7 +73711,54 @@ function Home() {
     alt: ""
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "Les tondeurs \xE0 la une"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
     href: ""
-  }, "Voir tous les tondeurs")))));
+  }, "Voir tous les tondeurs"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeurs_list"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/tondeur.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur_info"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "tondeur_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_profil btn btn_primary"
+  }, "Voir le profil"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/tondeur.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur_info"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "tondeur_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_profil btn btn_primary"
+  }, "Voir le profil"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: "./img/tondeur.png",
+    alt: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "tondeur_info"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_username"
+  }, "Pierre-Alain X."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "tondeur_userstats"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("b", null, "4.7"), " 340 avis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "",
+    className: "tondeur_profil btn btn_primary"
+  }, "Voir le profil"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_footer__WEBPACK_IMPORTED_MODULE_2__["default"], null));
 }
 
 /***/ }),
