@@ -3,6 +3,7 @@ import Nav from './navbar'
 
 
 export default function Home() {
+
     return (
         <div>
             <Nav link="Logout"/>

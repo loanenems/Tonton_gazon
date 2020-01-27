@@ -73183,12 +73183,21 @@ function Login() {
   var history = Object(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["useHistory"])();
 
   var submit = function submit(e) {
-    e.preventDefault();
-    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/login', {
+    e.preventDefault(); // We send login form's data to login route
+
+    axios__WEBPACK_IMPORTED_MODULE_3___default.a.post('api/auth/login', {
       email: email,
       password: password
     }).then(function (response) {
-      localStorage.setItem('access_token', response.data['access_token']);
+      // We store the received token
+      var token = response.data['access_token']; // Then we assign the token to localStorage to keep track of it
+
+      localStorage.setItem('access_token', token); // And set it as a default Authorization header (Bearer token)
+
+      axios__WEBPACK_IMPORTED_MODULE_3___default.a.defaults.headers.common = {
+        'Authorization': "Bearer ".concat(token)
+      }; // Redirect to homepage
+
       history.push('/home');
     })["catch"](function (error) {
       console.log(error);
@@ -73614,8 +73623,8 @@ function Nav() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /export/etu/loane.nemmiche/Bureau/CREAWEB/Tonton_gazon/tonton_gazon_project/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\wamp64\www\Projets\Tonton_gazon\tonton_gazon_project\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\wamp64\www\Projets\Tonton_gazon\tonton_gazon_project\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -12,12 +12,20 @@ export default function Login() {
     let submit = (e) => {
         e.preventDefault();
 
+        // We send login form's data to login route
         axios.post(
-            'api/login', {
+            'api/auth/login', {
                 email,
                 password
             }).then(response => {
-            localStorage.setItem('access_token',response.data['access_token']);
+            // We store the received token
+            const token = response.data['access_token'];
+            // Then we assign the token to localStorage to keep track of it
+            localStorage.setItem('access_token', token);
+            // And set it as a default Authorization header (Bearer token)
+            axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
+
+            // Redirect to homepage
             history.push('/home');
         }).catch(error => {
             console.log(error);

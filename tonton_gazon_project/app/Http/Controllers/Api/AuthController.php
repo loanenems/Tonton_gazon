@@ -28,18 +28,40 @@ class AuthController extends Controller
 
     function login(Request $request)
     {
-
         $validatedLogin = $request->validate([
             'email' => 'email|required',
             'password' => 'required'
         ]);
 
         if (!auth()->attempt($validatedLogin)) {
-            return response(['message' => 'Invalid credentials'],409);
+            return response(['message' => 'Invalid credentials'], 409);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
 
         return response(['user' => auth()->user(), 'access_token' => $accessToken]);
+    }
+
+    /**
+     * Logout user (Revoke the token)
+     *
+     * @return [string] message
+     */
+    public function logout(Request $request)
+    {
+        $request->user()->token()->revoke();
+        return response()->json([
+            'message' => 'Successfully logged out'
+        ]);
+    }
+
+    /**
+     * Get the authenticated User
+     *
+     * @return [json] user object
+     */
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
     }
 }
