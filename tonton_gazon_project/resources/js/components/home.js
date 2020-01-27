@@ -1,19 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Nav from './navbar'
 
 
-class Home extends Component {
+export default function Home() {
 
-    render() {
-        return (
-            <div>
-                <Nav link="Logout" />
-                <div className="container text-center title">
-                    <h1>Hey, You are logged in !</h1>
-                </div>
+    return (
+        <div>
+            <Nav link="Logout"/>
+            <div className="container text-center title">
+                <h1>Vous êtes connecté !</h1>
             </div>
-        )
-    }
+        </div>
+    );
 }
-
-export default Home

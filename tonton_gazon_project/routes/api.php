@@ -13,14 +13,16 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::post('login', 'Auth\LoginController@login');
-Route::post('register', 'Auth\RegisterController@register');
-Route::post('logout', 'Auth\LoginController@logout');
-Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+Route::group([
+    'prefix' => 'auth'
+], function () {
+    Route::post('login', 'Api\AuthController@login');
+    Route::post('register', 'Api\AuthController@register');
 
-Route::post('garden_add', 'GardenController@addGarden');
-
-Route::get('garden', 'GardenController@fetchGarden');
-
-
+    Route::group([
+        'middleware' => 'auth:api'
+    ], function () {
+        Route::get('logout', 'Api\AuthController@logout');
+        Route::get('user', 'Api\AuthController@user');
+    });
+});
