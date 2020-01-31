@@ -1,0 +1,163 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.container .page_title {
+  font-size: 2rem;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.form_container form .form_group {
+  margin-top: 1rem;
+}
+
+.form_container form .form_group .form_label {
+  opacity: 0;
+  font-size: 0.8rem;
+}
+
+.form_container form .form_group .form_input_container {
+  min-width: 24rem;
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  /* Internet Explorer 10-11 */
+  /* Microsoft Edge */
+}
+
+.form_container form .form_group .form_input_container .form_input {
+  width: 100%;
+  border: none;
+  padding: 0.6rem;
+  border: 0px solid black;
+  border: 1px solid rgba(0, 0, 0, 0);
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+  -webkit-background-clip: padding-box;
+  /* for Safari */
+  background-clip: padding-box;
+  /* for IE9+, Firefox 4+, Opera, Chrome */
+  background-color: transparent;
+  -webkit-transition: border 0.4s ease-in-out;
+  transition: border 0.4s ease-in-out;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus {
+  outline: none;
+  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.075);
+  border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
+  -webkit-background-clip: padding-box;
+  /* for Safari */
+  background-clip: padding-box;
+  /* for IE9+, Firefox 4+, Opera, Chrome */
+}
+
+.form_container form .form_group .form_input_container .form_input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus::-moz-placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus::placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus:-ms-input-placeholde {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+.form_container form .form_group .form_input_container .form_input:-internal-autofill-selected {
+  background-color: none;
+}
+
+.form_container form .form_group .form_input_container .form_input::-webkit-input-placeholder {
+  -webkit-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input::-moz-placeholder {
+  -moz-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input:-ms-input-placeholder {
+  -ms-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input::-ms-input-placeholder {
+  -ms-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input::placeholder {
+  -webkit-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input:-ms-input-placeholder {
+  -ms-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_input_container .form_input::-ms-input-placeholder {
+  -ms-transition: opacity 0.4s ease;
+  transition: opacity 0.4s ease;
+}
+
+.form_container form .form_group .form_submit_container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
+}
+
+.form_container form .form_group .form_submit_container .form_submit {
+  width: 50%;
+}
+
+.form_container form .form_group .form_submit_container .form_password_reset .form_password_reset {
+  list-style-type: none;
+}
+
+.form_container form .form_group .form_submit_container .form_password_reset .form_password_reset a {
+  text-decoration: none;
+}
+
+.form_container form .form_group .form_submit_container .form_password_reset .form_password_reset a:hover {
+  text-decoration: underline;
+}
+
