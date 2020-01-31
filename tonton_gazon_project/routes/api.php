@@ -26,3 +26,9 @@ Route::group([
         Route::get('user', 'Api\AuthController@user');
     });
 });
+
+Route::post('garden_add', 'GardenController@addGarden');
+Route::get('garden', 'GardenController@fetchGarden');
+Route::get('adverts', 'AdvertController@fetchAdvert');
+
+

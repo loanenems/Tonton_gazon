@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 export default function Garden_create() {
     const [description, setDescription] = useState('');
@@ -13,7 +14,7 @@ export default function Garden_create() {
 
         axios({
             method: 'post',
-            url: 'api/garden_add',
+            url: '/api/garden_add',
             data: {
                 description,
                 size,

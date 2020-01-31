@@ -17,6 +17,7 @@ import Forgot from './components/auth/forgot'
 import Reset from './components/auth/reset'
 
 import Error404 from './components/error404';
+import Advert from './components/adverts/Advert'
 import Garden from './components/garden/Garden'
 
 
@@ -30,6 +31,11 @@ ReactDOM.render(
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
             <Route exact={false} component={Error404}/>
+
+            <Route path='/garden' component={Garden}/>
+            <Route path='/adverts' component={Advert}/>
+
+            <Route path='/password/reset/:token' component={Reset}/>
         </Switch>
     </BrowserRouter>,
     document.getElementById('app')
