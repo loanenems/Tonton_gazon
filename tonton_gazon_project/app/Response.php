@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Feedback extends Model
+class Response extends Model
 {
-    protected $table = 'feedback';
+    protected $table = 'response';
 }
