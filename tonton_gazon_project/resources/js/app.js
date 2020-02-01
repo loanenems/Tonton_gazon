@@ -30,12 +30,11 @@ ReactDOM.render(
             <PrivateRoute exact path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
-            <Route exact={false} component={Error404}/>
-
             <Route path='/garden' component={Garden}/>
             <Route path='/adverts' component={Advert}/>
-
             <Route path='/password/reset/:token' component={Reset}/>
+
+            <Route exact={false} component={Error404}/>
         </Switch>
     </BrowserRouter>,
     document.getElementById('app')
