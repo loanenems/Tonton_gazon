@@ -32,18 +32,21 @@ class GardenController extends Controller
     }
 
     public function addGarden(Request $request) {
+
+        //We validate the data through the request validator
         $validateData = $request->validate([
             'description' => 'required|max:5000',
             'size' => 'numeric|gt:0|lt:2000',
-            'movableObstacle' => 'required',
-            'unmovableObstacle' => 'required',
-            'pets' => 'required',
-            'equipment' => 'required',
+            'movableObstacle' => 'boolean',
+            'unmovableObstacle' => 'boolean',
+            'pets' => 'boolean',
+            'equipment' => 'boolean',
         ]);
 
+        //Once there are no errors, we insert a new row in the Garden table
         Garden::insert(
             [
-                'idOwner' => 10,
+                'idOwner' => 1,
                 'description' => $validateData['description'],
                 'size' => $validateData['size'],
                 'movableObstacle' => $validateData['movableObstacle'],
@@ -53,6 +56,7 @@ class GardenController extends Controller
             ]
         );
 
+        //Then we return a response to the client
         return response(['status' => '200'],200);
 
 
