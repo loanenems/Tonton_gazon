@@ -25,6 +25,19 @@ class CreateGardenTable extends Migration
             $table->bigInteger('equipment');
             $table->timestamps();
         });
+
+//        Schema::create('garden', function (Blueprint $table) {
+//            $table->bigIncrements('id');
+//            $table->bigInteger('idOwner')->unsigned();
+//            $table->foreign('idOwner')->references('id')->on('users');
+//            $table->longText('description');
+//            $table->integer('size');
+//            $table->json('movableObstacle'); //List of movable obstacles. Format: {count:2, list:{type:"table",type:"chaise"}}
+//            $table->json('unmovableObstacle'); //List of unmovable obstacles. Format: {count:2, list:{type:"arbre",type:"rocher"}}
+//            $table->json('pets'); //List of pets. Format: {count:2, list:{type:"chat",type:"chien"}}
+//            $table->boolean('equipment'); //Own one/few lawnmower(s) ? if so, check lawnmower table for match
+//            $table->timestamps();
+//        });
     }
 
     /**
