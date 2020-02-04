@@ -10,7 +10,11 @@
 
         background-color: $c-primary;
         border-radius: 2rem;
-
+        @include screen-sm() {
+            justify-content: flex-start;
+            height: 415px;
+            padding: $space-e-large $space-large;
+        }
         h2 {
             max-width: 460px;
 
@@ -18,11 +22,18 @@
             font-size: $f-title-large*1.50;
             line-height: $f-title-large*1.35;
             font-weight: 600;
+            @include screen-sm() {
+                font-size: $f-title-large*0.875;
+                line-height: $f-title-large;
+            }
         }
         p {
             max-width: 360px;
             color: $c-white;
             margin: $space-medium 0;
+            @include screen-sm() {
+                display: none;
+            }
         }
         a {
             margin: $space-large 0;
@@ -37,6 +48,15 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+
+            @include screen-sm() {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
             .recent_element {
                 display: flex;
                 flex-direction: row;
@@ -78,6 +98,15 @@
                     }
                 }
             }
+            .slick-list {
+                margin: 0 -$space-small;
+                .slick-track {
+                    .slick-slide {
+                        margin: 0 $space-small;
+                        width: 75vw;
+                    }
+                }
+            }
         }
     }
 
@@ -95,6 +124,11 @@
             background-color: $c-primary;
             border-radius: 2rem;
 
+            @include screen-sm() {
+                justify-content: space-evenly;
+                flex-direction: column;
+                height: 560px;
+            }
             .explaination_step {
                 display: flex;
                 flex-direction: column;
@@ -115,6 +149,9 @@
                     margin-top: $space-small;
                     font-size: $f-text-large;
                     color: $c-white;
+                    @include screen-sm() {
+                        text-align: center;
+                    }   
                 }
             }
         }
@@ -125,8 +162,16 @@
             display: flex;
             flex-direction: row;
             justify-content: space-between;
+            @include screen-sm() {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
             .tondeur {
-                display: flex;
+                display: flex !important;
                 flex-direction: row;
                 justify-content: space-around;
                 
@@ -151,6 +196,15 @@
                     }
                     .tondeur_profil {
                         font-size: $f-text-small;
+                    }
+                }
+            }
+            .slick-list {
+                margin: 0 -$space-small;
+                .slick-track {
+                    .slick-slide {
+                        margin: 0 $space-small;
+                        width: 75vw;
                     }
                 }
             }

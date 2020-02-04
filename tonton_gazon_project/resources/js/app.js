@@ -15,6 +15,8 @@ import Reset from './components/auth/reset'
 
 import Error404 from './components/error404';
 
+import Slick from './vendors/slick';
+import Script from './script/script';
 
 ReactDOM.render(
     <BrowserRouter>

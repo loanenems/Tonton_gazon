@@ -40,7 +40,10 @@
 @import 'base/functions';
 @import 'base/normalize';
 
-// @import 'vendors/file';
+$slick-font-path: "~slick-carousel/slick/fonts/";
+$slick-loader-path: "~slick-carousel/slick/";
+@import 'vendors/slick/slick';
+@import 'vendors/slick/slick-theme';
 
 @import 'pages/contact';
 @import 'pages/home';
@@ -49,6 +52,10 @@
 @import 'components/form';
 @import 'components/footer';
 @import 'components/header';
+
+body {
+    overflow-x: hidden;
+}
 
 * {
     font-family: 'Montserrat', sans-serif;

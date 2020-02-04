@@ -1,6 +1,12 @@
 .container {
     margin:auto;
     width: $container-width;
+    @include screen-sm() {
+        width: 90vw;
+    }
+    @include screen-md() {
+        width: 75vw;
+    }
 }
 
 a {
@@ -16,13 +22,19 @@ a {
     .bloc_title {
         display: flex;
         align-items: center;
-        margin-bottom: $space-large;
+        margin-bottom: $space-large; 
         img {
             height: 36px;
+            @include screen-sm() {
+                height: 24px;
+            }
         }
         h3 {
             font-size: $f-title-large;
             margin: 0 $space-medium;
+            @include screen-sm() {
+                font-size: $f-title-small;
+            }
         }
         p {
             a {

@@ -26,12 +26,12 @@ export default function Home() {
                     <div className="recent_element">
                         <img src="./img/jardin.png" alt=""></img>
                         <div className="garden_user"> 
-                            <a href="" className="garden_username">Pierre-Alain X.</a>
+                            <a href="" className="garden_username">as-Alain X.</a>
                             <p className="garden_userstats"><b>4.7</b> 340 avis</p>
                         </div>
                         <div className="garden_stats"> 
                             <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p class="garden_stats_surface">Superficie : <b>120m²</b></p>
+                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
                         </div>
                     </div>
                     <div className="recent_element">
@@ -42,7 +42,7 @@ export default function Home() {
                         </div>
                         <div className="garden_stats"> 
                             <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p class="garden_stats_surface">Superficie : <b>120m²</b></p>
+                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
                         </div>
                     </div>
                     <div className="recent_element">
@@ -53,7 +53,7 @@ export default function Home() {
                         </div>
                         <div className="garden_stats"> 
                             <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p class="garden_stats_surface">Superficie : <b>120m²</b></p>
+                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
                         </div>
                     </div>
                 </div>
