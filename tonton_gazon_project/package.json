@@ -21,13 +21,18 @@
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "resolve-url-loader": "^2.3.1",
-        "sass": "^1.15.2",
-        "sass-loader": "^7.1.0"
+        "sass-loader": "^7.3.1",
+        "webpack": "^4.41.5"
     },
     "dependencies": {
+        "babel-loader": "^8.0.6",
+        "gifsicle": "^5.0.0",
         "gulp": "^4.0.2",
         "gulp-sass": "^4.0.2",
-        "gulp-watch": "^5.0.1",
-        "react-router-dom": "^5.1.2"
+        "node-sass": "^4.13.1",
+        "react-router-dom": "^5.1.2",
+        "sass": "^1.25.0",
+        "slick-carousel": "^1.8.1",
+        "vue-loader": "^16.0.0-alpha.3"
     }
 }

@@ -9,7 +9,7 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import {PrivateRoute} from './components/helpers/PrivateRoute'
 
 //Routes
-import Index from './components/index'
+// import Index from './components/index'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
 import Home from './components/home'
@@ -20,14 +20,16 @@ import Error404 from './components/error404';
 import Advert from './components/adverts/Advert'
 import Garden from './components/garden/Garden'
 
+import Slick from './vendors/slick';
+import Script from './script/script';
 
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route exact path='/' component={Index}/>
+            <Route exact path='/' component={Home}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
-            <PrivateRoute exact path='/home' component={Home}/>
+            {/* <PrivateRoute exact path='/home' component={Home}/> */}
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
             <Route path='/garden' component={Garden}/>

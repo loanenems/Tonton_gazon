@@ -1,0 +1,277 @@
+.container_home {
+    .home_presentation {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        width: 100%;
+        height: 646px;
+        padding: 0 $space-e-large;
+
+        background-color: $c-primary;
+        border-radius: $b-radius;
+        @include screen-sm() {
+            justify-content: flex-start;
+            height: 415px;
+            padding: $space-e-large $space-large;
+        }
+        h2 {
+            max-width: 460px;
+
+            color: $c-white;
+            font-size: $f-title-large*1.50;
+            line-height: $f-title-large*1.35;
+            font-weight: 600;
+            @include screen-sm() {
+                font-size: $f-title-large*0.875;
+                line-height: $f-title-large;
+            }
+        }
+        p {
+            max-width: 360px;
+            color: $c-white;
+            margin: $space-medium 0;
+            @include screen-sm() {
+                display: none;
+            }
+        }
+        a {
+            margin: $space-large 0;
+            color: $c-white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    }
+
+    .home_recent {
+        .recent_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            @include screen-sm() {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
+            .recent_element {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-between;
+
+                width: 30%;
+                img {
+                    width: 100%;
+                    margin-bottom: $space-small;
+                    border-radius: $b-radius;
+                }
+                .garden_user {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    .garden_username {
+                        font-weight: bold;
+                        font-size: $f-text-large;
+                    }
+                    .garden_userstats {
+                        b {
+                            font-size: $f-text-medium;
+                        }
+                        font-size: $f-text-small;
+                    }
+                }
+                .garden_stats {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: flex-end;
+                    .garden_stats_price {
+                        font-size: $f-text-small;
+                        margin: 0;
+                    }
+                    .garden_stats_surface {
+                        font-size: $f-text-small;
+                        margin-top: $space-small;
+                    }
+                }
+            }
+            .slick-list {
+                margin: 0 -1rem;
+                // @include screen-md() { 
+                //     margin: 0;
+                // }
+                .slick-track {
+                    .slick-slide {
+                        margin: 0 $space-medium;
+                        width: 376px;
+                        @include screen-md() { 
+                            margin: 0 $space-small;
+                            width: 276px;
+                        }
+                        @include screen-sm() { 
+                            width: 75vw;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .home_explaination {
+        .explaination_steps {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 100%;
+            height: 406px;
+            padding: 0 $space-e-large;
+
+            background-color: $c-primary;
+            border-radius: $b-radius;
+
+            @include screen-md() {
+                height: 186px;
+            }
+            @include screen-sm() {
+                justify-content: space-evenly;
+                flex-direction: column;
+                height: 560px;
+            }
+            
+            .explaination_step {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                .step {
+                    width: 80px;
+                    padding: 18px 0;
+    
+                    border-radius: $b-radius;
+                    background-color: $c-white;
+                    color:$c-primary;
+
+                    font-weight: bold;
+                    font-size: $f-title-large;
+                    text-align: center;
+
+                    @include screen-md() {
+                        width: 60px;
+                        padding: 20px 0;
+
+                        font-size: $f-text-medium;
+                    }
+                }
+                .step_description {
+                    margin-top: $space-small;
+                    font-size: $f-text-large;
+                    color: $c-white;
+                    text-align: center;
+                    @include screen-md() {
+                        font-size: $f-text-small;
+                        max-width: 75%;
+                    }
+                }
+            }
+        }
+    }
+
+    .home_tondeurs {
+        .tondeurs_list {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            @include screen-sm() {
+                width: 100vw;
+                position: relative;
+                left: 50%;
+                right: 50%;
+                margin-left: -50vw;
+                margin-right: -50vw;
+            }
+            .tondeur {
+                display: flex !important;
+                flex-direction: row;
+                justify-content: space-around;
+                
+                width: 26%;
+
+                @include screen-md() {
+                    flex-direction: column;
+                    align-items: center;
+                }
+                @include screen-sm() {
+                    flex-direction: row;
+                }
+                img {
+                    width: 96px;
+                    height: 96px;
+                    border-radius: $b-radius;
+                    @include screen-md() {
+                        margin-bottom: $space-e-small;
+                    }
+                }
+                .tondeur_info {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    .tondeur_username {
+                        font-size: $f-text-large;
+                        font-weight: bold;
+                        @include screen-md() {
+                            font-size: $f-text-small;
+                        }
+                    }
+                    .tondeur_userstats {
+                        b {
+                            font-size: $f-text-medium;
+                        }
+                        font-size: $f-text-small;
+                        @include screen-md() {
+                            font-size: $f-text-e-small;
+                            b {
+                                font-size: $f-text-e-small;
+                            }
+                        }
+                        @include screen-sm() {
+                        }
+                    }
+                    .tondeur_profil {
+                        font-size: $f-text-small;
+                        @include screen-md() { 
+                            margin-top: $space-e-small*0.875;
+                            padding: $space-e-small*0.5 $space-small;
+                        }
+                    }
+                }
+            }
+            .slick-list {
+                margin: 0 -1rem;
+                @include screen-md() { 
+                    margin: 0;
+                }
+                .slick-track {
+                    .slick-slide {
+                        margin: 0 6.75rem;
+                        width: 276px;
+                        @include screen-md() { 
+                            margin: 0 $space-large;
+                            width: 106px;
+                        }
+                        @include screen-sm() { 
+                            margin: 0 $space-small;
+                            width: 250px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

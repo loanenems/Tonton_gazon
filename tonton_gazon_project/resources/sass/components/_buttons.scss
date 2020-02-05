@@ -1,0 +1,29 @@
+.btn {
+    width: fit-content;
+    display: inline-flex;
+    padding: $space-small $space-large;
+    margin: 0 $space-e-small;
+    border-radius: 2rem;
+
+    transition: all 0.3s ease-in-out;
+    text-decoration: none;
+
+    &:hover {
+        background-color: $c-white;
+        color: $c-black;
+        
+        -webkit-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.75);
+        -moz-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.75);
+        box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.75);
+    }
+}
+
+.btn_primary {
+    background-color: $c-black;
+    color: $c-white;
+}
+
+.btn_secondary {
+    background-color: $c-white;
+    color: $c-black;
+}
