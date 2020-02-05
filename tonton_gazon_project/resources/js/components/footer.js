@@ -5,7 +5,7 @@ export default function Nav() {
     return (
         <footer className="footer">
             <div className="footer_container">
-                <div className="footer_categorie">
+                <div className="footer_categorie footer_brand" >
                     <h2>Tonton Gazon</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 </div>

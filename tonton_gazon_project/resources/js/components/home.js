@@ -10,7 +10,7 @@ export default function Home() {
 
             <div className="bloc home_presentation">
                 <h2>Cuisinez du très bon couscous</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus fermentum ultrices lacus, et tincidunt tortor venenatis vitae.</p>
+                <p>Lorem ipsum aze sit amet, consectetur adipiscing elit. Vivamus fermentum ultrices lacus, et tincidunt tortor venenatis vitae.</p>
                 <a href="">Commencez maintenant -></a>
                 <img src="" alt=""></img>
             </div>
@@ -24,7 +24,7 @@ export default function Home() {
                
                 <div className="recent_list">
                     <div className="recent_element">
-                        <img src="./img/jardin.png" alt=""></img>
+                        <img src="./img/jardin.jpg" alt=""></img>
                         <div className="garden_user"> 
                             <a href="" className="garden_username">as-Alain X.</a>
                             <p className="garden_userstats"><b>4.7</b> 340 avis</p>
@@ -35,7 +35,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="recent_element">
-                        <img src="./img/jardin.png" alt=""></img>
+                        <img src="./img/jardin.jpg" alt=""></img>
                         <div className="garden_user"> 
                             <a href="" className="garden_username">Pierre-Alain X.</a>
                             <p className="garden_userstats"><b>4.7</b> 340 avis</p>
@@ -46,7 +46,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="recent_element">
-                        <img src="./img/jardin.png" alt=""></img>
+                        <img src="./img/jardin.jpg" alt=""></img>
                         <div className="garden_user"> 
                             <a href="" className="garden_username">Pierre-Alain X.</a>
                             <p className="garden_userstats"><b>4.7</b> 340 avis</p>
@@ -88,7 +88,7 @@ export default function Home() {
                 </div>
                 <div className="tondeurs_list">
                     <div className="tondeur">
-                        <img src="./img/tondeur.png" alt=""></img>
+                        <img src="./img/tondeur.jpg" alt=""></img>
                         <div className="tondeur_info"> 
                             <a href="" className="tondeur_username">Pierre-Alain X.</a>
                             <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
@@ -96,7 +96,7 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="tondeur">
-                        <img src="./img/tondeur.png" alt=""></img>
+                        <img src="./img/tondeur.jpg" alt=""></img>
                         <div className="tondeur_info"> 
                             <a href="" className="tondeur_username">Pierre-Alain X.</a>
                             <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
@@ -104,7 +104,47 @@ export default function Home() {
                         </div>
                     </div>
                     <div className="tondeur">
-                        <img src="./img/tondeur.png" alt=""></img>
+                        <img src="./img/tondeur.jpg" alt=""></img>
+                        <div className="tondeur_info"> 
+                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
+                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
+                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                        </div>
+                    </div>
+                    <div className="tondeur">
+                        <img src="./img/tondeur.jpg" alt=""></img>
+                        <div className="tondeur_info"> 
+                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
+                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
+                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                        </div>
+                    </div>
+                    <div className="tondeur">
+                        <img src="./img/tondeur.jpg" alt=""></img>
+                        <div className="tondeur_info"> 
+                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
+                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
+                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                        </div>
+                    </div>
+                    <div className="tondeur">
+                        <img src="./img/tondeur.jpg" alt=""></img>
+                        <div className="tondeur_info"> 
+                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
+                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
+                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                        </div>
+                    </div>
+                    <div className="tondeur">
+                        <img src="./img/tondeur.jpg" alt=""></img>
+                        <div className="tondeur_info"> 
+                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
+                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
+                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                        </div>
+                    </div>
+                    <div className="tondeur">
+                        <img src="./img/tondeur.jpg" alt=""></img>
                         <div className="tondeur_info"> 
                             <a href="" className="tondeur_username">Pierre-Alain X.</a>
                             <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>

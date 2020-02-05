@@ -1,6 +1,7 @@
 .footer {
     background-color: $c-black;
     color: $c-white;
+    @include full-width();
     a {
         color: $c-white;
     }
@@ -10,23 +11,65 @@
         flex-direction: row;
         justify-content: space-between;
 
+        width: $container-width;
+        margin: auto;
+
         padding: $space-e-large 0;
+
+        @include screen-md() {
+            flex-wrap: wrap;
+            width: $container-width-md;
+            padding: $space-large 0;
+        }
+        @include screen-sm() {
+            width: $container-width-sm;
+            flex-direction: column;
+        }
         .footer_categorie {
             display: flex;
             flex-direction: column;
             .footer_title {
                 margin: $space-small 0;
                 font-size: $f-title-medium*0.875;
+                @include screen-sm() {
+                    margin: $space-small 0 0 0;
+                }
             }   
             .footer_link {
                 color: $c-darkGrey;
                 margin: $space-e-small 0;
+                @include screen-sm() {
+                    margin: $space-e-small*0.5 0;
+                }
+            }
+        }
+        .footer_brand {
+            @include screen-md() {
+                margin-bottom: $space-e-large;
+                width: 100%;
+                p {
+                    font-size: $f-text-small;
+                    width: 75%;
+                }
+            }
+            @include screen-sm() {
+                text-align: center;
             }
         }
     }
 
     .footer_copryights {
         font-size: $f-text-small;
+        width: $container-width;
+        margin: auto;
         padding: $space-large 0;
+        @include screen-md() {
+            width: $container-width-md;
+            padding: 0 0 $space-large 0;
+            text-align: center;
+        }
+        @include screen-sm() {
+            width: $container-width-sm;
+        }
     }
 }

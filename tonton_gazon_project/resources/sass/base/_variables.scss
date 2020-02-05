@@ -1,8 +1,13 @@
-// Commons
+// Container
 $container-width: 1298px;
+$container-width-sm: 85vw;
+$container-width-md: 75vw;
+
+// Commons
+$b-radius: 1.6rem;
+$b-radius-big: 3.2rem;
 
 // Colors
-
     // c-l-color is 10% lighter then targeted color
     // c-d-color is 10% darker then targeted color
     // Use them for animation or contrast, etc...
@@ -37,8 +42,10 @@ $f-title-medium: 1.500rem;
 $f-title-large: 2rem;
 
 $f-text-small: 0.750rem;
+$f-text-e-small: $f-text-small*0.750;
 $f-text-medium: 1rem;
 $f-text-large: 1.250rem;
+$f-text-e-large: $f-text-large*1.250;
 
 // Spacing
 // Used to get the same between every elements
@@ -51,4 +58,4 @@ $space-e-large: $space-large*2;
 // Break Points
 // Used for media query / responsive
 $break-mobile: 640px;
-$break-tablet: 1200px;
+$break-tablet: 1348px;

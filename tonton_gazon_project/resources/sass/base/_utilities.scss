@@ -1,11 +1,11 @@
 .container {
     margin:auto;
     width: $container-width;
-    @include screen-sm() {
-        width: 90vw;
-    }
     @include screen-md() {
-        width: 75vw;
+        width: $container-width-md;
+    }
+    @include screen-sm() {
+        width: $container-width-sm;
     }
 }
 
@@ -32,6 +32,9 @@ a {
         h3 {
             font-size: $f-title-large;
             margin: 0 $space-medium;
+            @include screen-md() {
+                font-size: $f-title-medium;
+            }
             @include screen-sm() {
                 font-size: $f-title-small;
             }
