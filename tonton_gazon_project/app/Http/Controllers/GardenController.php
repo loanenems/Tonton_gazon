@@ -37,12 +37,13 @@ class GardenController extends Controller
         $validateData = $request->validate([
             'description' => 'required|max:5000',
             'size' => 'numeric|gt:0|lt:2000',
-            'movableObstacle' => 'boolean',
-            'unmovableObstacle' => 'boolean',
-            'pets' => 'boolean',
-            'equipment' => 'boolean',
+            'movableObstacle' => 'required',
+            'unmovableObstacle' => 'required',
+            'pets' => 'required',
+            'equipment' => 'required',
+            'image' => 'required',
         ]);
-
+        //$validateData['image']->store('public');
         //Once there are no errors, we insert a new row in the Garden table
         Garden::insert(
             [
@@ -53,14 +54,11 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
+                'image' => 'test',
             ]
         );
 
         //Then we return a response to the client
-        return response(['status' => '200'],200);
-
-
-
-
+        return response(asset('storage/OW9RqieRbSVV3uTGmdOXshErIvsU11k2878AElTu.jpeg'));
     }
 }

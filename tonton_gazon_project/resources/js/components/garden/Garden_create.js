@@ -1,30 +1,40 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import FormData from 'form-data';
 
 export default function Garden_create() {
+
+    const [limage, setLimage] = useState('');
+    console.log(limage);
 
     let submit = (e) => {
         e.preventDefault();
 
+        //We are creating a new FormData object
+        let data = new FormData();
+        let img = document.getElementById('image').files[0];
+
         //We are building the formData object which is going to be sent to the server
-        let formData = {
-          'description' : document.getElementById('description').value,
-          'size' : document.getElementById('size').value,
-          'movableObstacle' : document.getElementById('movableObstacle').checked,
-          'unmovableObstacle' : document.getElementById('unmovableObstacle').checked,
-          'pets' : document.getElementById('pets').checked,
-          'equipment' : document.getElementById('equipment').checked,
-        };
+        data.append('image',img,img.name);
+        data.append('description',document.getElementById('description').value);
+        data.append('size',document.getElementById('size').value);
+        data.append('movableObstacle',document.getElementById('movableObstacle').checked);
+        data.append('unmovableObstacle',document.getElementById('unmovableObstacle').checked);
+        data.append('pets',document.getElementById('pets').checked);
+        data.append('equipment',document.getElementById('equipment').checked ? 1 : 0);
 
         //We make the post request to the GardenController who process the data
         axios({
             method: 'post',
             url: '/api/garden_add',
-            data: formData,
+            data: data,
+            headers: {
+                'Content-Type': `multipart/form-data`,
+            }
         })
             .then(function (reponse) {
                 //On traite la réponse envoyée par le serveur
-                console.log(reponse);
+                setLimage(reponse.data);
             })
             .catch(function (erreur) {
                 //On traite ici les erreurs éventuellement survenues
@@ -34,6 +44,7 @@ export default function Garden_create() {
 
     return (
         <div>
+            <img src={limage} alt="test"/>
             <form onSubmit={(e) => submit(e)} method="post">
                 <label htmlFor="description">description</label>
                 <input type="text" id="description" name="description"/>
@@ -52,6 +63,9 @@ export default function Garden_create() {
                 <br/>
                 <label htmlFor="equipment">equipment</label>
                 <input type="checkbox" id="equipment" name="equipment"/>
+                <br/>
+                <label htmlFor="image">image</label>
+                <input type="file" id="image" name="image" accept="image/png, image/jpeg"/>
                 <br/>
                 <button type="submit">Envoyer</button>
             </form>
