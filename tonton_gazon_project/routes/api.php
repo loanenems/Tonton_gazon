@@ -37,12 +37,11 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    //Todo: Finish the authentication process before moving any necessary route
+    Route::get('garden_images', 'ImagesController@fetchGardenImages');
+    Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
+    Route::get('garden', 'GardenController@fetchGarden'); //Fetch all the gardens from database
+    Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
 });
-
-Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
-Route::get('garden', 'GardenController@fetchGarden'); //Fetch all the gardens from database
-Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
 
 
 

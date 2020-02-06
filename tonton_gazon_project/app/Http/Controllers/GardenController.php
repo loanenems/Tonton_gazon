@@ -43,7 +43,10 @@ class GardenController extends Controller
             'equipment' => 'required',
             'image' => 'required',
         ]);
-        //$validateData['image']->store('public');
+
+        //We store the image in a folder named with the user id
+        $path = $validateData['image']->store(auth()->id().'/Garden');
+
         //Once there are no errors, we insert a new row in the Garden table
         Garden::insert(
             [
@@ -54,11 +57,11 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => 'test',
+                'image' => $path
             ]
         );
 
         //Then we return a response to the client
-        return response(asset('storage/OW9RqieRbSVV3uTGmdOXshErIvsU11k2878AElTu.jpeg'));
+        return response([],200);
     }
 }

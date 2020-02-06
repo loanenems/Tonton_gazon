@@ -3,10 +3,6 @@ import axios from 'axios';
 import FormData from 'form-data';
 
 export default function Garden_create() {
-
-    const [limage, setLimage] = useState('');
-    console.log(limage);
-
     let submit = (e) => {
         e.preventDefault();
 
@@ -29,12 +25,12 @@ export default function Garden_create() {
             url: '/api/garden_add',
             data: data,
             headers: {
-                'Content-Type': `multipart/form-data`,
+                'Content-Type': 'multipart/form-data',
             }
         })
             .then(function (reponse) {
                 //On traite la réponse envoyée par le serveur
-                setLimage(reponse.data);
+                setImage(reponse.data);
             })
             .catch(function (erreur) {
                 //On traite ici les erreurs éventuellement survenues
@@ -44,7 +40,6 @@ export default function Garden_create() {
 
     return (
         <div>
-            <img src={limage} alt="test"/>
             <form onSubmit={(e) => submit(e)} method="post">
                 <label htmlFor="description">description</label>
                 <input type="text" id="description" name="description"/>
