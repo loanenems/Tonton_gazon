@@ -18,7 +18,7 @@ import Reset from './components/auth/reset'
 
 import Error404 from './components/error404'
 import Advert from './components/adverts/Advert'
-import Garden_create from './components/garden/Garden_create'
+import Garden from './components/garden/Garden'
 
 import Slick from './vendors/slick';
 import Script from './script/script';
@@ -29,7 +29,7 @@ ReactDOM.render(
             <Route exact path='/' component={Home}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
-            <Route path='/garden' component={Garden_create}/>
+            <Route path='/garden' component={Garden}/>
             {/* <PrivateRoute exact path='/home' component={Home}/> */}
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
