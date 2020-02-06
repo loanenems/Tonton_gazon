@@ -36,7 +36,7 @@ class CreateGardenTable extends Migration
             $table->json('unmovableObstacle'); //List of unmovable obstacles. Format: {count:2, list:{type:"arbre",type:"rocher"}}
             $table->json('pets'); //List of pets. Format: {count:2, list:{type:"chat",type:"chien"}}
             $table->boolean('equipment'); //Own one/few lawnmower(s) ? if so, check lawnmower table for match
-            $table->text('image');
+            $table->json('image');
             $table->timestamps();
         });
     }

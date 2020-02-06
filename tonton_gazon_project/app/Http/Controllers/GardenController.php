@@ -31,6 +31,18 @@ class GardenController extends Controller
         return response((['jardin' => $garden]), 200);
     }
 
+    /**
+     * Retrieve a specific garden by its owner's ID
+     * @param $id
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function fetchGardenByIdOwner($id)
+    {
+        $garden = Garden::where('idOwner',auth()->id());
+
+        return response((['jardin' => $garden]), 200);
+    }
+
     public function addGarden(Request $request) {
 
         //We validate the data through the request validator
@@ -44,20 +56,20 @@ class GardenController extends Controller
             'image' => 'required',
         ]);
 
-        //We store the image in a folder named with the user id
-        $path = $validateData['image']->store(auth()->id().'/Garden');
+        //We store the image in a folder named with the user id and file with original name
+        $path = $validateData['image']->storeAs(auth()->id().'/Garden',$validateData['image']->getClientOriginalName());
 
         //Once there are no errors, we insert a new row in the Garden table
         Garden::insert(
             [
-                'idOwner' => 1,
+                'idOwner' => auth()->id(),
                 'description' => $validateData['description'],
                 'size' => $validateData['size'],
                 'movableObstacle' => $validateData['movableObstacle'],
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => $path
+                'image' => json_encode(['image_0'=>$path]),
             ]
         );
 
