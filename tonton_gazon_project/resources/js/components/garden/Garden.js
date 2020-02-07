@@ -8,19 +8,17 @@ export default function Garden() {
     const [images, setImages] = useState([]);
 
     useEffect(() => {
-        axios.get('api/garden_images', {
-                responseType: 'arraybuffer'
-            }
+        axios.get('api/garden_images'
         ).then(res => {
-            setImages('data:image/jpeg;base64,'+Buffer.from(res.data, 'binary').toString('base64'));
+            setImages(res.data);
         });
     }, []);
 
-    let jsxImage = () => {
+    let jsxImage = images.map((i) => {
         return (
-            <img src={images}/>
+            <img src={i}/>
         )
-    };
+    });
     // The `path` lets us build <Route> paths that are
     // relative to the parent route, while the `url` lets
     // us build relative links.
@@ -28,7 +26,7 @@ export default function Garden() {
 
     return (
         <div>
-            {jsxImage()}
+            {jsxImage}
             <ul>
                 <li>
                     <Link to={`${url}/garden_create`}>Créer un jardin</Link>

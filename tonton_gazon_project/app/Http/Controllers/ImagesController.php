@@ -16,7 +16,7 @@ class ImagesController extends Controller
         foreach ($gardens as $garden){
             $images = json_decode($garden->image);
             foreach ($images as $image){
-                $garden_list[] = Storage::get($image);
+                $garden_list[] = asset($image);
             }
         }
         return response($garden_list);

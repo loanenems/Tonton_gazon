@@ -57,7 +57,7 @@ class GardenController extends Controller
         ]);
 
         //We store the image in a folder named with the user id and file with original name
-        $path = $validateData['image']->storeAs(auth()->id().'/Garden',$validateData['image']->getClientOriginalName());
+        $validateData['image']->storeAs('public/'.auth()->id().'/Garden',$validateData['image']->getClientOriginalName());
 
         //Once there are no errors, we insert a new row in the Garden table
         Garden::insert(
@@ -69,7 +69,7 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => json_encode(['image_0'=>$path]),
+                'image' => json_encode(['image_0'=>'storage/'.auth()->id().'/Garden/'.$validateData['image']->getClientOriginalName()]),
             ]
         );
 
