@@ -15,11 +15,15 @@ export default function Garden() {
     }, []);
 
     let jsxGarden = gardens.map((garden,i) => {
+        //Parse the images string to an object
         const images = JSON.parse(garden.image);
+        //This array will stock the <img/> html with images src
         const jsxImages = [];
+        //Iterating the object to create the html node
         for(let [key,value] of Object.entries(images)){
             jsxImages.push(<img src={value} alt="photo de jardin"/>);
         }
+        //Then returning the structure displaying all the informations
         return (
             <div>
                 <p>{garden.description}</p>
