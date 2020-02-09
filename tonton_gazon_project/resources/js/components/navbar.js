@@ -9,7 +9,7 @@ export default function Nav() {
 
         axios.get('api/auth/logout')
             .then((res) => {
-            console.log(res);
+            localStorage.removeItem('access_token');
         })
 
     };

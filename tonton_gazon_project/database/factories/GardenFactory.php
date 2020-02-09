@@ -11,15 +11,15 @@ $factory->define(Garden::class, function (Faker $faker) {
     $u_ids = App\User::pluck('id')->toArray();
 
     return [
-                
-                'idOwner' => $faker->randomElement($u_ids),
-                'description' => $faker->text,
-                'size' => $faker->randomDigit,
-                'movableObstacle' => $faker->randomDigit,
-                'unmovableObstacle' => $faker->randomDigit,
-                'pets' => $faker->randomDigit,
-                'equipment' => $faker->randomDigit,
+        'idOwner' => $faker->randomElement($u_ids),
+        'description' => $faker->text,
+        'size' => $faker->randomDigit,
+        'movableObstacle' => $faker->randomDigit,
+        'unmovableObstacle' => $faker->randomDigit,
+        'pets' => $faker->randomDigit,
+        'equipment' => $faker->randomDigit,
+        'image' => '{"image_0":"'.$faker->imageUrl().'"}',
             ];
-        });
-    
+});
+
 
