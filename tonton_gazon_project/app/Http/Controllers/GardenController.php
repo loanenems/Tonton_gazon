@@ -33,12 +33,11 @@ class GardenController extends Controller
 
     /**
      * Retrieve a specific garden by its owner's ID
-     * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchGardenByIdOwner($id)
+    public function fetchGardenByIdOwner()
     {
-        $garden = Garden::where('idOwner',auth()->id());
+        $garden = Garden::where('idOwner',auth()->id())->get();
 
         return response((['jardin' => $garden]), 200);
     }
@@ -69,7 +68,7 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => json_encode(['image_0'=>'storage/'.auth()->id().'/Garden/'.$validateData['image']->getClientOriginalName()]),
+                'image' => json_encode(['image_0'=>asset('storage/'.auth()->id().'/Garden/'.$validateData['image']->getClientOriginalName())]),
             ]
         );
 

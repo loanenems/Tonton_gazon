@@ -37,9 +37,8 @@ Route::group([
 Route::group([
     'middleware' => 'auth:api'
 ], function () {
-    Route::get('garden_images', 'ImagesController@fetchGardenImages'); //Fetch every image from a user's gardens
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
-    Route::get('garden', 'GardenController@fetchGarden'); //Fetch all the gardens from database
+    Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
 });
 
