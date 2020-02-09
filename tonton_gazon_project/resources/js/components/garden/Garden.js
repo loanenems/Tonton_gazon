@@ -14,8 +14,12 @@ export default function Garden() {
         });
     }, []);
 
-    let jsxGarden = gardens.map((garden) => {
-        let images = JSON.parse(garden.image);
+    let jsxGarden = gardens.map((garden,i) => {
+        const images = JSON.parse(garden.image);
+        const jsxImages = [];
+        for(let [key,value] of Object.entries(images)){
+            jsxImages.push(<img src={value} alt="photo de jardin"/>);
+        }
         return (
             <div>
                 <p>{garden.description}</p>
@@ -24,6 +28,7 @@ export default function Garden() {
                 <p>{garden.unmovableObstacle}</p>
                 <p>{garden.pets}</p>
                 <p>{garden.equipment}</p>
+                {jsxImages}
             </div>
         )
     });
