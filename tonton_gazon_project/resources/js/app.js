@@ -1,3 +1,5 @@
+
+
 require('./bootstrap');
 require('./script/form-animation');
 
@@ -16,6 +18,8 @@ import Home from './components/home'
 import Forgot from './components/auth/forgot'
 import Reset from './components/auth/reset'
 
+import FormTemplate from './components/FormTemplate'
+
 import Error404 from './components/error404'
 import Advert from './components/adverts/Advert'
 import Garden from './components/garden/Garden'
@@ -33,6 +37,8 @@ ReactDOM.render(
             {/* <PrivateRoute exact path='/home' component={Home}/> */}
             <Route path='/forgotpassword' component={Forgot}/>
             <Route path='/resetPassword' component={Reset}/>
+
+            <Route path='/form-template' component={FormTemplate}/>
 
             <Route path='/adverts' component={Advert}/>
             <Route path='/password/reset/:token' component={Reset}/>
