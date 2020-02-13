@@ -7,7 +7,7 @@ export default function Nav() {
     let handleLogout = (e) => {
         e.preventDefault();
 
-        axios.get('api/auth/logout')
+        axios.get('api/logout')
             .then((res) => {
             localStorage.removeItem('access_token');
         })

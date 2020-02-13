@@ -1,7 +1,35 @@
 import React from 'react'
 import Nav from '../navbar'
+import axios from "axios";
+import {useHistory} from 'react-router-dom'
 
 export default function Register() {
+    const history = useHistory();
+
+    let handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('click');
+        axios.post(
+            'api/register', {
+                'name': document.getElementById('name').value,
+                'email': document.getElementById('email').value,
+                'password': document.getElementById('password').value,
+                'password_confirmation': document.getElementById('password-confirm').value
+            }).then(response => {
+            // We store the received token
+            const token = response.data['access_token'];
+            // Then we assign the token to localStorage to keep track of it
+            localStorage.setItem('access_token', token);
+            // And set it as a default Authorization header (Bearer token)
+            axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
+
+            // Redirect to homepage
+            history.push('/home');
+        }).catch(error => {
+            console.log(error);
+        });
+    };
+
     return (
         <div>
             <Nav/>
@@ -50,7 +78,7 @@ export default function Register() {
 
                                     <div className="form-group">
                                         <div className="col-md-6 col-md-offset-4">
-                                            <button type="submit" className="btn btn-primary">
+                                            <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">
                                                 Créer mon compte
                                             </button>
                                         </div>

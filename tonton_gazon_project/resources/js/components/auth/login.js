@@ -14,7 +14,7 @@ export default function Login() {
 
         // We send login form's data to login route
         axios.post(
-            'api/auth/login', {
+            'api/login', {
                 email,
                 password
             }).then(response => {
