@@ -41,4 +41,23 @@ class AdvertController extends Controller
 
         return response(['advert' => $advert], 200);
     }
+
+    public function addAdvert(Request $request) {
+
+        //We validate the data through the request validator
+        $validatedData = $request->validate([
+            "title" => "required",
+            "description" => "required",
+            "idGarden" => "required",
+        ]);
+
+        $advert = new Advert;
+
+        $advert->idAuthor = auth()->id();
+        $advert->idGarden = $validatedData['idGarden'];
+        $advert->title = $validatedData['title'];
+        $advert->description = $validatedData['description'];
+
+        $advert->save();
+    }
 }

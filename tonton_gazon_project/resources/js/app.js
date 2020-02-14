@@ -1,5 +1,3 @@
-
-
 require('./bootstrap');
 require('./script/form-animation');
 
@@ -24,6 +22,7 @@ import FormTemplate from './components/FormTemplate'
 import Error404 from './components/error404'
 import Advert from './components/adverts/Advert'
 import Garden from './components/garden/Garden'
+import Advert_create from './components/adverts/Advert_create'
 
 import Legal from './components/Legal'
 import Cgu from './components/Cgu'
@@ -38,6 +37,7 @@ ReactDOM.render(
     <BrowserRouter>
         <Switch>
             <Route exact path='/' component={Home}/>
+            <Route exact path='/advertcreate' component={Advert_create}/>
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <Route path='/mon-profil' component={Profil}/>
