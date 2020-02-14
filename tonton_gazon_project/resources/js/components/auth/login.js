@@ -22,6 +22,7 @@ export default function Login() {
             const token = response.data['access_token'];
             // Then we assign the token to localStorage to keep track of it
             localStorage.setItem('access_token', token);
+            localStorage.setItem('is_logged', 'true');
             // And set it as a default Authorization header (Bearer token)
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
 

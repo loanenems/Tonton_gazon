@@ -26,6 +26,11 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 if(localStorage.getItem('access_token')) {
     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 }
+if(!localStorage.getItem('is_logged')) {
+    localStorage.setItem('is_logged','false');
+} else {
+    localStorage.setItem('is_logged','true');
+}
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
