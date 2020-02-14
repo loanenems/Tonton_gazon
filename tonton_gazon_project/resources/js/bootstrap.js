@@ -13,7 +13,8 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
-} catch (e) {}
+} catch (e) {
+}
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -23,13 +24,17 @@ try {
 
 window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-if(localStorage.getItem('access_token')) {
+
+//If there is a logged user, we set it as default authorization header (Mainly for GET requests)
+if (localStorage.getItem('access_token')) {
     window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
 }
-if(!localStorage.getItem('is_logged')) {
-    localStorage.setItem('is_logged','false');
+
+//If the user just arrived on the app or is logged out...
+if (!localStorage.getItem('is_logged') || localStorage.getItem('is_logged') === 'false') {
+    localStorage.setItem('is_logged', 'false');
 } else {
-    localStorage.setItem('is_logged','true');
+    localStorage.setItem('is_logged', 'true');
 }
 
 /**
