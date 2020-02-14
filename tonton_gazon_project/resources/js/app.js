@@ -21,6 +21,8 @@ import FormTemplate from './components/FormTemplate'
 
 import Error404 from './components/error404'
 import Advert from './components/adverts/Advert'
+import Search_advert from "./components/adverts/search_advert"
+
 import Garden from './components/garden/Garden'
 import Advert_create from './components/adverts/Advert_create'
 
@@ -41,6 +43,7 @@ ReactDOM.render(
             <Route path='/login' component={Login}/>
             <Route path='/register' component={Register}/>
             <Route path='/mon-profil' component={Profil}/>
+            <Route path='/search_advert' component={Search_advert}/>
             <Route path='/garden' component={Garden}/>
             <Route path='/mentions-legales' component={Legal}/>
             <Route path='/cgu' component={Cgu}/>

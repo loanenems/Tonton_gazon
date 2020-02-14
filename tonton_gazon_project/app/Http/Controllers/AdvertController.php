@@ -60,4 +60,10 @@ class AdvertController extends Controller
 
         $advert->save();
     }
+
+    public function searchAdvert(Request $request){
+        $search = $request->query('search');
+        $adverts = Advert::where('title', 'like','%'.$search.'%')->orWhere('description','like','%'.$search.'%')->paginate(1);
+        return response(['adverts' => $adverts],200);
+    }
 }

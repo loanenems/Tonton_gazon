@@ -43,6 +43,7 @@ Route::group([
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
     Route::post('advert_add', 'AdvertController@addAdvert'); //Add an advert into database
+    Route::get('advert_search', 'AdvertController@searchAdvert'); //Add an advert into database
 });
 
 

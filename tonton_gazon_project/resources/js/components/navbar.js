@@ -1,11 +1,17 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link,useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Nav() {
 
     //We store the current loggin state into a var
     const [isLogged, setIsLogged] = useState(localStorage.getItem('is_logged'));
+    let history = useHistory();
+
+    let handleSearch = (e) => {
+        e.preventDefault();
+        history.push("/search_advert?search="+document.getElementById('search').value+"&page=1");
+    };
 
     //Handle the action of logging out
     let handleLogout = (e) => {
@@ -44,6 +50,10 @@ export default function Nav() {
                     <img src="./img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
                     <p className="navbar_brand_name">Tonton Gazon</p>
                 </a>
+            </div>
+            <div>
+                <input type="text" name="search" id="search"/>
+                <button onClick={(e) => handleSearch(e)}>search</button>
             </div>
             <div className="navbar_group navbar_authentication">
                 {jsxAuth()}
