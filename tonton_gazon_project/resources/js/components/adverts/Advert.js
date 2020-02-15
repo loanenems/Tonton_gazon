@@ -13,7 +13,7 @@ export default function Advert() {
     }, []);
 
     let jsx = adverts.map((adv) => {
-        return(
+        return (
             <div>
                 <h1>{adv.title}</h1>
                 <span>{adv.description}</span>

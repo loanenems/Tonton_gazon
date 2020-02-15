@@ -35,6 +35,11 @@ Route::group([],
 /**
  * Group of routes that require to know who is making the request. access_token provided
  * via Authorization header
+ *
+ * /!\ DISCLAIMER /!\
+ * The route name should not be separated with "_" or "-". Because it may produce an error while trying to get access.
+ * For example, if there are two routes, one named "advert_add" and the other named "advert_search", one of them
+ * may have some issues trying to access the server-side. Be aware about this fact !
  */
 Route::group([
     'middleware' => 'auth:api'
@@ -42,8 +47,8 @@ Route::group([
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
-    Route::post('advert_add', 'AdvertController@addAdvert'); //Add an advert into database
-    Route::get('advert_search', 'AdvertController@searchAdvert'); //Add an advert into database
+    Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
+    Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Add an advert into database
 });
 
 

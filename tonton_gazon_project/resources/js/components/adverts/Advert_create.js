@@ -23,7 +23,7 @@ export default function Advert_create() {
 
         axios({
             method: 'post',
-            url: '/api/advert_add',
+            url: '/api/addAdvert',
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data',
