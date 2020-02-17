@@ -16,6 +16,10 @@
         -moz-box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.75);
         box-shadow: inset 0px 0px 0px 2px rgba(0,0,0,0.75);
     }
+
+    @include screen-sm() {
+        font-weight: bold;
+    }
 }
 
 .btn_primary {
@@ -23,7 +27,17 @@
     color: $c-white;
 }
 
-.btn_secondary {
+.btn_primary_white {
     background-color: $c-white;
     color: $c-black;
+}
+
+.btn_secondary {
+    background-color: transparent;
+    color: $c-black;
+}
+
+.btn_secondary_white {
+    background-color: transparent;
+    color: $c-white;
 }
