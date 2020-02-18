@@ -15,7 +15,6 @@ import Register from './components/auth/register'
 import Profil from './components/auth/profil'
 import Home from './components/home'
 //import Forgot from './components/auth/forgot'
-//import Reset from './components/auth/reset'
 
 import FormTemplate from './components/FormTemplate'
 
@@ -50,14 +49,14 @@ ReactDOM.render(
             <Route path='/aide' component={Aide}/>
             <Route path='/contact' component={Contact}/>
             <Route path='/politique-cookies' component={Cookies}/>
-            {/* <PrivateRoute exact path='/home' component={Home}/> 
+            {/* <PrivateRoute exact path='/home' component={Home}/>
             <Route path='/forgotpassword' component={Forgot}/>
-            <Route path='/resetPassword' component={Reset}/>*/}
+            <Route path='/resetPassword' component={ResetPassword}/>*/}
 
             <Route path='/form-template' component={FormTemplate}/>
 
             <Route path='/adverts' component={Advert}/>
-          {/*  <Route path='/password/reset/:token' component={Reset}/> */}
+          {/*  <Route path='/password/reset/:token' component={ResetPassword}/> */}
 
             <Route exact={false} component={Error404}/>
         </Switch>

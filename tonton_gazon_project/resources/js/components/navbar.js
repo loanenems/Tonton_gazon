@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Nav() {
@@ -10,7 +10,17 @@ export default function Nav() {
 
     let handleSearch = (e) => {
         e.preventDefault();
-        history.push("/search_advert?search="+document.getElementById('search').value+"&page=1");
+        history.push("/search_advert?search=" + document.getElementById('search').value + "&page=1");
+    };
+
+    let handlePassword = (e) => {
+        e.preventDefault();
+
+        axios.post('api/create', {
+            'email': 'geronimo@gmail.com'
+        }).then((response) => {
+            console.log(response.data);
+        })
     };
 
     //Handle the action of logging out
@@ -48,6 +58,7 @@ export default function Nav() {
 
     return (
         <>
+            <a href="" onClick={(e) => handlePassword(e)}>Mot de passe oublié</a>
             <input type="text" name="search" id="search"/>
             <button onClick={(e) => handleSearch(e)}>search</button>
             <nav className="navbar">
@@ -81,9 +92,9 @@ export default function Nav() {
                             <input type="text" className="navbar_search"></input>
                         </div>
                         <div className="navbar_links">
-                            <a href="#">HOME</a><br />
-                            <a href="#">ABOUT</a><br />
-                            <a href="#">WORK</a><br />
+                            <a href="#">HOME</a><br/>
+                            <a href="#">ABOUT</a><br/>
+                            <a href="#">WORK</a><br/>
                             <a href="#">SERVICES</a>
                         </div>
                         <div className="navbar_auth">
