@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->date('birthday')->nullable($value = true);
             $table->longText('address')->nullable($value = true);
             $table->rememberToken();
+            $table->timestamp('email_verified_at')->nullable($value = true);
             $table->timestamps();
         });
     }

@@ -42,7 +42,7 @@ Route::group([],
  * may have some issues trying to access the server-side. Be aware about this fact !
  */
 Route::group([
-    'middleware' => 'auth:api'
+    'middleware' => ['auth:api','verified']
 ], function () {
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
@@ -50,6 +50,9 @@ Route::group([
     Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
     Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Add an advert into database
 });
+
+Route::get("email/verify/{id}", "Auth\AuthController@verify")->name("verificationapi.verify");
+Route::get("email/resend", "Auth\AuthController@resend")->name("verificationapi.resend");
 
 
 
