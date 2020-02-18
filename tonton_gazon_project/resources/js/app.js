@@ -13,6 +13,7 @@ import {PrivateRoute} from './components/helpers/PrivateRoute'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
 import Profil from './components/auth/profil'
+import Reset from './components/Reset'
 import Home from './components/home'
 //import Forgot from './components/auth/forgot'
 
@@ -45,6 +46,7 @@ ReactDOM.render(
             <Route path='/search_advert' component={Search_advert}/>
             <Route path='/garden' component={Garden}/>
             <Route path='/mentions-legales' component={Legal}/>
+            <Route path='/reset' component={Reset}/>
             <Route path='/cgu' component={Cgu}/>
             <Route path='/aide' component={Aide}/>
             <Route path='/contact' component={Contact}/>
