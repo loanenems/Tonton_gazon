@@ -4,7 +4,7 @@
     justify-content: space-between;
     height: 40px;
     margin: $space-large 0;
-    @include screen-sm() {
+    @include screen-md() {
         display: none;
     }
     .navbar_group {
@@ -43,6 +43,162 @@
     .navbar_authentication {
         a.navbar_element {
             
+        }
+    }
+}
+
+.navbar_mobile {
+    display: none;
+    @include screen-md() {
+        display: block;
+        z-index: 10;
+        #toggle {
+            display: none;
+            &:checked + .navbar_hamburger .top-bun {
+                transform: rotate(-45deg);
+                margin-top: 25px;
+            }
+            &:checked + .navbar_hamburger .bottom-bun {
+                opacity: 0;
+                transform: rotate(45deg);
+            }
+            &:checked + .navbar_hamburger .meat {
+                transform: rotate(45deg);
+                margin-top: -4px;
+            }
+            &:checked + .navbar_hamburger + .nav {
+                height: 100%;
+                max-width: 50vw;
+                @include screen-sm() {
+                    max-width: 100%;
+                }
+            }
+            &:checked + .navbar_hamburger div {
+                background-color: $c-white;
+            }
+        } 
+
+        &.active {
+            .blackFilter {
+                background-color: rgba(0,0,0,0.5);
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 1;
+            }
+        }
+        
+        .navbar_hamburger {
+            position: fixed;
+            top: 4rem;
+            right: 2rem;
+            margin-left: -2em;
+            margin-top: -45px;
+            width: 2em;
+            height: 45px;
+            z-index: 11;
+    
+            @include screen-sm() {
+                right: 10%;
+    
+            }
+            div {
+                position: relative;
+                width: 2em;
+                height: 4px;
+                border-radius: 3px;
+                background-color: $c-black;
+                margin-top: 8px;
+                transition: all 0.3s ease-in-out,
+                            background 0.3s ease-in-out;
+            }
+        }
+    
+        .nav {
+            position: fixed;
+            width: 100%;
+            height: 0%;
+            background-color: $c-primary;
+            top: 0; left: 50%; right: 0; bottom: 0;
+            @include screen-sm() {
+                top: 0; left: 0; right: 0; bottom: 0;
+            }
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 5;
+            // transform: scale(0);
+            .navbar_wrapper {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                position: relative;
+                overflow: hidden;
+                overflow-y: auto;
+                height: 100%;
+                .navbar_common {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-right: 6rem;
+                    .navbar_search {
+                        background: transparent;
+                        height: 48px;
+                        width: 276px;
+                        margin-top: 1.4rem;
+                        border:none;
+                        border-radius: 26px;
+                        transition: background 0.2s ease-in-out;
+                        &:focus {
+                            background: $c-white;
+                            outline: none;
+                        }
+                    }
+                }
+                .navbar_links {
+                    text-align: left;
+                    // margin-top: 25vh;
+                    margin-left: 4rem;
+                    @include screen-sm() {
+                        margin-left: 10%;
+                    }
+                    a {
+                        position: relative;
+                        text-decoration: none;
+                        color: $c-white;
+                        opacity: 0.5;
+                        font-size: 21px;
+                        display: inline-block;
+                        margin-top: 1.25em;
+                        transition: color 0.2s ease-in-out,
+                                    opacity 0.2s ease-in-out;
+                        letter-spacing: 1px;
+                        &:after {
+                            content: '';
+                            height: 4px;
+                            width: 0;
+                            position: absolute;
+                            left: 0;
+                            bottom: -8px;
+                            background-color: white;
+                            transition: all 0.2s ease-in-out;
+                        }
+                        &:hover {
+                            color: white;
+                            opacity: 1;
+                        }
+                        &:hover:after {
+                            width: 100%;
+                        }
+                    }
+                }
+                .navbar_auth {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: space-around;
+                    margin-bottom: $space-medium;
+                }
+            }
         }
     }
 }

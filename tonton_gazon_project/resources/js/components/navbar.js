@@ -30,7 +30,10 @@ export default function Nav() {
     let jsxAuth = () => {
         if (localStorage.getItem('is_logged') === "true") {
             return (
-                <a onClick={(e) => handleLogout(e)}>Logout</a>
+                <>
+                    <Link to="/mon-profil" className="navbar_element btn btn_primary">Mon profil</Link>
+                    <a className="navbar_element btn btn_secondary" onClick={(e) => handleLogout(e)}>Logout</a>
+                </>
             );
         } else {
             return (
@@ -44,20 +47,53 @@ export default function Nav() {
     };
 
     return (
-        <nav className="navbar">
-            <div className="navbar_group navbar_brand">
-                <a className="navbar_element navbar_brand_group" href="">
-                    <img src="./img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
-                    <p className="navbar_brand_name">Tonton Gazon</p>
-                </a>
-            </div>
-            <div>
-                <input type="text" name="search" id="search"/>
-                <button onClick={(e) => handleSearch(e)}>search</button>
-            </div>
-            <div className="navbar_group navbar_authentication">
-                {jsxAuth()}
-            </div>
-        </nav>
+        <>
+            <input type="text" name="search" id="search"/>
+            <button onClick={(e) => handleSearch(e)}>search</button>
+            <nav className="navbar">
+                <div className="navbar_group navbar_brand">
+                    <a className="navbar_element navbar_brand_group" href="">
+                        <img src="./img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
+                        <p className="navbar_brand_name">Tonton Gazon</p>
+                    </a>
+                </div>
+                <div className="navbar_group navbar_links">
+                    <a href="" className="navbar_element">Accueil</a>
+                    <a href="" className="navbar_element">Un lien</a>
+                    <a href="" className="navbar_element">Encore un lien</a>
+                </div>
+                <div className="navbar_group navbar_authentication">
+                    {jsxAuth()}
+                </div>
+            </nav>
+
+            <nav className="navbar_mobile inactive">
+                <input id="toggle" type="checkbox"></input>
+                <label htmlFor="toggle" className="navbar_hamburger">
+                    <div className="top-bun"></div>
+                    <div className="meat"></div>
+                    <div className="bottom-bun"></div>
+                </label>
+
+                <div className="nav">
+                    <div className="navbar_wrapper">
+                        <div className="navbar_common">
+                            <input type="text" className="navbar_search"></input>
+                        </div>
+                        <div className="navbar_links">
+                            <a href="#">HOME</a><br />
+                            <a href="#">ABOUT</a><br />
+                            <a href="#">WORK</a><br />
+                            <a href="#">SERVICES</a>
+                        </div>
+                        <div className="navbar_auth">
+                            <Link to="/login" className="navbar_element btn btn_secondary_white">Connexion</Link>
+                            <Link to="/register" className="navbar_element btn btn_primary_white"> Inscription </Link>
+                        </div>
+                    </div>
+                </div>
+                <div className="blackFilter"></div>
+            </nav>
+        </>
     );
 }
