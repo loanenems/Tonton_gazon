@@ -2,63 +2,48 @@ import React from 'react'
 import Nav from '../../components/header'
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams,
+    useRouteMatch
 } from "react-router-dom";
 
 import MesInfos from './MesInfos';
 import MesJardins from './MesJardins';
 import MesAnnonces from './MesAnnonces';
 
-
-
-
-
-
-
 export default function Profile() {
-  let { path, url } = useRouteMatch();
+    let {path, url} = useRouteMatch();
     return (
-
-      <Router>
-          <div>
-
+        <div>
             <Nav/>
-
             <h2>Votre profil</h2>
-
             <ul>
-              <li>
-                <Link to={`${url}`}>Mes informations</Link>
-              </li>
-              <li>
-                <Link to={`${url}/jardins`}>Mes jardins</Link>
-              </li>
-              <li>
-                <Link to={`${url}/annonces`}>Mes annonces</Link>
-              </li>
+                <li>
+                    <Link to={`${url}`}>Mes informations</Link>
+                </li>
+                <li>
+                    <Link to={`${url}/jardins`}>Mes jardins</Link>
+                </li>
+                <li>
+                    <Link to={`${url}/annonces`}>Mes annonces</Link>
+                </li>
             </ul>
-
             <Switch>
                 <Route exact path={path}>
-                  <MesInfos />
+                    <MesInfos/>
                 </Route>
                 <Route path={`${path}/jardins`}>
-                  <MesJardins />
+                    <MesJardins/>
                 </Route>
                 <Route path={`${path}/annonces`}>
-                  <MesAnnonces />
+                    <MesAnnonces/>
                 </Route>
-
-              </Switch>
-
-
-          </div>
-        </Router>
-           )};
+            </Switch>
+        </div>
+    )
+};
 
 
