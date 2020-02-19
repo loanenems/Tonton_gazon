@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link,useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Nav() {
@@ -17,7 +17,7 @@ export default function Nav() {
     let handleLogout = (e) => {
         e.preventDefault();
 
-        axios.get('api/logout')
+        axios.get('/api/logout')
             .then(() => {
                 //Once the user is disconnected, we can update the localStorage and re-render the component via State
                 localStorage.setItem('access_token', '');

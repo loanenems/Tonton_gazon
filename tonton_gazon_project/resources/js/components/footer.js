@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-export default function Nav() {
+export default function Footer() {
     return (
         <footer className="footer">
             <div className="footer_container">
@@ -32,4 +32,3 @@ export default function Nav() {
         </footer>
     );
 }
- 

@@ -18,7 +18,6 @@ export default function Profile() {
     let {path, url} = useRouteMatch();
     return (
         <div>
-            <Nav/>
             <h2>Votre profil</h2>
             <ul>
                 <li>

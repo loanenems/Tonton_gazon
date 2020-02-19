@@ -1,14 +1,9 @@
 import React from 'react'
-import Nav from '../components/header'
-import Footer from '../components/footer'
-
 
 export default function Index() {
 
     return (
-        <div className="container container_home">
-            <Nav link="Logout"/>
-
+        <>
             <div className="bloc home_presentation">
                 <h2>Cuisinez du très bon couscous</h2>
                 <p>Lorem ipsum aze sit amet, consectetur adipiscing elit. Vivamus fermentum ultrices lacus, et tincidunt
@@ -155,7 +150,6 @@ export default function Index() {
                     </div>
                 </div>
             </div>
-            <Footer/>
-        </div>
+        </>
     );
 }

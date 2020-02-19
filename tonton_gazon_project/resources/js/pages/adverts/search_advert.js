@@ -77,7 +77,7 @@ export default function Search_advert() {
 
     //Request fetching adverts corresponding to the search filter
     useEffect(() => {
-        axios.get('api/searchAdvert', {
+        axios.get('/api/searchAdvert', {
                 params: {
                     "search": query.get('search'),
                     "page": query.get('page'),

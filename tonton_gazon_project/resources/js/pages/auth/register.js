@@ -10,7 +10,7 @@ export default function Register() {
         e.preventDefault();
         console.log('click');
         axios.post(
-            'api/register', {
+            '/api/register', {
                 'name': document.getElementById('name').value,
                 'email': document.getElementById('email').value,
                 'password': document.getElementById('password').value,
@@ -20,7 +20,7 @@ export default function Register() {
             const token = response.data['access_token'];
             // Then we assign the token to localStorage to keep track of it
             localStorage.setItem('access_token', token);
-            localStorage.setItem('is_logged','true');
+            localStorage.setItem('is_logged', 'true');
             // And set it as a default Authorization header (Bearer token)
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
 
@@ -33,7 +33,6 @@ export default function Register() {
 
     return (
         <div>
-            <Nav/>
             <div className="container">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">
@@ -79,7 +78,8 @@ export default function Register() {
 
                                     <div className="form-group">
                                         <div className="col-md-6 col-md-offset-4">
-                                            <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary">
+                                            <button type="submit" onClick={(e) => handleSubmit(e)}
+                                                    className="btn btn-primary">
                                                 Créer mon compte
                                             </button>
                                         </div>

@@ -14,7 +14,7 @@ export default function Login() {
 
         // We send login form's data to login route
         axios.post(
-            'api/login', {
+            '/api/login', {
                 email,
                 password
             }).then(response => {
@@ -39,7 +39,6 @@ export default function Login() {
 
     return (
         <div>
-            <Nav/>
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-8 col-md-offset-2">

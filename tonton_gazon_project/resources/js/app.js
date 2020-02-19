@@ -34,39 +34,45 @@ import Contact from './pages/Contact'
 import Cookies from './pages/Cookies'
 
 //Others
+import Nav from './components/header'
+import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
 import Error404 from './pages/Error404'
 
 ReactDOM.render(
-    <BrowserRouter>
-        <Switch>
-            <Route exact path='/' component={Index}/>
+    <div className="container">
+        <BrowserRouter>
+            <Nav/>
+            <Switch>
+                <Route exact path='/' component={Index}/>
 
-            {/* Authentication */}
-            <Route path='/login' component={Login}/>
-            <Route path='/register' component={Register}/>
+                {/* Authentication */}
+                <Route path='/login' component={Login}/>
+                <Route path='/register' component={Register}/>
 
-            {/* Profile */}
-            <Route path='/mon-profil' component={Profile}/>
+                {/* Profile */}
+                <Route path='/mon-profil' component={Profile}/>
 
-            {/* Garden */}
-            <Route path='/garden' component={Garden}/>
+                {/* Garden */}
+                <Route path='/garden' component={Garden}/>
 
-            {/* Advert */}
-            <Route path='/adverts' component={Advert}/>
-            <Route path='/search_advert' component={Search_advert}/>
+                {/* Advert */}
+                <Route path='/adverts' component={Advert}/>
+                <Route path='/search_advert' component={Search_advert}/>
 
-            {/* Informations */}
-            <Route path='/mentions-legales' component={Legal}/>
-            <Route path='/cgu' component={Cgu}/>
-            <Route path='/aide' component={Aide}/>
-            <Route path='/contact' component={Contact}/>
-            <Route path='/politique-cookies' component={Cookies}/>
+                {/* Informations */}
+                <Route path='/mentions-legales' component={Legal}/>
+                <Route path='/cgu' component={Cgu}/>
+                <Route path='/aide' component={Aide}/>
+                <Route path='/contact' component={Contact}/>
+                <Route path='/politique-cookies' component={Cookies}/>
 
-            {/* Others */}
-            <Route path='/form-template' component={FormTemplate}/>
-            <Route exact={false} component={Error404}/>
-        </Switch>
-    </BrowserRouter>,
+                {/* Others */}
+                <Route path='/form-template' component={FormTemplate}/>
+                <Route exact={false} component={Error404}/>
+            </Switch>
+            <Footer/>
+        </BrowserRouter>
+    </div>,
     document.getElementById('app')
 );

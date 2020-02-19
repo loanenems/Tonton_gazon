@@ -14,7 +14,7 @@ export default function Garden() {
         };
         console.log(formulaire);
 
-        axios.post('api/createGarden', {
+        axios.post('/api/createGarden', {
             formulaire
         })
             .then((response) => {
