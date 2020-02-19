@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from '../navbar'
+import Nav from '../../components/header'
 
 import {
   BrowserRouter as Router,
@@ -16,11 +16,11 @@ import MesAnnonces from './MesAnnonces';
 
 
 
-  
 
-  
 
-export default function Profil() {
+
+
+export default function Profile() {
   let { path, url } = useRouteMatch();
     return (
 
@@ -52,14 +52,13 @@ export default function Profil() {
                 </Route>
                 <Route path={`${path}/annonces`}>
                   <MesAnnonces />
-                </Route> 
-                
+                </Route>
+
               </Switch>
-            
-          
+
+
           </div>
         </Router>
            )};
 
 
-         

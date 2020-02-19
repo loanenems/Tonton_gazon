@@ -1,9 +1,9 @@
 import React from 'react'
-import Nav from './navbar'
-import Footer from './footer'
+import Nav from '../components/header'
+import Footer from '../components/footer'
 
 
-export default function Home() {
+export default function Index() {
 
     return (
         <div className="container container_home">
