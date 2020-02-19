@@ -1,49 +1,65 @@
 import React from 'react'
 import Nav from '../navbar'
-import { ModalLink, ModalContainer, ModalRoute } from 'react-router-modal';
-import { useRouteMatch, BrowserRouter, Link } from 'react-router-dom';
 
-import 'react-router-modal/css/react-router-modal.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
+
+import MesInfos from './MesInfos';
+import MesJardins from './MesJardins';
+import MesAnnonces from './MesAnnonces';
 
 
-// Component qui sera affiché dans un ModalContainer
-function AddAddress() {
-    return <div>TODO : Ajouter formulaire adresse</div>;
-  }
-
-// Component qui sera affiché dans ModalContainer
-  function AddAdvert() {
-    return <div>TODO : Ajouter formulaire annonce</div>;
-  }
 
   
-/*
-ModalLink : Affiche un lien qui affichera le modal selon le component mis en parametre
-path => chemin du component modal (généré lors du click sur le lien)
-parentPath => chemin du component parent (a définir pour revenir sur la page parente lors de la sortie du modal)
-*/
-
-// ModalContainer : affiche le modal
 
   
 
 export default function Profil() {
-    let {path} = useRouteMatch();
+  let { path, url } = useRouteMatch();
     return (
-        <div>
+
+      <Router>
+          <div>
+
             <Nav/>
-            <p>Mon profil</p>
 
+            <h2>Votre profil</h2>
 
-            <BrowserRouter>
-                <div>
-                <ModalLink component={AddAddress} path={`${path}/addaddress`} className='test-modal test-modal-foo' parentPath={`${path}`}>Ajouter une adresse</ModalLink>
-                <ModalLink component={AddAdvert} path={`${path}/addadvert`} className='test-modal test-modal-foo' parentPath={`${path}`}>Ajouter une annonce</ModalLink>
-                <ModalContainer />
-                </div>
-            </BrowserRouter>
+            <ul>
+              <li>
+                <Link to={`${url}`}>Mes informations</Link>
+              </li>
+              <li>
+                <Link to={`${url}/jardins`}>Mes jardins</Link>
+              </li>
+              <li>
+                <Link to={`${url}/annonces`}>Mes annonces</Link>
+              </li>
+            </ul>
 
-
-
-        </div>
+            <Switch>
+                <Route exact path={path}>
+                  <MesInfos />
+                </Route>
+                <Route path={`${path}/jardins`}>
+                  <MesJardins />
+                </Route>
+                <Route path={`${path}/annonces`}>
+                  <MesAnnonces />
+                </Route> 
+                
+              </Switch>
+            
+          
+          </div>
+        </Router>
            )};
+
+
+         

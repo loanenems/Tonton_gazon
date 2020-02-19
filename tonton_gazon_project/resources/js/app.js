@@ -59,7 +59,7 @@ ReactDOM.render(
             <Route path='/adverts' component={Advert}/>
           {/*  <Route path='/password/reset/:token' component={Reset}/> */}
 
-            <Route exact={false} component={Error404}/>
+          <Route exact={false} component={Error404}/>
         </Switch>
     </BrowserRouter>,
     document.getElementById('app')
