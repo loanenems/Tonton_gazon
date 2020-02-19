@@ -11,4 +11,4 @@
 */
 
 
-Route::get('/{path?}', function($path = null){ return View::make('app'); })->where('path', '.*');
+Route::get('/{path?}', function($path = null){ return View::make('index'); })->where('path', '.*');
