@@ -30,12 +30,11 @@ Route::group([],
             Route::get('logout', 'Auth\AuthController@logout'); //Logout the authenticated user
             Route::get('user', 'Auth\AuthController@user'); //Get the authenticated user's informations
             Route::post('create', 'PasswordResetController@create');
-            Route::post('reset', 'PasswordResetController@reset');
         });
     });
 
 Route::get('find/{token}', 'PasswordResetController@find');
-
+Route::post('reset', 'PasswordResetController@reset');
 
 /**
  * Group of routes that require to know who is making the request. access_token provided
