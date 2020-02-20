@@ -1,26 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Nav() {
 
     //We store the current loggin state into a var
-    const [isLogged, setIsLogged] = useState(localStorage.getItem('is_logged'));
-    let history = useHistory();
+    const [isLogged, setIsLogged] = useState('');
 
+    if(isLogged !== localStorage.getItem('is_logged')){
+        setIsLogged(localStorage.getItem('is_logged'));
+    }
+
+    let history = useHistory();
     let handleSearch = (e) => {
         e.preventDefault();
         history.push("/search_advert?search=" + document.getElementById('search').value + "&page=1");
-    };
-
-    let handlePassword = (e) => {
-        e.preventDefault();
-
-        axios.post('api/create', {
-            'email': 'loane@gmail.com'
-        }).then((response) => {
-            console.log(response.data);
-        })
     };
 
     //Handle the action of logging out
@@ -38,7 +32,7 @@ export default function Nav() {
 
     //This JSX display the different authentication buttons, depending on the current logging state of the user
     let jsxAuth = () => {
-        if (localStorage.getItem('is_logged') === "true") {
+        if (isLogged === "true") {
             return (
                 <>
                     <Link to="/mon-profil" className="navbar_element btn btn_primary">Mon profil</Link>
@@ -58,7 +52,6 @@ export default function Nav() {
 
     return (
         <>
-            <a href="" onClick={(e) => handlePassword(e)}>Mot de passe oublié</a>
             <input type="text" name="search" id="search"/>
             <button onClick={(e) => handleSearch(e)}>search</button>
             <nav className="navbar">

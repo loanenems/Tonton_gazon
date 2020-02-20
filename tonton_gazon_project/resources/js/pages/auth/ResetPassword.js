@@ -2,7 +2,7 @@ import React, {useEffect,useState} from 'react';
 import {useLocation,useHistory} from 'react-router-dom'
 import axios from "axios";
 
-export default function Reset() {
+export default function ResetPassword() {
     let query = new URLSearchParams(useLocation().search);
     let history = useHistory();
     const [token,setToken] = useState('');
@@ -27,7 +27,7 @@ export default function Reset() {
       })
     };
 
-    if(token !== '') {
+    if(token) {
         return (
             <div>
                 <form>

@@ -29,10 +29,10 @@ Route::group([],
         ], function () {
             Route::get('logout', 'Auth\AuthController@logout'); //Logout the authenticated user
             Route::get('user', 'Auth\AuthController@user'); //Get the authenticated user's informations
-            Route::post('create', 'PasswordResetController@create');
         });
     });
 
+Route::post('create', 'PasswordResetController@create');
 Route::get('find/{token}', 'PasswordResetController@find');
 Route::post('reset', 'PasswordResetController@reset');
 

@@ -15,7 +15,7 @@ import Index from './pages/Index'
 //Authentication
 import Login from './pages/auth/login'
 import Register from './pages/auth/register'
-import Reset from './pages/auth/Reset'
+import ResetPassword from './pages/auth/ResetPassword'
 
 //Profile
 import Profile from './pages/profile/index'
@@ -39,45 +39,53 @@ import Cookies from './pages/Cookies'
 import Nav from './components/header'
 import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
-import Error404 from './pages/Error404'
+import Error from './pages/error'
 
 ReactDOM.render(
-    <div className="container">
-        <BrowserRouter>
-            <Nav/>
-            <Switch>
-                <Route exact path='/' component={Index}/>
-
-                {/* Authentication */}
-                <Route path='/login' component={Login}/>
-                <Route path='/register' component={Register}/>
-                <Route path='/reset' component={Reset}/>
-
-
-                {/* Profile */}
-                <Route path='/mon-profil' component={Profile}/>
-
-                {/* Garden */}
-                <Route path='/garden' component={Garden}/>
-
-                {/* Advert */}
-                <Route path='/adverts' component={Advert}/>
-                <Route path='/create_advert' component={Advert_create}/>
-                <Route path='/search_advert' component={Search_advert}/>
-
-                {/* Informations */}
-                <Route path='/mentions-legales' component={Legal}/>
-                <Route path='/cgu' component={Cgu}/>
-                <Route path='/aide' component={Aide}/>
-                <Route path='/contact' component={Contact}/>
-                <Route path='/politique-cookies' component={Cookies}/>
-
-                {/* Others */}
-                <Route path='/form-template' component={FormTemplate}/>
-                <Route exact={false} component={Error404}/>
-            </Switch>
-            <Footer/>
-        </BrowserRouter>
-    </div>,
+    <App />,
     document.getElementById('app')
 );
+
+export default function App() {
+
+
+    return (
+        <div className="container">
+            <BrowserRouter>
+                <Nav/>
+                <Switch>
+                    <Route exact path='/' component={Index}/>
+
+                    {/* Authentication */}
+                    <Route exact path='/login' component={Login}/>
+                    <Route exact path='/register' component={Register}/>
+                    <Route exact path='/reset_password' component={ResetPassword}/>
+
+
+                    {/* Profile */}
+                    <Route exact path='/mon-profil' component={Profile}/>
+
+                    {/* Garden */}
+                    <Route exact path='/garden' component={Garden}/>
+
+                    {/* Advert */}
+                    <Route exact path='/adverts' component={Advert}/>
+                    <Route exact path='/create_advert' component={Advert_create}/>
+                    <Route exact path='/search_advert' component={Search_advert}/>
+
+                    {/* Informations */}
+                    <Route exact path='/mentions-legales' component={Legal}/>
+                    <Route exact path='/cgu' component={Cgu}/>
+                    <Route exact path='/aide' component={Aide}/>
+                    <Route exact path='/contact' component={Contact}/>
+                    <Route exact path='/politique-cookies' component={Cookies}/>
+
+                    {/* Others */}
+                    <Route exact path='/form-template' component={FormTemplate}/>
+                    <Route exact={false} component={Error}/>
+                </Switch>
+                <Footer/>
+            </BrowserRouter>
+        </div>
+    );
+}

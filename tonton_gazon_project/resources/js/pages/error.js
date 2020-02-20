@@ -1,7 +1,6 @@
 import React from 'react';
-import Nav from '../components/header';
 
-export default function Error404() {
+export default function Error() {
     return (
         <div>
             <div className="container text-center title">
