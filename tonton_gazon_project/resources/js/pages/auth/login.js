@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {Link, useHistory, useRouteMatch ,Switch, Route} from 'react-router-dom'
 import axios from 'axios';
-import Error404 from "../error";
+import Error from "../error";
 
 
 export default function Login() {
