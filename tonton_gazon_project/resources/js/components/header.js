@@ -17,7 +17,7 @@ export default function Nav() {
         e.preventDefault();
 
         axios.post('api/create', {
-            'email': 'geronimo@gmail.com'
+            'email': 'loane@gmail.com'
         }).then((response) => {
             console.log(response.data);
         })
@@ -27,7 +27,7 @@ export default function Nav() {
     let handleLogout = (e) => {
         e.preventDefault();
 
-        axios.get('api/logout')
+        axios.get('/api/logout')
             .then(() => {
                 //Once the user is disconnected, we can update the localStorage and re-render the component via State
                 localStorage.setItem('access_token', '');
@@ -64,7 +64,7 @@ export default function Nav() {
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">
                     <a className="navbar_element navbar_brand_group" href="">
-                        <img src="./img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
+                        <img src="/img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
                         <p className="navbar_brand_name">Tonton Gazon</p>
                     </a>
                 </div>

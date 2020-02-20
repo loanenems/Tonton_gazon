@@ -8,13 +8,13 @@ export default function Garden() {
     const [gardens, setGardens] = useState([]);
 
     useEffect(() => {
-        axios.get('api/garden_get_id'
+        axios.get('/api/garden_get_id'
         ).then(res => {
             setGardens(res.data.jardin);
         });
     }, []);
 
-    let jsxGarden = gardens.map((garden,i) => {
+    let jsxGarden = gardens.map((garden) => {
         //Parse the images string to an object
         const images = JSON.parse(garden.image);
         //This array will stock the <img/> html with images src
@@ -45,6 +45,7 @@ export default function Garden() {
     return (
         <div>
             {jsxGarden}
+            test
             <ul>
                 <li>
                     <Link to={`${url}/garden_create`}>Créer un jardin</Link>

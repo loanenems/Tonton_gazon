@@ -1,4 +1,4 @@
-.container_home {
+.container {
     .home_presentation {
         display: flex;
         flex-direction: column;
@@ -102,18 +102,18 @@
             }
             .slick-list {
                 margin: 0 -1rem;
-                // @include screen-md() { 
+                // @include screen-md() {
                 //     margin: 0;
                 // }
                 .slick-track {
                     .slick-slide {
                         margin: 0 $space-medium;
                         width: 376px;
-                        @include screen-md() { 
+                        @include screen-md() {
                             margin: 0 $space-small;
                             width: 276px;
                         }
-                        @include screen-sm() { 
+                        @include screen-sm() {
                             width: 75vw;
                         }
                     }
@@ -144,7 +144,7 @@
                 flex-direction: column;
                 height: 560px;
             }
-            
+
             .explaination_step {
                 display: flex;
                 flex-direction: column;
@@ -152,7 +152,7 @@
                 .step {
                     width: 80px;
                     padding: 18px 0;
-    
+
                     border-radius: $b-radius;
                     background-color: $c-white;
                     color:$c-primary;
@@ -200,7 +200,7 @@
                 display: flex !important;
                 flex-direction: row;
                 justify-content: space-around;
-                
+
                 width: 26%;
 
                 @include screen-md() {
@@ -247,7 +247,7 @@
                     }
                     .tondeur_profil {
                         font-size: $f-text-small;
-                        @include screen-md() { 
+                        @include screen-md() {
                             margin-top: $space-e-small*0.875;
                             padding: $space-e-small*0.5 $space-small;
                         }
@@ -256,18 +256,18 @@
             }
             .slick-list {
                 margin: 0 -1rem;
-                @include screen-md() { 
+                @include screen-md() {
                     margin: 0;
                 }
                 .slick-track {
                     .slick-slide {
                         margin: 0 6.75rem;
                         width: 276px;
-                        @include screen-md() { 
+                        @include screen-md() {
                             margin: 0 $space-large;
                             width: 106px;
                         }
-                        @include screen-sm() { 
+                        @include screen-sm() {
                             margin: 0 $space-small;
                             width: 250px;
                         }

@@ -9,6 +9,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/{path?}', function() {
-    return view('index');
-});
+
+
+Route::get('/{path?}', function($path = null){ return View::make('index'); })->where('path', '.*');

@@ -1,5 +1,5 @@
 import React from 'react'
-import Nav from './navbar'
+import Nav from '../components/header'
 
 export default function Cgu() {
     return (

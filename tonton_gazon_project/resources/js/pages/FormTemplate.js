@@ -1,9 +1,9 @@
 import React from 'react'
-import Nav from './navbar'
-import Footer from './footer'
+import Nav from '../components/header'
+import Footer from '../components/footer'
 
 
-export default function Home() {
+export default function FormTemplate() {
 
     return (
         <div className="container container_form">
@@ -47,7 +47,7 @@ export default function Home() {
 
                 <div className="form_group">
                     <p className="form_label">Label type avec checkbox</p>
-                    
+
                     <div class="checkbox_group">
                         <label class="control control-checkbox">
                             First checkbox
@@ -74,7 +74,7 @@ export default function Home() {
 
                 <div className="form_group">
                     <p className="form_label">Label type avec checkbox</p>
-                    
+
                     <div class="radio_group">
                         <label class="control control-radio">
                             First radio

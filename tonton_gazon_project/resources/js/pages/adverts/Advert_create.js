@@ -6,7 +6,7 @@ export default function Advert_create() {
     const [gardens, setGardens] = useState([]);
 
     useEffect(() => {
-        axios.get('api/garden_get_id'
+        axios.get('/api/garden_get_id'
         ).then(res => {
             setGardens(res.data.jardin);
         });
