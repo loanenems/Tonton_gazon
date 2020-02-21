@@ -13,7 +13,7 @@ class AdvertController extends Controller
      */
     public function fetchAdvert()
     {
-        $advert = Advert::get();
+        $advert = Advert::orderBy('created_at','desc')->get();
 
         return response(['advert' => $advert], 200);
     }

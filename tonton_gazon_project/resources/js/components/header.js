@@ -27,6 +27,7 @@ export default function Nav() {
                 localStorage.setItem('access_token', '');
                 localStorage.setItem('is_logged', 'false');
                 setIsLogged('false');
+                history.push('/');
             })
     };
 

@@ -45,7 +45,6 @@ export default function Garden() {
     return (
         <div>
             {jsxGarden}
-            test
             <ul>
                 <li>
                     <Link to={`${url}/garden_create`}>Créer un jardin</Link>
