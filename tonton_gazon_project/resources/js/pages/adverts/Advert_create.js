@@ -41,18 +41,31 @@ export default function Advert_create() {
         });
 
     return (
-        <form>
-            <label htmlFor="garden_id">Jardin</label>
-            <select name="garden_id" id="garden_id">
-                {gardenSelectJSX}
-            </select>
-            <label htmlFor="title">Titre</label>
-            <input type="text" id="title" name="title"/>
+        <form className="bloc bloc_form">
+            <div className="bloc_title">
+                <img src="./img/waving-hand-sign.png"></img>
+                <h3>Creer une annonce</h3>
+            </div>
+
+            <div className="form_group">
+                <label htmlFor="garden_id" className="form_label">Jardin</label>
+                <select name="garden_id" className="form_input" id="garden_id">
+                    {gardenSelectJSX}
+                </select>
+            </div>
+
+            <div className="form_group">
+                <label htmlFor="title" className="form_label">Titre</label>
+                <input type="text" name="title" className="form_input" id="title"/>
+            </div>
+
+            <div className="form_group">
+                <label className="form_label">Description</label>
+                <textarea name="description" className="form_input" cols="30" rows="5" id="description" placeholder="ceci est un input"></textarea>
+            </div>
+
             <br/>
-            <label htmlFor="description">Description</label>
-            <textarea id="description" name="description"/>
-            <br/>
-            <button onClick={(e) => handleSubmit(e)}>Envoyer</button>
+            <a href="" className="btn btn_primary" onClick={(e) => handleSubmit(e)}>Envoyer le formulaire</a>
         </form>
     );
 }
