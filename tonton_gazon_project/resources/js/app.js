@@ -41,6 +41,7 @@ import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
 import Error from './pages/error'
 
+//Disclaimer: Don't put exact if there are nested route inside the rendered component !
 ReactDOM.render(
     <div className="container">
         <BrowserRouter>
@@ -55,7 +56,7 @@ ReactDOM.render(
 
 
                 {/* Profile */}
-                <Route exact path='/mon-profil' component={Profile}/>
+                <Route path='/mon-profil' component={Profile}/>
 
                 {/* Garden */}
                 <Route path='/garden' component={Garden}/>
