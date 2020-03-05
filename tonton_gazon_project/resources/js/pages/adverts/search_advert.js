@@ -8,7 +8,9 @@ export default function Search_advert() {
     //State about storing the fetched adverts
     const [adverts, setAdverts] = useState({data: []});
     //State about storing the current page
-    const [currPage, setCurrPage] = useState(1);
+    const [currPage, setCurrPage] = useState(query.get('page'));
+
+    const [currSearch, setCurrSearch] = useState({search: query.get('search'), page: query.get('page')});
     //This is used to update the URI once a page button has been clicked
     let history = useHistory();
 
@@ -86,8 +88,9 @@ export default function Search_advert() {
         ).then(res => {
             setAdverts(res.data.adverts);
             setCurrPage(res.data.adverts.current_page);
+            setCurrSearch({search: query.get('search'), page: query.get('page')});
         });
-    }, [currPage]);
+    }, [currSearch]);
 
     return (
         <div>
