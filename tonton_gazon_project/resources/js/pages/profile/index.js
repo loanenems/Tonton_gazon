@@ -1,12 +1,9 @@
 import React from 'react'
-import Nav from '../../components/header'
 
 import {
-    BrowserRouter as Router,
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 
