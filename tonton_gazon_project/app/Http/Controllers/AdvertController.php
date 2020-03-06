@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Advert;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdvertController extends Controller
 {
@@ -13,7 +14,11 @@ class AdvertController extends Controller
      */
     public function fetchAdvert()
     {
-        $advert = Advert::orderBy('created_at','desc')->get();
+        $advert = DB::Table('advert')
+            ->join('garden', 'garden.id', '=', 'advert.idGarden')
+            ->join('users', 'users.id', '=', 'garden.idOwner')
+            ->select('garden.*','advert.*','users.name','users.surname','users.email')
+            ->get();
 
         return response(['advert' => $advert], 200);
     }
@@ -42,7 +47,8 @@ class AdvertController extends Controller
         return response(['advert' => $advert], 200);
     }
 
-    public function addAdvert(Request $request) {
+    public function addAdvert(Request $request)
+    {
 
         //We validate the data through the request validator
         $validatedData = $request->validate([
@@ -61,9 +67,10 @@ class AdvertController extends Controller
         $advert->save();
     }
 
-    public function searchAdvert(Request $request){
+    public function searchAdvert(Request $request)
+    {
         $search = $request->query('search');
-        $adverts = Advert::where('title', 'like','%'.$search.'%')->orWhere('description','like','%'.$search.'%')->paginate(5);
-        return response(['adverts' => $adverts],200);
+        $adverts = Advert::where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->paginate(5);
+        return response(['adverts' => $adverts], 200);
     }
 }

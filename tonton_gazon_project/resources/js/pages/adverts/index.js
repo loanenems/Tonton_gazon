@@ -8,6 +8,7 @@ export default function Index() {
     useEffect(() => {
         axios.get('/api/adverts'
         ).then(res => {
+            console.log(res.data);
             setAdverts(res.data.advert);
         });
     }, []);
