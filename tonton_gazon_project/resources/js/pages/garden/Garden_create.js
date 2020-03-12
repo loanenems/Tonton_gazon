@@ -29,11 +29,11 @@ export default function Garden_create() {
             }
         })
             .then(function (reponse) {
-                
+
             })
             .catch(function (erreur) {
                 //On traite ici les erreurs éventuellement survenues
-                console.log(erreur);
+                (erreur);
             });
     };
 

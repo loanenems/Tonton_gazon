@@ -19,6 +19,7 @@ class CreateAdvertTable extends Migration
             $table->foreign('idGarden')->references('id')->on('garden');
             $table->string('title');
             $table->longText('description');
+            $table->float('payout');
             $table->tinyInteger('state')->default(0);
             $table->timestamps();
         });

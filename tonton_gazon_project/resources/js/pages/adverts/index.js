@@ -9,7 +9,7 @@ export default function Index() {
         axios.get('/api/adverts'
         ).then(res => {
             setData(res.data.data);
-            console.log(res.data.data);
+            (res.data.data);
         });
     }, []);
 

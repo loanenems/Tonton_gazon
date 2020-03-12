@@ -30,7 +30,7 @@ class AdvertController extends Controller
                 'users.xp',
                 'users.name',
                 'users.surname'
-                )
+            )
             ->orderBy('advert.created_at', 'desc')
             ->get();
 
@@ -41,6 +41,7 @@ class AdvertController extends Controller
                 "id" => $row->id,
                 "title" => $row->title,
                 "description" => $row->description,
+                "payout" => $row->payout,
                 "state" => $row->state,
                 "created_at" => $row->created_at,
                 "updated_at" => $row->updated_at,
@@ -113,10 +114,29 @@ class AdvertController extends Controller
         $advert->save();
     }
 
+    /**
+     * Retrieve all the adverts depending on filters
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function searchAdvert(Request $request)
     {
         $search = $request->query('search');
-        $adverts = Advert::where('title', 'like', '%' . $search . '%')->orWhere('description', 'like', '%' . $search . '%')->paginate(5);
+        $payout = $request->query('payout');
+        $eval = $request->query('eval');
+
+        $adverts = DB::table('advert')
+            ->join('users', 'advert.idAuthor', 'users.id')
+            ->select('advert.*')
+            ->where(function ($query) use ($search) {
+                $query->where('advert.title', 'like', '%' . $search . '%')
+                    ->orWhere('advert.description', 'like', '%' . $search . '%');
+            })
+            ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
+            ->where('users.xp', '>=', isset($eval) ? $eval : 0)
+            ->orderBy('advert.created_at', 'desc')
+            ->paginate(5);
+
         return response(['adverts' => $adverts], 200);
     }
 }
