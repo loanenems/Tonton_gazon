@@ -7,10 +7,19 @@ export default function Search_advert() {
     let query = new URLSearchParams(useLocation().search);
     //State about storing the fetched adverts
     const [adverts, setAdverts] = useState({data: []});
-    //State about storing the current page
-    const [currPage, setCurrPage] = useState(query.get('page'));
 
-    const [currSearch, setCurrSearch] = useState({search: query.get('search'), page: query.get('page')});
+    //State about storing the current page and the current search
+    const [currPage, setCurrPage] = useState(query.get('page'));
+    const [currSearch, setCurrSearch] = useState(query.get('search'));
+
+    //We check if the search term and the page number has changed (we do it here because the handler is in header.js)
+    if (query.get('search') !== currSearch) {
+        setCurrSearch(query.get('search'));
+    }
+    if (query.get('page') !== currPage) {
+        setCurrPage(query.get('page'));
+    }
+
     //This is used to update the URI once a page button has been clicked
     let history = useHistory();
 
@@ -87,10 +96,10 @@ export default function Search_advert() {
             }
         ).then(res => {
             setAdverts(res.data.adverts);
-            setCurrPage(res.data.adverts.current_page);
-            setCurrSearch({search: query.get('search'), page: query.get('page')});
+            setCurrPage(query.get('page'));
+            setCurrSearch(query.get('search'));
         });
-    }, [currSearch]);
+    }, [currPage, currSearch]);
 
     return (
         <div>
