@@ -31,7 +31,7 @@ export default function Login() {
             // Redirect to homepage
             history.push('/');
         }).catch(error => {
-            console.log(error);
+            (error);
         });
     };
 
@@ -41,7 +41,7 @@ export default function Login() {
         axios.post('/api/create', {
             'email': email
         }).then((response) => {
-            console.log(response.data);
+            (response.data);
         })
     };
 

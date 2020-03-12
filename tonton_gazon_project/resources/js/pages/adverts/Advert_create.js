@@ -29,7 +29,7 @@ export default function Advert_create() {
                 'Content-Type': 'multipart/form-data',
             }
         }).then((res) => {
-            console.log(res);
+            (res);
         })
     };
 

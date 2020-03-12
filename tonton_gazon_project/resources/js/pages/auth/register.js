@@ -8,7 +8,7 @@ export default function Register() {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        console.log('click');
+        ('click');
         axios.post(
             '/api/register', {
                 'name': document.getElementById('name').value,
@@ -27,7 +27,7 @@ export default function Register() {
             // Redirect to homepage
             history.push('/home');
         }).catch(error => {
-            console.log(error);
+            (error);
         });
     };
 
