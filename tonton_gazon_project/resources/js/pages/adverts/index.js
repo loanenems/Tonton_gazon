@@ -3,20 +3,21 @@ import axios from 'axios';
 
 export default function Index() {
 
-    const [adverts, setAdverts] = useState([]);
+    const [data, setData] = useState([]);
 
     useEffect(() => {
         axios.get('/api/adverts'
         ).then(res => {
-            setAdverts(res.data.advert);
+            setData(res.data.data);
+            console.log(res.data.data);
         });
     }, []);
 
-    let jsx = adverts.map((adv) => {
+    let jsx = data.map((data) => {
         return (
             <div>
-                <h1>{adv.title}</h1>
-                <span>{adv.description}</span>
+                <h1>{data.Advert.title}</h1>
+                <span>{data.Advert.description}</span>
             </div>
         )
     });

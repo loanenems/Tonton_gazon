@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 use App\User;
+use Carbon\Carbon;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -23,5 +24,6 @@ $factory->define(User::class, function (Faker $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => Hash::make('secret'), // password
         'remember_token' => Str::random(10),
+        'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
     ];
 });
