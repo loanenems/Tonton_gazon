@@ -62,24 +62,24 @@ export default function Nav() {
             <input type="text" name="payout" id="payout"/>
             {/*user's level */}
             <div>
-                <input type="radio" id="rank_1" name="rank" value="1"/>
-                <label htmlFor="rank_1">1</label>
+                <input type="radio" id="eval_1" name="eval" value="1"/>
+                <label htmlFor="eval_1">1</label>
             </div>
             <div>
-                <input type="radio" id="rank_2" name="rank" value="2"/>
-                <label htmlFor="rank_2">2</label>
+                <input type="radio" id="eval_2" name="eval" value="2"/>
+                <label htmlFor="eval_2">2</label>
             </div>
             <div>
-                <input type="radio" id="rank_3" name="rank" value="3"/>
-                <label htmlFor="rank_3">3</label>
+                <input type="radio" id="eval_3" name="eval" value="3"/>
+                <label htmlFor="eval_3">3</label>
             </div>
             <div>
-                <input type="radio" id="rank_4" name="rank" value="4"/>
-                <label htmlFor="rank_4">4</label>
+                <input type="radio" id="eval_4" name="eval" value="4"/>
+                <label htmlFor="eval_4">4</label>
             </div>
             <div>
-                <input type="radio" id="rank_5" name="rank" value="5"/>
-                <label htmlFor="rank_5">5</label>
+                <input type="radio" id="eval_5" name="eval" value="5"/>
+                <label htmlFor="eval_5">5</label>
             </div>
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">

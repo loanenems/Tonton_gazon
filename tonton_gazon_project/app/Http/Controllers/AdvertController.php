@@ -123,7 +123,7 @@ class AdvertController extends Controller
     {
         $search = $request->query('search');
         $payout = $request->query('payout');
-        $rank = $request->query('rank');
+        $eval = $request->query('eval');
 
         $adverts = DB::table('advert')
             ->join('users', 'advert.idAuthor', 'users.id')
@@ -133,7 +133,7 @@ class AdvertController extends Controller
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
             })
             ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
-            ->where('users.xp', '>=', isset($rank) ? $rank : 0)
+            ->where('users.xp', '>=', isset($eval) ? $eval : 0)
             ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 

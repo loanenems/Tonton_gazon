@@ -13,7 +13,7 @@ export default function Search_advert() {
     const [currPage, setCurrPage] = useState(query.get('page'));
     const [currSearch, setCurrSearch] = useState(query.get('search'));
     const [currPayout, setCurrPayout] = useState(query.get('min_salary'));
-    const [currRank, setCurrRank] = useState(query.get('rank'));
+    const [currEval, setCurrEval] = useState(query.get('eval'));
 
     //We check if the search term and the page number has changed (we do it here because the handler is in header.js)
     if (query.get('search') !== currSearch) {
@@ -25,8 +25,8 @@ export default function Search_advert() {
     if (query.get('payout') !== currPayout) {
         setCurrPayout(query.get('payout'));
     }
-    if (query.get('rank') !== currRank) {
-        setCurrRank(query.get('rank'));
+    if (query.get('eval') !== currEval) {
+        setCurrEval(query.get('eval'));
     }
 
     //This is used to update the URI once a page button has been clicked
@@ -102,7 +102,7 @@ export default function Search_advert() {
                     "search": query.get('search'),
                     "page": query.get('page'),
                     "payout": query.get('payout'),
-                    "rank": query.get('rank'),
+                    "eval": query.get('eval'),
                 }
             }
         ).then(res => {
@@ -110,9 +110,9 @@ export default function Search_advert() {
             setCurrPage(query.get('page'));
             setCurrSearch(query.get('search'));
             setCurrPayout(query.get('payout'));
-            setCurrRank(query.get('rank'));
+            setCurrEval(query.get('eval'));
         });
-    }, [currPage, currSearch, currPayout, currRank]);
+    }, [currPage, currSearch, currPayout, currEval]);
 
     return (
         <div>
