@@ -98,7 +98,6 @@ export default function Search_advert() {
             setAdverts(res.data.adverts);
             setCurrPage(query.get('page'));
             setCurrSearch(query.get('search'));
-            console.log('pass');
         });
     }, [currPage, currSearch]);
 
