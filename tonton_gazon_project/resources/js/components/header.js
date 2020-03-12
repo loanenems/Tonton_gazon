@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
-import { urlFromFilter } from '../helpers'
+import {urlFromFilter} from '../helpers'
 
 export default function Nav() {
 
@@ -54,10 +54,33 @@ export default function Nav() {
 
     return (
         <>
+            {/*Search bar*/}
             <input type="text" name="search" id="search"/>
             <button onClick={(e) => handleSearch(e)}>search</button>
+            {/*Min payout for a job*/}
             <label htmlFor="payout">Tarif min</label>
             <input type="text" name="payout" id="payout"/>
+            {/*user's level */}
+            <div>
+                <input type="radio" id="rank_1" name="rank" value="1"/>
+                <label htmlFor="rank_1">1</label>
+            </div>
+            <div>
+                <input type="radio" id="rank_2" name="rank" value="2"/>
+                <label htmlFor="rank_2">2</label>
+            </div>
+            <div>
+                <input type="radio" id="rank_3" name="rank" value="3"/>
+                <label htmlFor="rank_3">3</label>
+            </div>
+            <div>
+                <input type="radio" id="rank_4" name="rank" value="4"/>
+                <label htmlFor="rank_4">4</label>
+            </div>
+            <div>
+                <input type="radio" id="rank_5" name="rank" value="5"/>
+                <label htmlFor="rank_5">5</label>
+            </div>
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">
                     <a className="navbar_element navbar_brand_group" href="">

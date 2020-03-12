@@ -1,8 +1,20 @@
 export function urlFromFilter(requestedPage = 1) {
     //Filters. Add theme here if needed in search
+
+    let checkedRank = () => {
+        const checkboxes = document.getElementsByName('rank');
+        for(let checkbox of checkboxes) {
+            if(checkbox.checked) {
+                return checkbox.value;
+            }
+        }
+        return "";
+    };
+
     let filters = {
         search: document.getElementById('search').value,
         payout: document.getElementById('payout').value,
+        rank: checkedRank(),
         page: requestedPage
     };
     let url = "/search_advert";

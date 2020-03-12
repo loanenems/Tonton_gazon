@@ -123,14 +123,18 @@ class AdvertController extends Controller
     {
         $search = $request->query('search');
         $payout = $request->query('payout');
+        $rank = $request->query('rank');
 
-
-        $adverts = Advert::where(function ($query) use ($search) {
-            $query->where('title', 'like', '%' . $search . '%')
-                ->orWhere('description', 'like', '%' . $search . '%');
-        })
-            ->where('payout','>=',isset($payout) ? $payout : 0 )
-            ->orderBy('created_at','desc')
+        $adverts = DB::table('advert')
+            ->join('users', 'advert.idAuthor', 'users.id')
+            ->select('advert.*')
+            ->where(function ($query) use ($search) {
+                $query->where('advert.title', 'like', '%' . $search . '%')
+                    ->orWhere('advert.description', 'like', '%' . $search . '%');
+            })
+            ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
+            ->where('users.xp', '>=', isset($rank) ? $rank : 0)
+            ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 
         return response(['adverts' => $adverts], 200);
