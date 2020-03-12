@@ -1,20 +1,21 @@
 import React, {useState, useEffect} from 'react'
 import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
+import { urlFromFilter } from '../helpers'
 
 export default function Nav() {
 
     //We store the current loggin state into a var
     const [isLogged, setIsLogged] = useState('');
 
-    if(isLogged !== localStorage.getItem('is_logged')){
+    if (isLogged !== localStorage.getItem('is_logged')) {
         setIsLogged(localStorage.getItem('is_logged'));
     }
 
     let history = useHistory();
     let handleSearch = (e) => {
         e.preventDefault();
-        history.push("/search_advert?search=" + document.getElementById('search').value + "&page=1");
+        history.push(urlFromFilter());
     };
 
     //Handle the action of logging out
@@ -55,6 +56,8 @@ export default function Nav() {
         <>
             <input type="text" name="search" id="search"/>
             <button onClick={(e) => handleSearch(e)}>search</button>
+            <label htmlFor="payout">Tarif min</label>
+            <input type="text" name="payout" id="payout"/>
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">
                     <a className="navbar_element navbar_brand_group" href="">

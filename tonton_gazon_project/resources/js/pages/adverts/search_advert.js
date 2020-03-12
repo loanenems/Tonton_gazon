@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useLocation, useHistory} from 'react-router-dom'
 import axios from "axios";
+import { urlFromFilter } from '../../helpers'
 
 export default function Search_advert() {
     //This is used to access the URI parameters (search string, page number...)
@@ -11,6 +12,7 @@ export default function Search_advert() {
     //State about storing the current page and the current search
     const [currPage, setCurrPage] = useState(query.get('page'));
     const [currSearch, setCurrSearch] = useState(query.get('search'));
+    const [currPayout, setCurrPayout] = useState(query.get('min_salary'));
 
     //We check if the search term and the page number has changed (we do it here because the handler is in header.js)
     if (query.get('search') !== currSearch) {
@@ -18,6 +20,9 @@ export default function Search_advert() {
     }
     if (query.get('page') !== currPage) {
         setCurrPage(query.get('page'));
+    }
+    if (query.get('payout') !== currPayout) {
+        setCurrPayout(query.get('payout'));
     }
 
     //This is used to update the URI once a page button has been clicked
@@ -80,7 +85,7 @@ export default function Search_advert() {
     //Called when the user wants to change the current page
     let handlePage = (e) => {
         e.preventDefault();
-        history.push("/search_advert?search=" + query.get('search') + "&page=" + e.target.id);
+        history.push(urlFromFilter(e.target.id));
         setCurrPage(parseInt(e.target.id));
     };
 
@@ -92,14 +97,16 @@ export default function Search_advert() {
                 params: {
                     "search": query.get('search'),
                     "page": query.get('page'),
+                    "payout": query.get('payout'),
                 }
             }
         ).then(res => {
             setAdverts(res.data.adverts);
             setCurrPage(query.get('page'));
             setCurrSearch(query.get('search'));
+            setCurrPayout(query.get('payout'));
         });
-    }, [currPage, currSearch]);
+    }, [currPage, currSearch, currPayout]);
 
     return (
         <div>

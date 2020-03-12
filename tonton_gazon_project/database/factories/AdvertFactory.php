@@ -16,6 +16,7 @@ $factory->define(Advert::class, function (Faker $faker) {
         'idGarden' => $faker->randomElement($g_ids),
         'title' => $faker->realText(50),
         'description' => $faker->paragraph(2, true),
+        'payout' => $faker->randomFloat(2,0,500),
         'state' => $faker->randomDigit,
     ];
 });
