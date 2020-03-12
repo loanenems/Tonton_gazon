@@ -14,13 +14,59 @@ class AdvertController extends Controller
      */
     public function fetchAdvert()
     {
-        $advert = DB::Table('advert')
-            ->join('garden', 'garden.id', '=', 'advert.idGarden')
-            ->join('users', 'users.id', '=', 'garden.idOwner')
-            ->select('garden.*','advert.*','users.name','users.surname','users.email')
+        //Fetching all informations from database
+        $fetch = DB::table('advert')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->join('users', 'advert.idAuthor', 'users.id')
+            ->select('advert.*',
+                'garden.description as description_jardin',
+                'garden.size',
+                'garden.movableObstacle',
+                'garden.unmovableObstacle',
+                'garden.pets',
+                'garden.equipment',
+                'garden.image',
+                'users.primary_role',
+                'users.xp',
+                'users.name',
+                'users.surname'
+                )
+            ->orderBy('advert.created_at', 'desc')
             ->get();
 
-        return response(['advert' => $advert], 200);
+        $list = [];
+
+        foreach ($fetch as $row) {
+            $advert = [
+                "id" => $row->id,
+                "title" => $row->title,
+                "description" => $row->description,
+                "state" => $row->state,
+                "created_at" => $row->created_at,
+                "updated_at" => $row->updated_at,
+            ];
+            $garden = [
+                "id" => $row->idGarden,
+                "description" => $row->description_jardin,
+                "size" => $row->size,
+                "movableObstacle" => $row->movableObstacle,
+                "unmovableObstacle" => $row->unmovableObstacle,
+                "pets" => $row->pets,
+                "equipment" => $row->equipment,
+                "image" => $row->image,
+            ];
+            $user = [
+                "id" => $row->idAuthor,
+                "primary_role" => $row->primary_role,
+                "xp" => $row->xp,
+                "name" => $row->name,
+                "surname" => $row->surname,
+            ];
+
+            $list[] = array("Advert" => $advert, "Garden" => $garden, "User" => $user);
+        }
+
+        return response(['data' => $list], 200);
     }
 
     /**
