@@ -23,6 +23,7 @@ $factory->define(User::class, function (Faker $faker) {
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => Hash::make('secret'), // password
+        'primary_role' => $faker->boolean(),
         'xp' => $faker->numberBetween(1,5), // xp
         'remember_token' => Str::random(10),
         'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
