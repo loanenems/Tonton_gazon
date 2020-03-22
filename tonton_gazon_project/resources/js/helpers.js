@@ -14,7 +14,9 @@ export function urlFromFilter(requestedPage = 1) {
     let filters = {
         search: document.getElementById('search').value,
         payout: document.getElementById('payout').value,
-        rank: checkedEval(),
+        eval: checkedEval(),
+        start_date: document.getElementById('start_date').value,
+        end_date: document.getElementById('end_date').value,
         page: requestedPage
     };
     let url = "/search_advert";

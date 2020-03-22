@@ -102,14 +102,17 @@ class AdvertController extends Controller
             "title" => "required",
             "description" => "required",
             "idGarden" => "required",
+            "payout" => "required",
+            "date" => "required",
         ]);
 
         $advert = new Advert;
 
-        $advert->idAuthor = auth()->id();
         $advert->idGarden = $validatedData['idGarden'];
         $advert->title = $validatedData['title'];
         $advert->description = $validatedData['description'];
+        $advert->payout = $validatedData['payout'];
+        $advert->date = $validatedData['date'];
 
         $advert->save();
     }
@@ -124,9 +127,12 @@ class AdvertController extends Controller
         $search = $request->query('search');
         $payout = $request->query('payout');
         $eval = $request->query('eval');
+        $startDate = $request->query('start_date') === null ? DB::table('advert')->min('date') : $request->query('start_date');
+        $endDate = $request->query('end_date') === null ? DB::table('advert')->max('date') : $request->query('end_date');
 
         $adverts = DB::table('advert')
-            ->join('users', 'advert.idAuthor', 'users.id')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->join('users', 'garden.idOwner', 'users.id')
             ->select('advert.*')
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
@@ -134,6 +140,7 @@ class AdvertController extends Controller
             })
             ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
             ->where('users.eval', '>=', isset($eval) ? $eval : 0)
+            ->whereBetween('date', [$startDate, $endDate])
             ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 

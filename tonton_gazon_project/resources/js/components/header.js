@@ -60,7 +60,7 @@ export default function Nav() {
             {/*Min payout for a job*/}
             <label htmlFor="payout">Tarif min</label>
             <input type="text" name="payout" id="payout"/>
-            {/*user's level */}
+            {/*user's eval */}
             <div>
                 <input type="radio" id="eval_1" name="eval" value="1"/>
                 <label htmlFor="eval_1">1</label>
@@ -80,6 +80,14 @@ export default function Nav() {
             <div>
                 <input type="radio" id="eval_5" name="eval" value="5"/>
                 <label htmlFor="eval_5">5</label>
+            </div>
+            <div>
+                {/*Dates des annonces*/}
+                <label htmlFor="start_date">Date début (ou simple date si non range)</label>
+                <input type="date" name="start_date" id="start_date"/>
+                <br/>
+                <label htmlFor="end_date">Date fin (si range)</label>
+                <input type="date" name="end_date" id="end_date"/>
             </div>
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">
