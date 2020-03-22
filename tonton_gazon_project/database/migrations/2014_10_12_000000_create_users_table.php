@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->boolean('primary_role')->nullable($value = true); //Ex: tondeur, tondu
             $table->string('secondary_role')->nullable($value = true); //Ex: Admin, ancien, fondateur...
             $table->integer('xp')->default(0);
+            $table->integer('eval')->default(0);
             $table->string('name')->nullable($value = true);
             $table->string('surname')->nullable($value = true);
             $table->date('birthday')->nullable($value = true);
