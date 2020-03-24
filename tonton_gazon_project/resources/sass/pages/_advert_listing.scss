@@ -1,0 +1,196 @@
+.advert_list_container_grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    @include screen-sm() {
+        flex-direction: column;
+        width: 100%;
+    }
+    .advert_solo_container {
+        display: flex;
+        flex-direction: column;
+        margin: $space-medium 0;
+        width: 30%;
+        &:hover {
+            text-decoration: none;
+        }
+        @include screen-sm() {
+            margin: $space-small 0;
+            width: 100%;
+        }
+        img {
+            width: 100%;
+            margin: $space-small 0;
+            border-radius: 2rem;
+        }
+        .advert_infos {
+            display: flex;
+            flex-direction: column;
+            .infos_first {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: $space-e-small 0;
+                align-items: center;
+                @include screen-sm() {
+                    margin: $space-e-small*0.5 0;
+                }
+                .info_name {
+                    font-weight: bold;
+                }
+                .info_payout {
+                    height: 28px;
+                    color: white;
+                    background-color: black;
+                    border-radius: 1rem;
+                    font-size: 12px;
+                    padding: 6px 12px;
+                }
+            }
+            .infos_description {
+                display: none;
+            }
+            .infos_second {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: $space-e-small 0;
+                align-items: center;
+                @include screen-sm() {
+                    margin: $space-e-small*0.5 0;
+                }
+                .info_note {
+                    font-size: 12px;
+                    font-weight: bold;
+                    padding-bottom: 2px;
+                    img {
+                        margin: 0;
+                        height: 14px;
+                        width: 14px;
+                        margin-bottom: -2px;
+                        margin-right: 2px;
+                    }
+                    mark {
+                        color: $c-darkGrey;
+                        font-weight: normal;
+                        background-color: unset;
+                        text-decoration: none;
+                    }
+                }
+                .info_size {
+                    font-size: 14px;
+                    font-weight: bold;
+                    mark {
+                        color: $c-darkGrey;
+                        font-weight: normal;
+                        background-color: unset;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.advert_list_container_row {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    @include screen-sm() {
+        flex-direction: column;
+        width: 100%;
+    }
+    .advert_solo_container {
+        display: flex;
+        flex-direction: row;
+        margin: $space-medium 0;
+        width: 100%;
+        justify-content: space-between;
+        &:hover {
+            text-decoration: none;
+        }
+        @include screen-sm() {
+            margin: $space-small 0;
+            width: 100%;
+        }
+        img {
+            width: 30%;
+            margin: $space-small 0;
+            border-radius: 2rem;
+        }
+        .advert_infos {
+            display: flex;
+            flex-direction: column;
+            width: 65%;
+            .infos_first {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: $space-e-small 0;
+                align-items: center;
+                @include screen-sm() {
+                    margin: $space-e-small*0.5 0;
+                }
+                .info_name {
+                    font-size: 1.25rem;
+                    font-weight: bold;
+                }
+                .info_payout {
+                    height: 32px;
+                    color: white;
+                    background-color: black;
+                    border-radius: 2rem;
+                    font-size: 1rem;
+                    padding: 8px 16px;
+                }
+            }
+            .infos_description {
+                font-weight: 300;
+                margin: $space-medium 0;
+            }
+            .infos_second {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: $space-e-small 0;
+                align-items: center;
+                @include screen-sm() {
+                    margin: $space-e-small*0.5 0;
+                }
+                .info_note {
+                    font-size: 0.875rem;
+                    font-weight: bold;
+                    padding-bottom: 2px;
+                    order: 2;
+                    img {
+                        margin: 0;
+                        height: 14px;
+                        width: 14px;
+                        margin-bottom: -2px;
+                        margin-right: 2px;
+                    }
+                    mark {
+                        color: $c-darkGrey;
+                        font-weight: normal;
+                        background-color: unset;
+                        text-decoration: none;
+                    }
+                }
+                .info_size {
+                    font-size: 1rem;
+                    font-weight: bold;
+                    order: 1;
+                    mark {
+                        font-size: 0.875rem;
+                        color: $c-darkGrey;
+                        font-weight: normal;
+                        background-color: unset;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+    }
+}
