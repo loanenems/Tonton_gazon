@@ -133,7 +133,7 @@ class AdvertController extends Controller
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
             })
             ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
-            ->where('users.xp', '>=', isset($eval) ? $eval : 0)
+            ->where('users.eval', '>=', isset($eval) ? $eval : 0)
             ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 

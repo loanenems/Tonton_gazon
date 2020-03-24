@@ -20,10 +20,11 @@ use Illuminate\Support\Str;
 
 $factory->define(User::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
+        'name' => $faker->lastName,
+        'surname' => $faker->firstName,
         'email' => $faker->unique()->safeEmail,
         'password' => Hash::make('secret'), // password
-        'xp' => $faker->numberBetween(1,5), // xp
+        'eval' => $faker->numberBetween(1,5), // xp
         'remember_token' => Str::random(10),
         'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
     ];
