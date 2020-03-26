@@ -48,11 +48,16 @@ Route::post('reset', 'PasswordResetController@reset');
 Route::group([
     'middleware' => ['auth:api','verified']
 ], function () {
+    //Garden
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
+
+    //Adverts
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
+    Route::get('advert_get_id', 'AdvertController@fetchAdvertById'); //Fetch an advert by its ID
     Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
-    Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Add an advert into database
+    Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Make a search into adverts table
+
 });
 
 Route::get("email/verify/{id}", "Auth\AuthController@verify")->name("verificationapi.verify");
