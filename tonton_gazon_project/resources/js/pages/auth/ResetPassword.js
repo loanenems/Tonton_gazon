@@ -30,17 +30,26 @@ export default function ResetPassword() {
     if(token) {
         return (
             <div>
-                <form>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email"/>
-                    <br/>
-                    <label htmlFor="password">Mot de passe</label>
-                    <input type="password" name="password" id="password"/>
-                    <br/>
-                    <label htmlFor="password_confirmation">Confirmation du mot de passe</label>
-                    <input type="password" name="password_confirmation" id="password_confirmation"/>
-                    <br/>
-                    <button type="submit" onClick={(e) => handleReset(e)}>Confirmer</button>
+                <form className="bloc bloc_form">
+                    <div className="bloc_title">
+                        <img src="./img/waving-hand-sign.png"></img>
+                        <h3>Mot de passe oublié</h3>
+                    </div>
+                    <div className="form_group">
+                        <label className="form_label" htmlFor="email">Email</label>
+                        <input className="form_input" type="text" name="email" id="email" placeholder="exemple@mail.fr"></input>
+                    </div>
+                    <div className="form_group">
+                        <label className="form_label" htmlFor="password">Mot de passe</label>
+                        <input className="form_input" type="password" name="password" id="password"></input>
+                    </div>
+                    <div className="form_group">
+                        <label className="form_label" htmlFor="password_confirmation">Confirmation du mot de passe</label>
+                        <input className="form_input" type="password" name="password_confirmation" id="password_confirmation"></input>
+                    </div>
+
+                    <a href="" className="btn btn_primary"  onClick={(e) => handleReset(e)}>Confirmer</a>
+                    {/* <button type="submit" onClick={(e) => handleReset(e)}>Confirmer</button> */}
                 </form>
             </div>
         )
