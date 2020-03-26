@@ -58,7 +58,12 @@
 
         // Global responsive
         @include screen-sm() {
-            textarea.form_input, select.form_input, .form_input[type=text] {
+            textarea.form_input, 
+            select.form_input, 
+            .form_input[type=text], 
+            .form_input[type=email],
+            .form_input[type=number],
+            .form_input[type=password] {
                 width: 100%;
             }
         }
