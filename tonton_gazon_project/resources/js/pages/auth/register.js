@@ -58,7 +58,7 @@ export default function Register() {
                 <input className="form_input" id="password-confirm" type="password" name="password_confirmation" required/>
             </div>
 
-            <a href="" className="btn btn_primary"  onClick={(e) => handleReset(e)}>Créer mon compte</a>
+            <a className="btn btn_primary"  onClick={(e) => handleReset(e)}>Créer mon compte</a>
             {/* <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary"> Créer mon compte </button> */}
 
         </form>
