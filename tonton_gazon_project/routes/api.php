@@ -46,7 +46,7 @@ Route::post('reset', 'PasswordResetController@reset');
  * may have some issues trying to access the server-side. Be aware about this fact !
  */
 Route::group([
-    'middleware' => ['auth:api','verified']
+    'middleware' => ['auth:api', 'verified']
 ], function () {
     //Garden
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
