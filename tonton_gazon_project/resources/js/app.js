@@ -62,7 +62,7 @@ ReactDOM.render(
                 <Route path='/garden' component={Garden}/>
 
                 {/* Advert */}
-                <Route exact path='/adverts' component={Advert}/>
+                <Route path='/adverts' component={Advert}/>
                 <Route exact path='/create_advert' component={Advert_create}/>
                 <Route exact path='/search_advert' component={Search_advert}/>
 

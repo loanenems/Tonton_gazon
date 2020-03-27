@@ -72,14 +72,20 @@ class AdvertController extends Controller
 
     /**
      * Retrieve a specific advert by its ID
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchAdvertById($id)
+    public function fetchAdvertById(Request $request)
     {
-        $advert = Advert::find($id);
+        $advert = Advert::find($request->get('id'));
+        $rating = null;
 
-        return response((['advert' => $advert]), 200);
+        if(isset($advert)) {
+            $rating = DB::table('feedback')->where('idTarget', $advert->idAuthor)->avg('rating');
+        }
+
+
+        return response((['advert' => $advert, 'rating' => round($rating,2)]), 200);
     }
 
     /**
@@ -133,7 +139,7 @@ class AdvertController extends Controller
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
             })
             ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
-            ->where('users.xp', '>=', isset($eval) ? $eval : 0)
+            ->where('users.eval', '>=', isset($eval) ? $eval : 0)
             ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 
