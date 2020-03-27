@@ -19,14 +19,7 @@ export default function Index() {
         ).then(res => {
             setData(res.data.data);
             (res.data.data);
-        }).catch(error => {
-            if(error.response.status === 401) {
-                history.push('/login');
-            }
-            else if(error.response.status === 403) {
-                history.push('/');
-            }
-        });
+        })
     }, []);
 
     let jsx = data.map((data) => {
