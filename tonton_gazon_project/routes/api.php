@@ -54,7 +54,7 @@ Route::group([
 
     //Adverts
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database
-    Route::get('advert_get_id', 'AdvertController@fetchAdvertById'); //Fetch an advert by its ID
+    Route::get('advertGetId', 'AdvertController@fetchAdvertById'); //Fetch an advert by its ID
     Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
     Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Make a search into adverts table
 
