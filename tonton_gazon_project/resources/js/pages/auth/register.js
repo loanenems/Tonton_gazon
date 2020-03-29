@@ -9,8 +9,8 @@ export default function Register() {
     let handleSubmit = (e) => {
         e.preventDefault();
         let checkedRadio = null;
-        for(let radio of document.getElementsByName('role')) {
-            if(radio.checked) {
+        for (let radio of document.getElementsByName('role')) {
+            if (radio.checked) {
                 checkedRadio = radio;
             }
         }
@@ -35,23 +35,6 @@ export default function Register() {
         }).catch(error => {
             console.log(error);
         });
-    };
-
-    let handleCommune = (e) => {
-        let val = e.target.value;
-        if(val !== "") {
-            axios.get('https://api-adresse.data.gouv.fr/search/', {
-                params: {
-                    q: val,
-                    limit: 10,
-                    autocomplete: 1,
-                    type: "municipality"
-
-                }
-            }).then(response => {
-                console.log(response.data);
-            });
-        }
     };
 
     return (
@@ -120,17 +103,11 @@ export default function Register() {
                                         </div>
                                     </div>
                                 </form>
-
-                                <div>
-                                    <label htmlFor="autocomplete">Ville / Code Postal</label>
-                                    <br/>
-                                    <input type="text" id="autocomplete" onKeyUp={(e) => handleCommune(e)}/>
-                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-);
+    );
 }
