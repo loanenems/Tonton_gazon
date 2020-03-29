@@ -37,6 +37,23 @@ export default function Register() {
         });
     };
 
+    let handleCommune = (e) => {
+        let val = e.target.value;
+        if(val !== "") {
+            axios.get('https://api-adresse.data.gouv.fr/search/', {
+                params: {
+                    q: val,
+                    limit: 10,
+                    autocomplete: 1,
+                    type: "municipality"
+
+                }
+            }).then(response => {
+                console.log(response.data);
+            });
+        }
+    };
+
     return (
         <div>
             <div className="container">
@@ -103,6 +120,12 @@ export default function Register() {
                                         </div>
                                     </div>
                                 </form>
+
+                                <div>
+                                    <label htmlFor="autocomplete">Ville / Code Postal</label>
+                                    <br/>
+                                    <input type="text" id="autocomplete" onKeyUp={(e) => handleCommune(e)}/>
+                                </div>
                             </div>
                         </div>
                     </div>
