@@ -40,6 +40,7 @@ import Nav from './components/header'
 import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
 import Error from './pages/error'
+import Feedback_create from './pages/feedback/feedback_create';
 
 //Disclaimer: Don't put exact if there are nested route inside the rendered component !
 ReactDOM.render(
@@ -72,6 +73,9 @@ ReactDOM.render(
                 <Route exact path='/aide' component={Aide}/>
                 <Route exact path='/contact' component={Contact}/>
                 <Route exact path='/politique-cookies' component={Cookies}/>
+
+                {/* Feedback */}
+                <Route exact path='/create_feedback' component={Feedback_create}/>
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
