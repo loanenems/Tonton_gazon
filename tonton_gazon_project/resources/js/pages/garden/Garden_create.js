@@ -15,13 +15,18 @@ export default function Garden_create() {
         let img = document.getElementById('image').files[0];
 
         //We are building the formData object which is going to be sent to the server
-        data.append('image', img, img.name);
+        if(img !== undefined) {
+            data.append('image', img, img.name);
+        } else {
+            data.append('image', "");
+        }
         data.append('description', document.getElementById('description').value);
         data.append('size', document.getElementById('size').value);
         data.append('movableObstacle', document.getElementById('movableObstacle').checked);
         data.append('unmovableObstacle', document.getElementById('unmovableObstacle').checked);
         data.append('pets', document.getElementById('pets').checked);
         data.append('equipment', document.getElementById('equipment').checked ? 1 : 0);
+        data.append('address', selectedAddress.address === "" ? "" : JSON.stringify(selectedAddress));
 
         //We make the post request to the GardenController who process the data
         axios({
@@ -63,6 +68,7 @@ export default function Garden_create() {
         let lat = e.target.dataset.lat;
         let lon = e.target.dataset.lon;
         let address = {address: e.target.innerText, coordinates: {lat: lat, lon: lon}};
+        document.getElementById('address').value = address.address;
         setSelectedAddress(address);
     };
 
