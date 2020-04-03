@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useLocation, useHistory} from 'react-router-dom'
 import axios from "axios";
-import { urlFromFilter } from '../../helpers'
+import {urlFromFilter} from '../../helpers'
 
 export default function Search_advert() {
     //This is used to access the URI parameters (search string, page number...)
@@ -14,6 +14,8 @@ export default function Search_advert() {
     const [currSearch, setCurrSearch] = useState(query.get('search'));
     const [currPayout, setCurrPayout] = useState(query.get('min_salary'));
     const [currEval, setCurrEval] = useState(query.get('eval'));
+    const [currDistance, setCurrDistance] = useState(query.get('distance'));
+    const [currPos, setCurrPos] = useState(query.get('position'));
 
     //We check if the search term and the page number has changed (we do it here because the handler is in header.js)
     if (query.get('search') !== currSearch) {
@@ -27,6 +29,12 @@ export default function Search_advert() {
     }
     if (query.get('eval') !== currEval) {
         setCurrEval(query.get('eval'));
+    }
+    if (query.get('distance') !== currDistance) {
+        setCurrDistance(query.get('distance'));
+    }
+    if (query.get('position') !== currPos) {
+        setCurrPos(query.get('position'));
     }
 
     //This is used to update the URI once a page button has been clicked
@@ -97,13 +105,19 @@ export default function Search_advert() {
 
     //Request fetching adverts corresponding to the search filter
     useEffect(() => {
+
+        //Here, we define the various available params
+        let params = {
+            search: query.get('search'),
+            page: query.get('page'),
+            payout: query.get('payout'),
+            eval: query.get('eval'),
+            distance: query.get('distance'),
+            position: query.get('position'),
+        };
+
         axios.get('/api/searchAdvert', {
-                params: {
-                    "search": query.get('search'),
-                    "page": query.get('page'),
-                    "payout": query.get('payout'),
-                    "eval": query.get('eval'),
-                }
+                params: params
             }
         ).then(res => {
             setAdverts(res.data.adverts);
@@ -111,8 +125,10 @@ export default function Search_advert() {
             setCurrSearch(query.get('search'));
             setCurrPayout(query.get('payout'));
             setCurrEval(query.get('eval'));
+            setCurrDistance(query.get('distance'));
+            setCurrPos(query.get('position'));
         });
-    }, [currPage, currSearch, currPayout, currEval]);
+    }, [currPage, currSearch, currPayout, currEval, currDistance, currPos]);
 
     return (
         <div>

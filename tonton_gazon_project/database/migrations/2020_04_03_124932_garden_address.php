@@ -14,7 +14,7 @@ class GardenAddress extends Migration
     public function up()
     {
         Schema::table('garden', function (Blueprint $table) {
-            $table->string('address');
+            $table->string('address')->nullable();
         });
     }
 

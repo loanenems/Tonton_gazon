@@ -15,7 +15,15 @@ export default function Nav() {
     let history = useHistory();
     let handleSearch = (e) => {
         e.preventDefault();
-        history.push(urlFromFilter());
+        if (document.getElementById('distances').options[document.getElementById('distances').selectedIndex].value !== "") {
+            navigator.geolocation.getCurrentPosition(function (pos) {
+                history.push(urlFromFilter(1,pos));
+            }, function () {
+                history.push(urlFromFilter());
+            });
+        } else {
+            history.push(urlFromFilter());
+        }
     };
 
     //Handle the action of logging out
@@ -80,6 +88,17 @@ export default function Nav() {
             <div>
                 <input type="radio" id="eval_5" name="eval" value="5"/>
                 <label htmlFor="eval_5">5</label>
+            </div>
+            <div>
+                <select name="distances" id="distances">
+                    <option value="" selected>-- Choisissez une option --</option>
+                    <option value="5">5 Km</option>
+                    <option value="15">15 Km</option>
+                    <option value="20">20 Km</option>
+                    <option value="25">25 Km</option>
+                    <option value="30">30 Km</option>
+                    <option value="35">35 Km</option>
+                </select>
             </div>
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">

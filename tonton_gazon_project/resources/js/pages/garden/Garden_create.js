@@ -76,7 +76,7 @@ export default function Garden_create() {
     let adressJSX = adress.map((obj) => {
         return (
             <>
-                <p data-lat={obj.properties.y} data-lon={obj.properties.x}
+                <p data-lat={obj.geometry.coordinates[1]} data-lon={obj.geometry.coordinates[0]}
                    onClick={(e) => handleSelect(e)}>{obj.properties.label}</p>
             </>
         )
