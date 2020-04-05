@@ -60,6 +60,8 @@ Route::group([
 
     //Feedback
     Route::post('feedback_add', 'FeedbackController@addFeedback'); //Add a feedback into database
+    Route::get('feedbackPosted', 'FeedbackController@postedFeedback'); //Get all feedback posted by user
+    Route::get('feedbackReceived', 'FeedbackController@receivedFeedback'); //Get all feedback posted on user account
 
 });
 

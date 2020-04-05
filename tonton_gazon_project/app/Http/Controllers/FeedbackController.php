@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackController extends Controller
 {
@@ -39,5 +40,25 @@ class FeedbackController extends Controller
         $feedback->rating = $validateData['rating'];
 
         $feedback->save();
+    }
+
+    public function postedFeedback() {
+        $feedback = DB::table('feedback')
+            ->join('users', 'feedback.idTarget', 'users.id')
+            ->select('feedback.*', 'users.*')
+            ->where('feedback.idAuthor', 'like', auth()->id())
+            ->get();
+
+        return response(['feedback' => $feedback], 200);
+    }
+
+    public function receivedFeedback() {
+        $feedback = DB::table('feedback')
+            ->join('users', 'feedback.idAuthor', 'users.id')
+            ->select('feedback.*', 'users.*')
+            ->where('feedback.idTarget', 'like', auth()->id())
+            ->get();
+
+        return response(['feedback' => $feedback], 200);
     }
 }

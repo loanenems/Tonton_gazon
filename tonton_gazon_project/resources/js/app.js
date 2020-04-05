@@ -35,12 +35,17 @@ import Aide from './pages/Aide'
 import Contact from './pages/Contact'
 import Cookies from './pages/Cookies'
 
+// Feedback
+import Feedback_create from './pages/feedback/feedback_create';
+import FeedbackReceived from './pages/feedback/FeedbackReceived';
+import FeedbackPosted from './pages/feedback/FeedbackPosted';
+
+
 //Others
 import Nav from './components/header'
 import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
 import Error from './pages/error'
-import Feedback_create from './pages/feedback/feedback_create';
 
 //Disclaimer: Don't put exact if there are nested route inside the rendered component !
 ReactDOM.render(
@@ -76,6 +81,8 @@ ReactDOM.render(
 
                 {/* Feedback */}
                 <Route exact path='/create_feedback' component={Feedback_create}/>
+                <Route exact path='/received_feedback' component={FeedbackReceived}/>
+                <Route exact path='/posted_feedback' component={FeedbackPosted}/>
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
