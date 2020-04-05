@@ -1,10 +1,13 @@
-export function urlFromFilter(requestedPage = 1) {
-    //Filters. Add theme here if needed in search
-
+export function urlFromFilter(requestedPage = 1, pos = null) {
+    let position = "";
+    if(pos !== null) {
+        position = JSON.stringify({lat: pos.coords.latitude, lon: pos.coords.longitude});
+    }
+    //This function return the checked option.
     let checkedEval = () => {
         const checkboxes = document.getElementsByName('eval');
-        for(let checkbox of checkboxes) {
-            if(checkbox.checked) {
+        for (let checkbox of checkboxes) {
+            if (checkbox.checked) {
                 return checkbox.value;
             }
         }
@@ -17,8 +20,11 @@ export function urlFromFilter(requestedPage = 1) {
         eval: checkedEval(),
         start_date: document.getElementById('start_date').value,
         end_date: document.getElementById('end_date').value,
-        page: requestedPage
+        page: requestedPage,
+        distance: document.getElementById('distances').options[document.getElementById('distances').selectedIndex].value,
+        position: position,
     };
+
     let url = "/search_advert";
     let cpt = 0;
 

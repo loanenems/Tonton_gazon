@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useLocation, useHistory} from 'react-router-dom'
 import axios from "axios";
-import { urlFromFilter } from '../../helpers'
+import {urlFromFilter} from '../../helpers'
 
 export default function Search_advert() {
     //This is used to access the URI parameters (search string, page number...)
@@ -16,6 +16,8 @@ export default function Search_advert() {
     const [currEval, setCurrEval] = useState(query.get('eval'));
     const [currStartDate, setCurrStartDate] = useState(query.get('start_date'));
     const [currEndDate, setCurrEndDate] = useState(query.get('end_date'));
+    const [currDistance, setCurrDistance] = useState(query.get('distance'));
+    const [currPos, setCurrPos] = useState(query.get('position'));
 
     //We check if the search term and the page number has changed (we do it here because the handler is in header.js)
     if (query.get('search') !== currSearch) {
@@ -35,6 +37,12 @@ export default function Search_advert() {
     }
     if (query.get('end_date') !== currEndDate) {
         setCurrEndDate(query.get('end_date'));
+    }
+    if (query.get('distance') !== currDistance) {
+        setCurrDistance(query.get('distance'));
+    }
+    if (query.get('position') !== currPos) {
+        setCurrPos(query.get('position'));
     }
 
     //This is used to update the URI once a page button has been clicked
@@ -105,15 +113,22 @@ export default function Search_advert() {
 
     //Request fetching adverts corresponding to the search filter
     useEffect(() => {
+
+        //Here, we define the various available params
+        let params = {
+            search: query.get('search'),
+            page: query.get('page'),
+            payout: query.get('payout'),
+            eval: query.get('eval'),
+            distance: query.get('distance'),
+            position: query.get('position'),
+            start_date: query.get('start_date'),
+            end_date: query.get('end_date'),
+
+        };
+
         axios.get('/api/searchAdvert', {
-                params: {
-                    "search": query.get('search'),
-                    "page": query.get('page'),
-                    "payout": query.get('payout'),
-                    "eval": query.get('eval'),
-                    "start_date": query.get('start_date'),
-                    "end_date": query.get('end_date'),
-                }
+                params: params
             }
         ).then(res => {
             setAdverts(res.data.adverts);
@@ -121,10 +136,12 @@ export default function Search_advert() {
             setCurrSearch(query.get('search'));
             setCurrPayout(query.get('payout'));
             setCurrEval(query.get('eval'));
+            setCurrDistance(query.get('distance'));
+            setCurrPos(query.get('position'));
             setCurrStartDate(query.get('start_date'));
             setCurrEndDate(query.get('end_date'));
         });
-    }, [currPage, currSearch, currPayout, currEval, currStartDate, currEndDate]);
+    }, [currPage, currSearch, currPayout, currEval, currDistance, currPos, currEndDate, currStartDate]);
 
     return (
         <div>

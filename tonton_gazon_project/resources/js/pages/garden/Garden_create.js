@@ -3,6 +3,10 @@ import axios from 'axios';
 import FormData from 'form-data';
 
 export default function Garden_create() {
+
+    const [adress, setAdress] = useState([]);
+    const [selectedAddress, setSelectedAddress] = useState({address: "", coordinates: {lat: null, lon: null}});
+
     let submit = (e) => {
         e.preventDefault();
 
@@ -11,13 +15,18 @@ export default function Garden_create() {
         let img = document.getElementById('image').files[0];
 
         //We are building the formData object which is going to be sent to the server
-        data.append('image',img,img.name);
-        data.append('description',document.getElementById('description').value);
-        data.append('size',document.getElementById('size').value);
-        data.append('movableObstacle',document.getElementById('movableObstacle').checked);
-        data.append('unmovableObstacle',document.getElementById('unmovableObstacle').checked);
-        data.append('pets',document.getElementById('pets').checked);
-        data.append('equipment',document.getElementById('equipment').checked ? 1 : 0);
+        if(img !== undefined) {
+            data.append('image', img, img.name);
+        } else {
+            data.append('image', "");
+        }
+        data.append('description', document.getElementById('description').value);
+        data.append('size', document.getElementById('size').value);
+        data.append('movableObstacle', document.getElementById('movableObstacle').checked);
+        data.append('unmovableObstacle', document.getElementById('unmovableObstacle').checked);
+        data.append('pets', document.getElementById('pets').checked);
+        data.append('equipment', document.getElementById('equipment').checked ? 1 : 0);
+        data.append('address', selectedAddress.address === "" ? "" : JSON.stringify(selectedAddress));
 
         //We make the post request to the GardenController who process the data
         axios({
@@ -36,6 +45,42 @@ export default function Garden_create() {
                 (erreur);
             });
     };
+
+    let handleAddress = (e) => {
+        let val = e.target.value;
+        if (val !== "") {
+            axios.defaults.headers.common = {};
+            axios.get('https://api-adresse.data.gouv.fr/search/', {
+                params: {
+                    q: val,
+                    limit: 10,
+                    autocomplete: 1,
+                    type: "housenumber"
+                }
+            }).then(response => {
+                setAdress(response.data.features);
+                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+            });
+        }
+    };
+
+    let handleSelect = (e) => {
+        let lat = e.target.dataset.lat;
+        let lon = e.target.dataset.lon;
+        let address = {address: e.target.innerText, coordinates: {lat: lat, lon: lon}};
+        document.getElementById('address').value = address.address;
+        setSelectedAddress(address);
+    };
+
+    //Todo: Gérer l'affichage
+    let adressJSX = adress.map((obj) => {
+        return (
+            <>
+                <p data-lat={obj.geometry.coordinates[1]} data-lon={obj.geometry.coordinates[0]}
+                   onClick={(e) => handleSelect(e)}>{obj.properties.label}</p>
+            </>
+        )
+    });
 
     return (
         <>
@@ -59,7 +104,7 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="movableObstacle" class="control control-checkbox">
                             movableObstacle
-                                <input type="checkbox" id="movableObstacle" name="movableObstacle" />
+                            <input type="checkbox" id="movableObstacle" name="movableObstacle"/>
                             <div class="control_indicator"></div>
                         </label>
                     </div>
@@ -69,7 +114,7 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="unmovableObstacle" class="control control-checkbox">
                             unmovableObstacle
-                                <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle" />
+                            <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>
                             <div class="control_indicator"></div>
                         </label>
                     </div>
@@ -79,7 +124,7 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="pets" class="control control-checkbox">
                             Pets
-                                <input type="checkbox" id="pets" name="pets" />
+                            <input type="checkbox" id="pets" name="pets"/>
                             <div class="control_indicator"></div>
                         </label>
                     </div>
@@ -89,7 +134,7 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="equipment" class="control control-checkbox">
                             equipment
-                                <input type="checkbox" id="equipment" name="equipment" />
+                            <input type="checkbox" id="equipment" name="equipment"/>
                             <div class="control_indicator"></div>
                         </label>
                     </div>
@@ -99,6 +144,16 @@ export default function Garden_create() {
                     <label htmlFor="image" className="form_label">image</label>
                     <input type="file" className="form_input" id="image" name="image" accept="image/png, image/jpeg"/>
                 </div>
+
+                <div className="form_group">
+                    <label htmlFor="address">Adresse</label>
+                    <input type="text" id="address" onKeyUp={(e) => handleAddress(e)}/>
+                </div>
+
+                {/*Todo: Gérer le style pour la partie position absolute [Matthieu]*/}
+                <>
+                    {adressJSX}
+                </>
 
                 <button type="submit">Envoyer</button>
             </form>
