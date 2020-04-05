@@ -58,6 +58,9 @@ Route::group([
     Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
     Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Make a search into adverts table
 
+    //Feedback
+    Route::post('feedback_add', 'FeedbackController@addFeedback'); //Add a feedback into database
+
 });
 
 Route::get("email/verify/{id}", "Auth\AuthController@verify")->name("verificationapi.verify");
