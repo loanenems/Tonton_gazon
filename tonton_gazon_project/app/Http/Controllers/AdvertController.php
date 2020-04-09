@@ -17,16 +17,16 @@ class AdvertController extends Controller
         //Fetching all informations from database
         $fetch = DB::table('advert')
             ->join('garden', 'advert.idGarden', 'garden.id')
-            ->join('users', 'advert.idAuthor', 'users.id')
+            ->join('users', 'garden.idOwner', 'users.id')
             ->select('advert.*',
                 'garden.description as description_jardin',
+                'garden.idOwner',
                 'garden.size',
                 'garden.movableObstacle',
                 'garden.unmovableObstacle',
                 'garden.pets',
                 'garden.equipment',
                 'garden.image',
-                'users.primary_role',
                 'users.xp',
                 'users.name',
                 'users.surname'
@@ -57,8 +57,7 @@ class AdvertController extends Controller
                 "image" => $row->image,
             ];
             $user = [
-                "id" => $row->idAuthor,
-                "primary_role" => $row->primary_role,
+                "id" => $row->idOwner,
                 "xp" => $row->xp,
                 "name" => $row->name,
                 "surname" => $row->surname,
