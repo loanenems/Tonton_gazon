@@ -53,6 +53,7 @@ class GardenController extends Controller
             'pets' => 'required',
             'equipment' => 'required',
             'image' => 'required',
+            'address' => 'required'
         ]);
 
         //We store the image in a folder named with the user id and file with original name
@@ -69,6 +70,7 @@ class GardenController extends Controller
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
                 'image' => json_encode(['image_0'=>asset('storage/'.auth()->id().'/Index/'.$validateData['image']->getClientOriginalName())]),
+                'address' => $validateData['address'],
             ]
         );
 

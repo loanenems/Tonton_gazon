@@ -8,13 +8,18 @@ export default function Register() {
 
     let handleSubmit = (e) => {
         e.preventDefault();
-        ('click');
+        let checkedRadio = null;
+        for (let radio of document.getElementsByName('role')) {
+            if (radio.checked) {
+                checkedRadio = radio;
+            }
+        }
         axios.post(
             '/api/register', {
                 'name': document.getElementById('name').value,
                 'email': document.getElementById('email').value,
                 'password': document.getElementById('password').value,
-                'password_confirmation': document.getElementById('password-confirm').value
+                'password_confirmation': document.getElementById('password-confirm').value,
             }).then(response => {
             // We store the received token
             const token = response.data['access_token'];
@@ -27,7 +32,7 @@ export default function Register() {
             // Redirect to homepage
             history.push('/home');
         }).catch(error => {
-            (error);
+            console.log(error);
         });
     };
 

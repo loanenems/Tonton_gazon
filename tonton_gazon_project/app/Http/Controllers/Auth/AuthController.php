@@ -13,11 +13,10 @@ class AuthController extends Controller
 {
     function register(Request $request)
     {
-
         $validatedData = $request->validate([
             'email' => 'email|required|unique:users',
             'password' => 'required|confirmed',
-            'name' => 'required'
+            'name' => 'required',
         ]);
 
         $validatedData['password'] = Hash::make($request->password);
