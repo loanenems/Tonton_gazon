@@ -17,7 +17,7 @@ class AdvertController extends Controller
         //Fetching all informations from database
         $fetch = DB::table('advert')
             ->join('garden', 'advert.idGarden', 'garden.id')
-            ->join('users', 'advert.idAuthor', 'users.id')
+            ->join('users', 'garden.idOwner', 'users.id')
             ->select('advert.*',
                 'garden.description as description_jardin',
                 'garden.size',
@@ -26,7 +26,7 @@ class AdvertController extends Controller
                 'garden.pets',
                 'garden.equipment',
                 'garden.image',
-                'users.primary_role',
+                'garden.idOwner',
                 'users.xp',
                 'users.name',
                 'users.surname'
@@ -57,8 +57,7 @@ class AdvertController extends Controller
                 "image" => $row->image,
             ];
             $user = [
-                "id" => $row->idAuthor,
-                "primary_role" => $row->primary_role,
+                "id" => $row->idOwner,
                 "xp" => $row->xp,
                 "name" => $row->name,
                 "surname" => $row->surname,
@@ -72,14 +71,20 @@ class AdvertController extends Controller
 
     /**
      * Retrieve a specific advert by its ID
-     * @param $id
+     * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchAdvertById($id)
+    public function fetchAdvertById(Request $request)
     {
-        $advert = Advert::find($id);
+        $advert = Advert::find($request->get('id'));
+        $rating = null;
 
-        return response((['advert' => $advert]), 200);
+        if (isset($advert)) {
+            $rating = DB::table('feedback')->where('idTarget', $advert->idAuthor)->avg('rating');
+        }
+
+
+        return response((['advert' => $advert, 'rating' => round($rating, 2)]), 200);
     }
 
     /**
@@ -102,14 +107,17 @@ class AdvertController extends Controller
             "title" => "required",
             "description" => "required",
             "idGarden" => "required",
+            "payout" => "required",
+            "date" => "required",
         ]);
 
         $advert = new Advert;
 
-        $advert->idAuthor = auth()->id();
         $advert->idGarden = $validatedData['idGarden'];
         $advert->title = $validatedData['title'];
         $advert->description = $validatedData['description'];
+        $advert->payout = $validatedData['payout'];
+        $advert->date = $validatedData['date'];
 
         $advert->save();
     }
@@ -124,9 +132,32 @@ class AdvertController extends Controller
         $search = $request->query('search');
         $payout = $request->query('payout');
         $eval = $request->query('eval');
+        $startDate = $request->query('start_date') === null ? DB::table('advert')->min('date') : $request->query('start_date');
+        $endDate = $request->query('end_date') === null ? DB::table('advert')->max('date') : $request->query('end_date');
+        $distance = $request->query('distance');
+        $userCoordinates = json_decode($request->query('position'), true);
+
+        $listMatch = [];
+        if (isset($distance)) {
+            $addresses = DB::table('garden')
+                ->join('advert', 'garden.id', 'advert.idGarden')
+                ->select('garden.address', 'advert.id')
+                ->whereNotNull('garden.address')
+                ->get();
+
+            foreach ($addresses as $address) {
+                $coordinates = json_decode($address->address, true)['coordinates'];
+                $distanceBetweenLocations = $this->distance($coordinates["lat"], $coordinates["lon"], $userCoordinates["lat"], $userCoordinates["lon"], "K");
+
+                if ($distanceBetweenLocations <= $distance) {
+                    $listMatch[] = $address->id;
+                }
+            }
+        }
 
         $adverts = DB::table('advert')
-            ->join('users', 'advert.idAuthor', 'users.id')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->join('users', 'garden.idOwner', 'users.id')
             ->select('advert.*')
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
@@ -134,9 +165,38 @@ class AdvertController extends Controller
             })
             ->where('advert.payout', '>=', isset($payout) ? $payout : 0)
             ->where('users.eval', '>=', isset($eval) ? $eval : 0)
+            ->where(function ($query) use ($listMatch) {
+                if (sizeof($listMatch)) {
+                    $query->whereIn('advert.id', $listMatch);
+                }
+            })
+            ->whereBetween('date', [$startDate, $endDate])
             ->orderBy('advert.created_at', 'desc')
             ->paginate(5);
 
+
         return response(['adverts' => $adverts], 200);
+    }
+
+    function distance($lat1, $lon1, $lat2, $lon2, $unit)
+    {
+        if (($lat1 == $lat2) && ($lon1 == $lon2)) {
+            return 0;
+        } else {
+            $theta = $lon1 - $lon2;
+            $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) + cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+            $dist = acos($dist);
+            $dist = rad2deg($dist);
+            $miles = $dist * 60 * 1.1515;
+            $unit = strtoupper($unit);
+
+            if ($unit == "K") {
+                return ($miles * 1.609344);
+            } else if ($unit == "N") {
+                return ($miles * 0.8684);
+            } else {
+                return $miles;
+            }
+        }
     }
 }

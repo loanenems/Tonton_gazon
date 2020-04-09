@@ -1,7 +1,16 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import {Route, Switch, useRouteMatch, useHistory} from "react-router-dom";
+import Advert from "./Advert";
+
 
 export default function Index() {
+
+    // The `path` lets us build <Route> paths that are
+    // relative to the parent route, while the `url` lets
+    // us build relative links.
+    let {path} = useRouteMatch();
+    let history = useHistory();
 
     const [data, setData] = useState([]);
 
@@ -10,10 +19,8 @@ export default function Index() {
         ).then(res => {
             setData(res.data.data);
             (res.data.data);
-        });
+        })
     }, []);
-    
-    console.log(data);
 
     let jsx = data.map((data) => {
         return (
@@ -47,7 +54,6 @@ export default function Index() {
             </a>
         )
     });
-
 
     return (
         <div className="advert_list_container_row">

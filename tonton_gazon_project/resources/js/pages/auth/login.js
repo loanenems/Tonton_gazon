@@ -52,71 +52,50 @@ export default function Login() {
     return (
         <Switch>
             <Route exact path={path}>
-                <div>
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-md-8 col-md-offset-2">
-                                <div className="panel panel-default">
-                                    <div className="panel-body">
-                                        <form className="form-horizontal" role="form" method="POST">
+                <form className="bloc bloc_form" role="form" method="POST">
+                    <div className="bloc_title">
+                        <img src="./img/waving-hand-sign.png"></img>
+                        <h3>Connexion</h3>
+                    </div>
 
-                                            <div className="form-group">
-                                                <label htmlFor="email" className="col-md-4 control-label">Adresse
-                                                    mail</label>
-                                                <div className="col-md-6">
-                                                    <input id="email" type="email" className="form-control" name="email"
-                                                           onChange={(e) => change(e)} value={email}
-                                                           required/>
-                                                </div>
-                                            </div>
+                    <div className="form_group">
+                        <label className="form_label" htmlFor="email">Adresse mail</label>
+                        <input className="form_input"id="email" type="email" name="email"
+                                    onChange={(e) => change(e)} value={email} required/>
+                    </div>
 
-                                            <div className="form-group">
-                                                <label htmlFor="password" className="col-md-4 control-label">Mot de
-                                                    passe</label>
-                                                <div className="col-md-6">
-                                                    <input id="password" type="password" className="form-control"
-                                                           name="password" onChange={(e) => change(e)} required/>
-                                                </div>
-                                            </div>
+                    <div className="form_group">
+                        <label className="form_label" htmlFor="password">Mot de passe</label>
+                        <input className="form_input" id="password" type="password"
+                                    name="password" onChange={(e) => change(e)} required/>
+                    </div>
 
-                                            <div className="form-group">
-                                                <div className="col-md-6 col-md-offset-4">
-                                                    <div className="checkbox">
-                                                        <label>
-                                                            <input type="checkbox" name="remember"/> Se souvenir de moi
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div className="form-group">
-                                                <div className="col-md-8 col-md-offset-4">
-                                                    <button type="submit" className="btn btn-primary"
-                                                            onClick={(e) => submit(e)}>
-                                                        Se connecter
-                                                    </button>
-                                                    <li className="btn btn-link">
-                                                        <Link to={`${url}/reset`}>Mot de passe oublié ?</Link>
-                                                    </li>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+                    <div className="form_group">
+                        <div class="checkbox_group">
+                            <label class="control control-checkbox">
+                                Se souvenir de moi
+                                    <input type="checkbox" name="remember"/>
+                                <div class="control_indicator"></div>
+                            </label>
                         </div>
                     </div>
-                </div>
+
+                    <a href="" className="btn btn_primary" onClick={(e) => submit(e)}>Envoyer le formulaire</a>
+                    <Link className="btn btn_secondary" to={`${url}/reset`}>Mot de passe oublié ?</Link>
+                </form>
             </Route>
             <Route path={`${path}/reset`}>
-                <form>
-                    <input id="email" type="email" className="form-control" name="email"
+                <form className="bloc bloc_form">
+                    <div className="bloc_title">
+                        <img src="./img/waving-hand-sign.png"></img>
+                        <h3>Réinitialiser votre mot de passe</h3>
+                    </div>
+                    <div className="form_group">
+                        <input id="email" type="email" className="form_input" name="email"
                            onChange={(e) => change(e)} value={email}
-                           required/>
-                    <button type="submit" className="btn btn-primary"
-                            onClick={(e) => handlePasswordReset(e)}>
-                        Se connecter
-                    </button>
+                           required placeholder="Votre adresse mail"/>
+                    </div>
+                    <a href="" className="btn btn_primary" onClick={(e) => handlePasswordReset(e)}>Réinitialiser</a>
                 </form>
             </Route>
             <Route exact={false} component={Error}/>

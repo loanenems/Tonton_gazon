@@ -20,6 +20,8 @@ export default function Advert_create() {
         data.append('title', document.getElementById('title').value);
         data.append('description', document.getElementById('description').value);
         data.append('idGarden', document.getElementById('garden_id').value);
+        data.append('payout', document.getElementById('salaire').value);
+        data.append('date', document.getElementById('date').value);
 
         axios({
             method: 'post',
@@ -43,7 +45,7 @@ export default function Advert_create() {
     return (
         <form className="bloc bloc_form">
             <div className="bloc_title">
-                <img src="./img/waving-hand-sign.png"></img>
+                <img src="./img/waving-hand-sign.png"/>
                 <h3>Creer une annonce</h3>
             </div>
 
@@ -61,7 +63,17 @@ export default function Advert_create() {
 
             <div className="form_group">
                 <label className="form_label">Description</label>
-                <textarea name="description" className="form_input" cols="30" rows="5" id="description" placeholder="ceci est un input"></textarea>
+                <textarea name="description" className="form_input" cols="30" rows="5" id="description" placeholder="Décrivez votre annonce"/>
+            </div>
+
+            <div className="form_group">
+                <label className="form_label">Salaire</label>
+                <input type="number" step="0.01" name="salaire" className="form_input" placeholder="Définissez un salaire pour la tonte"  id="salaire"/>
+            </div>
+
+            <div className="form_group">
+                <label className="form_label">Date</label>
+                <input type="date" name="date" className="form_input" id="date" placeholder="date"/>
             </div>
 
             <br/>
