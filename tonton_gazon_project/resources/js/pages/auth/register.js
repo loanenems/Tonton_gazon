@@ -20,7 +20,6 @@ export default function Register() {
                 'email': document.getElementById('email').value,
                 'password': document.getElementById('password').value,
                 'password_confirmation': document.getElementById('password-confirm').value,
-                'primary_role': parseInt(checkedRadio.value),
             }).then(response => {
             // We store the received token
             const token = response.data['access_token'];
@@ -85,13 +84,6 @@ export default function Register() {
                                     <div className="form-group">
                                         <label htmlFor="password-confirm" className="col-md-4 control-label">Confirmation
                                             du mot de passe</label>
-
-                                        <div className="col-md-6">
-                                            <input type="radio" id="mowerer" name="role" value="0"/>
-                                            <label htmlFor="mowerer">Tondeur</label>
-                                            <input type="radio" id="mowered" name="role" value="1"/>
-                                            <label htmlFor="mowered">Tondu</label>
-                                        </div>
                                     </div>
 
                                     <div className="form-group">
