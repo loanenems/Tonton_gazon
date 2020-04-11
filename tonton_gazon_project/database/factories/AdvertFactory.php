@@ -15,7 +15,6 @@ $factory->define(Advert::class, function (Faker $faker) {
         'title' => $faker->realText(50),
         'description' => $faker->paragraph(2, true),
         'payout' => $faker->randomFloat(2,0,500),
-        'date' => $faker->date(),
         'state' => $faker->randomDigit,
     ];
 });

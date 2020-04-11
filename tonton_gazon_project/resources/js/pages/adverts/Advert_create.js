@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import FormData from 'form-data';
+import {addDynamicalForm} from "../../helpers";
 
 export default function Advert_create() {
     const [gardens, setGardens] = useState([]);
@@ -16,12 +17,16 @@ export default function Advert_create() {
     let handleSubmit = (e) => {
         e.preventDefault();
         let data = new FormData();
+        let dates = {};
 
         data.append('title', document.getElementById('title').value);
         data.append('description', document.getElementById('description').value);
         data.append('idGarden', document.getElementById('garden_id').value);
         data.append('payout', document.getElementById('salaire').value);
-        data.append('date', document.getElementById('date').value);
+        for(let date of $('#date_group').find('input[type="date"]')) {
+            dates[$(date).attr('id')] = $(date).val();
+        }
+        data.append('date', JSON.stringify(dates));
 
         axios({
             method: 'post',
@@ -36,7 +41,7 @@ export default function Advert_create() {
     };
 
     let gardenSelectJSX =
-        gardens.map((g,i) => {
+        gardens.map((g, i) => {
             return (
                 <option key={i} value={g.id}>{g.id}</option>
             )
@@ -63,18 +68,26 @@ export default function Advert_create() {
 
             <div className="form_group">
                 <label className="form_label">Description</label>
-                <textarea name="description" className="form_input" cols="30" rows="5" id="description" placeholder="Décrivez votre annonce"/>
+                <textarea name="description" className="form_input" cols="30" rows="5" id="description"
+                          placeholder="Décrivez votre annonce"/>
             </div>
 
             <div className="form_group">
                 <label className="form_label">Salaire</label>
-                <input type="number" step="0.01" name="salaire" className="form_input" placeholder="Définissez un salaire pour la tonte"  id="salaire"/>
+                <input type="number" step="0.01" name="salaire" className="form_input"
+                       placeholder="Définissez un salaire pour la tonte" id="salaire"/>
             </div>
 
-            <div className="form_group">
+            <div className="form_group" id="date_group">
                 <label className="form_label">Date</label>
                 <input type="date" name="date" className="form_input" id="date" placeholder="date"/>
             </div>
+
+            <button onClick={(e) => {
+                e.preventDefault();
+                addDynamicalForm();
+            }}>Ajouter
+            </button>
 
             <br/>
             <a href="" className="btn btn_primary" onClick={(e) => handleSubmit(e)}>Envoyer le formulaire</a>
