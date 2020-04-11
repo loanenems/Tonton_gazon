@@ -17,12 +17,16 @@ export default function Advert_create() {
     let handleSubmit = (e) => {
         e.preventDefault();
         let data = new FormData();
+        let dates = {};
 
         data.append('title', document.getElementById('title').value);
         data.append('description', document.getElementById('description').value);
         data.append('idGarden', document.getElementById('garden_id').value);
         data.append('payout', document.getElementById('salaire').value);
-        data.append('date', document.getElementById('date').value);
+        for(let date of $('#date_group').find('input[type="date"]')) {
+            dates[$(date).attr('id')] = $(date).val();
+        }
+        data.append('date', JSON.stringify(dates));
 
         axios({
             method: 'post',

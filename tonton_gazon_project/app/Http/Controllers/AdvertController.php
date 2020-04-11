@@ -108,8 +108,27 @@ class AdvertController extends Controller
             "description" => "required",
             "idGarden" => "required",
             "payout" => "required",
-            "date" => "required",
+            "date" => "required"
         ]);
+
+        //Transform date json to assoc array
+        $dates = json_decode($request->get('date'), true);
+        //Final array to store dates
+        $finalDates = array();
+
+        foreach ($dates as $date) {
+            if ($date !== "") {
+                $finalDates[] = $date;
+            }
+        }
+
+        if (empty($finalDates)) {
+            abort('422');
+        }
+
+        usort($finalDates, function ($a, $b) {
+            return strtotime($a) - strtotime($b);
+        });
 
         $advert = new Advert;
 
@@ -117,9 +136,10 @@ class AdvertController extends Controller
         $advert->title = $validatedData['title'];
         $advert->description = $validatedData['description'];
         $advert->payout = $validatedData['payout'];
-        $advert->date = $validatedData['date'];
+        $advert->date = json_encode($finalDates);
 
-        $advert->save();
+
+        //$advert->save();
     }
 
     /**
