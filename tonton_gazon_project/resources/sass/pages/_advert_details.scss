@@ -1,0 +1,213 @@
+.advert_detail_container {
+    .advert_bloc {
+        .advert_bloc_title {
+            display: flex;
+            font-size: 1.250rem;
+            margin: 1rem 0;
+            strong {
+                font-size: 1.325rem;
+                font-weight: 600;
+            }
+            img {
+                height: 24px;
+                width: 24px;
+                margin-right: 8px;
+            }
+        }
+    }
+
+    .advert_head {
+        display: flex;
+        width: 100%;
+        @include screen-md() {
+            flex-direction: column;
+        }
+        .advert_image {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            @include screen-md() {
+                width: 100%;
+            }
+            .advert_slider {
+                img {
+
+                }
+            }
+            .advert_slider_big {
+                img {
+                    border-radius: 32px;
+                }
+                .slick-dots {
+                    bottom: 15px;
+                    li button:before {
+                        color: white;
+                    }
+                }
+            }
+            .advert_slider_small {
+                img {
+                    border-radius: 24px;
+                    padding: 8px 8px;
+                }
+            }
+        }
+        .slick-dotted.slick-slider {
+            margin-bottom: 8px;
+        }
+    
+        .advert_main_info {
+            width: 45%;
+            margin-left: 5%;
+            @include screen-md() {
+                width: 100%;
+                margin-left: 0;
+                margin-top: 1rem;
+            }
+            .advert_main_title {
+                display: flex;
+                align-items: center;
+                img {
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50px;
+                    margin-right: 8px;
+                }
+                p {
+                    font-size: 2rem;
+                    font-weight: bold;
+                }
+            }
+            .advert_main_info_list {
+                display: flex;
+                flex-direction: column;
+                .advert_price {
+                    margin: 0.50rem 0;
+                    color: $c-grey;
+                    font-weight: 600;
+                    i {
+                        color: $c-black;
+                        font-style: normal;
+                    }
+                }
+                .advert_size {
+                    margin: 0.50rem 0;
+                    color: $c-grey;
+                    font-weight: 600;
+                    i {
+                        color: $c-black;
+                        font-style: normal;
+                    }
+                }
+                .advert_feedback {
+                    margin: 0.50rem 0;
+                    color: $c-grey;
+                    font-weight: 600;
+                    i {
+                        color: $c-black;
+                        font-style: normal;
+                    }
+                    a {
+                        font-size: 0.75rem;
+                        color: $c-grey;
+                    }
+                }
+                .advert_total_price {
+                    margin: 0.50rem 0;
+                    color: $c-grey;
+                    font-weight: 600;
+                    i {
+                        color: $c-black;
+                        font-style: normal;
+                    }
+                }
+            }
+            .advert_main_info_action {
+                margin-top: 2rem;
+                @include screen-md() {
+                    margin-top: 1rem;
+                }
+                @include screen-sm() {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 0;
+                    a {
+                        margin-top: 1rem;
+                    }
+                    .btn_secondary {
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+    }
+    
+
+    .advert_more_info{
+        width: 75%;
+        margin: 3rem 0;
+        @include screen-md() {
+            width: 100%;
+        }
+        .advert_description {
+            p {
+                line-height: 1.50rem;
+                strong {
+
+                }
+            }
+        }
+        .advert_more {
+            margin: 3rem 0;
+            p {
+                strong {
+
+                }
+            }
+            ul {
+                margin-left: 12px;
+                li {
+                    list-style-type: '- ';
+                    margin-bottom: 6px;
+                }
+            }
+        }
+    }
+
+    .advert_comments {
+        width: 55%;
+        margin: 1.5rem 0;
+        @include screen-md() {
+            width: 100%;
+        }
+        .advert_comment {
+            display: flex;
+            background-image: url("../../../public/img/quotes.png");
+            background-position: 5% 50%;
+            background-size: 62px;
+            background-repeat: no-repeat;
+            margin-bottom: 2rem;
+            img {
+                height: 48px;
+                width: 48px;
+                min-width: 48px;
+                min-height: 48px;
+                border-radius: 48px;
+            }
+            .advert_comment_text {
+                display: flex;
+                flex-direction: column;
+                margin-left: 1rem;
+                p {
+                    line-height: 1.50rem;
+                    strong {
+                        line-height: 2.50rem;
+                    }
+                }
+            }
+        }
+    }
+}

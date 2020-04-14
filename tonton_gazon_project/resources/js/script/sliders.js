@@ -63,5 +63,24 @@ $(function () {
       }
     ]
   });
+
+
+  // Slider Advert Garden list
+  $('.advert_slider_big').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    dots: true,
+    fade: true,
+    asNavFor: '.advert_slider_small'
+  });
+  $('.advert_slider_small').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: false,
+    centerMode: true,
+    focusOnSelect: true
+  });
 });
 
