@@ -41,7 +41,7 @@ import Nav from './components/header'
 import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
 import Error from './pages/error'
-import Feedback_create from './pages/feedback/feedback_create';
+import Feedback_create from './pages/feedback/Feedback_create';
 
 //Disclaimer: Don't put exact if there are nested route inside the rendered component !
 ReactDOM.render(
