@@ -37,6 +37,12 @@ class AdvertController extends Controller
         $list = [];
 
         foreach ($fetch as $row) {
+            //Here we are counting the amount of feedbacks received by the user
+            $nbAvisRecus = DB::table('feedback')
+                ->selectRaw('count(*) as cpt')
+                ->where('idTarget','=',$row->idOwner)
+                ->first();
+
             $advert = [
                 "id" => $row->id,
                 "title" => $row->title,
@@ -61,6 +67,7 @@ class AdvertController extends Controller
                 "xp" => $row->xp,
                 "name" => $row->name,
                 "surname" => $row->surname,
+                "nbAvis" => $nbAvisRecus->cpt,
             ];
 
             $list[] = array("Advert" => $advert, "Garden" => $garden, "User" => $user);

@@ -46,7 +46,7 @@ export default function Index() {
                     </div>
                     <div className="infos_second">
                         {/* // Evaluation */}
-                        <p className="info_note"> <img src="./img/etoile_verte.svg"/>{data.User.xp} <mark>(23)</mark></p>
+                        <p className="info_note"> <img src="./img/etoile_verte.svg"/>{data.User.xp} <mark>({data.User.nbAvis})</mark></p>
                         {/* // Superficie */}
                         <p className="info_size"><mark>Superficie : </mark>{data.Garden.size}/m*</p>
                     </div>
