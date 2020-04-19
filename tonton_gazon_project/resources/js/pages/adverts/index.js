@@ -56,8 +56,22 @@ export default function Index() {
     });
 
     return (
-        <div className="advert_list_container_row">
-            {jsx}
+        <div className="advert_container">
+            <div className="advert_filter_container">
+                <div className="bloc_title">
+                    <img src="./img/waving-hand-sign.png"></img>
+                    <h3>Annonces</h3>
+                </div>
+
+                <div className="advert_filter_display">
+                    <p>Affichage : </p>
+                    <a className="display_option display_grid active" data-display="advert_list_container_grid" alt="Affichage en colonne"></a>
+                    <a className="display_option display_row" data-display="advert_list_container_row" alt="Affichage en ligne"></a>
+                </div>
+            </div>
+            <div className="advert_list_container advert_list_container_grid">
+                {jsx}
+            </div>
         </div>
     )
 }

@@ -11,4 +11,19 @@ $(function() {
             $('.navbar_mobile').removeClass('active');
         }
     });
+
+    $(".display_option").click( function() {
+        if( $(this).hasClass("active") ) {
+            alert($(this).attr("data-display"))
+            $(".advert_list_container").removeClass("advert_list_container_row"); 
+            $(".advert_list_container").removeClass("advert_list_container_grid"); 
+            $(".advert_list_container").addClass( $(this).attr("data-display") ); 
+        } else {
+            $(".advert_list_container").removeClass("advert_list_container_row"); 
+            $(".advert_list_container").removeClass("advert_list_container_grid"); 
+            $(".advert_list_container").addClass( $(this).attr("data-display") ); 
+            $(".display_option").removeClass("active");
+            $(this).addClass("active");
+        }
+    });
 });

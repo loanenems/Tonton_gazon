@@ -56,9 +56,15 @@ export default function Feedback_create() {
                     <input type="text" className="form_input" id="comment" name="comment"/>
                 </div>
 
-                <div className="form_group">
-                    <label htmlFor="rating" className="form_label">Evaluation</label>
-                    <input type="number" className="form_input" id="rating" name="rating"/>
+                <div className="form_group form_star">
+                    <p className="form_label">Evaluation</p>
+                    <div className="star_group">
+                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                    </div>
                 </div>
 
                 <button className="btn btn-primary" type="submit">Envoyer</button>

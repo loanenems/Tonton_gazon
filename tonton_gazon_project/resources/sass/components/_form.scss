@@ -1,10 +1,13 @@
 .bloc_form {
+    margin-bottom: $space-e-large*1.5;
+    margin-top: $space-large*2;
     .form_group {
         margin-bottom: $space-large;
 
         // Labels
         .form_label {
             display: block;
+            text-transform: capitalize;
             margin-bottom: $space-medium;
             font-size: $f-text-medium;
             font-weight: bold;
@@ -27,10 +30,53 @@
             border-color: $c-error;
         }
 
-        // Input text, number, email style
+        // Input text, email style
         .form_input[type=text], .form_input[type=number], .form_input[type=email] {
             height: 50px;
             width: 460px;
+        }
+
+        // Input number style
+        .form_input[type=number] {
+            width: 320px;
+        }
+
+
+        .form_input[type=file] {
+            padding: 12px 0;
+            height: 50px;
+            width: 280px;
+            background: rgb(0,0,0);
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 100%);
+            &::-webkit-file-upload-button {
+                visibility: hidden;
+            }
+            &::before {
+                content: 'Votre image';
+                display: inline-block;
+                // background: $c-black;
+                // border: 1px solid #999;
+                // border-radius: 3px;
+                padding-left: 12px;
+                padding-right: 12px;
+                // padding-top: 12px;
+                outline: none;
+                white-space: nowrap;
+                -webkit-user-select: none;
+                cursor: pointer;
+                // text-shadow: 1px 1px #fff;
+                font-weight: 700;
+                font-size: 10pt;
+                color: $c-white;
+                // height: 38px;
+                // margin-top: -14px;
+            }
+            &:hover::before {
+                border-color: black;
+            }
+            &:active::before {
+                background: -webkit-linear-gradient(top, #e3e3e3, #f9f9f9);
+            }
         }
 
         // Input password style
@@ -68,7 +114,6 @@
             }
         }
 
-
         // Input checkbox style
         .checkbox_group {
             .control {
@@ -77,7 +122,7 @@
                 position: relative;
                 padding-left: 38px;
                 margin-bottom: 16px;
-                padding-top: 0px;
+                padding-top: 4px;
                 cursor: pointer;
                 font-size: 16px;
                 input {
@@ -95,6 +140,20 @@
                     background: #e6e6e6;
                     border: 0px solid #000000;
                     border-radius: 7px;
+                }
+
+                input[type=checkbox]:checked~.form_hidden {
+                    display: block;
+                  }
+
+                .form_hidden {
+                    display: none;
+                    width: 640px;
+                    position: relative;
+                    margin-left: -40px;
+                    margin-top: 16px;
+                    opacity: 1;
+                    z-index: 1;
                 }
             }
             
@@ -205,6 +264,55 @@
             }
             .control-radio input:disabled ~ .control_indicator:after {
                 background: #7b7b7b;
+            }
+        }
+    }
+    // Rating input
+    $stars: 5;
+    $star-size: 40px;
+    $star-spacing: 2px;
+    $star-on-color: #F9DF4A;
+    $star-off-color: #CCCCCC;
+
+    .form_star {
+        .form_label {
+            display: block;
+            text-transform: capitalize;
+            margin-bottom: 0;
+            font-size: $f-text-medium;
+            font-weight: bold;
+        }
+        .star_group {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: flex-end;
+            label {
+                float: right;
+                position: relative;
+                width: $star-size;
+                height: $star-size;
+                cursor: pointer;
+                
+                &:not(:first-of-type) {
+                    padding-right: $star-spacing;
+                }
+                
+                &:before {
+                    content: "\2605";
+                    font-size: $star-size + 2px;
+                    color: $star-off-color;
+                    line-height: 1;
+                }
+            }
+            
+            input {
+                display: none;
+            }
+            
+            input:checked ~ label:before,
+            &:not(:checked) > label:hover:before,
+            &:not(:checked) > label:hover ~ label:before {
+                color: $star-on-color;
             }
         }
     }

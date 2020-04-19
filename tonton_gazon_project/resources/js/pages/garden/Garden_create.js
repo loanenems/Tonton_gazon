@@ -92,20 +92,21 @@ export default function Garden_create() {
 
                 <div className="form_group">
                     <label htmlFor="description" className="form_label">description</label>
-                    <input type="text" className="form_input" id="description" name="description"/>
+                    <input type="text" className="form_input" id="description" name="description" placeholder="Décrivez votre jardin en quelques mots"/>
                 </div>
 
                 <div className="form_group">
                     <label htmlFor="size" className="form_label">size</label>
-                    <input type="number" className="form_input" id="size" name="size"/>
+                    <input type="number" className="form_input" id="size" name="size" placeholder="Taille en m² de votre pelouse"/>
                 </div>
 
                 <div className="form_group">
                     <div className="checkbox_group">
                         <label htmlFor="movableObstacle" class="control control-checkbox">
-                            movableObstacle
+                            MovableObstacle
                             <input type="checkbox" id="movableObstacle" name="movableObstacle"/>
                             <div class="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -113,9 +114,10 @@ export default function Garden_create() {
                 <div className="form_group">
                     <div className="checkbox_group">
                         <label htmlFor="unmovableObstacle" class="control control-checkbox">
-                            unmovableObstacle
+                            UnmovableObstacle
                             <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>
                             <div class="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -124,8 +126,9 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="pets" class="control control-checkbox">
                             Pets
-                            <input type="checkbox" id="pets" name="pets"/>
+                            <input type="checkbox" id="pets"  name="pets"/>
                             <div class="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="size" name="size"  placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -133,21 +136,22 @@ export default function Garden_create() {
                 <div className="form_group">
                     <div className="checkbox_group">
                         <label htmlFor="equipment" class="control control-checkbox">
-                            equipment
+                            Equipment
                             <input type="checkbox" id="equipment" name="equipment"/>
                             <div class="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
 
                 <div className="form_group">
-                    <label htmlFor="image" className="form_label">image</label>
+                    <label htmlFor="image" className="form_label">Image</label>
                     <input type="file" className="form_input" id="image" name="image" accept="image/png, image/jpeg"/>
                 </div>
 
                 <div className="form_group">
-                    <label htmlFor="address">Adresse</label>
-                    <input type="text" id="address" onKeyUp={(e) => handleAddress(e)}/>
+                    <label htmlFor="address" className="form_label">Adresse</label>
+                    <input type="text" id="address" className="form_input" onKeyUp={(e) => handleAddress(e)}/>
                 </div>
 
                 {/*Todo: Gérer le style pour la partie position absolute [Matthieu]*/}

@@ -108,17 +108,18 @@ export default function Nav() {
                     <option value="35">35 Km</option>
                 </select>
             </div>
+            
             <nav className="navbar">
                 <div className="navbar_group navbar_brand">
-                    <a className="navbar_element navbar_brand_group" href="">
+                    <a className="navbar_element navbar_brand_group" href="/">
                         <img src="/img/logo_noir.png" alt="Logo Tonton Gazon" className="navbar_brand_logo"></img>
                         <p className="navbar_brand_name">Tonton Gazon</p>
                     </a>
                 </div>
                 <div className="navbar_group navbar_links">
-                    <a href="" className="navbar_element">Accueil</a>
-                    <a href="" className="navbar_element">Un lien</a>
-                    <a href="" className="navbar_element">Encore un lien</a>
+                    <a href="/" className="navbar_element">Accueil</a>
+                    <a href="/comment-ca-marche" className="navbar_element">Comment ça marche ?</a>
+                    <a href="/contact" className="navbar_element">Contact</a>
                 </div>
                 <div className="navbar_group navbar_authentication">
                     {jsxAuth()}

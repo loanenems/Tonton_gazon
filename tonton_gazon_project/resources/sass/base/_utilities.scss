@@ -19,33 +19,34 @@ a {
 
 .bloc {
     margin-bottom: $space-e-large;
-    .bloc_title {
-        display: flex;
-        align-items: center;
-        margin-bottom: $space-large;
-        img {
-            height: 36px;
-            @include screen-sm() {
-                height: 24px;
-            }
+}
+
+.bloc_title {
+    display: flex;
+    align-items: center;
+    margin-bottom: $space-large;
+    img {
+        height: 36px;
+        @include screen-sm() {
+            height: 24px;
         }
-        h3 {
-            font-size: $f-title-large;
-            margin: 0 $space-medium;
-            @include screen-md() {
-                font-size: $f-title-medium;
-            }
-            @include screen-sm() {
-                font-size: $f-title-small;
-            }
+    }
+    h3 {
+        font-size: $f-title-large;
+        margin: 0 $space-medium;
+        @include screen-md() {
+            font-size: $f-title-medium;
         }
-        p {
-            a {
-                font-size: $f-text-small;
-                color:$c-grey;
-                &:hover {
-                    text-decoration: underline;
-                }
+        @include screen-sm() {
+            font-size: $f-title-small;
+        }
+    }
+    p {
+        a {
+            font-size: $f-text-small;
+            color:$c-grey;
+            &:hover {
+                text-decoration: underline;
             }
         }
     }

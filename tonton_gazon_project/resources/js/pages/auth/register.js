@@ -1,7 +1,7 @@
 import React from 'react'
 import Nav from '../../components/header'
 import axios from "axios";
-import {useHistory} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 
 export default function Register() {
     const history = useHistory();
@@ -49,8 +49,18 @@ export default function Register() {
             </div>
 
             <div className="form_group">
+                <label className="form_label" htmlFor="surname">Prénom</label>
+                <input className="form_input" id="surname" type="text" name="surname" placeholder="Jean" required/>
+            </div>
+
+            <div className="form_group">
                 <label className="form_label" htmlFor="email">Email</label>
                 <input className="form_input"  id="email" type="email" name="email"required/>
+            </div>
+
+            <div className="form_group">
+                <label className="form_label" htmlFor="birthday">Date de naissance</label>
+                <input className="form_input"  id="birthday" type="date" name="birthday"required/>
             </div>
 
             <div className="form_group">
@@ -63,7 +73,8 @@ export default function Register() {
                 <input className="form_input" id="password-confirm" type="password" name="password_confirmation" required/>
             </div>
 
-            <a href="" className="btn btn_primary"  onClick={(e) => handleSubmit(e)}>Créer mon compte</a>
+            <a href="/" className="btn btn_primary"  onClick={(e) => handleSubmit(e)}>Créer mon compte</a>
+            <Link className="btn btn_secondary" to={`/login`}>Vous avez déja un compte ?</Link>
             {/* <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary"> Créer mon compte </button> */}
 
         </form>

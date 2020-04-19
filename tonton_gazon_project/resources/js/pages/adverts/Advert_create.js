@@ -63,7 +63,7 @@ export default function Advert_create() {
 
             <div className="form_group">
                 <label htmlFor="title" className="form_label">Titre</label>
-                <input type="text" name="title" className="form_input" id="title"/>
+                <input type="text" name="title" className="form_input" id="title" placeholder="Le titre de votre annonce"/>
             </div>
 
             <div className="form_group">
