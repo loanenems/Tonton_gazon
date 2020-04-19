@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-export default function MesJardins() {
+export default function Virements() {
     return (
         <div>
-            <p>Mes jardins</p>
+            <p>Mes virements</p>
         </div>
     )
 };

@@ -1,11 +1,10 @@
 import React from 'react'
 
 
-export default function MesAnnonces() {
+export default function Avis() {
     return (
         <div>
-
-            <p>Mes Annonces</p>
+            <p>Mes avis</p>
         </div>
     )
 };

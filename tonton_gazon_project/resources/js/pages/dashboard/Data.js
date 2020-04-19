@@ -1,10 +1,10 @@
 import React from 'react'
 
 
-export default function MesInfos() {
+export default function Data() {
     return (
         <div>
 
-            <p>Mes infos</p>
+            <p>Mes données personnelles</p>
         </div>
            )};

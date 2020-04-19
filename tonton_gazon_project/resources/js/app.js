@@ -17,8 +17,8 @@ import Login from './pages/auth/login'
 import Register from './pages/auth/register'
 import ResetPassword from './pages/auth/ResetPassword'
 
-//Profile
-import Profile from './pages/profile/index'
+//Dashboard
+import Dashboard from './pages/dashboard/index'
 
 //Garden
 import Garden from './pages/garden/index'
@@ -58,7 +58,7 @@ ReactDOM.render(
 
 
                 {/* Profile */}
-                <Route path='/mon-profil' component={Profile}/>
+                <Route path='/dashboard' component={Dashboard}/>
 
                 {/* Garden */}
                 <Route path='/garden' component={Garden}/>
