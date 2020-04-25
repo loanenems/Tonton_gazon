@@ -1,6 +1,19 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import Axios from "axios";
+import {useParams} from 'react-router-dom';
 
 export default function Advert() {
+    let {id} = useParams();
+
+    const [data, setData] = useState({});
+
+    useEffect(() => {
+        Axios.get("/api/advertGetId", {params: {id: id}})
+            .then(res => {
+                setData(res.data.data);
+            });
+    }, []);
+
 
     return (
         <div className="advert_detail_container">
@@ -31,7 +44,8 @@ export default function Advert() {
                     <div className="advert_main_info_list">
                         <p className="advert_price">Tarif au m² : <i>10€</i></p>
                         <p className="advert_size">Superficie : <i>120m²</i></p>
-                        <p className="advert_feedback">Note moyenne : <i>4.7/5</i> <a href="">Voir toutes les évaluations</a></p>
+                        <p className="advert_feedback">Note moyenne : <i>4.7/5</i> <a href="">Voir toutes les
+                            évaluations</a></p>
                         <p className="advert_total_price">Paiement final : <i>1200€</i></p>
                     </div>
                     <div className="advert_main_info_action">
@@ -46,20 +60,20 @@ export default function Advert() {
                         <img src="./img/memo.png" alt=""/>
                         <strong>Description de l'annonce</strong>
                     </p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do 
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Enim facilisis gravida neque convallis a cras semper. In 
-                        hendrerit gravida rutrum quisque non tellus orci. Blandit 
-                        aliquam etiam erat velit scelerisque. Tincidunt nunc pulvinar 
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                        eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        Enim facilisis gravida neque convallis a cras semper. In
+                        hendrerit gravida rutrum quisque non tellus orci. Blandit
+                        aliquam etiam erat velit scelerisque. Tincidunt nunc pulvinar
                         sapien et ligula ullamcorper malesuada. Aliquet porttitor lacus
-                        luctus accumsan tortor posuere ac ut consequat. Enim nulla 
-                        aliquet porttitor lacus luctus accumsan. Pretium lectus quam 
-                        id leo in vitae turpis massa. Facilisis mauris sit amet massa 
-                        vitae. Viverra tellus in hac habitasse. Ut eu sem integer 
-                        vitae justo eget magna fermentum. Tincidunt lobortis feugiat 
-                        vivamus at augue. Justo eget magna fermentum iaculis eu non. 
-                        Ut ornare lectus sit amet est placerat in egestas. Imperdiet 
-                        sed euismod nisi porta lorem mollis aliquam ut. Sagittis nisl 
+                        luctus accumsan tortor posuere ac ut consequat. Enim nulla
+                        aliquet porttitor lacus luctus accumsan. Pretium lectus quam
+                        id leo in vitae turpis massa. Facilisis mauris sit amet massa
+                        vitae. Viverra tellus in hac habitasse. Ut eu sem integer
+                        vitae justo eget magna fermentum. Tincidunt lobortis feugiat
+                        vivamus at augue. Justo eget magna fermentum iaculis eu non.
+                        Ut ornare lectus sit amet est placerat in egestas. Imperdiet
+                        sed euismod nisi porta lorem mollis aliquam ut. Sagittis nisl
                         rhoncus mattis rhoncus urna neque viverra justo.</p>
                 </div>
 
@@ -71,7 +85,7 @@ export default function Advert() {
                     <ul>
                         <li>Risus in hendrerit gravida rutrum quisque non tellus</li>
                         <li>nascetur ridiculus mus mauris vitae ultricies</li>
-                        <li>porttitor eget dolor morbi non. In egestas erat </li>
+                        <li>porttitor eget dolor morbi non. In egestas erat</li>
                         <li>porta lorem. Morbi blandit cursus risus at ultrices</li>
                         <li>vivamus arcu felis. Lectus mauris ultrices eros</li>
                     </ul>
@@ -86,7 +100,7 @@ export default function Advert() {
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>L'avis de Jean-Edouard Paris</strong></p>
-                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet. 
+                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet.
                             Elementum tempus egestas sed sed risus</p>
                     </div>
                 </div>
@@ -94,7 +108,7 @@ export default function Advert() {
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>L'avis de Jean-Edouard Paris</strong></p>
-                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet. 
+                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet.
                             Elementum tempus egestas sed sed risus</p>
                     </div>
                 </div>
@@ -102,7 +116,7 @@ export default function Advert() {
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>L'avis de Jean-Edouard Paris</strong></p>
-                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet. 
+                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet.
                             Elementum tempus egestas sed sed risus</p>
                     </div>
                 </div>
@@ -110,7 +124,7 @@ export default function Advert() {
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>L'avis de Jean-Edouard Paris</strong></p>
-                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet. 
+                        <p>Urna et pharetra pharetra massa massa. Adipiscing commodo elit at imperdiet.
                             Elementum tempus egestas sed sed risus</p>
                     </div>
                 </div>

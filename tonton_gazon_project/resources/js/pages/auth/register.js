@@ -17,6 +17,8 @@ export default function Register() {
         axios.post(
             '/api/register', {
                 'name': document.getElementById('name').value,
+                'surname': document.getElementById('surname').value,
+                'birthday': document.getElementById('birthday').value,
                 'email': document.getElementById('email').value,
                 'password': document.getElementById('password').value,
                 'password_confirmation': document.getElementById('password-confirm').value,
@@ -30,7 +32,7 @@ export default function Register() {
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
 
             // Redirect to homepage
-            history.push('/home');
+            history.push('/');
         }).catch(error => {
             console.log(error);
         });
@@ -55,12 +57,12 @@ export default function Register() {
 
             <div className="form_group">
                 <label className="form_label" htmlFor="email">Email</label>
-                <input className="form_input"  id="email" type="email" name="email"required/>
+                <input className="form_input" id="email" type="email" name="email" required/>
             </div>
 
             <div className="form_group">
                 <label className="form_label" htmlFor="birthday">Date de naissance</label>
-                <input className="form_input"  id="birthday" type="date" name="birthday"required/>
+                <input className="form_input" id="birthday" type="date" name="birthday" required/>
             </div>
 
             <div className="form_group">
@@ -70,13 +72,13 @@ export default function Register() {
 
             <div className="form_group">
                 <label className="form_label" htmlFor="password-confirm">Confirmation du mot de passe</label>
-                <input className="form_input" id="password-confirm" type="password" name="password_confirmation" required/>
+                <input className="form_input" id="password-confirm" type="password" name="password_confirmation"
+                       required/>
             </div>
 
-            <a href="/" className="btn btn_primary"  onClick={(e) => handleSubmit(e)}>Créer mon compte</a>
+            <a href="/" className="btn btn_primary" onClick={(e) => handleSubmit(e)}>Créer mon compte</a>
             <Link className="btn btn_secondary" to={`/login`}>Vous avez déja un compte ?</Link>
             {/* <button type="submit" onClick={(e) => handleSubmit(e)} className="btn btn-primary"> Créer mon compte </button> */}
-
         </form>
     );
 }

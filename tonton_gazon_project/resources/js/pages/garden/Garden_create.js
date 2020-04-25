@@ -15,7 +15,7 @@ export default function Garden_create() {
         let img = document.getElementById('image').files[0];
 
         //We are building the formData object which is going to be sent to the server
-        if(img !== undefined) {
+        if (img !== undefined) {
             data.append('image', img, img.name);
         } else {
             data.append('image', "");
@@ -27,6 +27,17 @@ export default function Garden_create() {
         data.append('pets', document.getElementById('pets').checked);
         data.append('equipment', document.getElementById('equipment').checked ? 1 : 0);
         data.append('address', selectedAddress.address === "" ? "" : JSON.stringify(selectedAddress));
+
+        //Conditional data that are only needed if a checkbox is checked
+        if (document.getElementById('movableObstacle').checked) {
+            data.append('movableObstacle_details', document.getElementById('movableObstacle_details').value);
+        }
+        if (document.getElementById('unmovableObstacle').checked) {
+            data.append('unmovableObstacle_details', document.getElementById('unmovableObstacle_details').value);
+        }
+        if (document.getElementById('pets').checked) {
+            data.append('pets_details', document.getElementById('pets_details').value);
+        }
 
         //We make the post request to the GardenController who process the data
         axios({
@@ -92,12 +103,14 @@ export default function Garden_create() {
 
                 <div className="form_group">
                     <label htmlFor="description" className="form_label">description</label>
-                    <input type="text" className="form_input" id="description" name="description" placeholder="Décrivez votre jardin en quelques mots"/>
+                    <input type="text" className="form_input" id="description" name="description"
+                           placeholder="Décrivez votre jardin en quelques mots"/>
                 </div>
 
                 <div className="form_group">
                     <label htmlFor="size" className="form_label">size</label>
-                    <input type="number" className="form_input" id="size" name="size" placeholder="Taille en m² de votre pelouse"/>
+                    <input type="number" className="form_input" id="size" name="size"
+                           placeholder="Taille en m² de votre pelouse"/>
                 </div>
 
                 <div className="form_group">
@@ -106,7 +119,9 @@ export default function Garden_create() {
                             MovableObstacle
                             <input type="checkbox" id="movableObstacle" name="movableObstacle"/>
                             <div class="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                            <input type="text" className="form_input form_hidden" id="movableObstacle_details"
+                                   name="movableObstacle_details"
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -117,7 +132,9 @@ export default function Garden_create() {
                             UnmovableObstacle
                             <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>
                             <div class="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                            <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
+                                   name="unmovableObstacle_details"
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -126,9 +143,10 @@ export default function Garden_create() {
                     <div className="checkbox_group">
                         <label htmlFor="pets" class="control control-checkbox">
                             Pets
-                            <input type="checkbox" id="pets"  name="pets"/>
+                            <input type="checkbox" id="pets" name="pets"/>
                             <div class="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="size" name="size"  placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                            <input type="text" className="form_input form_hidden" id="pets_details" name="pets_details"
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -138,8 +156,7 @@ export default function Garden_create() {
                         <label htmlFor="equipment" class="control control-checkbox">
                             Equipment
                             <input type="checkbox" id="equipment" name="equipment"/>
-                            <div class="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="size" name="size" placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                            <div className="control_indicator"></div>
                         </label>
                     </div>
                 </div>

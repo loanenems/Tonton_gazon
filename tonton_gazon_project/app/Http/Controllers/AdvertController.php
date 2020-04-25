@@ -40,7 +40,7 @@ class AdvertController extends Controller
             //Here we are counting the amount of feedbacks received by the user
             $nbAvisRecus = DB::table('feedback')
                 ->selectRaw('count(*) as cpt')
-                ->where('idTarget','=',$row->idOwner)
+                ->where('idTarget', '=', $row->idOwner)
                 ->first();
 
             $advert = [
@@ -83,15 +83,61 @@ class AdvertController extends Controller
      */
     public function fetchAdvertById(Request $request)
     {
-        $advert = Advert::find($request->get('id'));
-        $rating = null;
+        //Fetching all informations from database
+        $fetch = DB::table('advert')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->join('users', 'garden.idOwner', 'users.id')
+            ->select('advert.*',
+                'garden.description as description_jardin',
+                'garden.idOwner',
+                'garden.size',
+                'garden.movableObstacle',
+                'garden.unmovableObstacle',
+                'garden.pets',
+                'garden.equipment',
+                'garden.image',
+                'users.xp',
+                'users.name',
+                'users.surname'
+            )
+            ->where("advert.id", "=", $request->get('id'))
+            ->orderBy('advert.created_at', 'desc')
+            ->first();
 
-        if (isset($advert)) {
-            $rating = DB::table('feedback')->where('idTarget', $advert->idAuthor)->avg('rating');
-        }
+        //Here we are counting the amount of feedbacks received by the user
+        $nbAvisRecus = DB::table('feedback')
+            ->selectRaw('count(*) as cpt')
+            ->where('idTarget', '=', $fetch->idOwner)
+            ->first();
 
+        $advert = [
+            "id" => $fetch->id,
+            "title" => $fetch->title,
+            "description" => $fetch->description,
+            "payout" => $fetch->payout,
+            "state" => $fetch->state,
+            "created_at" => $fetch->created_at,
+            "updated_at" => $fetch->updated_at,
+        ];
+        $garden = [
+            "id" => $fetch->idGarden,
+            "description" => $fetch->description_jardin,
+            "size" => $fetch->size,
+            "movableObstacle" => $fetch->movableObstacle,
+            "unmovableObstacle" => $fetch->unmovableObstacle,
+            "pets" => $fetch->pets,
+            "equipment" => $fetch->equipment,
+            "image" => $fetch->image,
+        ];
+        $user = [
+            "id" => $fetch->idOwner,
+            "xp" => $fetch->xp,
+            "name" => $fetch->name,
+            "surname" => $fetch->surname,
+            "nbAvis" => $nbAvisRecus->cpt,
+        ];
 
-        return response((['advert' => $advert, 'rating' => round($rating, 2)]), 200);
+        return response(['data' => array("Advert" => $advert, "Garden" => $garden, "User" => $user)], 200);
     }
 
     /**

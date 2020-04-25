@@ -9,7 +9,7 @@ import Slick from './vendors/slick';
 import Script from './script/script';
 
 //Routes
-//Index
+//Advert_Index
 import Index from './pages/Index'
 
 //Authentication
@@ -24,8 +24,7 @@ import Profile from './pages/profile/index'
 import Garden from './pages/garden/index'
 
 //Adverts
-import Advert from './pages/adverts/index'
-import AdvertDetail from './pages/adverts/Advert'
+import Advert_Index from './pages/adverts/Advert_Index'
 import Search_advert from './pages/adverts/search_advert'
 import Advert_create from './pages/adverts/Advert_create'
 
@@ -64,8 +63,7 @@ ReactDOM.render(
                 <Route path='/garden' component={Garden}/>
 
                 {/* Advert */}
-                <Route path='/adverts' component={Advert}/>
-                <Route path='/advert' component={AdvertDetail}/>
+                <Route path='/adverts' component={Advert_Index}/>
                 <Route path='/create_advert' component={Advert_create}/>
                 <Route exact path='/search_advert' component={Search_advert}/>
 

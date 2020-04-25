@@ -29,7 +29,7 @@ class FeedbackController extends Controller
             'rating' => 'required',
         ]);
 
-        //Once there are no errors, we insert a new row in the Index table
+        //Once there are no errors, we insert a new row in the Advert_Index table
         $feedback = new Feedback;
 
         $feedback->idAuthor = auth()->id();

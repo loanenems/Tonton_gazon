@@ -37,12 +37,13 @@ class GardenController extends Controller
      */
     public function fetchGardenByIdOwner()
     {
-        $garden = Garden::where('idOwner',auth()->id())->get();
+        $garden = Garden::where('idOwner', auth()->id())->get();
 
         return response((['jardin' => $garden]), 200);
     }
 
-    public function addGarden(Request $request) {
+    public function addGarden(Request $request)
+    {
 
         //We validate the data through the request validator
         $validateData = $request->validate([
@@ -53,13 +54,32 @@ class GardenController extends Controller
             'pets' => 'required',
             'equipment' => 'required',
             'image' => 'required',
-            'address' => 'required'
+            'address' => 'required',
         ]);
 
-        //We store the image in a folder named with the user id and file with original name
-        $validateData['image']->storeAs('public/'.auth()->id().'/Index',$validateData['image']->getClientOriginalName());
+        if ($validateData["movableObstacle"] == true) {
+            $result = $request->validate([
+                'movableObstacle_details' => 'required',
+            ]);
+            $validateData["movableObstacle"] = $result["movableObstacle_details"];
+        }
+        if ($validateData["unmovableObstacle"] == true) {
+            $result = $request->validate([
+                'unmovableObstacle_details' => 'required',
+            ]);
+            $validateData["unmovableObstacle"] = $result["unmovableObstacle_details"];
+        }
+        if ($validateData["pets"] == true) {
+            $result = $request->validate([
+                'pets_details' => 'required',
+            ]);
+            $validateData["pets"] = $result["pets_details"];
+        }
 
-        //Once there are no errors, we insert a new row in the Index table
+        //We store the image in a folder named with the user id and file with original name
+        $validateData['image']->storeAs('public/' . auth()->id() . '/Advert_Index', $validateData['image']->getClientOriginalName());
+
+        //Once there are no errors, we insert a new row in the Advert_Index table
         Garden::insert(
             [
                 'idOwner' => auth()->id(),
@@ -69,12 +89,12 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => json_encode(['image_0'=>asset('storage/'.auth()->id().'/Index/'.$validateData['image']->getClientOriginalName())]),
+                'image' => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert_Index/' . $validateData['image']->getClientOriginalName())]),
                 'address' => $validateData['address'],
             ]
         );
 
         //Then we return a response to the client
-        return response([],200);
+        return response([], 200);
     }
 }
