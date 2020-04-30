@@ -25,7 +25,7 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
         position: position,
     };
 
-    let url = "/search_advert";
+    let url = "/adverts";
     let cpt = 0;
 
     //Here, we map the filters list to construct the url for the search depending on the filters
