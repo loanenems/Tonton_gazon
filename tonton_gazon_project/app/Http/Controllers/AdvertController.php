@@ -202,7 +202,8 @@ class AdvertController extends Controller
      */
     public function searchAdvert(Request $request)
     {
-        $search = $request->query('search');
+        //List of all the possible filters
+        $search = $request->query('search') === null ? "t" : $request->query('search');
         $payout = $request->query('payout');
         $eval = $request->query('eval');
         $startDate = $request->query('start_date') === null ? DB::table('advert')->min('date') : $request->query('start_date');
@@ -210,6 +211,8 @@ class AdvertController extends Controller
         $distance = $request->query('distance');
         $userCoordinates = json_decode($request->query('position'), true);
 
+        //The part above handle the geolocation filter. We are comparing positions between two geographical points to return distance.
+        //If there is a match, we add the advert id to list of match
         $listMatch = [];
         if (isset($distance)) {
             $addresses = DB::table('garden')
@@ -228,10 +231,23 @@ class AdvertController extends Controller
             }
         }
 
+        //Here we are building the main query looking for all the possible matches, with filters defined or not
         $adverts = DB::table('advert')
             ->join('garden', 'advert.idGarden', 'garden.id')
             ->join('users', 'garden.idOwner', 'users.id')
-            ->select('advert.*')
+            ->select('advert.*',
+                'garden.description as description_jardin',
+                'garden.idOwner as id_owner',
+                'garden.size as size',
+                'garden.movableObstacle as movable_obstacle',
+                'garden.unmovableObstacle as unmovable_obstacle',
+                'garden.pets as pets',
+                'garden.equipment as equipment',
+                'garden.image as image',
+                'users.xp as xp',
+                'users.name as name',
+                'users.surname as username'
+            )
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
@@ -243,14 +259,35 @@ class AdvertController extends Controller
                     $query->whereIn('advert.id', $listMatch);
                 }
             })
-            ->whereBetween('date', [$startDate, $endDate])
+            //In this part, we are looking for dates matching searched interval
+            ->where(function ($query) use ($startDate, $endDate) {
+                foreach ($query->select('advert.date')->get() as $dates) {
+                    $datelist = json_decode($dates->date);
+                    $in = false;
+                    if($datelist !== null) {
+                        foreach ($datelist as $date) {
+                            if (($date >= $startDate) && ($date <= $endDate) && $in === false){
+                                $in = true;
+                                $query->orWhere('advert.date','=',$dates->date);
+                            }
+                        }
+                    }
+                }
+            })
             ->orderBy('advert.created_at', 'desc')
-            ->paginate(5);
-
-
+            ->paginate(9);
         return response(['adverts' => $adverts], 200);
     }
 
+    /**
+     * This function is meant to calculate distances between two geographical coordinates
+     * @param $lat1
+     * @param $lon1
+     * @param $lat2
+     * @param $lon2
+     * @param $unit
+     * @return float|int
+     */
     function distance($lat1, $lon1, $lat2, $lon2, $unit)
     {
         if (($lat1 == $lat2) && ($lon1 == $lon2)) {

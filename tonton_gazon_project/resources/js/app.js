@@ -25,7 +25,6 @@ import Garden from './pages/garden/index'
 
 //Adverts
 import Advert_Index from './pages/adverts/Advert_Index'
-import Search_advert from './pages/adverts/search_advert'
 import Advert_create from './pages/adverts/Advert_create'
 
 //Informations
@@ -65,7 +64,6 @@ ReactDOM.render(
                 {/* Advert */}
                 <Route path='/adverts' component={Advert_Index}/>
                 <Route path='/create_advert' component={Advert_create}/>
-                <Route exact path='/search_advert' component={Search_advert}/>
 
                 {/* Informations */}
                 <Route exact path='/mentions-legales' component={Legal}/>
