@@ -61,7 +61,7 @@ export default function Advert_Index() {
     return (
         <Switch>
             <Route exact path={`${path}`}>
-                <div className="advert_container">
+                <div className="ttgz_advert_container">
                     <div className="advert_filter_container">
                         <div className="bloc_title">
                             <img src="./img/waving-hand-sign.png"></img>
