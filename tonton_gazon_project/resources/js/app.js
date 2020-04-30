@@ -39,6 +39,7 @@ import Cookies from './pages/Cookies'
 import Nav from './components/header'
 import Footer from './components/footer'
 import FormTemplate from './pages/FormTemplate'
+import Datepicker from './pages/Datepicker'
 import Error from './pages/error'
 import Feedback_create from './pages/feedback/Feedback_create';
 
@@ -79,6 +80,7 @@ ReactDOM.render(
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
+                <Route exact path='/datepicker' component={Datepicker}/>
                 <Route exact={false} component={Error}/>
             </Switch>
             <Footer/>

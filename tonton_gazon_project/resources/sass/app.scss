@@ -44,6 +44,9 @@ $slick-font-path: "~slick-carousel/slick/fonts/";
 $slick-loader-path: "~slick-carousel/slick/";
 @import 'vendors/slick/slick';
 @import 'vendors/slick/slick-theme';
+@import 'vendors/datepicker/variablesdatepicker';
+@import 'vendors/datepicker/mixinsdatepicker';
+@import 'vendors/datepicker/datepicker';
 
 @import 'pages/contact';
 @import 'pages/home';
