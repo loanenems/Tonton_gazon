@@ -25,6 +25,7 @@ export default function Login() {
             // Then we assign the token to sessionStorage to keep track of it
             sessionStorage.setItem('access_token', token);
             sessionStorage.setItem('is_logged', 'true');
+            sessionStorage.setItem('user', response.data['user'].id);
             // And set it as a default Authorization header (Bearer token)
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
 

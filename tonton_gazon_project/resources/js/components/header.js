@@ -21,6 +21,7 @@ export default function Nav() {
                 //Once the user is disconnected, we can update the sessionStorage and re-render the component via State
                 sessionStorage.setItem('access_token', '');
                 sessionStorage.setItem('is_logged', 'false');
+                sessionStorage.setItem('user', '');
                 setIsLogged('false');
                 history.push('/');
             })
