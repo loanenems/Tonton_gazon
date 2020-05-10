@@ -67,11 +67,10 @@ export default function Advert() {
                                 <strong>Informations sur l'annonce</strong>
                             </p>
                             <div className="advert_main_info_list">
-                                <p className="advert_price">Tarif au m² : <i>{parseInt(data.Garden.payout,0) + parseInt(data.Garden.size,0)}</i></p>
+                                <p className="advert_price">Tarif au m² : <i>{(data.Advert.payout/data.Garden.size).toFixed(2)} €</i></p>
                                 <p className="advert_size">Superficie : <i>{data.Garden.size} m²</i></p>
-                                <p className="advert_feedback">Note moyenne : <i>4.7/5</i> <a href="">Voir toutes les
-                                évaluations</a></p>
-                                <p className="advert_total_price">Paiement final : <i>{data.Garden.payout}</i></p>
+                                <p className="advert_feedback">Note moyenne : <i>4.7/5</i> <a href="">Voir toutes les évaluations</a></p>
+                                <p className="advert_total_price">Paiement final : <i>{data.Advert.payout} €</i></p>
                             </div>
                             <div className="advert_main_info_action">
                                 <a href="" className="btn btn_primary">Répondre à l'annonce</a>
