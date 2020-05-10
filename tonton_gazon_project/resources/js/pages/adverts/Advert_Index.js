@@ -109,7 +109,7 @@ export default function Advert_Index() {
                         {/* // Nom utilisateur */}
                         <p className="info_name">{data.name}</p>
                         {/* // Prix */}
-                        <p className="info_payout">{data.payout}€</p>
+                        <p className="info_payout">{data.payout}€ ({(data.payout/data.size).toFixed(2)} par m²)</p>
                     </div>
                     <div className="infos_description">
                         <p className="info_payout">{data.description}</p>

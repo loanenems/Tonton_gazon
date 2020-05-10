@@ -13,6 +13,10 @@ import MesAnnonces from './MesAnnonces';
 
 export default function Profile() {
     let {path, url} = useRouteMatch();
+
+    axios.get('/api/userInformations').then(response => {
+        console.log(response);
+    });
     return (
         <div>
             <h2>Votre profil</h2>

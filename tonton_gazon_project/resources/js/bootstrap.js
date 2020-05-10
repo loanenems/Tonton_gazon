@@ -26,15 +26,15 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 //If there is a logged user, we set it as default authorization header (Mainly for GET requests)
-if (localStorage.getItem('access_token')) {
-    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+if (sessionStorage.getItem('access_token')) {
+    window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('access_token');
 }
 
 //If the user just arrived on the app or is logged out...
-if (!localStorage.getItem('is_logged') || localStorage.getItem('is_logged') === 'false') {
-    localStorage.setItem('is_logged', 'false');
+if (!sessionStorage.getItem('is_logged') || sessionStorage.getItem('is_logged') === 'false') {
+    sessionStorage.setItem('is_logged', 'false');
 } else {
-    localStorage.setItem('is_logged', 'true');
+    sessionStorage.setItem('is_logged', 'true');
 }
 
 /**

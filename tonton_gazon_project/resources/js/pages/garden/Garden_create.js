@@ -70,7 +70,7 @@ export default function Garden_create() {
                 }
             }).then(response => {
                 setAdress(response.data.features);
-                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('access_token');
+                window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('access_token');
             });
         }
     };

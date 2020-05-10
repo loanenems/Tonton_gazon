@@ -8,8 +8,8 @@ export default function Nav() {
     //We store the current loggin state into a var
     const [isLogged, setIsLogged] = useState('');
 
-    if (isLogged !== localStorage.getItem('is_logged')) {
-        setIsLogged(localStorage.getItem('is_logged'));
+    if (isLogged !== sessionStorage.getItem('is_logged')) {
+        setIsLogged(sessionStorage.getItem('is_logged'));
     }
 
     //Handle the action of logging out
@@ -18,9 +18,10 @@ export default function Nav() {
 
         axios.get('/api/logout')
             .then(() => {
-                //Once the user is disconnected, we can update the localStorage and re-render the component via State
-                localStorage.setItem('access_token', '');
-                localStorage.setItem('is_logged', 'false');
+                //Once the user is disconnected, we can update the sessionStorage and re-render the component via State
+                sessionStorage.setItem('access_token', '');
+                sessionStorage.setItem('is_logged', 'false');
+                sessionStorage.setItem('user', '');
                 setIsLogged('false');
                 history.push('/');
             })
