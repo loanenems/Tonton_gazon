@@ -7,9 +7,14 @@ import Error from "../error";
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
     const history = useHistory();
     let {path, url} = useRouteMatch();
 
+    if(sessionStorage.getItem('is_logged') === 'true') {
+        //The user is redirected to index
+        history.push('/');
+    }
 
     let submit = (e) => {
         e.preventDefault();
@@ -28,9 +33,7 @@ export default function Login() {
             sessionStorage.setItem('user', response.data['user'].id);
             // And set it as a default Authorization header (Bearer token)
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
-
-            // Redirect to homepage
-            history.push('/');
+            window.location.reload();
         }).catch(error => {
             (error);
         });
