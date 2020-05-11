@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 import axios from 'axios';
-import {urlFromFilter} from '../helpers'
 
 export default function Nav() {
-
     //We store the current loggin state into a var
     const [isLogged, setIsLogged] = useState('');
 
