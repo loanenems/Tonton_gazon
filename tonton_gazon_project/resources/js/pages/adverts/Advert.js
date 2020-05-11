@@ -6,6 +6,7 @@ export default function Advert() {
     let { id } = useParams();
 
     const [data, setData] = useState({});
+    console.log(data);
 
     useEffect(() => {
         Axios.get("/api/advertGetId", { params: { id: id } })
@@ -21,25 +22,6 @@ export default function Advert() {
                 </>
             );
         } else {
-            
-            // // Check if have movableObstacle
-            // if(data.Advert.movableObstacle) { 
-            //     let movableObstacleJSX = (() => {
-            //         return( <> <li>Objet(s) déplacable(s) :{data.Advert.movableObstacle}</li> </> ); 
-            // })} else { { let movableObstacleJSX = "aucun"} }
-
-            // // Check if have unmovableObstacle
-            // if(data.Advert.description) { 
-            //     let unmovableObstacleJSX = (() => {
-            //         return( <> <li>Objet(s) non déplacable(s) :{data.Advert.movableObstacle}</li> </> ); 
-            // })} else { let unmovableObstacleJSX = "aucun" }
-
-            // // Check if have pets
-            // if(data.Advert.description) { 
-            //     let petJSX = (() => {
-            //         return( <> <li>Animaux :{data.Advert.movableObstacle}</li> </> ); 
-            // })} else { { let petJSX = "aucun"} }
-
             return (
                 <div className="advert_detail_container">
                     <div className="advert_head">
@@ -93,9 +75,9 @@ export default function Advert() {
                                 <strong>Informations supplémentaires</strong>
                             </p>
                             <ul>
-                                {/* <li>{movableObstacleJSX}</li>
-                                <li>{unmovableObstacleJSX}</li>
-                                <li>{petJSX}</li> */}
+                                <li>{data.Garden.movableObstacle !== "false" ? data.Garden.movableObstacle : "Aucun"}</li>
+                                <li>{data.Garden.unmovableObstacle !== "false" ? data.Garden.unmovableObstacle : "Aucun"}</li>
+                                <li>{data.Garden.pets !== "false" ? data.Garden.pets : "Aucun"}</li>
                             </ul>
                         </div>
                     </div>

@@ -57,19 +57,19 @@ class GardenController extends Controller
             'address' => 'required',
         ]);
 
-        if ($validateData["movableObstacle"] == true) {
+        if ($validateData["movableObstacle"] == "true") {
             $result = $request->validate([
                 'movableObstacle_details' => 'required',
             ]);
             $validateData["movableObstacle"] = $result["movableObstacle_details"];
         }
-        if ($validateData["unmovableObstacle"] == true) {
+        if ($validateData["unmovableObstacle"] == "true") {
             $result = $request->validate([
                 'unmovableObstacle_details' => 'required',
             ]);
             $validateData["unmovableObstacle"] = $result["unmovableObstacle_details"];
         }
-        if ($validateData["pets"] == true) {
+        if ($validateData["pets"] == "true") {
             $result = $request->validate([
                 'pets_details' => 'required',
             ]);
