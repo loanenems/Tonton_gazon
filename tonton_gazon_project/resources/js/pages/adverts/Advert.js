@@ -6,7 +6,6 @@ export default function Advert() {
     let { id } = useParams();
 
     const [data, setData] = useState({});
-    console.log(data);
 
     useEffect(() => {
         Axios.get("/api/advertGetId", { params: { id: id } })
