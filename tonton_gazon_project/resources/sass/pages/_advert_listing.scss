@@ -9,7 +9,7 @@
         flex-direction: column;
         border: 1px solid black;
 
-        .advert_filter_display {
+        .advert_filter {
             p {
                 font-size: 1.500rem;
                 font-weight: bold;
@@ -39,6 +39,95 @@
                 }
             }
             .display_grid {
+                background-color: white;
+                background-image: url("../../../public/img/display-grid.png");
+                &:hover, &.active {
+                    background-color: black;
+                    background-image: url("../../../public/img/display-grid-white.png");
+                }
+            }
+        }
+
+        .advert_fitler_search {
+            margin-bottom: 2rem;
+            .advert_search_input {
+                height: 36px;
+                border: 1.4px solid black;
+                border-top-left-radius: 18px;
+                border-bottom-left-radius: 18px;
+                padding-left: 8px;
+            }
+            .advert_search_submit {
+                color: white;
+                background-color: black;
+                height: 36px;
+                border: 1.4px solid black;
+                border-top-right-radius: 18px;
+                border-bottom-right-radius: 18px;
+                padding: 0 12px;
+                padding-right: 16px;
+            }
+        }
+
+        .advert_filter_payout {
+            display: flex;
+            align-items: center;
+            label {
+                font-weight: bold;
+                margin-right: 8px;
+                font-size: 1.250rem;
+            }
+            input {
+                margin-right: 8px;
+                height: 36px;
+                width: 100px;
+                border-radius: 18px;
+                padding-left: 8px;
+                border: 1.4px solid black;    
+            }
+        }
+
+        .advert_filter_rate {
+            display: flex;
+        }
+
+        .advert_filter_range {
+            p {
+                font-size: 1.125rem;
+            }
+            select {
+                option {
+
+                }
+            }
+        }
+
+        .advert_filter_role_display {
+            .role_option {
+                display: inline-block;
+                margin-top: 1rem;
+                margin-left: 0;
+                margin-bottom: 1rem;
+                margin-right: 1rem;
+                height: 42px;
+                width: 42px;
+                border-radius: 8px;
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 24px 24px;
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+            .tondeur {
+                background-color: white;
+                background-image: url("../../../public/img/display-row.png");
+                &:hover, &.active {
+                    background-color: black;
+                    background-image: url("../../../public/img/display-row-white.png");
+                }
+            }
+            .tondu {
                 background-color: white;
                 background-image: url("../../../public/img/display-grid.png");
                 &:hover, &.active {

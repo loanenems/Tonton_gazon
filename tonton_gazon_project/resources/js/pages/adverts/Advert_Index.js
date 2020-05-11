@@ -138,19 +138,8 @@ export default function Advert_Index() {
         <Switch>
             <Route exact path={`${path}`}>
                 <div className="ttgz_advert_container">
-                    <SearchFilters updateState={updateState}/>
                     <div className="advert_filter_container">
-                        <div className="bloc_title">
-                            <img src="./img/waving-hand-sign.png"></img>
-                            <h3>Annonces</h3>
-                        </div>
-                        <div className="advert_filter_display">
-                            <p>Affichage : </p>
-                            <a className="display_option display_grid active" data-display="advert_list_container_grid"
-                               alt="Affichage en colonne"></a>
-                            <a className="display_option display_row" data-display="advert_list_container_row"
-                               alt="Affichage en ligne"></a>
-                        </div>
+                        <SearchFilters updateState={updateState}/>
                     </div>
                     <div className="advert_list_container advert_list_container_grid">
                         {advertJSX}
