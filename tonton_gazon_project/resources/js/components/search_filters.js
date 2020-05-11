@@ -26,6 +26,12 @@ export default function SearchFilters(props) {
                     <h3>Annonces</h3>
                 </div>
 
+                <div id="advert_filter_display" className="bloc_title">
+                    <img src="./img/waving-hand-sign.png"></img>
+                    <h4>Afficher les filtres</h4>
+                    <img src="./img/waving-hand-sign.png"></img>
+                </div>
+
                 {/*Search bar*/}
                 <div className="advert_filter advert_fitler_search">
                     <input className="advert_search_input" placeholder="Rechercher" type="text" name="search" id="search" />
@@ -51,36 +57,30 @@ export default function SearchFilters(props) {
                 {/*Min payout for a job*/}
                 <div className="advert_filter advert_filter_payout">
                     <label htmlFor="payout">Tarif min</label>
-                    <input type="number" name="payout" id="payout" placeholder="0"/>
+                    <input type="number" name="payout" id="payout" placeholder="0" />
                 </div>
 
 
                 {/*user's eval */}
                 <div className="advert_filter advert_filter_rate">
-                    <div>
-                        <input type="radio" id="eval_1" name="eval" value="1" />
-                        <label htmlFor="eval_1">1</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="eval_2" name="eval" value="2" />
-                        <label htmlFor="eval_2">2</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="eval_3" name="eval" value="3" />
-                        <label htmlFor="eval_3">3</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="eval_4" name="eval" value="4" />
-                        <label htmlFor="eval_4">4</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="eval_5" name="eval" value="5" />
-                        <label htmlFor="eval_5">5</label>
+                    <p>Évaluation minimum de l'utilisateur : </p>
+                    <div className="rating-group">
+                        <input disabled checked className="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
+                        <label aria-label="1 star" className="rating__label" htmlFor="rating3-1"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input className="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
+                        <label aria-label="2 stars" className="rating__label" htmlFor="rating3-2"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input className="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
+                        <label aria-label="3 stars" className="rating__label" htmlFor="rating3-3"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input className="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
+                        <label aria-label="4 stars" className="rating__label" htmlFor="rating3-4"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input className="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
+                        <label aria-label="5 stars" className="rating__label" htmlFor="rating3-5"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
+                        <input className="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
                     </div>
                 </div>
-                
+
                 {/*Dates des annonces*/}
-                <div>
+                <div className="advert_filter advert_filter_date">
                     <label htmlFor="start_date">Date début (ou simple date si non range)</label>
                     <input type="date" name="start_date" id="start_date" />
                     <br />
@@ -91,7 +91,7 @@ export default function SearchFilters(props) {
                 <div className="advert_filter advert_filter_range">
                     <p>Distance entre l'annonce et votre domicile : </p>
                     <select name="distances" id="distances">
-                        <option value="" selected>-- Choisissez une option --</option>
+                        <option value="" selected>-- Choisissez une distance --</option>
                         <option value="5">5 Km</option>
                         <option value="15">15 Km</option>
                         <option value="20">20 Km</option>
