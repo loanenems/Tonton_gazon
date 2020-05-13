@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 
 import {
     Switch,
@@ -10,13 +10,11 @@ import {
 import MesInfos from './MesInfos';
 import MesJardins from './MesJardins';
 import MesAnnonces from './MesAnnonces';
+import axios from "axios";
 
 export default function Profile() {
     let {path, url} = useRouteMatch();
 
-    axios.get('/api/userInformations').then(response => {
-        console.log(response);
-    });
     return (
         <div>
             <h2>Votre profil</h2>
