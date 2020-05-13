@@ -91,7 +91,7 @@ export default function SearchFilters(props) {
                 <div className="advert_filter advert_filter_range">
                     <p>Distance entre l'annonce et votre domicile : </p>
                     <select name="distances" id="distances">
-                        <option value="" selected>-- Choisissez une distance --</option>
+                        <option value="" defaultValue>-- Choisissez une distance --</option>
                         <option value="5">5 Km</option>
                         <option value="15">15 Km</option>
                         <option value="20">20 Km</option>
