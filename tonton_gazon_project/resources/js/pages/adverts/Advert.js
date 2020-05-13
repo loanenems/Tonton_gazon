@@ -17,17 +17,15 @@ export default function Advert() {
     }, []);
 
     let commentJSX = (() => {
-        data.User.feedbacks.feedbacks.map((feedback) => {
-        console.log(feedback);
+        return data.User.feedbacks.feedbacks.map((feedback) => {
             return (
-                <div>azeazeazeaze</div>
-                // <div className="advert_comment">
-                //     <img src="./img/pierre-alain.jpg" alt="" />
-                //     <div className="advert_comment_text">
-                //         <p><strong>{feedback.id}</strong></p>
-                //         <p>{feedback.comment}</p>
-                //     </div>
-                // </div>
+                <div className="advert_comment">
+                    <img src="./img/pierre-alain.jpg" alt="" />
+                    <div className="advert_comment_text">
+                        <p><strong>{feedback.id}</strong></p>
+                        <p>{feedback.comment}</p>
+                    </div>
+                </div>
             )
         })
     });
