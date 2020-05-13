@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Advert;
+use App\Feedback;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -110,6 +111,15 @@ class AdvertController extends Controller
             ->where('idTarget', '=', $fetch->idOwner)
             ->first();
 
+        if ($nbAvisRecus) {
+            $feedbacks = Feedback::where('idTarget', $fetch->idOwner)->get();
+            $sum = 0;
+            foreach ($feedbacks as $feedback) {
+                $sum += $feedback->rating;
+            }
+            $rating = round($sum / $nbAvisRecus->cpt);
+        }
+
         $advert = [
             "id" => $fetch->id,
             "title" => $fetch->title,
@@ -127,14 +137,18 @@ class AdvertController extends Controller
             "unmovableObstacle" => $fetch->unmovableObstacle,
             "pets" => $fetch->pets,
             "equipment" => $fetch->equipment,
-            "image" => $fetch->image,
+            "image" => json_decode($fetch->image),
         ];
         $user = [
             "id" => $fetch->idOwner,
             "xp" => $fetch->xp,
             "name" => $fetch->name,
             "surname" => $fetch->surname,
-            "nbAvis" => $nbAvisRecus->cpt,
+            "feedbacks" => [
+                "nbFeedbacks" => $nbAvisRecus->cpt,
+                "feedbacks" => $feedbacks,
+                "rating" => $rating
+            ],
         ];
 
         return response(['data' => array("Advert" => $advert, "Garden" => $garden, "User" => $user)], 200);
@@ -206,8 +220,8 @@ class AdvertController extends Controller
         $search = $request->query('search') === null ? "t" : $request->query('search');
         $payout = $request->query('payout');
         $eval = $request->query('eval');
-        $startDate = $request->query('start_date') === null ? DB::table('advert')->min('date') : $request->query('start_date');
-        $endDate = $request->query('end_date') === null ? DB::table('advert')->max('date') : $request->query('end_date');
+        $startDate = $request->query('start_date') === null ? '2000-01-01' : $request->query('start_date');
+        $endDate = $request->query('end_date') === null ? '2050-01-01' : $request->query('end_date');
         $distance = $request->query('distance');
         $userCoordinates = json_decode($request->query('position'), true);
 
@@ -264,11 +278,11 @@ class AdvertController extends Controller
                 foreach ($query->select('advert.date')->get() as $dates) {
                     $datelist = json_decode($dates->date);
                     $in = false;
-                    if($datelist !== null) {
+                    if ($datelist !== null) {
                         foreach ($datelist as $date) {
-                            if (($date >= $startDate) && ($date <= $endDate) && $in === false){
+                            if (($date >= $startDate) && ($date <= $endDate) && $in === false) {
                                 $in = true;
-                                $query->orWhere('advert.date','=',$dates->date);
+                                $query->orWhere('advert.date', '=', $dates->date);
                             }
                         }
                     }
