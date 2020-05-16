@@ -1,0 +1,29 @@
+.garden_adress_form {
+    margin-bottom: 0px!important;
+}
+
+.garden_adress_suggestion_group {
+    width: 400px;
+    padding-left: 20px;
+    @include screen-sm () {
+        width: 90%;
+    }
+    .garden_adress_suggestion {
+        padding: 10px;
+        border: 2px solid black;
+        border-top: none;
+        background-color: $c-lightGrey;
+        &:hover {
+            background-color: $c-grey;
+            cursor: pointer;
+        }
+        &:last-child {
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+        }
+    }
+} 
+
+.garden_button {
+    margin-top: 2rem!important;
+}

@@ -87,7 +87,8 @@ export default function Garden_create() {
     let adressJSX = adress.map((obj) => {
         return (
             <>
-                <p data-lat={obj.geometry.coordinates[1]} data-lon={obj.geometry.coordinates[0]}
+                <p className="garden_adress_suggestion"
+                   data-lat={obj.geometry.coordinates[1]} data-lon={obj.geometry.coordinates[0]}
                    onClick={(e) => handleSelect(e)}>{obj.properties.label}</p>
             </>
         )
@@ -166,17 +167,17 @@ export default function Garden_create() {
                     <input type="file" className="form_input" id="image" name="image" accept="image/png, image/jpeg"/>
                 </div>
 
-                <div className="form_group">
+                <div className="garden_adress_form form_group">
                     <label htmlFor="address" className="form_label">Adresse</label>
                     <input type="text" id="address" className="form_input" onKeyUp={(e) => handleAddress(e)}/>
                 </div>
 
                 {/*Todo: Gérer le style pour la partie position absolute [Matthieu]*/}
-                <>
+                <div className="garden_adress_suggestion_group">
                     {adressJSX}
-                </>
+                </div>
 
-                <button type="submit">Envoyer</button>
+                <button className="garden_button btn btn_primary" type="submit">Envoyer</button>
             </form>
         </>
     );
