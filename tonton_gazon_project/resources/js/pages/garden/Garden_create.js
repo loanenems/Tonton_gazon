@@ -172,7 +172,6 @@ export default function Garden_create() {
                     <input type="text" id="address" className="form_input" onKeyUp={(e) => handleAddress(e)}/>
                 </div>
 
-                {/*Todo: Gérer le style pour la partie position absolute [Matthieu]*/}
                 <div className="garden_adress_suggestion_group">
                     {adressJSX}
                 </div>
