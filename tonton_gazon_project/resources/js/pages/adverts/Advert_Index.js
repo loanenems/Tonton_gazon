@@ -18,6 +18,8 @@ export default function Advert_Index() {
     const [adverts, setAdverts] = useState({data: []});
     const [count, setCount] = useState(0);
 
+    console.log(adverts);
+
     //----------Requests
 
     //Request fetching adverts corresponding to the search filter

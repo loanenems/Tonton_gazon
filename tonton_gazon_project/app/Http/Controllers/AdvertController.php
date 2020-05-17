@@ -173,10 +173,19 @@ class AdvertController extends Controller
         $validatedData = $request->validate([
             "title" => "required",
             "description" => "required",
-            "idGarden" => "required",
             "payout" => "required",
-            "date" => "required"
+            "date" => "required",
+            "type" => "required"
         ]);
+
+        $advert = new Advert;
+
+        if($validatedData["type"] == 1) {
+            $request->validate([
+                "idGarden" => "required"
+            ]);
+            $advert->idGarden = $validatedData['idGarden'];
+        }
 
         //Transform date json to assoc array
         $dates = json_decode($request->get('date'), true);
@@ -197,14 +206,13 @@ class AdvertController extends Controller
             return strtotime($a) - strtotime($b);
         });
 
-        $advert = new Advert;
 
-        $advert->idGarden = $validatedData['idGarden'];
+
         $advert->title = $validatedData['title'];
         $advert->description = $validatedData['description'];
         $advert->payout = $validatedData['payout'];
-        $advert->date = json_encode($finalDates);
-
+        $advert->date = str_replace('"','',json_encode($finalDates));
+        $advert->type = $validatedData['type'];
 
         $advert->save();
     }
@@ -217,7 +225,7 @@ class AdvertController extends Controller
     public function searchAdvert(Request $request)
     {
         //List of all the possible filters
-        $search = $request->query('search') === null ? "t" : $request->query('search');
+        $search = $request->query('search') === null ? "" : $request->query('search');
         $payout = $request->query('payout');
         $eval = $request->query('eval');
         $startDate = $request->query('start_date') === null ? '2000-01-01' : $request->query('start_date');
@@ -262,6 +270,7 @@ class AdvertController extends Controller
                 'users.name as name',
                 'users.surname as username'
             )
+            ->where('advert.type',1)
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
                     ->orWhere('advert.description', 'like', '%' . $search . '%');

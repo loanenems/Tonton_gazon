@@ -1,9 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React from 'react'
 import {
     Switch,
     Route,
     Link,
-    useParams,
     useRouteMatch
 } from "react-router-dom";
 import AnnonceTondu from "./AnnonceTondu";
@@ -15,8 +14,8 @@ export default function Advert_create() {
     return (
         <Switch>
             <Route exact path={path}>
-                    <Link to={`${url}/tondeur`}>Tondeur</Link>
-                    <Link to={`${url}/tondu`}>Tondu</Link>
+                <Link to={`${url}/tondeur`}>Tondeur</Link>
+                <Link to={`${url}/tondu`}>Tondu</Link>
             </Route>
             <Route path={`${path}/tondu`}>
                 <AnnonceTondu/>

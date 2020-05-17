@@ -23,6 +23,7 @@ export default function AnnonceTondu() {
         data.append('description', document.getElementById('description').value);
         data.append('idGarden', document.getElementById('garden_id').value);
         data.append('payout', document.getElementById('salaire').value);
+        data.append('type', 1);
         for (let date of $('#date_group').find('input[type="date"]')) {
             dates[$(date).attr('id')] = $(date).val();
         }
@@ -50,7 +51,7 @@ export default function AnnonceTondu() {
     return (
         <form className="bloc bloc_form">
             <div className="bloc_title">
-                <img src="./img/waving-hand-sign.png"/>
+                <img src="../../img/waving-hand-sign.png"/>
                 <h3>Creer une annonce</h3>
             </div>
 
