@@ -14,7 +14,7 @@ class AddColumnType extends Migration
     public function up()
     {
         Schema::table('advert', function (Blueprint $table) {
-            $table->boolean('type');
+            $table->boolean('type')->nullable();
         });
     }
 

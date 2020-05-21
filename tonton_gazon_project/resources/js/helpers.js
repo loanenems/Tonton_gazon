@@ -14,6 +14,8 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
         return "";
     };
 
+    console.log(document.getElementById('equipment').value);
+
     let filters = {
         search: document.getElementById('search').value,
         payout: document.getElementById('payout').value,
@@ -23,6 +25,7 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
         page: requestedPage,
         distance: document.getElementById('distances').options[document.getElementById('distances').selectedIndex].value,
         position: position,
+        equipment: document.getElementById('equipment').checked,
     };
 
     let url = "/adverts";

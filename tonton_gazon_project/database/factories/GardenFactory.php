@@ -17,7 +17,7 @@ $factory->define(Garden::class, function (Faker $faker) {
         'movableObstacle' => $faker->randomDigit,
         'unmovableObstacle' => $faker->randomDigit,
         'pets' => $faker->randomDigit,
-        'equipment' => $faker->randomDigit,
+        'equipment' => $faker->boolean,
         'image' => '{"image_0":"'.$faker->imageUrl().'"}',
             ];
 });

@@ -100,6 +100,11 @@ export default function SearchFilters(props) {
                         <option value="35">35 Km</option>
                     </select>
                 </div>
+
+                <div className="advert_filter advert_filter_equipment">
+                    <p>Matériel de tonte à disposition ?</p>
+                    <input type="checkbox" name="equipment" id="equipment"/>
+                </div>
             </>
         )
     };

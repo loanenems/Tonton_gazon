@@ -231,7 +231,11 @@ class AdvertController extends Controller
         $startDate = $request->query('start_date') === null ? '2000-01-01' : $request->query('start_date');
         $endDate = $request->query('end_date') === null ? '2050-01-01' : $request->query('end_date');
         $distance = $request->query('distance');
+        $equipment = $request->query('equipment') === null ? false : $request->query('equipment');
         $userCoordinates = json_decode($request->query('position'), true);
+
+        dump($equipment);
+
 
         //The part above handle the geolocation filter. We are comparing positions between two geographical points to return distance.
         //If there is a match, we add the advert id to list of match
@@ -297,6 +301,12 @@ class AdvertController extends Controller
                     }
                 }
             })
+            ->where(function($query) use ($equipment) {
+                if($equipment === "true") {
+                    $query->where('garden.equipment',1);
+                }
+            })
+            ->where('advert.state',0)
             ->orderBy('advert.created_at', 'desc')
             ->paginate(9);
         return response(['adverts' => $adverts], 200);

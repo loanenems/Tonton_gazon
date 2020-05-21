@@ -17,7 +17,6 @@ export default function Advert_Index() {
 
     const [adverts, setAdverts] = useState({data: []});
     const [count, setCount] = useState(0);
-
     console.log(adverts);
 
     //----------Requests
@@ -35,6 +34,7 @@ export default function Advert_Index() {
             position: query.get('position'),
             start_date: query.get('start_date'),
             end_date: query.get('end_date'),
+            equipment: query.get('equipment')
         };
 
         axios.get('/api/searchAdvert', {
