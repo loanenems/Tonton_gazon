@@ -45,6 +45,7 @@ export default function MesInfos() {
             <div className="user_main_info">
                 <label for="profile_pic">
                     <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
+                    <b className="profile_pic_change"><br />Changer de photo</b>
                     <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChange()}/>
                 </label>
                 <h3>Profil de Théo Fromager</h3>
