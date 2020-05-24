@@ -64,19 +64,18 @@ export default function SearchFilters(props) {
                 {/*user's eval */}
                 <div className="advert_filter advert_filter_rate">
                     <p>Évaluation minimum de l'utilisateur : </p>
-                    <div className="rating-group">
-                        <input disabled checked className="rating__input rating__input--none" name="rating3" id="rating3-none" value="0" type="radio" />
-                        <label aria-label="1 star" className="rating__label" htmlFor="rating3-1"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input className="rating__input" name="rating3" id="rating3-1" value="1" type="radio" />
-                        <label aria-label="2 stars" className="rating__label" htmlFor="rating3-2"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input className="rating__input" name="rating3" id="rating3-2" value="2" type="radio" />
-                        <label aria-label="3 stars" className="rating__label" htmlFor="rating3-3"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input className="rating__input" name="rating3" id="rating3-3" value="3" type="radio" />
-                        <label aria-label="4 stars" className="rating__label" htmlFor="rating3-4"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input className="rating__input" name="rating3" id="rating3-4" value="4" type="radio" />
-                        <label aria-label="5 stars" className="rating__label" htmlFor="rating3-5"><i className="rating__icon rating__icon--star fa fa-star"></i></label>
-                        <input className="rating__input" name="rating3" id="rating3-5" value="5" type="radio" />
-                    </div>
+                    <fieldset className="rating">
+                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" htmlFor="star5" title="Awesome - 5 stars"></label>
+                        <input type="radio" id="star4half" name="rating" value="4 and a half" /><label className="half" htmlFor="star4half" title="Pretty good - 4.5 stars"></label>
+                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" htmlFor="star4" title="Pretty good - 4 stars"></label>
+                        <input type="radio" id="star3half" name="rating" value="3 and a half" /><label className="half" htmlFor="star3half" title="Meh - 3.5 stars"></label>
+                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" htmlFor="star3" title="Meh - 3 stars"></label>
+                        <input type="radio" id="star2half" name="rating" value="2 and a half" /><label className="half" htmlFor="star2half" title="Kinda bad - 2.5 stars"></label>
+                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" htmlFor="star2" title="Kinda bad - 2 stars"></label>
+                        <input type="radio" id="star1half" name="rating" value="1 and a half" /><label className="half" htmlFor="star1half" title="Meh - 1.5 stars"></label>
+                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" htmlFor="star1" title="Sucks big time - 1 star"></label>
+                        <input type="radio" id="starhalf" name="rating" value="half" /><label className="half" htmlFor="starhalf" title="Sucks big time - 0.5 stars"></label>
+                    </fieldset>
                 </div>
 
                 {/*Dates des annonces*/}
