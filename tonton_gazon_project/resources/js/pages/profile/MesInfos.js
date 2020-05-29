@@ -15,17 +15,15 @@ export default function MesInfos() {
             }
         ).then(res => {
             setData(res.data);
+            console.log(res.data);
         });
     }, []);
 
     let handleChange = () => {
         let data = new FormData();
         let img = document.getElementById('profile_pic').files[0];
-        console.log(img);
         if (img !== undefined) {
             data.append('image', img, img.name);
-        } else {
-            data.append('image', "");
         }
 
         axios({
@@ -40,38 +38,34 @@ export default function MesInfos() {
         })
     };
 
-    return (
-        <div class="mes-infos">
+    if( data.hasOwnProperty("User") ) {
+        return (
+            <div class="mes-infos">
             <div class="formulaire">
                 <form className="bloc bloc_form">
                     <div className="form_group">
-                        <label className="form_label">Genre</label>
-                        <input className="form_input" type="text" placeholder={data.hasOwnProperty('User') ? data.User.profile_picture : "Votre genre"}></input>
-                    </div>
-
-                    <div className="form_group">
                         <label className="form_label">Nom</label>
-                        <input className="form_input" type="text" placeholder="Votre nom"></input>
+                        <input className="form_input" type="text" defaultValue={data.User.name ? data.User.name : ''} placeholder="Votre nom"></input>
                     </div>
 
                     <div className="form_group">
                         <label className="form_label">Prénom</label>
-                        <input className="form_input" type="text" placeholder="Votre prénom"></input>
+                        <input className="form_input" type="text" defaultValue={data.User.surname ? data.User.surname : ''} placeholder="Votre prénom"></input>
                     </div>
 
                     <div className="form_group">
                         <label className="form_label">Adresse e-mail</label>
-                        <input className="form_input" type="text" placeholder="Votre adresse e-mail"></input>
+                        <input className="form_input" type="text" defaultValue={data.User.email ? data.User.email : ''} placeholder="Votre adresse e-mail"></input>
                     </div>
 
                     <div className="form_group">
                         <label className="form_label">Numéro de téléphone</label>
-                        <input className="form_input" type="text" placeholder="Votre numéro de téléphone"></input>
+                        <input className="form_input" type="text" defaultValue={data.User.phone_number ? data.User.phone_number : ''} placeholder="Votre numéro de téléphone"></input>
                     </div>
 
                     <div className="form_group">
                     <label className="form_label">À propos de moi</label>
-                    <textarea className="form_input"cols="30" rows="5" placeholder="Présentez vous en quelques lignes..."></textarea>
+                    <textarea className="form_input"cols="30" rows="5" defaultValue={data.User.about_me ? data.User.about_me : ''} placeholder="Présentez vous en quelques lignes..."></textarea>
                 </div>
                 <a href="" className="btn btn_primary">Sauvegarder</a>
                 <a href="" className="btn btn_secondary">Annuler les modifications</a>
@@ -95,5 +89,8 @@ export default function MesInfos() {
                 </div>
             </div>
         </div>
-    )
+        )
+    } else {
+        return ( <></> )
+    }
 };
