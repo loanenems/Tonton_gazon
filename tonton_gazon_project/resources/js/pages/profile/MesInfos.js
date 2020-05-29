@@ -41,45 +41,59 @@ export default function MesInfos() {
     };
 
     return (
-        <div className="visit_profile_container">
-            <div className="user_main_info">
-                <label for="profile_pic">
-                    <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
-                    <b className="profile_pic_change"><br />Changer de photo</b>
-                    <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChange()}/>
-                </label>
-                <h3>Profil de Théo Fromager</h3>
-            </div>
-            <div className="user_info">
-                <h4>A propos de moi</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Nunc mattis enim ut tellus elementum. Massa vitae tortor
-                    condimentum lacinia quis. Vulputate dignissim suspendisse
-                    in est ante in. Et sollicitudin ac orci phasellus egestas.
-                    Tortor consequat id porta nibh venenatis cras sed felis eget.
-                    Arcu bibendum at varius vel pharetra. Et odio pellentesque diam
-                    volutpat commodo sed egestas. Tortor pretium viverra suspendisse
-                    potenti nullam ac tortor.</p>
-            </div>
-            <div className="user_stat">
-                <h4>Statistiques</h4>
-                <div className="user_stat_container">
-                    <div className="user_stat_solo user_stat_rate">
-                        <p className="stat_title">Note moyenne</p>
-                        <p className="stat_info">4.5 <img src="./img/etoile_verte.svg" alt="étoile"/></p>
+        <div class="mes-infos">
+            <div class="formulaire">
+                <form className="bloc bloc_form">
+                    <div className="form_group">
+                        <label className="form_label">Genre</label>
+                        <input className="form_input" type="text" placeholder={data.hasOwnProperty('User') ? data.User.profile_picture : "Votre genre"}></input>
                     </div>
-                    <div className="user_stat_solo user_stat_note">
-                        <p className="stat_title">Nombre de notes</p>
-                        <p className="stat_info">97</p>
+
+                    <div className="form_group">
+                        <label className="form_label">Nom</label>
+                        <input className="form_input" type="text" placeholder="Votre nom"></input>
                     </div>
-                    <div className="user_stat_solo user_stat_number">
-                        <p className="stat_title">Nombre de tonte</p>
-                        <p className="stat_info">12</p>
+
+                    <div className="form_group">
+                        <label className="form_label">Prénom</label>
+                        <input className="form_input" type="text" placeholder="Votre prénom"></input>
+                    </div>
+
+                    <div className="form_group">
+                        <label className="form_label">Adresse e-mail</label>
+                        <input className="form_input" type="text" placeholder="Votre adresse e-mail"></input>
+                    </div>
+
+                    <div className="form_group">
+                        <label className="form_label">Numéro de téléphone</label>
+                        <input className="form_input" type="text" placeholder="Votre numéro de téléphone"></input>
+                    </div>
+
+                    <div className="form_group">
+                    <label className="form_label">À propos de moi</label>
+                    <textarea className="form_input"cols="30" rows="5" placeholder="Présentez vous en quelques lignes..."></textarea>
+                </div>
+                <a href="" className="btn btn_primary">Sauvegarder</a>
+                <a href="" className="btn btn_secondary">Annuler les modifications</a>
+                </form>
+            </div>
+            <div class="sidebar">
+                <h3>Votre porte monnaie</h3>
+                <div class="card">
+                    <div class="stat">
+                        <span class="text">Solde actuel</span>
+                        <span class="num">13,00 €</span>
+                        <a class="btn btn_primary" href="">Ajouter des fonds</a>
+                    </div>
+                </div>
+                <h3>Vos notifications</h3>
+                <div class="card">
+                    <div class="stat notif">
+                        <span class="text">Vous avez un nouveau message</span>
+                        <a class="btn btn_primary" href="">Voir les notifications</a>
                     </div>
                 </div>
             </div>
-            <a class="btn btn_primary" href="">Prendre contact avec Théo</a>
         </div>
     )
 };
