@@ -123,10 +123,10 @@ class AdvertController extends Controller
 
         //If the current user is a mowerer
         $response = DB::table('response')
-            ->where('idAdvert',$fetch->id)
-            ->orWhere(function($query) {
-                $query->where('idMowerer',auth()->user()->id)
-                ->where('idMowered',auth()->user()->id);
+            ->where('idAdvert', $fetch->id)
+            ->orWhere(function ($query) {
+                $query->where('idMowerer', auth()->user()->id)
+                    ->where('idMowered', auth()->user()->id);
             })
             ->count();
 
@@ -168,14 +168,98 @@ class AdvertController extends Controller
 
     /**
      * Retrieve all the adverts of a specified author's ID
-     * @param $id
+     * @param Request $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchAdvertByAuthor($id)
+    public function fetchAdvertByAuthor(Request $request)
     {
-        $advert = Advert::where('idAuthor', $id)->get();
+        $data = $request->validate([
+            "id" => 'required'
+        ]);
 
-        return response(['advert' => $advert], 200);
+
+        //Fetching all informations from database
+        $fetch = DB::table('advert')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->join('users', 'garden.idOwner', 'users.id')
+            ->select('advert.*',
+                'garden.description as description_jardin',
+                'garden.idOwner',
+                'garden.size',
+                'garden.movableObstacle',
+                'garden.unmovableObstacle',
+                'garden.pets',
+                'garden.equipment',
+                'garden.image',
+                'users.xp',
+                'users.name',
+                'users.surname'
+            )
+            ->where("garden.idOwner", "=", $data['id'])
+            ->orderBy('advert.created_at', 'desc')
+            ->get();
+
+
+        if (sizeof($fetch) > 0) {
+            $list = [];
+            foreach($fetch as $row) {
+                //Here we are counting the amount of feedbacks received by the user
+                $nbAvisRecus = DB::table('feedback')
+                    ->selectRaw('count(*) as cpt')
+                    ->where('idTarget', '=', $row->idOwner)
+                    ->first();
+
+                if ($nbAvisRecus) {
+                    $feedbacks = Feedback::where('idTarget', $row->idOwner)->get();
+                    $sum = 0;
+                    foreach ($feedbacks as $feedback) {
+                        $sum += $feedback->rating;
+                    }
+                    $rating = round($sum / $nbAvisRecus->cpt);
+                }
+
+                //If the current user is a mowerer
+                $responseList = DB::table('response')
+                    ->where('idAdvert', $row->id)
+                    ->get();
+
+                $advert = [
+                    "id" => $row->id,
+                    "title" => $row->title,
+                    "description" => $row->description,
+                    "payout" => $row->payout,
+                    "state" => $row->state,
+                    "type" => $row->type,
+                    "responseList" => $responseList,
+                    "created_at" => $row->created_at,
+                    "updated_at" => $row->updated_at,
+                ];
+                $garden = [
+                    "id" => $row->idGarden,
+                    "description" => $row->description_jardin,
+                    "size" => $row->size,
+                    "movableObstacle" => $row->movableObstacle,
+                    "unmovableObstacle" => $row->unmovableObstacle,
+                    "pets" => $row->pets,
+                    "equipment" => $row->equipment,
+                    "image" => json_decode($row->image),
+                ];
+                $user = [
+                    "id" => $row->idOwner,
+                    "xp" => $row->xp,
+                    "name" => $row->name,
+                    "surname" => $row->surname,
+                    "feedbacks" => [
+                        "nbFeedbacks" => $nbAvisRecus->cpt,
+                        "feedbacks" => $feedbacks,
+                        "rating" => $rating
+                    ],
+                ];
+                $list[] = array("Advert" => $advert, "Garden" => $garden, "User" => $user);
+            }
+            return response(['data' => $list], 200);
+        }
+        return response([], 200);
     }
 
     public function addAdvert(Request $request)
@@ -190,13 +274,14 @@ class AdvertController extends Controller
             "type" => "required"
         ]);
 
+
         $advert = new Advert;
 
         if ($validatedData["type"] == 1) {
-            $request->validate([
+            $otherData = $request->validate([
                 "idGarden" => "required"
             ]);
-            $advert->idGarden = $validatedData['idGarden'];
+            $advert->idGarden = $otherData['idGarden'];
         }
 
         //Transform date json to assoc array
