@@ -14,12 +14,51 @@ import axios from "axios";
 
 export default function Profile() {
     let {path, url} = useRouteMatch();
+    const [data, setData] = useState({});
+
+    //Fetch the data regarding the current user's profile
+    useEffect(() => {
+        axios.get('/api/userInformations', {
+                params: {
+                    id: sessionStorage.getItem('user')
+                }
+            }
+        ).then(res => {
+            setData(res.data);
+        });
+    }, []);
+
+    let handleChange = () => {
+        let data = new FormData();
+        let img = document.getElementById('profile_pic').files[0];
+        console.log(img);
+        if (img !== undefined) {
+            data.append('image', img, img.name);
+        } else {
+            data.append('image', "");
+        }
+
+        axios({
+            method: 'post',
+            url: '/api/updateInformations',
+            data: data,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        }).then(res => {
+            window.location.reload();
+        })
+    };
 
     return (
         <div class="profile">
             <div class="sidebar">
                 <div class="boxed">
-                    <img src="https://avatarfiles.alphacoders.com/108/thumb-108953.png" alt="profile-pic"></img>
+                    <label for="profile_pic">
+                        <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
+                        <b className="profile_pic_change"><br />Changer de photo</b>
+                        <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChange()}/>
+                    </label>
                     <h2>Mon profil</h2>
                 </div>
                 <h3>Vos liens utiles</h3>

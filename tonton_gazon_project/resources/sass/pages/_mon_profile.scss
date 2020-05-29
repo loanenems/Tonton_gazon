@@ -10,21 +10,20 @@
     .sidebar{
         width:20%;
         @include screen-md() {
-            width:300px;
-
+            width: 100%;
         }
         
 
         h2{
             font-weight: 600;
-            font-size: 32px;
+            font-size: 2rem;
             letter-spacing: -2px;
             color: black;
         }
 
         h3{
             font-weight: 600;
-            font-size: 22px;
+            font-size: 1.75rem;
             margin-bottom: 20px;
             letter-spacing: -1px;
 
@@ -39,11 +38,37 @@
             align-items: center;
             margin-bottom: 30px;
 
-            img{
-                width: 50px;
-                height: 50px;
-                border-radius: 100%;
-                margin-right: 20px;
+            label {
+                position: relative;
+                img {
+                    position: relative;
+                    height: 52px;
+                    width: 52px;
+                    border-radius: 52px;
+                    margin-right: 10px;
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+                img:hover + .profile_pic_change, .profile_pic_change:hover{
+                    display: block;
+                    cursor: pointer;
+                }
+                .profile_pic_change {
+                    display: none;
+                    color: white;
+                    background-color: rgba(0, 0, 0,0.5 );
+                    position: absolute;
+                    height: 52px;
+                    width: 52px;
+                    border-radius: 52px;
+                    top: 0; left: 0;
+                    text-align: center;
+                    font-size: 0.6250rem;
+                }
+                input {
+                    display: none;
+                }
             }
         }
         
@@ -90,13 +115,13 @@
             }
 
             .text{
-                font-size: 16px;
+                font-size: 1rem;
                 font-weight: 600;
                 margin-bottom: 5px;
             }
 
             .num{
-                font-size: 24px;
+                font-size: 1.5rem;
                 font-weight: 700;
             }
 
@@ -121,7 +146,10 @@
     .profile-content{
         width: 75%;
         margin-left: 5%;
-
+        @include screen-md() {
+            margin-left: 0;
+            width:100%;
+        }
         .mes-infos{
             display: flex;
             flex-direction: row;
@@ -132,6 +160,18 @@
 
             .formulaire{
                 width: 70%;
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .form_group {
+                        width: 100%;
+                    }
+
+                    .btn_secondary {
+                        text-align: center;
+                    }
+                }
                 @include screen-md() {
                     margin-top:50px;
                     width:100%;
@@ -140,7 +180,7 @@
             .sidebar{
                 width:30%;
                 @include screen-md() {
-                    width:300px;
+                    width: 100%;
                 }
             }
         }
