@@ -234,9 +234,6 @@ class AdvertController extends Controller
         $equipment = $request->query('equipment') === null ? false : $request->query('equipment');
         $userCoordinates = json_decode($request->query('position'), true);
 
-        dump($equipment);
-
-
         //The part above handle the geolocation filter. We are comparing positions between two geographical points to return distance.
         //If there is a match, we add the advert id to list of match
         $listMatch = [];
