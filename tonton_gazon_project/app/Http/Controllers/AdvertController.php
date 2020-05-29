@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Advert;
 use App\Feedback;
+use App\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -120,12 +121,23 @@ class AdvertController extends Controller
             $rating = round($sum / $nbAvisRecus->cpt);
         }
 
+        //If the current user is a mowerer
+        $response = DB::table('response')
+            ->where('idAdvert',$fetch->id)
+            ->orWhere(function($query) {
+                $query->where('idMowerer',auth()->user()->id)
+                ->where('idMowered',auth()->user()->id);
+            })
+            ->count();
+
         $advert = [
             "id" => $fetch->id,
             "title" => $fetch->title,
             "description" => $fetch->description,
             "payout" => $fetch->payout,
             "state" => $fetch->state,
+            "type" => $fetch->type,
+            "response" => $response,
             "created_at" => $fetch->created_at,
             "updated_at" => $fetch->updated_at,
         ];
@@ -180,7 +192,7 @@ class AdvertController extends Controller
 
         $advert = new Advert;
 
-        if($validatedData["type"] == 1) {
+        if ($validatedData["type"] == 1) {
             $request->validate([
                 "idGarden" => "required"
             ]);
@@ -207,11 +219,10 @@ class AdvertController extends Controller
         });
 
 
-
         $advert->title = $validatedData['title'];
         $advert->description = $validatedData['description'];
         $advert->payout = $validatedData['payout'];
-        $advert->date = str_replace('"','',json_encode($finalDates));
+        $advert->date = str_replace('"', '', json_encode($finalDates));
         $advert->type = $validatedData['type'];
 
         $advert->save();
@@ -271,7 +282,7 @@ class AdvertController extends Controller
                 'users.name as name',
                 'users.surname as username'
             )
-            ->where('advert.type',1)
+            ->where('advert.type', 1)
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
@@ -298,12 +309,12 @@ class AdvertController extends Controller
                     }
                 }
             })
-            ->where(function($query) use ($equipment) {
-                if($equipment === "true") {
-                    $query->where('garden.equipment',1);
+            ->where(function ($query) use ($equipment) {
+                if ($equipment === "true") {
+                    $query->where('garden.equipment', 1);
                 }
             })
-            ->where('advert.state',0)
+            ->where('advert.state', 0)
             ->orderBy('advert.created_at', 'desc')
             ->paginate(9);
         return response(['adverts' => $adverts], 200);

@@ -65,6 +65,10 @@ Route::group([
     Route::get('userInformations','ProfileController@getInformations'); //Get all the necessary informations for one user
     Route::post('updateInformations', 'ProfileController@update'); //Update informations about the user's profile
 
+    //Response
+    Route::post('respond','ResponseController@add'); //Handle an incoming request for a response to an advert
+    Route::post('respondRemove','ResponseController@delete'); //Handle an incoming request for a response to an advert
+
 });
 
 Route::get("email/verify/{id}", "Auth\AuthController@verify")->name("verificationapi.verify");
