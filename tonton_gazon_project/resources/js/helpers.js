@@ -65,7 +65,6 @@ function handleClick(elem) {
     }
     //Somewhere before the last
     else {
-        console.log(currId);
         for (let i = currId + 1; i <= (nbDates - 1); i++) {
             $('#date_' + i).attr('name', 'date_' + (i - 1));
             $('#date_' + i).attr('id', 'date_' + (i - 1));
