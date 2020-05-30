@@ -19,6 +19,8 @@ import ResetPassword from './pages/auth/ResetPassword'
 
 //Profile
 import Profile from './pages/profile/index'
+import OtherProfile from "./pages/profile/OtherProfile";
+
 
 //Garden
 import Garden from './pages/garden/index'
@@ -57,6 +59,7 @@ ReactDOM.render(
 
                 {/* Profile */}
                 <Route path='/mon-profil' component={Profile}/>
+                <Route path='/profil/:id' component={OtherProfile}/>
 
                 {/* Garden */}
                 <Route path='/garden' component={Garden}/>
