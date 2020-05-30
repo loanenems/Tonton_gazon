@@ -5,17 +5,12 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
     }
     //This function return the checked option.
     let checkedEval = () => {
-        const checkboxes = document.getElementsByName('eval');
-        for (let checkbox of checkboxes) {
-            if (checkbox.checked) {
-                return checkbox.value;
-            }
+        const radios = $('.rating').find(':checked');
+        if(radios.length > 0) {
+            return radios[0].value;
         }
         return "";
     };
-
-    console.log(document.getElementById('equipment').value);
-
     let filters = {
         search: document.getElementById('search').value,
         payout: document.getElementById('payout').value,
