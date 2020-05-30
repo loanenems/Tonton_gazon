@@ -267,6 +267,16 @@
             }
         }
     }
+
+    .button_group {
+        display: flex;
+        @include screen-md() {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
     // Rating input
     $stars: 5;
     $star-size: 40px;

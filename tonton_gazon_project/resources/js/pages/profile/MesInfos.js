@@ -64,11 +64,14 @@ export default function MesInfos() {
                     </div>
 
                     <div className="form_group">
-                    <label className="form_label">À propos de moi</label>
-                    <textarea className="form_input"cols="30" rows="5" defaultValue={data.User.about_me ? data.User.about_me : ''} placeholder="Présentez vous en quelques lignes..."></textarea>
-                </div>
-                <a href="" className="btn btn_primary">Sauvegarder</a>
-                <a href="" className="btn btn_secondary">Annuler les modifications</a>
+                        <label className="form_label">À propos de moi</label>
+                        <textarea className="form_input"cols="30" rows="5" defaultValue={data.User.about_me ? data.User.about_me : ''} placeholder="Présentez vous en quelques lignes..."></textarea>
+                    </div>
+
+                    <div className="button_group">
+                        <a href="" className="btn btn_primary">Sauvegarder</a>
+                        <a href="" className="btn btn_secondary">Annuler les modifications</a>
+                    </div>
                 </form>
             </div>
             <div class="sidebar">
