@@ -34,7 +34,6 @@ export default function Register() {
             // Redirect to homepage
             history.push('/');
         }).catch(error => {
-            console.log(error);
         });
     };
 

@@ -7,7 +7,7 @@ export default function Index() {
             <div className="bloc home_presentation">
                 <h2>Votre service de tonte de pelouse de particulier à particulier</h2>
                 <p>Avec Tonton Gazon, la tonte de votre pelouse n’aura jamais été aussi simple !</p>
-                <a href="">Commencez maintenant -></a>
+                <a href="">Commencez maintenant <img src=""></img></a>
                 <img src="./img/home_tonton_gazon.png" alt=""></img>
             </div>
 

@@ -12,7 +12,6 @@ export default function Advert() {
         Axios.get("/api/advertGetId", { params: { id: id } })
             .then(res => {
                 setData(res.data.data);
-                console.log(res.data);
             });
     }, []);
 
