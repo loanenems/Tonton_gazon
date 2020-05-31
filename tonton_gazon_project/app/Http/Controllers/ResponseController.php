@@ -20,6 +20,22 @@ class ResponseController extends Controller
         return response(['response' => $response], 200);
     }
 
+    public function fetchResponseByIdUser(Request $request)
+    {
+        $data = $request->validate([
+            "id" => 'required'
+        ]);
+
+        $response = DB::table('response')
+            ->where('idMowerer',$data['id'])
+            ->orWhere('idMowered',$data['id'])
+            ->get();
+
+
+        return response(["response" => $response], 200);
+    }
+
+
     public function add(Request $request)
     {
         //Check the data's validity
@@ -34,7 +50,7 @@ class ResponseController extends Controller
         $response->idAdvert = $data['advertId'];
 
         //If the current user is a mowerer
-        if ($data['advertType'] === "1") {
+        if ($data['advertType'] === 1) {
             $response->idMowerer = $user_id;
             $response->idMowered = $data['clientId'];
         } else {
@@ -44,7 +60,7 @@ class ResponseController extends Controller
 
         $response->save();
 
-        return response([],200);
+        return response([], 200);
     }
 
     public function delete(Request $request)
@@ -60,9 +76,29 @@ class ResponseController extends Controller
 
         $deletedRows = DB::table('response')->where('idAdvert', $data['advertId'])
             ->orWhere(function ($query) use ($user_id) {
-                $query->where('idMowerer',$user_id)
-                    ->where('idMowered',$user_id);
+                $query->where('idMowerer', $user_id)
+                    ->where('idMowered', $user_id);
             })
             ->delete();
+    }
+
+    public function update(Request $request)
+    {
+        $data = $request->validate([
+            "state" => 'required',
+            "advertId" => 'required'
+        ]);
+
+
+        //If the response is accepted
+        if ($data['state'] === 1) {
+            Response::where('idAdvert', $data['advertId'])
+                ->update(['state' => 1]);
+        } else {
+            Response::where('idAdvert', $data['advertId'])
+                ->update(['state' => 2]);
+        }
+
+        return response([], 200);
     }
 }

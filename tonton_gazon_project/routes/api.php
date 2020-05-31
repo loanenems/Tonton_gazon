@@ -68,7 +68,9 @@ Route::group([
 
     //Response
     Route::post('respond','ResponseController@add'); //Handle an incoming request for a response to an advert
-    Route::post('respondRemove','ResponseController@delete'); //Handle an incoming request for a response to an advert
+    Route::post('respondRemove','ResponseController@delete'); //Remove a request from the database
+    Route::post('respondUpdate','ResponseController@update'); //Change the state of the response
+    Route::get('getResponses','ResponseController@fetchResponseByIdUser'); //Change the state of the response
 
 });
 

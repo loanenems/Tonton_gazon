@@ -14,7 +14,7 @@ class AddColumnState extends Migration
     public function up()
     {
         Schema::table('response', function (Blueprint $table) {
-            $table->boolean('state')->default(0);
+            $table->tinyInteger('state')->default(0);
         });
     }
 

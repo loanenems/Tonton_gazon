@@ -118,7 +118,10 @@ class AdvertController extends Controller
             foreach ($feedbacks as $feedback) {
                 $sum += $feedback->rating;
             }
-            $rating = round($sum / $nbAvisRecus->cpt);
+            $rating = 0;
+            if ($nbAvisRecus->cpt > 0) {
+                $rating = round($sum / $nbAvisRecus->cpt);
+            }
         }
 
         //If the current user is a mowerer
@@ -202,7 +205,7 @@ class AdvertController extends Controller
 
         if (sizeof($fetch) > 0) {
             $list = [];
-            foreach($fetch as $row) {
+            foreach ($fetch as $row) {
                 //Here we are counting the amount of feedbacks received by the user
                 $nbAvisRecus = DB::table('feedback')
                     ->selectRaw('count(*) as cpt')
@@ -215,7 +218,10 @@ class AdvertController extends Controller
                     foreach ($feedbacks as $feedback) {
                         $sum += $feedback->rating;
                     }
-                    $rating = round($sum / $nbAvisRecus->cpt);
+                    $rating = 0;
+                    if ($nbAvisRecus->cpt > 0) {
+                        $rating = round($sum / $nbAvisRecus->cpt);
+                    }
                 }
 
                 //If the current user is a mowerer

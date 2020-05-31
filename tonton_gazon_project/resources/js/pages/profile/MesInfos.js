@@ -21,7 +21,6 @@ export default function MesInfos() {
     let handleChange = () => {
         let data = new FormData();
         let img = document.getElementById('profile_pic').files[0];
-        console.log(img);
         if (img !== undefined) {
             data.append('image', img, img.name);
         } else {

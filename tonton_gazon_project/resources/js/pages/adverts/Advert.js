@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Axios from "axios";
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 
 export default function Advert() {
     let {id} = useParams();
+    let history = useHistory();
 
     const [data, setData] = useState({});
 
@@ -36,6 +37,11 @@ export default function Advert() {
             }).catch(err => {
             })
         }
+    };
+
+    let handleRedirect = (e) => {
+        e.preventDefault();
+        history.push('/profil/'+id);
     };
 
     let commentJSX = (() => {
@@ -117,7 +123,7 @@ export default function Advert() {
                             </div>
                             <div className="advert_main_info_action">
                                 {responseButton}
-                                <a href="" className="btn btn_secondary">Envoyer un message</a>
+                                <a href="" className="btn btn_secondary" onClick={(e) => handleRedirect(e)}>Consulter le profil</a>
                             </div>
                         </div>
                     </div>
