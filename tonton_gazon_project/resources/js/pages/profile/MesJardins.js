@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
 
@@ -6,6 +6,16 @@ export default function MesJardins() {
 
     const [adress, setAdress] = useState([]);
     const [selectedAddress, setSelectedAddress] = useState({address: "", coordinates: {lat: null, lon: null}});
+    const [gardens, setGardens] = useState([]);
+
+    useEffect(() => {
+        axios.get('/api/garden_get_id'
+        ).then(res => {
+            setGardens(res.data.jardin);
+        });
+    }, []);
+
+    console.log(gardens);
 
     let submit = (e) => {
         e.preventDefault();
