@@ -15,8 +15,6 @@ export default function MesJardins() {
         });
     }, []);
 
-    console.log(gardens);
-
     let submit = (e) => {
         e.preventDefault();
 
