@@ -1,10 +1,11 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useHistory} from 'react-router-dom'
 import axios from 'axios';
 
 export default function Nav() {
     //We store the current loggin state into a var
     const [isLogged, setIsLogged] = useState('');
+    let history = useHistory();
 
     if (isLogged !== sessionStorage.getItem('is_logged')) {
         setIsLogged(sessionStorage.getItem('is_logged'));
