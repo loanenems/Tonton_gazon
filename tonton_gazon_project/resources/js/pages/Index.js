@@ -5,11 +5,10 @@ export default function Index() {
     return (
         <>
             <div className="bloc home_presentation">
-                <h2>Cuisinez du très bon couscous</h2>
-                <p>Lorem ipsum aze sit amet, consectetur adipiscing elit. Vivamus fermentum ultrices lacus, et tincidunt
-                    tortor venenatis vitae.</p>
-                <a href="">Commencez maintenant -></a>
-                <img src="" alt=""></img>
+                <h2>Votre service de tonte de pelouse de particulier à particulier</h2>
+                <p>Avec Tonton Gazon, la tonte de votre pelouse n’aura jamais été aussi simple !</p>
+                <a href="">Commencez maintenant <img src=""></img></a>
+                <img src="./img/home_tonton_gazon.png" alt=""></img>
             </div>
 
             <div className="bloc home_recent">
@@ -64,15 +63,15 @@ export default function Index() {
                 <div className="explaination_steps">
                     <div className="explaination_step explaination_step_one">
                         <p className="step step_one">01</p>
-                        <p className="step_description step_descriptionone">Etape n°01 de Bonbon Lardon</p>
+                        <p className="step_description step_descriptionone"> Inscrivez vous sur Tonton Gazon et complétez votre compte avec vos adresses et votre matériel de jardinage. </p>
                     </div>
                     <div className="explaination_step explaination_step_two">
                         <p className="step step_two">02</p>
-                        <p className="step_description step_description_two">Etape n°01 de RonRon Lazon</p>
+                        <p className="step_description step_description_two">Créez ou cherchez une annonce de tonte de pelouse ou d’entretien de jardins</p> <br />
                     </div>
                     <div className="explaination_step explaination_step_three">
                         <p className="step step_three">03</p>
-                        <p className="step_description step_description_three">Etape n°01 de LonLon Targon</p>
+                        <p className="step_description step_description_three">Vous serez mis en relation avec des particuliers de votre région afin de prendre soin de votre jardin</p>
                     </div>
                 </div>
             </div>

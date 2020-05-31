@@ -1,0 +1,86 @@
+.advert_role_select_container {
+    position: absolute;
+    top: 0; left: 0;
+    right: 0; bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: white;
+    img {
+        width: 80%;
+        margin: auto;
+        align-self: center;
+        justify-self: center;
+        @include screen-sm() {
+            display: none;
+        }
+    }
+    a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        z-index: 2;
+        background-color: rgba(0, 0, 0, 0.10);
+        text-decoration: none;
+        transition: background 0.34s ease-in-out;
+        font-size: 3rem;
+        @include screen-sm() {
+            background-color: $c-primary;
+            color: white;
+        }
+        span {
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: opacity 0.34s ease-in-out;
+            text-align: center;
+            @include screen-sm() {
+                opacity: 1;
+            }
+        }
+        &:hover {
+            background-color: $c-primary;
+            text-decoration: none;
+            color: white;
+            span {
+                opacity: 1;
+            }
+        }
+
+        &.advert_role_select_tondu {
+            top: 0; left: 50%;
+            right: 0; bottom: 0;
+            @include screen-sm() {
+                top: 0; left: 0;
+                right: 0; bottom: 50%;
+            }
+        }
+        &.advert_role_select_tondeur {
+            top: 0; left: 0;
+            right: 50%; bottom: 0;
+            @include screen-sm() {
+                top: 50%; left: 0;
+                right: 0; bottom: 0;
+            }
+        }
+    }
+
+    .advert_role_select_info {
+        position: absolute;
+        transform: translateX(50%);
+        z-index: 3;
+        bottom: 5%; right: 50%;
+        padding: 1rem;
+        background-color: white;
+        width: 300px;
+        text-align: center;
+        @include screen-sm() {
+            width: auto;
+            height: fit-content;
+            transform: translateY(-50%);
+            top: 50%; left: 0;
+            right: 0; bottom: 0;
+        }
+    }
+}
