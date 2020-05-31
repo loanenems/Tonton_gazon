@@ -184,5 +184,63 @@
                 }
             }
         }
+
+        .my_garden {
+            .my_garden_list {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                @include screen-md() {
+                    margin-top: $space-medium;
+                }
+                @include screen-sm() {
+                    flex-direction: column;
+                }
+                .my_garden_solo {
+                    display: flex;
+                    flex-direction: column;
+
+                    margin-right: 3%;
+                    width: 30%;
+                    margin-bottom: $space-medium;
+                    border: 2px solid black;
+                    border-radius: 24px;
+                    @include screen-sm() {
+                        width: 100%;
+                    }
+                    img.my_garden_solo_img {
+                        width: 100%;
+                        border-top-left-radius: 24px;
+                        border-top-right-radius: 24px;
+                    }
+                    .my_garden_solo_info {
+                        display: flex;
+                        flex-direction: column;
+
+                        padding: $space-medium;
+                        strong {
+                            font-size: 1.50rem;
+                        }
+                        .my_garden_solo_picto {
+                            margin: $space-small 0;
+                            img {
+                                width: 18px;
+                                width: 18px;
+                                margin-right: $space-e-small;
+                            }
+                        }
+                        p {
+                            margin-bottom: $space-medium;
+                        }
+                        b {
+                            margin-bottom: $space-medium;
+                        }
+                        a {
+                            align-self: center;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

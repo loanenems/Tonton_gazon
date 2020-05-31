@@ -44,22 +44,22 @@ export default function MesInfos() {
             <div class="formulaire">
                 <form className="bloc bloc_form">
                     <div className="form_group">
-                        <label className="form_label">Nom</label>
+                        <label className="form_label">Nom*</label>
                         <input className="form_input" type="text" defaultValue={data.User.name ? data.User.name : ''} placeholder="Votre nom"></input>
                     </div>
 
                     <div className="form_group">
-                        <label className="form_label">Prénom</label>
+                        <label className="form_label">Prénom*</label>
                         <input className="form_input" type="text" defaultValue={data.User.surname ? data.User.surname : ''} placeholder="Votre prénom"></input>
                     </div>
 
                     <div className="form_group">
-                        <label className="form_label">Adresse e-mail</label>
+                        <label className="form_label">Adresse e-mail*</label>
                         <input className="form_input" type="text" defaultValue={data.User.email ? data.User.email : ''} placeholder="Votre adresse e-mail"></input>
                     </div>
 
                     <div className="form_group">
-                        <label className="form_label">Numéro de téléphone</label>
+                        <label className="form_label">Numéro de téléphone*</label>
                         <input className="form_input" type="text" defaultValue={data.User.phone_number ? data.User.phone_number : ''} placeholder="Votre numéro de téléphone"></input>
                     </div>
 
