@@ -29,6 +29,8 @@ export default function MesAnnonces() {
         });
     }, []);
 
+    console.log(responses);
+
     let handleRedirect = (e, id) => {
         e.preventDefault();
         history.push('/profil/' + id);

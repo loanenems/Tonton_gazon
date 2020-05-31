@@ -16,9 +16,9 @@ export default function Profile() {
     let {path, url} = useRouteMatch();
 
     return (
-        <div class="profile">
-            <div class="sidebar">
-                <div class="boxed">
+        <div className="profile">
+            <div className="sidebar">
+                <div className="boxed">
                     <img src="https://avatarfiles.alphacoders.com/108/thumb-108953.png" alt="profile-pic"></img>
                     <h2>Mon profil</h2>
                 </div>
@@ -35,22 +35,22 @@ export default function Profile() {
                     </li>
                 </ul>
                 <h3>Vos statistiques</h3>
-                <div class="card">
-                    <div class="stat">
-                        <span class="text">Note moyenne</span>
-                        <span class="num">4,5</span>
+                <div className="card">
+                    <div className="stat">
+                        <span className="text">Note moyenne</span>
+                        <span className="num">4,5</span>
                     </div>
-                    <div class="stat">
-                        <span class="text">Nombre de notes</span>
-                        <span class="num">97</span>
+                    <div className="stat">
+                        <span className="text">Nombre de notes</span>
+                        <span className="num">97</span>
                     </div>
-                    <div class="stat">
-                        <span class="text">Nombre de tontes</span>
-                        <span class="num">12</span>
+                    <div className="stat">
+                        <span className="text">Nombre de tontes</span>
+                        <span className="num">12</span>
                     </div>
                 </div>
             </div>
-            <div class="profile-content">
+            <div className="profile-content">
                 <Switch>
                     <Route exact path={path}>
                         <MesInfos/>
