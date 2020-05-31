@@ -18,6 +18,7 @@ class ProfileController extends Controller
     public function getInformations(Request $request)
     {
         $userId = $request->get('id');
+        dump($userId);
         $informations = User::where('id', $userId)->firstOrFail();
         $listGardenId = [];
         $gardens = Garden::where('idOwner', $informations->id)->get();

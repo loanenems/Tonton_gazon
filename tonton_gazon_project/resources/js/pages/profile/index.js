@@ -14,6 +14,44 @@ import axios from "axios";
 
 export default function Profile() {
     let {path, url} = useRouteMatch();
+    const [userInformations, setUserInformations] = useState({});
+
+    useEffect(function () {
+        axios.get('/api/userInformations', {
+            params: {
+                id: sessionStorage.getItem('user')
+            }
+        }).then(res => {
+            setUserInformations(res.data);
+        }).catch(err => {
+        })
+    }, []);
+
+
+    let statistiquesJSX = () => {
+        if (userInformations.hasOwnProperty('User')) {
+            return (
+                <>
+                    <h3>Vos statistiques</h3>
+                    <div className="card">
+                        <div className="stat">
+                            <span className="text">Note moyenne</span>
+                            <span className="num">{userInformations.User.eval}</span>
+                        </div>
+                        <div className="stat">
+                            <span className="text">Nombre de notes</span>
+                            <span className="num">97</span>
+                        </div>
+                        <div className="stat">
+                            <span className="text">Nombre de tontes</span>
+                            <span className="num">12</span>
+                        </div>
+                    </div>
+                </>
+            )
+        }
+        return "";
+    };
 
     return (
         <div className="profile">
@@ -34,21 +72,7 @@ export default function Profile() {
                         <Link to={`${url}/annonces`}>Mes annonces</Link>
                     </li>
                 </ul>
-                <h3>Vos statistiques</h3>
-                <div className="card">
-                    <div className="stat">
-                        <span className="text">Note moyenne</span>
-                        <span className="num">4,5</span>
-                    </div>
-                    <div className="stat">
-                        <span className="text">Nombre de notes</span>
-                        <span className="num">97</span>
-                    </div>
-                    <div className="stat">
-                        <span className="text">Nombre de tontes</span>
-                        <span className="num">12</span>
-                    </div>
-                </div>
+                {statistiquesJSX()}
             </div>
             <div className="profile-content">
                 <Switch>
