@@ -41,7 +41,7 @@ export default function Advert() {
 
     let handleRedirect = (e) => {
         e.preventDefault();
-        history.push('/profil/'+id);
+        history.push('/profil/'+data.User.id);
     };
 
     let commentJSX = (() => {
