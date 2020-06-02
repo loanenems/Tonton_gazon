@@ -12,6 +12,7 @@ export default function MesJardins() {
         axios.get('/api/garden_get_id'
         ).then(res => {
             setGardens(res.data.jardin);
+            console.log(res);
         });
     }, []);
 
@@ -101,41 +102,70 @@ export default function MesJardins() {
         )
     });
 
-    return (
-        <div className="my_garden">
-            <div className="my_garden_list">
-                <div className="my_garden_solo">
-                    <img className="my_garden_solo_img" src="/img/jardin.jpg" alt=""></img>
-                    <div className="my_garden_solo_info">
-                        <strong>Jardin n°1</strong>
-                        <div className="my_garden_solo_picto">
-                            <img src="/img/deplacable.png" alt="Objets déplacables"></img>
-                            <img src="/img/non_deplacable.png" alt="Objets non déplacables"></img>
-                            <img src="/img/pet.png" alt="Animaux"></img>
-                        </div>
-                        <p>Description en quelques lignes nan ?</p>
-                        <b>Superficie de 200m²</b>
-                        <a className="btn btn_primary">Modifier</a>
+    let JardinJSX = gardens.map((garden, index) => {
+        //Parse the images string to an object
+        const images = JSON.parse(garden.image);
+        //This array will stock the <img/> html with images src
+        const jsxImages = [];
+        //Iterating the object to create the html node
+        for(let [key,value] of Object.entries(images)){
+                jsxImages.push(<img className="my_garden_solo_img" src={value} alt=""></img>);
+        };
+
+        let movableJSX = () =>{
+            if(garden.movableObstacle === true) {
+                return ( <img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+            } else {
+                return (  <img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+            }
+        }
+
+        let unmovableJSX = () =>{
+            if(garden.unmovableObstacle === true) {
+                return ( <img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+            } else {
+                return (  <img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+            }
+        }
+
+        let petsJSX = () =>{
+            if(garden.pets === true) {
+                return ( <img src="/img/pet.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+            } else {
+                return (  <img src="/img/pet.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+            }
+        }
+
+        //Then returning the structure displaying all the informations
+        return (
+            <div className="my_garden_solo">
+                {jsxImages}
+                <div className="my_garden_solo_info">
+                    <strong>Jardin n°{index + 1}</strong>
+                    <div className="my_garden_solo_picto">
+                        {movableJSX()}
+                        {unmovableJSX()}
+                        {petsJSX()}
                     </div>
-                </div>
-                <div className="my_garden_solo">
-                    <img className="my_garden_solo_img" src="/img/jardin.jpg" alt=""></img>
-                    <div className="my_garden_solo_info">
-                        <strong>Jardin n°1</strong>
-                        <div className="my_garden_solo_picto">
-                            <img src="/img/deplacable.png" alt="Objets déplacables"></img>
-                            <img src="/img/non_deplacable.png" alt="Objets non déplacables"></img>
-                            <img src="/img/pet.png" alt="Animaux"></img>
-                        </div>
-                        <p>Description en quelques lignes nan ?</p>
-                        <b>Superficie de 200m²</b>
-                        <a className="btn btn_primary">Modifier</a>
+                    <p>{garden.description}</p>
+                    <b>Superficie : {garden.size}m²</b>
+                    <div>
+                        <a href="#modifier" className="btn btn_primary btn_modify_garden">Modifier</a>
+                        <a href=""><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
                     </div>
                 </div>
             </div>
+        )
+    });
+
+    return (
+        <div className="my_garden">
+            <div className="my_garden_list">
+                {JardinJSX}
+            </div>
 
             <form className="bloc bloc_form" onSubmit={(e) => submit(e)} method="post">
-                <div className="bloc_title">
+                <div id="modifier" className="bloc_title">
                     <img src="./img/waving-hand-sign.png"></img>
                     <h3>Creer un jardin</h3>
                 </div>
