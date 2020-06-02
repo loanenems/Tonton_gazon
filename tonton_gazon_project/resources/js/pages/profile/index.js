@@ -28,10 +28,10 @@ export default function Profile() {
         });
     }, []);
 
-    let handleChange = () => {
+    let handleChangePicture = () => {
         let data = new FormData();
         let img = document.getElementById('profile_pic').files[0];
-        console.log(img);
+
         if (img !== undefined) {
             data.append('image', img, img.name);
         } else {
@@ -40,7 +40,7 @@ export default function Profile() {
 
         axios({
             method: 'post',
-            url: '/api/updateInformations',
+            url: '/api/updateProfilePic',
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data',
@@ -51,13 +51,13 @@ export default function Profile() {
     };
 
     return (
-        <div class="profile">
-            <div class="sidebar">
-                <div class="boxed">
-                    <label for="profile_pic">
+        <div className="profile">
+            <div className="sidebar">
+                <div className="boxed">
+                    <label htmlFor="profile_pic">
                         <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
                         <b className="profile_pic_change"><br />Changer de photo</b>
-                        <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChange()}/>
+                        <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChangePicture()}/>
                     </label>
                     <h2>Mon profil</h2>
                 </div>
@@ -74,22 +74,22 @@ export default function Profile() {
                     </li>
                 </ul>
                 <h3>Vos statistiques</h3>
-                <div class="card">
-                    <div class="stat">
-                        <span class="text">Note moyenne</span>
-                        <span class="num">4,5</span>
+                <div className="card">
+                    <div className="stat">
+                        <span className="text">Note moyenne</span>
+                        <span className="num">4,5</span>
                     </div>
-                    <div class="stat">
-                        <span class="text">Nombre de notes</span>
-                        <span class="num">97</span>
+                    <div className="stat">
+                        <span className="text">Nombre de notes</span>
+                        <span className="num">97</span>
                     </div>
-                    <div class="stat">
-                        <span class="text">Nombre de tontes</span>
-                        <span class="num">12</span>
+                    <div className="stat">
+                        <span className="text">Nombre de tontes</span>
+                        <span className="num">12</span>
                     </div>
                 </div>
             </div>
-            <div class="profile-content">
+            <div className="profile-content">
                 <Switch>
                     <Route exact path={path}>
                         <MesInfos/>

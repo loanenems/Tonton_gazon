@@ -63,7 +63,8 @@ Route::group([
 
     //Profile
     Route::get('userInformations','ProfileController@getInformations'); //Get all the necessary informations for one user
-    Route::post('updateInformations', 'ProfileController@update'); //Update informations about the user's profile
+    Route::post('updateProfilePic', 'ProfileController@updatePicture'); //Update informations about the user's profile
+    Route::post('updateInformations', 'ProfileController@update'); //Update the user's profile pic
 
 });
 

@@ -17,9 +17,9 @@ export default function Advert() {
     }, []);
 
     let commentJSX = (() => {
-        return data.User.feedbacks.feedbacks.map((feedback) => {
+        return data.User.feedbacks.feedbacks.map((feedback, i) => {
             return (
-                <div className="advert_comment">
+                <div className="advert_comment" key={i}>
                     <img src="./img/pierre-alain.jpg" alt="" />
                     <div className="advert_comment_text">
                         <p><strong>{feedback.id}</strong></p>
