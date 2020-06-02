@@ -66,6 +66,18 @@ export default function MesJardins() {
             });
     };
 
+    let handleRemove = (e, garden_id) => {
+        e.preventDefault();
+
+        axios.post('/api/deleteGarden', {
+            id: garden_id
+        }).then(res => {
+            window.location.reload();
+        }).catch(err => {
+
+        })
+    };
+
     let handleAddress = (e) => {
         let val = e.target.value;
         if (val !== "") {
@@ -108,37 +120,38 @@ export default function MesJardins() {
         //This array will stock the <img/> html with images src
         const jsxImages = [];
         //Iterating the object to create the html node
-        for(let [key,value] of Object.entries(images)){
-                jsxImages.push(<img className="my_garden_solo_img" src={value} alt=""></img>);
-        };
+        for (let [key, value] of Object.entries(images)) {
+            jsxImages.push(<img className="my_garden_solo_img" src={value} alt=""></img>);
+        }
+        ;
 
-        let movableJSX = () =>{
-            if(garden.movableObstacle === true) {
-                return ( <img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+        let movableJSX = () => {
+            if (garden.movableObstacle === true) {
+                return (<img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity: 1}}></img>);
             } else {
-                return (  <img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+                return (<img src="/img/deplacable.png" alt="Objets déplacables" style={{opacity: 0.25}}></img>);
             }
         }
 
-        let unmovableJSX = () =>{
-            if(garden.unmovableObstacle === true) {
-                return ( <img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+        let unmovableJSX = () => {
+            if (garden.unmovableObstacle === true) {
+                return (<img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity: 1}}></img>);
             } else {
-                return (  <img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+                return (<img src="/img/non_deplacable.png" alt="Objets déplacables" style={{opacity: 0.25}}></img>);
             }
         }
 
-        let petsJSX = () =>{
-            if(garden.pets === true) {
-                return ( <img src="/img/pet.png" alt="Objets déplacables" style={{opacity:1}}></img> );
+        let petsJSX = () => {
+            if (garden.pets === true) {
+                return (<img src="/img/pet.png" alt="Objets déplacables" style={{opacity: 1}}></img>);
             } else {
-                return (  <img src="/img/pet.png" alt="Objets déplacables" style={{opacity:0.25}}></img> );
+                return (<img src="/img/pet.png" alt="Objets déplacables" style={{opacity: 0.25}}></img>);
             }
         }
 
         //Then returning the structure displaying all the informations
         return (
-            <div className="my_garden_solo">
+            <div className="my_garden_solo" key={index}>
                 {jsxImages}
                 <div className="my_garden_solo_info">
                     <strong>Jardin n°{index + 1}</strong>
@@ -151,7 +164,7 @@ export default function MesJardins() {
                     <b>Superficie : {garden.size}m²</b>
                     <div>
                         <a href="#modifier" className="btn btn_primary btn_modify_garden">Modifier</a>
-                        <a href=""><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
+                        <a href="" onClick={(e) => handleRemove(e,garden.id)}><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
                     </div>
                 </div>
             </div>

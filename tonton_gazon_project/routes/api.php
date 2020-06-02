@@ -51,6 +51,7 @@ Route::group([
     //Garden
     Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
+    Route::post('deleteGarden', 'GardenController@delete'); //Remove a garden from the database
 
     //Adverts
     Route::get('adverts', 'AdvertController@fetchAdvert'); //Fetch all the adverts from the database

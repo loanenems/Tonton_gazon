@@ -13,7 +13,7 @@ class ProfileController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * Cette fonction récupère les informations liées à un utilisateur donné
+     * This function returns the user's informations
      */
     public function getInformations(Request $request)
     {
@@ -32,7 +32,7 @@ class ProfileController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * Cette fonction met à jour la photo de profile de l'utilisateur
+     * This function updates the user's profile picture
      */
     public function updatePicture(Request $request)
     {
@@ -48,7 +48,7 @@ class ProfileController extends Controller
     /**
      * @param Request $request
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     * Cette fonction met à jour les informations concernant un utilisateur
+     * This function updates the user's informations
      */
     public function update(Request $request) {
         $data = $request->validate([
