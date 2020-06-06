@@ -44,7 +44,7 @@ export default function AnnonceTondu() {
     let gardenSelectJSX =
         gardens.map((g, i) => {
             return (
-                <option key={i} value={g.id}>{g.id}</option>
+                <option key={i} value={g.id}>{g.description.substring(0,46)}...</option>
             )
         });
 
