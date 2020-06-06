@@ -41,4 +41,12 @@ $(function() {
             }
         });
     }
+
+    // Hide adress on click, Garden create
+    $(".garden_adress_suggestion_group").click( function () {
+        $(this).hide();
+    });
+    $(".garden_adress_form").click( function () {
+        $(".garden_adress_suggestion_group").show();
+    })
 });
