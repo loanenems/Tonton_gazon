@@ -1,10 +1,36 @@
-import React from 'react'
-import Nav from '../../components/header'
+import React, {useState} from 'react'
 import axios from "axios";
 import {Link, useHistory} from 'react-router-dom'
 
 export default function Register() {
     const history = useHistory();
+
+    const [errors, setErrors] = useState([]);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
 
     let handleSubmit = (e) => {
         e.preventDefault();
@@ -34,6 +60,7 @@ export default function Register() {
             // Redirect to homepage
             history.push('/');
         }).catch(error => {
+            setErrors([error.response.data.errors]);
         });
     };
 
@@ -43,6 +70,8 @@ export default function Register() {
                 <img src="./img/waving-hand-sign.png"></img>
                 <h3>Inscription</h3>
             </div>
+
+            {errorsJSX()}
 
             <div className="form_group">
                 <label className="form_label" htmlFor="name">Nom</label>

@@ -10,7 +10,7 @@ import Script from './script/script';
 
 //Routes
 //Private route
-import PrivateRoute from "../PrivateRoute";
+import PrivateRoute from "./PrivateRoute";
 
 //Advert_Index
 import Index from './pages/Index'
