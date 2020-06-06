@@ -11,10 +11,27 @@ export default function Index() {
         Axios.get("/api/lastAdverts")
             .then(res => {
                 setAdverts(res.data);
-                console.log(res.data);
+                // console.log(res.data);
             });
     }, [cpt]);
 
+
+    let AdvertsJSX = adverts.map((advert, index) => {
+        console.log(advert);
+        return (
+            <div className="recent_element">
+                <img src="./img/jardin.jpg" alt=""></img>
+                <div className="garden_user">
+                    <a href="" className="garden_username"> {advert.title}</a>
+                    <p className="garden_userstats"><b>4.7</b> 340 avis</p>
+                </div>
+                <div className="garden_stats">
+                    <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
+                    <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
+                </div>
+            </div>
+        );
+    });
 
     // useEffect(() => {
     //     Axios.get("/api/topUsers")
@@ -40,39 +57,7 @@ export default function Index() {
                 </div>
 
                 <div className="recent_list">
-                    <div className="recent_element">
-                        <img src="./img/jardin.jpg" alt=""></img>
-                        <div className="garden_user">
-                            <a href="" className="garden_username">as-Alain X.</a>
-                            <p className="garden_userstats"><b>4.7</b> 340 avis</p>
-                        </div>
-                        <div className="garden_stats">
-                            <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
-                        </div>
-                    </div>
-                    <div className="recent_element">
-                        <img src="./img/jardin.jpg" alt=""></img>
-                        <div className="garden_user">
-                            <a href="" className="garden_username">Pierre-Alain X.</a>
-                            <p className="garden_userstats"><b>4.7</b> 340 avis</p>
-                        </div>
-                        <div className="garden_stats">
-                            <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
-                        </div>
-                    </div>
-                    <div className="recent_element">
-                        <img src="./img/jardin.jpg" alt=""></img>
-                        <div className="garden_user">
-                            <a href="" className="garden_username">Pierre-Alain X.</a>
-                            <p className="garden_userstats"><b>4.7</b> 340 avis</p>
-                        </div>
-                        <div className="garden_stats">
-                            <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
-                            <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
-                        </div>
-                    </div>
+                    {AdvertsJSX}
                 </div>
             </div>
 
