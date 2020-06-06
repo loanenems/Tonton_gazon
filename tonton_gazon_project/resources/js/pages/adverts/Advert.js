@@ -144,9 +144,9 @@ export default function Advert() {
                                 <strong>Informations supplémentaires</strong>
                             </p>
                             <ul>
-                                <li>{data.Garden.movableObstacle !== "false" ? data.Garden.movableObstacle : "Aucun"}</li>
-                                <li>{data.Garden.unmovableObstacle !== "false" ? data.Garden.unmovableObstacle : "Aucun"}</li>
-                                <li>{data.Garden.pets !== "false" ? data.Garden.pets : "Aucun"}</li>
+                                <li> <b> Objets déplacables : </b> {data.Garden.movableObstacle !== "false" ? data.Garden.movableObstacle : "Aucun"}</li>
+                                <li> <b> Objets non déplacables : </b> {data.Garden.unmovableObstacle !== "false" ? data.Garden.unmovableObstacle : "Aucun"}</li>
+                                <li> <b> Animaux : </b> {data.Garden.pets !== "false" ? data.Garden.pets : "Aucun"}</li>
                             </ul>
                         </div>
                     </div>
