@@ -162,9 +162,9 @@ export default function MesJardins() {
                     </div>
                     <p>{garden.description}</p>
                     <b>Superficie : {garden.size}m²</b>
-                    <div>
+                    <div class="my_garden_buttons">
                         <a href="#modifier" className="btn btn_primary btn_modify_garden">Modifier</a>
-                        <a href="" onClick={(e) => handleRemove(e,garden.id)}><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
+                        <a className="my_garden_trash" href="" onClick={(e) => handleRemove(e,garden.id)}><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
                     </div>
                 </div>
             </div>

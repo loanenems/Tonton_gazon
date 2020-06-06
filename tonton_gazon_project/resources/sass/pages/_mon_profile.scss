@@ -238,6 +238,19 @@
                         a {
                             align-self: center;
                         }
+
+                        .my_garden_buttons {
+                            display: flex;
+                            align-items: center;
+                            .my_garden_trash {
+                                width: 24px;
+                                height: 24px;
+                                img {
+                                    width: 24px;
+                                    height: 24px;
+                                }
+                            }
+                        }
                     }
                 }
             }
