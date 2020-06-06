@@ -281,6 +281,7 @@ class AdvertController extends Controller
 
 
         $advert = new Advert;
+        $advert->idGarden = 0;
 
         if ($validatedData["type"] == 1) {
             $otherData = $request->validate([
