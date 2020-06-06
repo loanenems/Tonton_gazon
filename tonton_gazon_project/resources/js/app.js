@@ -9,6 +9,9 @@ import Slick from './vendors/slick';
 import Script from './script/script';
 
 //Routes
+//Private route
+import PrivateRoute from "../PrivateRoute";
+
 //Advert_Index
 import Index from './pages/Index'
 
@@ -52,31 +55,31 @@ ReactDOM.render(
                 <Route exact path='/' component={Index}/>
 
                 {/* Authentication */}
-                <Route path='/login' component={Login}/>
+                <Route exact path='/login' component={Login}/>
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/reset_password' component={ResetPassword}/>
 
 
                 {/* Profile */}
-                <Route path='/mon-profil' component={Profile}/>
-                <Route path='/profil/:id' component={OtherProfile}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/mon-profil' component={Profile}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/profil/:id' component={OtherProfile}/>
 
                 {/* Garden */}
-                <Route path='/garden' component={Garden}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/garden' component={Garden}/>
 
                 {/* Advert */}
-                <Route path='/adverts' component={Advert_Index}/>
-                <Route path='/create_advert' component={Advert_create}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/adverts' component={Advert_Index}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/create_advert' component={Advert_create}/>
 
                 {/* Informations */}
-                <Route exact path='/mentions-legales' component={Legal}/>
-                <Route exact path='/cgu' component={Cgu}/>
-                <Route exact path='/aide' component={Aide}/>
-                <Route exact path='/contact' component={Contact}/>
-                <Route exact path='/politique-cookies' component={Cookies}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/mentions-legales' component={Legal}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/cgu' component={Cgu}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/aide' component={Aide}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/contact' component={Contact}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/politique-cookies' component={Cookies}/>
 
                 {/* Feedback */}
-                <Route exact path='/create_feedback' component={Feedback_create}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/create_feedback' component={Feedback_create}/>
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
