@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Advert;
+use App\Mail\acceptedResponse;
 use App\Mail\responseSend;
 use App\Response;
 use App\User;
@@ -23,6 +25,11 @@ class ResponseController extends Controller
         return response(['response' => $response], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * Fetch all the responses regarding a specific user
+     */
     public function fetchResponseByIdUser(Request $request)
     {
         $data = $request->validate([
@@ -30,15 +37,19 @@ class ResponseController extends Controller
         ]);
 
         $response = DB::table('response')
-            ->where('idMowerer',$data['id'])
-            ->orWhere('idMowered',$data['id'])
+            ->where('idMowerer', $data['id'])
+            ->orWhere('idMowered', $data['id'])
             ->get();
 
 
         return response(["response" => $response], 200);
     }
 
-
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * Add a row to the response table
+     */
     public function add(Request $request)
     {
         //Check the data's validity
@@ -63,13 +74,18 @@ class ResponseController extends Controller
 
         $response->save();
 
-        $to = DB::table('users')->where('id',$data['clientId'])->first();
+        $to = User::where('id', $data['clientId'])->first();
 
-        Mail::to($to->email)->send(new responseSend($data['advertType']));
+        Mail::to($to->email)->send(new responseSend($to,$data['advertType']));
 
         return response([], 200);
     }
 
+    /**
+     * @param Request $request
+     * Remove a response when a user click on "ne plus repondre"
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
     public function delete(Request $request)
     {
         //Check the data's validity
@@ -87,8 +103,15 @@ class ResponseController extends Controller
                     ->where('idMowered', $user_id);
             })
             ->delete();
+
+        return response([], 200);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * Update the response state, depending on the response state.
+     */
     public function update(Request $request)
     {
         $data = $request->validate([
@@ -96,11 +119,22 @@ class ResponseController extends Controller
             "advertId" => 'required'
         ]);
 
-
         //If the response is accepted
         if ($data['state'] === 1) {
             Response::where('idAdvert', $data['advertId'])
                 ->update(['state' => 1]);
+            $response = Response::where('idAdvert', $data['advertId'])->first();
+
+            //We are sending an email to both users to give them contact informations
+            $mowerer = User::where('id', $response->idMowerer)->first();
+            $mowered = User::where('id', $response->idMowered)->first();
+
+            Mail::to($mowered)->send(new acceptedResponse($mowerer));
+            Mail::to($mowerer)->send(new acceptedResponse($mowered));
+
+            //The advert is now closed because the two users found an agreement
+            Advert::where('id', $data['advertId'])->update(["state" => 1]);
+
         } else {
             Response::where('idAdvert', $data['advertId'])
                 ->update(['state' => 2]);

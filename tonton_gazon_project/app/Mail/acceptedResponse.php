@@ -8,23 +8,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class responseSend extends Mailable
+class acceptedResponse extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $type;
     public $user;
 
     /**
      * Create a new message instance.
      *
-     * @param User $to
-     * @param $type
+     * @param User $utilisateur
      */
-    public function __construct(User $to,$type)
+    public function __construct(User $utilisateur)
     {
-        $this->user = $to;
-        $this->type = $type;
+        $this->user = $utilisateur;
     }
 
     /**
@@ -34,6 +31,6 @@ class responseSend extends Mailable
      */
     public function build()
     {
-        return $this->view('mails.sendResponse');
+        return $this->view('mails.acceptedResponse');
     }
 }
