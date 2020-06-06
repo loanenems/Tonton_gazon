@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Advert;
 use App\Garden;
 use Illuminate\Http\Request;
 
@@ -96,5 +97,23 @@ class GardenController extends Controller
 
         //Then we return a response to the client
         return response([], 200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * This function remove a garden from the database
+     */
+    public function delete(Request $request) {
+        $data = $request->validate([
+            "id" => "required"
+        ]);
+
+        Advert::where('idGarden',$data['id'])
+            ->delete();
+        Garden::where('id',$data['id'])
+            ->delete();
+
+        return response([],200);
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class EditColumnIdGarden extends Migration
+class AddColumnState extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class EditColumnIdGarden extends Migration
      */
     public function up()
     {
-        Schema::table('advert', function (Blueprint $table) {
-            $table->bigInteger('idGarden')->nullable()->change();
+        Schema::table('response', function (Blueprint $table) {
+            $table->tinyInteger('state')->default(0);
         });
     }
 
@@ -25,8 +25,8 @@ class EditColumnIdGarden extends Migration
      */
     public function down()
     {
-        Schema::table('advert', function (Blueprint $table) {
-            $table->bigInteger('idGarden')->nullable(false)->change();
+        Schema::table('response', function (Blueprint $table) {
+            $table->dropColumn('state');
         });
     }
 }

@@ -4,6 +4,7 @@
 use App\User;
 use Carbon\Carbon;
 use Faker\Generator as Faker;
+use Faker\Provider\fr_FR\PhoneNumber;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -18,6 +19,7 @@ use Illuminate\Support\Str;
 |
 */
 
+
 $factory->define(User::class, function (Faker $faker) {
     return [
         'name' => $faker->lastName,
@@ -26,7 +28,8 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => Hash::make('secret'), // password
         'role' => $faker->numberBetween(1,9),
         'xp' => $faker->numberBetween(1,5), // xp
-        'eval' => $faker->numberBetween(1,5), // xp
+        'eval' => $faker->numberBetween(1,5), // xp,
+        'phone_number' => $faker->phoneNumber,
         'remember_token' => Str::random(10),
         'email_verified_at' => Carbon::now()->format('Y-m-d H:i:s')
     ];

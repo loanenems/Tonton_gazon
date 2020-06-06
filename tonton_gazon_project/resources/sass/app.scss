@@ -40,8 +40,8 @@
 @import 'base/functions';
 @import 'base/normalize';
 
-$slick-font-path: "~slick-carousel/slick/fonts/";
-$slick-loader-path: "~slick-carousel/slick/";
+// $slick-font-path: "~slick-carousel/slick/fonts/";
+// $slick-loader-path: "~slick-carousel/slick/";
 @import 'vendors/slick/slick';
 @import 'vendors/slick/slick-theme';
 
@@ -66,35 +66,4 @@ body {
 
 * {
     font-family: 'Montserrat', sans-serif;
-}
-
-.user_main_info {
-    label {
-        position: relative;
-        img {
-            position: relative;
-            &:hover {
-                cursor: pointer;
-            }
-        }
-        img:hover + .profile_pic_change, .profile_pic_change:hover{
-            display: block;
-            cursor: pointer;
-        }
-        .profile_pic_change {
-            display: none;
-            color: white;
-            background-color: rgba(0, 0, 0,0.5 );
-            position: absolute;
-            height: 72px;
-            width: 72px;
-            border-radius: 52px;
-            top: 0; left: 0;
-            text-align: center;
-            font-size: 0.875rem;
-        }
-        input {
-            display: none;
-        }
-    }
 }
