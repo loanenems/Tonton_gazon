@@ -11,17 +11,16 @@ export default function Index() {
         Axios.get("/api/lastAdverts")
             .then(res => {
                 setAdverts(res.data);
-                console.log(res.data);
             });
     }, [cpt]);
 
 
-    // useEffect(() => {
-    //     Axios.get("/api/topUsers")
-    //         .then(res => {
-    //             setTop(res.data);
-    //         });
-    // }, [cpt]);
+    useEffect(() => {
+        Axios.get("/api/topUsers")
+            .then(res => {
+                setTop(res.data);
+            });
+    }, [cpt]);
 
     return (
         <>
