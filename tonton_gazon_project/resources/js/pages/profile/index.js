@@ -14,29 +14,29 @@ import axios from "axios";
 
 export default function Profile() {
     let {path, url} = useRouteMatch();
-    const [userInformations, setUserInformations] = useState({});
+    const [data, setData] = useState({});
 
-    useEffect(function () {
+    //Fetch the data regarding the current user's profile
+    useEffect(() => {
         axios.get('/api/userInformations', {
-            params: {
-                id: sessionStorage.getItem('user')
+                params: {
+                    id: sessionStorage.getItem('user')
+                }
             }
-        }).then(res => {
-            setUserInformations(res.data);
-        }).catch(err => {
-        })
+        ).then(res => {
+            setData(res.data);
+        });
     }, []);
 
-
     let statistiquesJSX = () => {
-        if (userInformations.hasOwnProperty('User')) {
+        if (data.hasOwnProperty('User')) {
             return (
                 <>
                     <h3>Vos statistiques</h3>
                     <div className="card">
                         <div className="stat">
                             <span className="text">Note moyenne</span>
-                            <span className="num">{userInformations.User.eval}</span>
+                            <span className="num">{data.User.eval}</span>
                         </div>
                         <div className="stat">
                             <span className="text">Nombre de notes</span>
@@ -53,11 +53,37 @@ export default function Profile() {
         return "";
     };
 
+    let handleChangePicture = () => {
+        let data = new FormData();
+        let img = document.getElementById('profile_pic').files[0];
+
+        if (img !== undefined) {
+            data.append('image', img, img.name);
+        } else {
+            data.append('image', "");
+        }
+
+        axios({
+            method: 'post',
+            url: '/api/updateProfilePic',
+            data: data,
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            }
+        }).then(res => {
+            window.location.reload();
+        })
+    };
+
     return (
         <div className="profile">
             <div className="sidebar">
                 <div className="boxed">
-                    <img src="https://avatarfiles.alphacoders.com/108/thumb-108953.png" alt="profile-pic"></img>
+                    <label htmlFor="profile_pic">
+                        <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
+                        <b className="profile_pic_change"><br />Changer de photo</b>
+                        <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChangePicture()}/>
+                    </label>
                     <h2>Mon profil</h2>
                 </div>
                 <h3>Vos liens utiles</h3>

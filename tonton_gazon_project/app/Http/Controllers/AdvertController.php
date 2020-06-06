@@ -202,7 +202,6 @@ class AdvertController extends Controller
             ->orderBy('advert.created_at', 'desc')
             ->get();
 
-
         if (sizeof($fetch) > 0) {
             $list = [];
             foreach ($fetch as $row) {
@@ -265,7 +264,7 @@ class AdvertController extends Controller
             }
             return response(['data' => $list], 200);
         }
-        return response([], 200);
+        return response(['data' => []], 200);
     }
 
     public function addAdvert(Request $request)
