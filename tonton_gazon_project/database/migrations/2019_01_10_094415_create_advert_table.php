@@ -16,7 +16,7 @@ class CreateAdvertTable extends Migration
         Schema::create('advert', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('idGarden')->unsigned();
-            $table->foreign('idGarden')->nullable()->references('id')->on('garden');
+            $table->foreign('idGarden')->references('id')->on('garden');
             $table->string('title');
             $table->longText('description');
             $table->float('payout');

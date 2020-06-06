@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Feedback;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FeedbackController extends Controller
 {
@@ -39,5 +40,23 @@ class FeedbackController extends Controller
         $feedback->rating = $validateData['rating'];
 
         $feedback->save();
+    }
+
+    public function topUsers() {
+        dump('test');
+        $users = DB::table('users')
+            ->join('feedback','users.id','feedback.idTarget')
+            ->select(
+                'users.profile_picture',
+                'users.name',
+                'users.surname',
+                'users.id',
+                'count(feedback.id)'
+            )
+            ->limit(9)
+            ->get();
+
+
+        return response([],200);
     }
 }

@@ -281,6 +281,7 @@ class AdvertController extends Controller
 
 
         $advert = new Advert;
+        $advert->idGarden = 0;
 
         if ($validatedData["type"] == 1) {
             $otherData = $request->validate([
@@ -439,5 +440,9 @@ class AdvertController extends Controller
                 return $miles;
             }
         }
+    }
+
+    function lastAdverts() {
+        return response([Advert::all()->take(9)],200);
     }
 }
