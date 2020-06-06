@@ -7,6 +7,7 @@ export default function Advert() {
     let history = useHistory();
 
     const [data, setData] = useState({});
+    const [cpt, setCpt] = useState(0);
 
 
     useEffect(() => {
@@ -14,7 +15,7 @@ export default function Advert() {
             .then(res => {
                 setData(res.data.data);
             });
-    }, []);
+    }, [cpt]);
 
     let handleResponse = (e) => {
         e.preventDefault();
@@ -24,7 +25,7 @@ export default function Advert() {
                 clientId: data.User.id,
                 advertType: data.Advert.type
             }).then(res => {
-                window.location.reload();
+                setCpt(cpt + 1);
             }).catch(err => {
             })
         } else {
@@ -33,7 +34,7 @@ export default function Advert() {
                 clientId: data.User.id,
                 advertType: data.Advert.type
             }).then(res => {
-                window.location.reload();
+                setCpt(cpt + 1);
             }).catch(err => {
             })
         }
@@ -41,13 +42,13 @@ export default function Advert() {
 
     let handleRedirect = (e) => {
         e.preventDefault();
-        history.push('/profil/'+data.User.id);
+        history.push('/profil/' + data.User.id);
     };
 
     let commentJSX = (() => {
-        return data.User.feedbacks.feedbacks.map((feedback) => {
+        return data.User.feedbacks.feedbacks.map((feedback,index) => {
             return (
-                <div className="advert_comment">
+                <div className="advert_comment" key={index}>
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>{feedback.id}</strong></p>
@@ -72,8 +73,8 @@ export default function Advert() {
             for (const image in data.Garden.image) {
                 imgList.push(data.Garden.image[image]);
             }
-            imgList.map((src) => {
-                imgJSX.push(<img src={src} alt=""/>);
+            imgList.map((src,index) => {
+                imgJSX.push(<img src={src} alt="" key={index}/>);
             });
             if (sessionStorage.getItem('user') !== data.User.id.toString()) {
                 if (data.Advert.response === 0) {
@@ -123,7 +124,8 @@ export default function Advert() {
                             </div>
                             <div className="advert_main_info_action">
                                 {responseButton}
-                                <a href="" className="btn btn_secondary" onClick={(e) => handleRedirect(e)}>Consulter le profil</a>
+                                <a href="" className="btn btn_secondary" onClick={(e) => handleRedirect(e)}>Consulter le
+                                    profil</a>
                             </div>
                         </div>
                     </div>
