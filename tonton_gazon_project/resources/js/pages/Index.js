@@ -1,6 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import Axios from "axios";
 
 export default function Index() {
+
+    const [adverts,setAdverts] = useState([]);
+    const [top, setTop] = useState([]);
+    const [cpt, setCpt] = useState([]);
+
+    useEffect(() => {
+        Axios.get("/api/lastAdverts")
+            .then(res => {
+                setAdverts(res.data);
+                console.log(res.data);
+            });
+    }, [cpt]);
+
+
+    // useEffect(() => {
+    //     Axios.get("/api/topUsers")
+    //         .then(res => {
+    //             setTop(res.data);
+    //         });
+    // }, [cpt]);
 
     return (
         <>

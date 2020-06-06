@@ -441,4 +441,8 @@ class AdvertController extends Controller
             }
         }
     }
+
+    function lastAdverts() {
+        return response([Advert::all()->take(9)],200);
+    }
 }
