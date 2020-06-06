@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\responseSend;
 use App\Response;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ResponseController extends Controller
 {
@@ -59,6 +62,10 @@ class ResponseController extends Controller
         }
 
         $response->save();
+
+        $to = DB::table('users')->where('id',$data['clientId'])->first();
+
+        Mail::to($to->email)->send(new responseSend($data['advertType']));
 
         return response([], 200);
     }
