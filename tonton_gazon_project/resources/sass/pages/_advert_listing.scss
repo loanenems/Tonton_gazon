@@ -214,26 +214,18 @@
                 }
             }
 
-            .tondeur {
-                background-color: white;
-                background-image: url("../../../public/img/display-row.png");
-
-                &:hover,
-                &.active {
-                    background-color: black;
-                    background-image: url("../../../public/img/display-row-white.png");
-                }
+            input {
+                display: none;
             }
+            .tondeur {
 
+            }
             .tondu {
-                background-color: white;
-                background-image: url("../../../public/img/display-grid.png");
-
-                &:hover,
-                &.active {
-                    background-color: black;
-                    background-image: url("../../../public/img/display-grid-white.png");
-                }
+              
+            }
+            .active {
+                background: black;
+                color: white;
             }
 
             @include screen-md() {

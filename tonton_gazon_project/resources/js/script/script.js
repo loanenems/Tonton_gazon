@@ -28,6 +28,12 @@ $(function() {
         }
     });
 
+    // Display Tondu or Tondeur Advert's
+    $(".btn_role_select").click( function() {
+        $(".btn_role_select").removeClass("active");
+        $(this).addClass("active");
+    });
+
     // Hide or show Filter option Advert listing 
     if($(window).width() <  1348) {
         $(".advert_filter").hide();
