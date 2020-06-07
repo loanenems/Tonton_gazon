@@ -19,7 +19,7 @@ export default function Index() {
 
     let AdvertsJSX = adverts.map((advert, index) => {
         return (
-            <div className="recent_element">
+            <div className="recent_element" id={index}>
                 <img src="./img/jardin.jpg" alt=""></img>
                 <div className="garden_user">
                     <a href="" className="garden_username"> {advert.title}</a>
@@ -47,7 +47,7 @@ export default function Index() {
                 <div className="tondeur_info">
                     <a href="" className="tondeur_username">{user.name} {user.surname}</a>
                     <p className="tondeur_userstats"><b>{user.eval}</b> 340 avis</p>
-                    <a href="/profil/" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                    <a href={"/profil/" + user.id} className="tondeur_profil btn btn_primary">Voir le profil</a>
                 </div>
             </div>
         );
