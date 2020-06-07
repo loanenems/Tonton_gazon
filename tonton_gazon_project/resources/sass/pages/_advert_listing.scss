@@ -521,3 +521,12 @@
         }
     }
 }
+
+.pagination_advert_list {
+    display: flex;
+    margin: $space-small;
+    justify-content: center;
+    a {
+        font-weight: bold;
+    }
+}
