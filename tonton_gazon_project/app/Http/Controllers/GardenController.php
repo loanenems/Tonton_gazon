@@ -120,13 +120,14 @@ class GardenController extends Controller
 
     public function update(Request $request) {
         $validateData = $request->validate([
-            'description' => 'required|max:5000',
-            'size' => 'numeric|gt:0|lt:2000',
-            'movableObstacle' => 'required',
-            'unmovableObstacle' => 'required',
-            'pets' => 'required',
-            'equipment' => 'required',
-            'address' => 'required',
+            'garden_id' => 'required',
+            'description_edit' => 'required|max:5000',
+            'size_edit' => 'numeric|gt:0|lt:2000',
+            'movableObstacle_edit' => 'required',
+            'unmovableObstacle_edit' => 'required',
+            'pets_edit' => 'required',
+            'equipment_edit' => 'required',
+            'address_edit' => 'required',
         ]);
     }
 }

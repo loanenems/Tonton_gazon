@@ -44,7 +44,7 @@ export default function MesJardins() {
         })
     };
 
-    let handleEdit  = (e,idGarden) => {
+    let handleEdit = (e, idGarden) => {
         axios.get('/api/getGardenById', {
             params: {
                 id: idGarden,
@@ -56,10 +56,10 @@ export default function MesJardins() {
         })
     };
 
-    let submit = (e,method) => {
+    let submit = (e, method) => {
         e.preventDefault();
 
-        if(method === "add") {
+        if (method === "add") {
             //We are creating a new FormData object
             let data = new FormData();
             let img = document.getElementById('image').files[0];
@@ -103,10 +103,11 @@ export default function MesJardins() {
                 }).catch(error => {
                 setErrors([error.response.data.errors]);
             });
-        } else {
+        }
+        else {
             //We are creating a new FormData object
             let data = new FormData();
-            let img = document.getElementById('image').files[0];
+            let img = document.getElementById('image_edit').files[0];
 
             //We are building the formData object which is going to be sent to the server
             if (img !== undefined) {
@@ -114,38 +115,38 @@ export default function MesJardins() {
             } else {
                 data.append('image', "");
             }
-            data.append('description', document.getElementById('description').value);
-            data.append('size', document.getElementById('size').value);
-            data.append('movableObstacle', document.getElementById('movableObstacle').checked);
-            data.append('unmovableObstacle', document.getElementById('unmovableObstacle').checked);
-            data.append('pets', document.getElementById('pets').checked);
-            data.append('equipment', document.getElementById('equipment').checked ? 1 : 0);
+            data.append('description', document.getElementById('description_edit').value);
+            data.append('size', document.getElementById('size_edit').value);
+            data.append('movableObstacle', document.getElementById('movableObstacle_edit').checked);
+            data.append('unmovableObstacle', document.getElementById('unmovableObstacle_edit').checked);
+            data.append('pets', document.getElementById('pets_edit').checked);
+            data.append('equipment', document.getElementById('equipment_edit').checked ? 1 : 0);
             data.append('address', selectedAddress.address === "" ? "" : JSON.stringify(selectedAddress));
 
+
             //Conditional data that are only needed if a checkbox is checked
-            if (document.getElementById('movableObstacle').checked) {
-                data.append('movableObstacle_details', document.getElementById('movableObstacle_details').value);
+            if (document.getElementById('movableObstacle_edit').checked) {
+                data.append('movableObstacle_details', document.getElementById('movableObstacle_details_edit').value);
             }
-            if (document.getElementById('unmovableObstacle').checked) {
-                data.append('unmovableObstacle_details', document.getElementById('unmovableObstacle_details').value);
+            if (document.getElementById('unmovableObstacle_edit').checked) {
+                data.append('unmovableObstacle_details', document.getElementById('unmovableObstacle_details_edit').value);
             }
-            if (document.getElementById('pets').checked) {
-                data.append('pets_details', document.getElementById('pets_details').value);
+            if (document.getElementById('pets_edit').checked) {
+                data.append('pets_details', document.getElementById('pets_details_edit').value);
             }
 
             //We make the post request to the GardenController who process the data
             axios({
                 method: 'post',
-                url: '/api/gardenAdd',
+                url: '/api/editGarden',
                 data: data,
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
             })
                 .then(function (reponse) {
-                    setCpt(cpt + 1);
+                    setGardenEdit([]);
                 }).catch(error => {
-                setErrors([error.response.data.errors]);
             });
         }
     };
@@ -203,132 +204,173 @@ export default function MesJardins() {
         )
     });
 
-    let FormGardenEditJSX = () => { return gardenEdit.map((garden, index)  => {
-        console.log(garden);
-
-        let movableChecked = () => {
-            if ( garden.movableObstacle ) {  return (
-                    <> <input type="checkbox" id="movableObstacle" name="movableObstacle" checked />  </>
-            ); } else {  return (
-                    <> <input type="checkbox" id="movableObstacle" name="movableObstacle"  />  </>
-            ); }
-        };
-
-        let unmovableChecked = () => {
-            if ( garden.unmovableObstacle ) {  return (
-                    <> <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle" checked/>  </>
-            ); } else {  return (
-                    <> <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>  </>
-            ); }
-        };
-
-        let petsChecked = () => {
-            if ( garden.pets ) {  return (
-                    <> <input type="checkbox" id="pets" name="pets" checked />  </>
-            ); } else {  return (
-                    <> <input type="checkbox" id="pets" name="pets"  />  </>
-            ); }
-        };
-
-        let equipmentChecked = () => {
-            if ( garden.equipment == 1 ) {  return (
-                    <> <input type="checkbox" id="equipment" name="equipment" checked/>  </>
-            ); } else {  return (
-                    <> <input type="checkbox" id="equipment" name="equipment"/>  </>
-            ); }
-        };
-
-        return (
-            <form className="bloc bloc_form" onSubmit={(e) => submit(e,"edit")} method="post">
-                <div id="modifier" className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
-                    <h3>Modifier le jardin selectionné</h3>
-                </div>
-
-                <div className="form_error">
-                    {errorsJSX()}
-                </div>
-
-                <div className="form_group">
-                    <label htmlFor="description" className="form_label">description</label>
-                    <input type="text" className="form_input" id="description" name="description"
-                          defaultValue={garden.description} placeholder="Décrivez votre jardin en quelques mots"/>
-                </div>
-
-                <div className="form_group">
-                    <label htmlFor="size" className="form_label">size</label>
-                    <input type="number" className="form_input" id="size" name="size"
-                           defaultValue={garden.size} placeholder="Taille en m² de votre pelouse"/>
-                </div>
-                <div className="form_group">
-                    <div className="checkbox_group">
-                        <label htmlFor="movableObstacle" className="control control-checkbox">
-                            MovableObstacle
-                            {movableChecked()}
+    let FormGardenEditJSX = () => {
+        return gardenEdit.map((garden, index) => {
+            let movableChecked = () => {
+                if (garden.movableObstacle) {
+                    return (
+                        <>
+                            <input type="checkbox" id="movableObstacle_edit" name="movableObstacle_edit" defaultChecked/>
                             <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="movableObstacle_details"
-                                   name="movableObstacle_details" defaultValue={garden.movableObstacle}
+                            <input type="text" className="form_input form_hidden" id="movableObstacle_details_edit"
+                                   name="movableObstacle_details_edit" defaultValue={garden.movableObstacle}
                                    placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
-                        </label>
-                    </div>
-                </div>
+                        </>
+                    );
+                } else {
+                    return (
+                        <>
+                            <input type="checkbox" id="movableObstacle_edit" name="movableObstacle_edit"/>
+                            <div className="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="movableObstacle_details_edit"
+                                   name="movableObstacle_details_edit"
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                        </>
+                    );
+                }
+            };
 
-                <div className="form_group">
-                    <div className="checkbox_group">
-                        <label htmlFor="unmovableObstacle" className="control control-checkbox">
-                            UnmovableObstacle
-                            {unmovableChecked()}
+            let unmovableChecked = () => {
+                if (garden.unmovableObstacle) {
+                    return (
+                        <>
+                            <input type="checkbox" id="unmovableObstacle_edit" name="unmovableObstacle_edit" defaultChecked/>
+                            <div className="control_indicator"></div>
+                            <input type="text" className="form_input form_hidden" id="unmovableObstacle_details_edit"
+                                   name="unmovableObstacle_details_edit" defaultValue={garden.unmovableObstacle}
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                        </>
+                    );
+                } else {
+                    return (
+                        <>
+                            <input type="checkbox" id="unmovableObstacle_edit" name="unmovableObstacle_edit"/>
                             <div className="control_indicator"></div>
                             <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
-                                   name="unmovableObstacle_details" defaultValue={garden.unmovableObstacle}
+                                   name="unmovableObstacle_details"
                                    placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
-                        </label>
-                    </div>
-                </div>
+                        </>
+                    );
+                }
+            };
 
-                <div className="form_group">
-                    <div className="checkbox_group">
-                        <label htmlFor="pets" className="control control-checkbox">
-                            Pets
-                            {petsChecked()}
+            let petsChecked = () => {
+                if (garden.pets) {
+                    return (
+                        <>
+                            <input type="checkbox" id="pets" name="pets" defaultChecked/>
                             <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="pets_details"
-                                    name="pets_details" defaultValue={garden.pets}
+                            <input type="text" className="form_input form_hidden" id="pets_details_edit"
+                                   name="pets_details_edit" defaultValue={garden.pets}
                                    placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
-                        </label>
-                    </div>
-                </div>
-
-                <div className="form_group">
-                    <div className="checkbox_group">
-                        <label htmlFor="equipment" className="control control-checkbox">
-                            Equipment
-                            {equipmentChecked()}
+                        </>
+                    );
+                } else {
+                    return (
+                        <>
+                            <input type="checkbox" id="pets" name="pets"/>
                             <div className="control_indicator"></div>
-                        </label>
+                            <input type="text" className="form_input form_hidden" id="pets_details_edit"
+                                   name="pets_details_edit"
+                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                        </>
+                    );
+                }
+            };
+
+            let equipmentChecked = () => {
+                if (garden.equipment == 1) {
+                    return (
+                        <> <input type="checkbox" id="equipment_edit" name="equipment_edit" defaultChecked/>  </>
+                    );
+                } else {
+                    return (
+                        <> <input type="checkbox" id="equipment_edit" name="equipment_edit"/>  </>
+                    );
+                }
+            };
+
+            return (
+                <form className="bloc bloc_form" onSubmit={(e) => submit(e, "edit")} method="post">
+                    <div id="modifier" className="bloc_title">
+                        <img src="./img/waving-hand-sign.png"></img>
+                        <h3>Modifier le jardin selectionné</h3>
                     </div>
-                </div>
 
-                <div className="form_group">
-                    <label htmlFor="image" className="form_label">Image</label>
-                    <input type="file" className="form_input" id="image" name="image" accept="image/png, image/jpeg"/>
-                </div>
+                    <div className="form_error">
+                        {errorsJSX()}
+                    </div>
 
-                <div className="garden_adress_form form_group">
-                    <label htmlFor="address" className="form_label">Adresse</label>
-                    <input type="text" id="address" defaultValue={garden.address} className="form_input" onKeyUp={(e) => handleAddress(e)}/>
-                </div>
+                    <div className="form_group">
+                        <label htmlFor="description" className="form_label">description</label>
+                        <input type="text" className="form_input" id="description_edit" name="description_edit"
+                               defaultValue={garden.description} placeholder="Décrivez votre jardin en quelques mots"/>
+                    </div>
 
-                <div className="garden_adress_suggestion_group">
-                    {adressJSX}
-                </div>
+                    <div className="form_group">
+                        <label htmlFor="size" className="form_label">size</label>
+                        <input type="number" className="form_input" id="size_edit" name="size_edit"
+                               defaultValue={garden.size} placeholder="Taille en m² de votre pelouse"/>
+                    </div>
+                    <div className="form_group">
+                        <div className="checkbox_group">
+                            <label htmlFor="movableObstacle_edit" className="control control-checkbox">
+                                MovableObstacle
+                                {movableChecked()}
+                            </label>
+                        </div>
+                    </div>
 
-                <button className="garden_button btn btn_primary" type="submit">Envoyer</button>
-                <a className="btn btn_secondary" onClick={(e) => cancelEdit(e)}>Annuler</a>
-            </form>
-        );
-    });
-}
+                    <div className="form_group">
+                        <div className="checkbox_group">
+                            <label htmlFor="unmovableObstacle_edit" className="control control-checkbox">
+                                UnmovableObstacle
+                                {unmovableChecked()}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="form_group">
+                        <div className="checkbox_group">
+                            <label htmlFor="pets_edit" className="control control-checkbox">
+                                Pets
+                                {petsChecked()}
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="form_group">
+                        <div className="checkbox_group">
+                            <label htmlFor="equipment_edit" className="control control-checkbox">
+                                Equipment
+                                {equipmentChecked()}
+                                <div className="control_indicator"></div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div className="form_group">
+                        <label htmlFor="image_edit" className="form_label">Image</label>
+                        <input type="file" className="form_input" id="image_edit" name="image_edit"
+                               accept="image/png, image/jpeg"/>
+                    </div>
+
+                    <div className="garden_adress_form form_group">
+                        <label htmlFor="address_edit" className="form_label">Adresse</label>
+                        <input type="text" id="address_edit" defaultValue={garden.address} className="form_input"
+                               onKeyUp={(e) => handleAddress(e)}/>
+                    </div>
+
+                    <div className="garden_adress_suggestion_group">
+                        {adressJSX}
+                    </div>
+
+                    <button className="garden_button btn btn_primary" type="submit">Envoyer</button>
+                    <a className="btn btn_secondary" onClick={(e) => cancelEdit(e)}>Annuler</a>
+                </form>
+            );
+        });
+    };
 
     let JardinJSX = gardens.map((garden, index) => {
         //Parse the images string to an object
@@ -379,7 +421,8 @@ export default function MesJardins() {
                     <p>{garden.description}</p>
                     <b>Superficie : {garden.size}m²</b>
                     <div>
-                        <a className="btn btn_primary btn_modify_garden" onClick={(e) => handleEdit(e, garden.id)}>Modifier</a>
+                        <a className="btn btn_primary btn_modify_garden"
+                           onClick={(e) => handleEdit(e, garden.id)}>Modifier</a>
                         <a href="" onClick={(e) => handleRemove(e, garden.id)}><img src="/img/trash.png"
                                                                                     alt="supprimer l'annonce"></img></a>
                     </div>
@@ -396,7 +439,7 @@ export default function MesJardins() {
 
             {FormGardenEditJSX()}
 
-            <form className="bloc bloc_form" onSubmit={(e) => submit(e,"add")} method="post">
+            <form className="bloc bloc_form" onSubmit={(e) => submit(e, "add")} method="post">
                 <div id="modifier" className="bloc_title">
                     <img src="./img/waving-hand-sign.png"></img>
                     <h3>Creer un jardin</h3>
