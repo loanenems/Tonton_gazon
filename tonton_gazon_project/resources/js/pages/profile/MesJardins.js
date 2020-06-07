@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
-import { render } from 'node-sass';
 
 export default function MesJardins() {
 
@@ -11,8 +10,6 @@ export default function MesJardins() {
     const [cpt, setCpt] = useState(0);
     const [errors, setErrors] = useState([]);
     const [gardenEdit, setGardenEdit] = useState([]);
-
-    console.log(gardenEdit)
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
@@ -53,8 +50,7 @@ export default function MesJardins() {
                 id: idGarden,
             }
         }).then(res => {
-            console.log(res.data);
-            setGardenEdit(res.data);
+            setGardenEdit([res.data]);
         }).catch(err => {
 
         })
@@ -161,9 +157,102 @@ export default function MesJardins() {
         )
     });
 
-    let FormGardenEditJSX = gardenEdit.map((garden, index)  => {
+    let FormGardenEditJSX = () => { gardenEdit.map((garden, index)  => {
         console.log(garden);
+        return (
+
+            <div>Coucou </div>
+
+            // <form className="bloc bloc_form" onSubmit={(e) => submit(e)} method="post">
+            //     <div id="modifier" className="bloc_title">
+            //         <img src="./img/waving-hand-sign.png"></img>
+            //         <h3>Modifier le jardin {garden.id}</h3>
+            //     </div>
+
+            //     <div className="form_error">
+            //         {errorsJSX()}
+            //     </div>
+
+            //     <div className="form_group">
+            //         <label htmlFor="description" className="form_label">description</label>
+            //         <input type="text" className="form_input" id="description" name="description"
+            //                placeholder="Décrivez votre jardin en quelques mots"/>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <label htmlFor="size" className="form_label">size</label>
+            //         <input type="number" className="form_input" id="size" name="size"
+            //                placeholder="Taille en m² de votre pelouse"/>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <div className="checkbox_group">
+            //             <label htmlFor="movableObstacle" className="control control-checkbox">
+            //                 MovableObstacle
+            //                 <input type="checkbox" id="movableObstacle" name="movableObstacle"/>
+            //                 <div className="control_indicator"></div>
+            //                 <input type="text" className="form_input form_hidden" id="movableObstacle_details"
+            //                        name="movableObstacle_details"
+            //                        placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+            //             </label>
+            //         </div>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <div className="checkbox_group">
+            //             <label htmlFor="unmovableObstacle" className="control control-checkbox">
+            //                 UnmovableObstacle
+            //                 <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>
+            //                 <div className="control_indicator"></div>
+            //                 <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
+            //                        name="unmovableObstacle_details"
+            //                        placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+            //             </label>
+            //         </div>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <div className="checkbox_group">
+            //             <label htmlFor="pets" className="control control-checkbox">
+            //                 Pets
+            //                 <input type="checkbox" id="pets" name="pets"/>
+            //                 <div className="control_indicator"></div>
+            //                 <input type="text" className="form_input form_hidden" id="pets_details" name="pets_details"
+            //                        placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+            //             </label>
+            //         </div>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <div className="checkbox_group">
+            //             <label htmlFor="equipment" className="control control-checkbox">
+            //                 Equipment
+            //                 <input type="checkbox" id="equipment" name="equipment"/>
+            //                 <div className="control_indicator"></div>
+            //             </label>
+            //         </div>
+            //     </div>
+
+            //     <div className="form_group">
+            //         <label htmlFor="image" className="form_label">Image</label>
+            //         <input type="file" className="form_input" id="image" name="image" accept="image/png, image/jpeg"/>
+            //     </div>
+
+            //     <div className="garden_adress_form form_group">
+            //         <label htmlFor="address" className="form_label">Adresse</label>
+            //         <input type="text" id="address" className="form_input" onKeyUp={(e) => handleAddress(e)}/>
+            //     </div>
+
+            //     <div className="garden_adress_suggestion_group">
+            //         {adressJSX}
+            //     </div>
+
+            //     <button className="garden_button btn btn_primary" type="submit">Envoyer</button>
+            //     <a className="btn btn_secondary" onClick={(e) => cancelEdit(e)}>Annuler</a>
+            // </form>
+        );
     });
+}
 
     let JardinJSX = gardens.map((garden, index) => {
         //Parse the images string to an object
@@ -228,6 +317,8 @@ export default function MesJardins() {
             <div className="my_garden_list">
                 {JardinJSX}
             </div>
+
+            {FormGardenEditJSX()}
 
             <form className="bloc bloc_form" onSubmit={(e) => submit(e)} method="post">
                 <div id="modifier" className="bloc_title">

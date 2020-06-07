@@ -32,7 +32,7 @@ class GardenController extends Controller
         ]);
         $garden = Garden::find($data["id"]);
 
-        return response((['jardin' => $garden]), 200);
+        return response( $garden, 200);
     }
 
     /**
