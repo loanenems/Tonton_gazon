@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Advert;
 use App\Garden;
+use App\Rules\PhoneNumber;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -55,7 +56,7 @@ class ProfileController extends Controller
             "name" => "required",
             "surname" => "required",
             "email" => "required",
-            "phone_number" => "required|numeric",
+            "phone_number" => ["required", new PhoneNumber],
             "about_me" => "",
         ]);
 

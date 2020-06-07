@@ -55,7 +55,7 @@ ReactDOM.render(
                 <Route exact path='/' component={Index}/>
 
                 {/* Authentication */}
-                <Route exact path='/login' component={Login}/>
+                <Route path='/login' component={Login}/>
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/reset_password' component={ResetPassword}/>
 

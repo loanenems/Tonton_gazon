@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link, useHistory, useRouteMatch ,Switch, Route} from 'react-router-dom'
+import {Link, useHistory, useRouteMatch, Switch, Route} from 'react-router-dom'
 import axios from 'axios';
 import Error from "../error";
 
@@ -11,7 +11,7 @@ export default function Login() {
     const history = useHistory();
     let {path, url} = useRouteMatch();
 
-    if(sessionStorage.getItem('is_logged') === 'true') {
+    if (sessionStorage.getItem('is_logged') === 'true') {
         //The user is redirected to index
         history.push('/');
     }
@@ -64,31 +64,31 @@ export default function Login() {
 
                     <div className="form_group">
                         <label className="form_label" htmlFor="email">Adresse mail</label>
-                        <input className="form_input"id="email" type="email" name="email"
-                                    onChange={(e) => change(e)} value={email} required/>
+                        <input className="form_input" id="email" type="email" name="email"
+                               onChange={(e) => change(e)} value={email} required/>
                     </div>
 
                     <div className="form_group">
                         <label className="form_label" htmlFor="password">Mot de passe</label>
                         <input className="form_input" id="password" type="password"
-                                    name="password" onChange={(e) => change(e)} required/>
+                               name="password" onChange={(e) => change(e)} required/>
                     </div>
 
                     <div className="form_group">
                         <div class="checkbox_group">
                             <label class="control control-checkbox">
                                 Se souvenir de moi
-                                    <input type="checkbox" name="remember"/>
+                                <input type="checkbox" name="remember"/>
                                 <div class="control_indicator"></div>
                             </label>
                         </div>
                     </div>
 
                     <a href="" className="btn btn_primary" onClick={(e) => submit(e)}>Envoyer le formulaire</a>
-                    <Link className="btn btn_secondary" to={`${url}/reset`}>Mot de passe oublié ?</Link>
+                    <Link className="btn btn_secondary" to={`${url}/reset_password`}>Mot de passe oublié ?</Link>
                 </form>
             </Route>
-            <Route path={`${path}/reset`}>
+            <Route path={`${path}/reset_password`}>
                 <form className="bloc bloc_form">
                     <div className="bloc_title">
                         <img src="./img/waving-hand-sign.png"></img>
@@ -96,13 +96,12 @@ export default function Login() {
                     </div>
                     <div className="form_group">
                         <input id="email" type="email" className="form_input" name="email"
-                           onChange={(e) => change(e)} value={email}
-                           required placeholder="Votre adresse mail"/>
+                               onChange={(e) => change(e)} value={email}
+                               required placeholder="Votre adresse mail"/>
                     </div>
                     <a href="" className="btn btn_primary" onClick={(e) => handlePasswordReset(e)}>Réinitialiser</a>
                 </form>
             </Route>
-            <Route exact={false} component={Error}/>
         </Switch>
     );
 }
