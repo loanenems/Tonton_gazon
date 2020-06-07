@@ -16,7 +16,7 @@ export default function Register() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
-                
+
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -51,7 +51,7 @@ export default function Register() {
                 'password_confirmation': document.getElementById('password-confirm').value,
             }).then(response => {
             // Redirect to homepage
-            history.push('/');
+            history.push('/informations');
         }).catch(error => {
             setErrors([error.response.data.errors]);
         });
