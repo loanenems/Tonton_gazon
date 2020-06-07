@@ -466,7 +466,7 @@ class AdvertController extends Controller
                 "garden.size",
                 "garden.image"
             )
-            ->where('advert.state', 1)
+            ->where('advert.state', 0)
             ->limit(9)
             ->get();
 
