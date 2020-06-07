@@ -8,8 +8,6 @@ export default function Index() {
     const [top, setTop] = useState([]);
     const [cpt, setCpt] = useState([]);
 
-    console.log(sessionStorage);
-
     useEffect(() => {
         Axios.get("/api/lastAdverts")
             .then(res => {
