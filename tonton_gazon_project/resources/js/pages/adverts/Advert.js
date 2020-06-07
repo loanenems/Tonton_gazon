@@ -62,7 +62,7 @@ export default function Advert() {
         return data.User.feedbacks.feedbacks.map((feedback, index) => {
             return (
                 <div className="advert_comment" key={index}>
-                    <img src="./img/pierre-alain.jpg" alt=""/>
+                    <img src="/img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
                         <p><strong>{feedback.surname} {feedback.name}</strong></p>
                         <p>{feedback.comment}</p>
@@ -123,11 +123,11 @@ export default function Advert() {
                             </div>
                             <div className="advert_bloc advert_main_info">
                                 <div className="advert_main_title">
-                                    <img src="./img/pierre-alain.jpg" alt=""/>
+                                    <img src="/img/pierre-alain.jpg" alt=""/>
                                     <p>Jardin de {data.User.surname} {data.User.name}</p>
                                 </div>
                                 <p className="advert_bloc_title">
-                                    <img src="./img/information-source.png" alt=""/>
+                                    <img src="/img/information-source.png" alt=""/>
                                     <strong>Informations sur l'annonce</strong>
                                 </p>
                                 <div className="advert_main_info_list">
@@ -149,15 +149,15 @@ export default function Advert() {
                         <div className="advert_bloc advert_more_info">
                             <div className="advert_description">
                                 <p className="advert_bloc_title">
-                                    <img src="./img/memo.png" alt=""/>
+                                    <img src="/img/memo.png" alt=""/>
                                     <strong>Description de l'annonce</strong>
                                 </p>
                                 <p>{data.Advert.description}</p>
                             </div>
-    
+
                             <div className="advert_more">
                                 <p className="advert_bloc_title">
-                                    <img src="./img/information-source.png" alt=""/>
+                                    <img src="/img/information-source.png" alt=""/>
                                     <strong>Informations supplémentaires</strong>
                                 </p>
                                 <ul>
@@ -171,16 +171,16 @@ export default function Advert() {
                                 </ul>
                             </div>
                         </div>
-    
-    
+
+
                         <div className="advert_bloc advert_comments">
                             <p className="advert_bloc_title">
-                                <img src="./img/face-with-monocle.png" alt=""/>
+                                <img src="/img/face-with-monocle.png" alt=""/>
                                 <strong>Commentaires</strong>
                             </p>
                             {commentJSX()}
                         </div>
-    
+
                         {/* <div className="advert_bloc advert_comments">
                             <p className="advert_bloc_title">
                                 <img src="./img/world-map.png" alt=""/>
@@ -201,11 +201,11 @@ export default function Advert() {
                             </div> */}
                             <div className="advert_bloc advert_main_info">
                                 <div className="advert_main_title">
-                                    <img src="./img/pierre-alain.jpg" alt=""/>
+                                    <img src="/img/pierre-alain.jpg" alt=""/>
                                     <p>Annonce de {data.User.name} {data.User.name}</p>
                                 </div>
                                 <p className="advert_bloc_title">
-                                    <img src="./img/information-source.png" alt=""/>
+                                    <img src="/img/information-source.png" alt=""/>
                                     <strong>Informations sur l'annonce</strong>
                                 </p>
                                 <div className="advert_main_info_list">
@@ -227,12 +227,12 @@ export default function Advert() {
                         <div className="advert_bloc advert_more_info">
                             <div className="advert_description">
                                 <p className="advert_bloc_title">
-                                    <img src="./img/memo.png" alt=""/>
+                                    <img src="/img/memo.png" alt=""/>
                                     <strong>Description de l'annonce</strong>
                                 </p>
                                 <p>{data.Advert.description}</p>
                             </div>
-    
+
                             {/* <div className="advert_more">
                                 <p className="advert_bloc_title">
                                     <img src="./img/information-source.png" alt=""/>
@@ -249,16 +249,16 @@ export default function Advert() {
                                 </ul>
                             </div> */}
                         </div>
-    
-    
+
+
                         <div className="advert_bloc advert_comments">
                             <p className="advert_bloc_title">
-                                <img src="./img/face-with-monocle.png" alt=""/>
+                                <img src="/img/face-with-monocle.png" alt=""/>
                                 <strong>Commentaires</strong>
                             </p>
                             {commentJSX()}
                         </div>
-    
+
                         {/* <div className="advert_bloc advert_comments">
                             <p className="advert_bloc_title">
                                 <img src="./img/world-map.png" alt=""/>
@@ -269,7 +269,7 @@ export default function Advert() {
                     </div>
                 );
             }
-                
+
         }
     });
 
