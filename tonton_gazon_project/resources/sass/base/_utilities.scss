@@ -1,8 +1,10 @@
 .container {
     margin:auto;
     width: $container-width;
+    min-height: 90vh;
     @include screen-md() {
         width: $container-width-md;
+        margin-top: 52px;
     }
     @include screen-sm() {
         width: $container-width-sm;
