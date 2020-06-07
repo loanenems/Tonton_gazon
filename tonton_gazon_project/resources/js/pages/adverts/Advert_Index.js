@@ -147,7 +147,7 @@ export default function Advert_Index() {
                         {advertJSX}
                     </div>
                 </div>
-                {paginateJSX()}
+                <div className="pagination_advert_list">{paginateJSX()}</div>
             </Route>
             <Route path={`${path}/:id`}>
                 <Advert/>

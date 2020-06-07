@@ -78,10 +78,9 @@ export default function Nav() {
                             <input type="text" className="navbar_search"></input>
                         </div>
                         <div className="navbar_links">
-                            <a href="#">HOME</a><br/>
-                            <a href="#">ABOUT</a><br/>
-                            <a href="#">WORK</a><br/>
-                            <a href="#">SERVICES</a>
+                            <a href="/">Accueil</a><br/>
+                            <a href="/adverts">Les annonces</a><br/>
+                            <a href="/contact">Contact</a><br/>
                         </div>
                         <div className="navbar_auth">
                             <Link to="/login" className="navbar_element btn btn_secondary_white">Connexion</Link>

@@ -80,6 +80,10 @@ body {
     margin: $space-e-large 0;
     p {
         margin: $space-medium 0;
+        max-width: 50%;
+        @include screen-md() {
+            max-width: 85%;
+        }
     }
     a {
         margin: $space-small;
