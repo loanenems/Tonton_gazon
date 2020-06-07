@@ -25,9 +25,12 @@ class GardenController extends Controller
      * @param $id
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function fetchGardenById($id)
+    public function fetchGardenById(Request $request)
     {
-        $garden = Garden::find($id);
+        $data = $request->validate([
+            "id" => 'required',
+        ]);
+        $garden = Garden::find($data["id"]);
 
         return response((['jardin' => $garden]), 200);
     }

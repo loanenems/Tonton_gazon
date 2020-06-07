@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import FormData from 'form-data';
+import { render } from 'node-sass';
 
 export default function MesJardins() {
 
@@ -9,6 +10,9 @@ export default function MesJardins() {
     const [gardens, setGardens] = useState([]);
     const [cpt, setCpt] = useState(0);
     const [errors, setErrors] = useState([]);
+    const [gardenEdit, setGardenEdit] = useState([]);
+
+    console.log(gardenEdit)
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
@@ -40,6 +44,19 @@ export default function MesJardins() {
                     <p>{message}</p>
                 </div>
             )
+        })
+    };
+
+    let handleEdit  = (e,idGarden) => {
+        axios.get('/api/getGardenById', {
+            params: {
+                id: idGarden,
+            }
+        }).then(res => {
+            console.log(res.data);
+            setGardenEdit(res.data);
+        }).catch(err => {
+
         })
     };
 
@@ -121,6 +138,11 @@ export default function MesJardins() {
         }
     };
 
+    let cancelEdit = (e) => {
+        e.preventDefault();
+        setGardenEdit([]);
+    }
+
     let handleSelect = (e) => {
         let lat = e.target.dataset.lat;
         let lon = e.target.dataset.lon;
@@ -137,6 +159,10 @@ export default function MesJardins() {
                    onClick={(e) => handleSelect(e)}>{obj.properties.label}</p>
             </>
         )
+    });
+
+    let FormGardenEditJSX = gardenEdit.map((garden, index)  => {
+        console.log(garden);
     });
 
     let JardinJSX = gardens.map((garden, index) => {
@@ -188,7 +214,7 @@ export default function MesJardins() {
                     <p>{garden.description}</p>
                     <b>Superficie : {garden.size}m²</b>
                     <div>
-                        <a href="#modifier" className="btn btn_primary btn_modify_garden">Modifier</a>
+                        <a href="#modifier" className="btn btn_primary btn_modify_garden" onClick={(e) => handleEdit(e, garden.id)}>Modifier</a>
                         <a href="" onClick={(e) => handleRemove(e, garden.id)}><img src="/img/trash.png"
                                                                                     alt="supprimer l'annonce"></img></a>
                     </div>
@@ -288,6 +314,7 @@ export default function MesJardins() {
                 </div>
 
                 <button className="garden_button btn btn_primary" type="submit">Envoyer</button>
+                <a className="btn btn_secondary" onClick={(e) => cancelEdit(e)}>Annuler</a>
             </form>
         </div>
     )
