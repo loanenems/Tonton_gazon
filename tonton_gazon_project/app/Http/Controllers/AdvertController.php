@@ -286,14 +286,14 @@ class AdvertController extends Controller
 
 
         $advert = new Advert;
-        $advert->idGarden = 0;
+        $advert->idGarden = 9;
 
         if ($validatedData["type"] == 1) {
-            $otherData = $request->validate([
-                "idGarden" => "required"
-            ]);
-            $advert->idGarden = $otherData['idGarden'];
-        }
+        $otherData = $request->validate([
+            "idGarden" => "required"
+        ]);
+        $advert->idGarden = $otherData['idGarden'];
+    }
 
         //Transform date json to assoc array
         $dates = json_decode($request->get('date'), true);
