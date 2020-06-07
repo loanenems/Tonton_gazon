@@ -1,11 +1,15 @@
 import {addDynamicalForm} from "../../helpers";
 import React, {useEffect, useState} from "react";
+import {useHistory} from 'react-router-dom';
 import axios from "axios";
 import FormData from "form-data";
 
 export default function AnnonceTondu() {
     const [gardens, setGardens] = useState([]);
     const [errors, setErrors] = useState([]);
+
+    let history = useHistory();
+
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
@@ -23,7 +27,7 @@ export default function AnnonceTondu() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
-                
+
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -64,7 +68,7 @@ export default function AnnonceTondu() {
                 'Content-Type': 'multipart/form-data',
             }
         }).then((res) => {
-            (res);
+            history.push('/adverts?page=1&equipment=false&type=0');
         }).catch(error => {
             setErrors([error.response.data.errors]);
         });

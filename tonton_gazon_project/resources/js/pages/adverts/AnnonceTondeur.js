@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import {addDynamicalForm} from "../../helpers";
+import {useHistory} from 'react-router-dom';
 import FormData from "form-data";
 import axios from "axios";
 
 export default function AnnonceTondeur() {
 
     const [errors, setErrors] = useState([]);
+    let history = useHistory();
 
     let errorsJSX = () => {
         //Ce tableau va contenir l'ensemble des messages d'erreur
@@ -16,7 +18,7 @@ export default function AnnonceTondeur() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
-                
+
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -55,7 +57,7 @@ export default function AnnonceTondeur() {
                 'Content-Type': 'multipart/form-data',
             }
         }).then((res) => {
-            (res);
+            history.push('/adverts?page=1&equipment=false&type=0');
         }).catch(error => {
             setErrors([error.response.data.errors]);
         });

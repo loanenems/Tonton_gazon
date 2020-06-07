@@ -45,6 +45,16 @@ export default function Nav() {
         }
     };
 
+    let jsxAdvert = () => {
+        if (isLogged === "true") {
+            return(
+                <>
+                    <Link to="/create_advert" className="navbar_element">Créer une annonce</Link>
+                </>
+            )
+        }
+    };
+
     return (
         <>
             <nav className="navbar">
@@ -57,6 +67,7 @@ export default function Nav() {
                 <div className="navbar_group navbar_links">
                     <a href="/" className="navbar_element">Accueil</a>
                     <a href="/adverts" className="navbar_element">Voir les annonces</a>
+                    {jsxAdvert()}
                     <a href="/contact" className="navbar_element">Contact</a>
                 </div>
                 <div className="navbar_group navbar_authentication">

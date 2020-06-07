@@ -141,11 +141,9 @@ class GardenController extends Controller
         ];
 
         if ($request->image !== null) {
-            //$request->image->storeAs('public/' . auth()->id() . '/Advert_Index', $request->image->getClientOriginalName());
-            $fields[] = array("image" => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert/' . $validateData['image']->getClientOriginalName())]));
+            $request->image->storeAs('public/' . auth()->id() . '/Advert_Index', $request->image->getClientOriginalName());
+            $fields[] = array("image" => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert_Index/' . $validateData['image']->getClientOriginalName())]));
         }
-
-        dump($fields);
 
         Garden::where('id', $validateData['garden_id'])->update($fields);
 
