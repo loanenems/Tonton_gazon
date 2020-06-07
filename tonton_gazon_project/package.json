@@ -25,7 +25,7 @@
         "webpack": "^4.41.5"
     },
     "dependencies": {
-        "babel-loader": "^8.0.6",
+        "babel-loader": "^8.1.0",
         "form-data": "^3.0.0",
         "gifsicle": "^5.0.0",
         "gulp": "^4.0.2",

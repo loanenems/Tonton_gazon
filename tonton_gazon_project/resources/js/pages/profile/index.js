@@ -30,7 +30,6 @@ export default function Profile() {
 
     let statistiquesJSX = () => {
         if (data.hasOwnProperty('User')) {
-            console.log(data);
             return (
                 <>
                     <h3>Vos statistiques</h3>
