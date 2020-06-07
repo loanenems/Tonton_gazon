@@ -22,14 +22,11 @@ class AuthController extends Controller
         ]);
 
         $validatedData['password'] = Hash::make($request->password);
-
         $user = User::create($validatedData);
-
-        $accessToken = $user->createToken('authToken')->accessToken;
 
         $user->sendApiEmailVerificationNotification();
 
-        return response(['user' => $user, 'access_token' => $accessToken]);
+        return response([],200);
     }
 
     function login(Request $request)

@@ -49,14 +49,6 @@ export default function Register() {
                 'password': document.getElementById('password').value,
                 'password_confirmation': document.getElementById('password-confirm').value,
             }).then(response => {
-            // We store the received token
-            const token = response.data['access_token'];
-            // Then we assign the token to sessionStorage to keep track of it
-            sessionStorage.setItem('access_token', token);
-            sessionStorage.setItem('is_logged', 'true');
-            // And set it as a default Authorization header (Bearer token)
-            axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
-
             // Redirect to homepage
             history.push('/');
         }).catch(error => {

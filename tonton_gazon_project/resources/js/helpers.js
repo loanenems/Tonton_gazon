@@ -3,7 +3,7 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
     if (pos !== null) {
         position = JSON.stringify({lat: pos.coords.latitude, lon: pos.coords.longitude});
     }
-    //This function return the checked option.
+    //This function return the checked option for the user's eval.
     let checkedEval = () => {
         const radios = $('.rating').find(':checked');
         if(radios.length > 0) {
@@ -11,6 +11,17 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
         }
         return "";
     };
+
+    //This function return the checked option for the type of advert (tondeur or tondu).
+    let checkedType = () => {
+        if($('#tondeur').is(':checked')) {
+            return "0";
+        } else {
+            return "1";
+        }
+    };
+
+
     let filters = {
         search: document.getElementById('search').value,
         payout: document.getElementById('payout').value,
@@ -21,6 +32,7 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
         distance: document.getElementById('distances').options[document.getElementById('distances').selectedIndex].value,
         position: position,
         equipment: document.getElementById('equipment').checked,
+        type: checkedType(),
     };
 
     let url = "/adverts";
