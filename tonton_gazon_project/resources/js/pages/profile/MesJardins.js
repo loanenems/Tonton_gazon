@@ -56,7 +56,7 @@ export default function MesJardins() {
         })
     };
 
-    let submit = (e, method) => {
+    let submit = (e, method, gardenId=null) => {
         e.preventDefault();
 
         if (method === "add") {
@@ -122,6 +122,7 @@ export default function MesJardins() {
             data.append('pets', document.getElementById('pets_edit').checked);
             data.append('equipment', document.getElementById('equipment_edit').checked ? 1 : 0);
             data.append('address', selectedAddress.address === "" ? "" : JSON.stringify(selectedAddress));
+            data.append('garden_id',gardenId);
 
 
             //Conditional data that are only needed if a checkbox is checked
@@ -246,8 +247,8 @@ export default function MesJardins() {
                         <>
                             <input type="checkbox" id="unmovableObstacle_edit" name="unmovableObstacle_edit"/>
                             <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
-                                   name="unmovableObstacle_details"
+                            <input type="text" className="form_input form_hidden" id="unmovableObstacle_details_edit"
+                                   name="unmovableObstacle_details_edit"
                                    placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </>
                     );
@@ -258,7 +259,7 @@ export default function MesJardins() {
                 if (garden.pets) {
                     return (
                         <>
-                            <input type="checkbox" id="pets" name="pets" defaultChecked/>
+                            <input type="checkbox" id="pets_edit" name="pets_edit" defaultChecked/>
                             <div className="control_indicator"></div>
                             <input type="text" className="form_input form_hidden" id="pets_details_edit"
                                    name="pets_details_edit" defaultValue={garden.pets}
@@ -268,7 +269,7 @@ export default function MesJardins() {
                 } else {
                     return (
                         <>
-                            <input type="checkbox" id="pets" name="pets"/>
+                            <input type="checkbox" id="pets_edit" name="pets_edit"/>
                             <div className="control_indicator"></div>
                             <input type="text" className="form_input form_hidden" id="pets_details_edit"
                                    name="pets_details_edit"
@@ -291,7 +292,7 @@ export default function MesJardins() {
             };
 
             return (
-                <form className="bloc bloc_form" onSubmit={(e) => submit(e, "edit")} method="post">
+                <form className="bloc bloc_form" onSubmit={(e) => submit(e, "edit",garden.id)} method="post">
                     <div id="modifier" className="bloc_title">
                         <img src="./img/waving-hand-sign.png"></img>
                         <h3>Modifier le jardin selectionné</h3>

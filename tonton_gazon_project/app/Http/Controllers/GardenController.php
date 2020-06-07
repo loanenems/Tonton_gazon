@@ -32,7 +32,7 @@ class GardenController extends Controller
         ]);
         $garden = Garden::find($data["id"]);
 
-        return response( $garden, 200);
+        return response($garden, 200);
     }
 
     /**
@@ -80,7 +80,7 @@ class GardenController extends Controller
         }
 
         //We store the image in a folder named with the user id and file with original name
-        $validateData['image']->storeAs('public/' . auth()->id() . '/Advert_Index', $validateData['image']->getClientOriginalName());
+        $validateData['image']->storeAs('public/' . auth()->id() . '/Advert', $validateData['image']->getClientOriginalName());
 
         //Once there are no errors, we insert a new row in the Advert_Index table
         Garden::insert(
@@ -105,29 +105,49 @@ class GardenController extends Controller
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * This function remove a garden from the database
      */
-    public function delete(Request $request) {
+    public function delete(Request $request)
+    {
         $data = $request->validate([
             "id" => "required"
         ]);
 
-        Advert::where('idGarden',$data['id'])
+        Advert::where('idGarden', $data['id'])
             ->delete();
-        Garden::where('id',$data['id'])
+        Garden::where('id', $data['id'])
             ->delete();
 
-        return response([],200);
+        return response([], 200);
     }
 
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $validateData = $request->validate([
             'garden_id' => 'required',
-            'description_edit' => 'required|max:5000',
-            'size_edit' => 'numeric|gt:0|lt:2000',
-            'movableObstacle_edit' => 'required',
-            'unmovableObstacle_edit' => 'required',
-            'pets_edit' => 'required',
-            'equipment_edit' => 'required',
-            'address_edit' => 'required',
+            'description' => 'required|max:5000',
+            'size' => 'numeric|gt:0|lt:2000',
+            'movableObstacle' => 'required',
+            'unmovableObstacle' => 'required',
+            'pets' => 'required',
+            'equipment' => 'required',
         ]);
+
+        $fields = [
+            "description" => $validateData['description'],
+            "size" => $validateData['size'],
+            "movableObstacle" => $validateData['movableObstacle'],
+            "unmovableObstacle" => $validateData['unmovableObstacle'],
+            "pets" => $validateData['pets'],
+            "equipment" => $validateData['equipment'],
+        ];
+
+        if ($request->image !== null) {
+            //$request->image->storeAs('public/' . auth()->id() . '/Advert_Index', $request->image->getClientOriginalName());
+            $fields[] = array("image" => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert/' . $validateData['image']->getClientOriginalName())]));
+        }
+
+        dump($fields);
+
+        Garden::where('id', $validateData['garden_id'])->update($fields);
+
     }
 }
