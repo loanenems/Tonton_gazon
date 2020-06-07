@@ -62,7 +62,14 @@ export default function Login() {
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
             window.location.reload();
         }).catch(error => {
-            setErrors([error.response.data.errors]);
+            if(error.response.status == 409) {
+                // Mauvais mail
+                setErrors(error.response.data);
+            } else if ( error.response.status == 403 ) {
+                setErrors(error.response.data);
+            } else {
+                setErrors([error.response.data.errors]);
+            }
         });
     };
 
