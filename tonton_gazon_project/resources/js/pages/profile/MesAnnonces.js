@@ -51,7 +51,7 @@ export default function MesAnnonces() {
         if (response.idMowerer === parseInt(sessionStorage.getItem('user'))) {
             if (response.state === 0) {
                 return (
-                    <div key={i}>
+                    <div className="answer_solo" key={i}>
                         <p>Attente d'accord pour la tonte du jardin</p>
                         <a href="" className="btn btn_primary" onClick={(e) => handleRedirect(e, response.idMowered)}>Voir
                             le profil de l'utilisateur</a>
@@ -59,7 +59,7 @@ export default function MesAnnonces() {
                 )
             } else if (response.state === 1) {
                 return (
-                    <div key={i}>
+                    <div className="answer_solo" key={i}>
                         <p>Vous êtes tous les deux d'accord !</p>
                         <a href="" className="btn btn_primary" onClick={(e) => handleRedirect(e, response.idMowered)}>Voir
                             le profil de l'utilisateur</a>
@@ -92,9 +92,9 @@ export default function MesAnnonces() {
     return (
         <>
             <p><strong>Vos demandes</strong></p>
-            {asMowererJSX}
+            <div className="answer_group">{asMowererJSX}</div>
             <p><strong>Vos receptions</strong></p>
-            {asMoweredJSX}
+            <div className="answer_group">{asMoweredJSX}</div>
         </>
     )
 };

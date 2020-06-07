@@ -143,6 +143,26 @@
         }
     }
 
+    .answer_group {
+        display: flex;
+        .answer_solo {
+            display: flex;
+            flex-direction: column;
+            padding: $space-medium;
+            margin: $space-medium;
+            border-radius: 28px;
+            border: 2px solid black;
+            width: 30%;
+            p {
+                display: block;
+            }
+            a {
+                margin-top: $space-small;
+                font-size: 0.750rem;
+            }
+        }
+    }
+
     .profile-content{
         width: 75%;
         margin-left: 5%;
