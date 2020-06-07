@@ -1,5 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
 import Axios from "axios";
+import { sliderHome } from '../helpers';
 
 export default function Index() {
 
@@ -53,6 +54,7 @@ export default function Index() {
         );
     });
 
+    sliderHome();
 
     return (
         <>

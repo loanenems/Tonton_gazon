@@ -16,8 +16,6 @@ export default function OtherProfile() {
         });
     }, []);
 
-    console.log(data);
-
     let profileJSX = () => {
         if (data.hasOwnProperty('User')) {
             return (

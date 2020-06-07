@@ -85,3 +85,69 @@ function handleClick(elem) {
         }
     }
 }
+
+export function sliderHome() {
+    setTimeout(function () {
+        $('.recent_list').slick({
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 2,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            swipe: true,  
+            responsive: [
+            {
+                breakpoint: 1348,
+                settings: {
+                centerMode: true,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                centerMode: true,
+                slidesToShow: 1,
+                }
+            }
+            ]
+        });
+
+        $('.tondeurs_list').slick({
+            infinite: true,
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            centerMode: true,
+            // centerPadding: '48px',
+            // initialSlide: 2,
+            variableWidth: true,
+            dots: false,
+            prevArrow: false,
+            nextArrow: false,
+            responsive: [
+            {
+                breakpoint: 1348,
+                settings: {
+                // infinite: true,
+                slidesToShow: 3,
+                initialSlide: 2,
+                slidesToScroll: 2,
+                }
+            },
+            {
+                breakpoint: 640,
+                settings: {
+                centerMode: true,
+                infinite: false,
+                initialSlide: 1,
+                slidesToShow: 1,
+                }
+            }
+            ]
+        });
+    }, 1000);
+} 

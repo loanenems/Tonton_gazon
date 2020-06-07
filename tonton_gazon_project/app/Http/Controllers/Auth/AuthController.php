@@ -35,10 +35,10 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($validatedLogin)) {
-            return response(['message' => 'Les identifiants saisis sont incorrects.'], 409);
+            return response([['message' => ['Les identifiants saisis sont incorrects.']]], 409);
         }
         if(auth()->user()->email_verified_at === null) {
-            return response(['message' => 'Vous devez vérifier votre adresse mail avant de pouvoir vous connecter.'], 403);
+            return response([['message' => ['Vous devez vérifier votre adresse mail avant de pouvoir vous connecter.']]], 403);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
