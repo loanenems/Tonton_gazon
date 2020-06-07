@@ -15,9 +15,9 @@ export function urlFromFilter(requestedPage = 1, pos = null) {
     //This function return the checked option for the type of advert (tondeur or tondu).
     let checkedType = () => {
         if($('#tondeur').is(':checked')) {
-            return "0";
-        } else {
             return "1";
+        } else {
+            return "0";
         }
     };
 
@@ -94,7 +94,7 @@ export function sliderHome() {
             slidesToScroll: 2,
             autoplay: true,
             autoplaySpeed: 2000,
-            swipe: true,  
+            swipe: true,
             responsive: [
             {
                 breakpoint: 1348,
@@ -150,4 +150,4 @@ export function sliderHome() {
             ]
         });
     }, 1000);
-} 
+}
