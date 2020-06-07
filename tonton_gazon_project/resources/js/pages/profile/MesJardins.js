@@ -7,6 +7,7 @@ export default function MesJardins() {
     const [adress, setAdress] = useState([]);
     const [selectedAddress, setSelectedAddress] = useState({address: "", coordinates: {lat: null, lon: null}});
     const [gardens, setGardens] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
@@ -15,6 +16,32 @@ export default function MesJardins() {
             console.log(res);
         });
     }, []);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
 
     let submit = (e) => {
         e.preventDefault();
@@ -59,10 +86,8 @@ export default function MesJardins() {
         })
             .then(function (reponse) {
 
-            })
-            .catch(function (erreur) {
-                //On traite ici les erreurs éventuellement survenues
-                (erreur);
+            }).catch(error => {
+                setErrors([error.response.data.errors]);
             });
     };
 
@@ -181,6 +206,10 @@ export default function MesJardins() {
                 <div id="modifier" className="bloc_title">
                     <img src="./img/waving-hand-sign.png"></img>
                     <h3>Creer un jardin</h3>
+                </div>
+
+                <div className="form_error">
+                    {errorsJSX()}
                 </div>
 
                 <div className="form_group">

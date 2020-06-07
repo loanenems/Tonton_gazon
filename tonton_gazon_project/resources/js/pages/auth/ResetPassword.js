@@ -15,6 +15,34 @@ export default function ResetPassword() {
         });
     }, []);
 
+    const [errors, setErrors] = useState([]);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
+
     let handleReset = (e) => {
         e.preventDefault();
       axios.post('api/reset',{
@@ -24,7 +52,9 @@ export default function ResetPassword() {
           'token':token
       }).then((res) => {
           history.push('/');
-      })
+      }).catch(error => {
+        setErrors([error.response.data.errors]);
+    });
     };
 
     if(token) {
@@ -35,6 +65,11 @@ export default function ResetPassword() {
                         <img src="./img/waving-hand-sign.png"></img>
                         <h3>Mot de passe oublié</h3>
                     </div>
+
+                    <div className="form_error">
+                        {errorsJSX()}
+                    </div>
+
                     <div className="form_group">
                         <label className="form_label" htmlFor="email">Email</label>
                         <input className="form_input" type="text" name="email" id="email" placeholder="exemple@mail.fr"></input>

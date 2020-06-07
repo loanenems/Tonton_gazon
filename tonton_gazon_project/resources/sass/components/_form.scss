@@ -1,6 +1,20 @@
 .bloc_form {
     margin-bottom: $space-e-large*1.5;
     margin-top: $space-large*2;
+
+    .form_error {
+        div {
+            background-color: #ffdee6;
+            border: 2px solid #ffb0c3;
+            margin-bottom: $space-small;
+            padding: $space-small;
+            p {
+                font-weight: bold;
+                font-size: 0.750rem;
+            }
+        }
+    }
+
     .form_group {
         margin-bottom: $space-large;
 

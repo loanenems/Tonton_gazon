@@ -7,6 +7,7 @@ import Error from "../error";
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState([]);
 
     const history = useHistory();
     let {path, url} = useRouteMatch();
@@ -15,6 +16,32 @@ export default function Login() {
         //The user is redirected to index
         history.push('/');
     }
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
 
     let submit = (e) => {
         e.preventDefault();
@@ -35,7 +62,7 @@ export default function Login() {
             axios.defaults.headers.common = {'Authorization': `Bearer ${token}`};
             window.location.reload();
         }).catch(error => {
-            (error);
+            setErrors([error.response.data.errors]);
         });
     };
 
@@ -60,6 +87,10 @@ export default function Login() {
                     <div className="bloc_title">
                         <img src="./img/waving-hand-sign.png"></img>
                         <h3>Connexion</h3>
+                    </div>
+
+                    <div className="form_error">
+                        {errorsJSX()}
                     </div>
 
                     <div className="form_group">
