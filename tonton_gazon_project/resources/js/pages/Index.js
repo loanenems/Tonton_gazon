@@ -17,7 +17,7 @@ export default function Index() {
 
 
     let AdvertsJSX = adverts.map((advert, index) => {
-        console.log(advert);
+        // console.log(advert);
         return (
             <div className="recent_element">
                 <img src="./img/jardin.jpg" alt=""></img>
@@ -26,19 +26,34 @@ export default function Index() {
                     <p className="garden_userstats"><b>4.7</b> 340 avis</p>
                 </div>
                 <div className="garden_stats">
-                    <a href="" className="garden_stats_price btn btn_primary">10€/m²</a>
+                    <a href="" className="garden_stats_price btn btn_primary">{Math.round(advert.payout)} €</a>
                     <p className="garden_stats_surface">Superficie : <b>120m²</b></p>
                 </div>
             </div>
         );
     });
 
-    // useEffect(() => {
-    //     Axios.get("/api/topUsers")
-    //         .then(res => {
-    //             setTop(res.data);
-    //         });
-    // }, [cpt]);
+    useEffect(() => {
+        Axios.get("/api/topUsers")
+            .then(res => {
+                setTop(res.data);
+            });
+    }, [cpt]);
+
+    let topUserJSX = top.map((user, index) => {
+        console.log(user);
+        return (
+            <div className="tondeur">
+                <img src="./img/tondeur.jpg" alt=""></img>
+                <div className="tondeur_info">
+                    <a href="" className="tondeur_username">{user.name} {user.surname}</a>
+                    <p className="tondeur_userstats"><b>{user.eval}</b> 340 avis</p>
+                    <a href="/profil/" className="tondeur_profil btn btn_primary">Voir le profil</a>
+                </div>
+            </div>
+        );
+    });
+
 
     return (
         <>
@@ -89,70 +104,7 @@ export default function Index() {
                     <p><a href="">Voir tous les tondeurs</a></p>
                 </div>
                 <div className="tondeurs_list">
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
-                    <div className="tondeur">
-                        <img src="./img/tondeur.jpg" alt=""></img>
-                        <div className="tondeur_info">
-                            <a href="" className="tondeur_username">Pierre-Alain X.</a>
-                            <p className="tondeur_userstats"><b>4.7</b> 340 avis</p>
-                            <a href="" className="tondeur_profil btn btn_primary">Voir le profil</a>
-                        </div>
-                    </div>
+                    {topUserJSX}
                 </div>
             </div>
         </>

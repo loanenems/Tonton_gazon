@@ -63,7 +63,7 @@ Route::group([
 
     //Feedback
     Route::post('feedback_add', 'FeedbackController@addFeedback'); //Add a feedback into database
-    Route::post('topUsers', 'FeedbackController@topUsers'); //Add a feedback into database
+    Route::get('topUsers', 'FeedbackController@topUsers'); //Add a feedback into database
 
     //Profile
     Route::get('userInformations','ProfileController@getInformations'); //Get all the necessary informations for one user

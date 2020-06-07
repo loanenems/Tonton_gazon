@@ -20,7 +20,8 @@ class FeedbackController extends Controller
         return response(['feedback' => $feedback], 200);
     }
 
-    public function addFeedback(Request $request) {
+    public function addFeedback(Request $request)
+    {
 
         //We validate the data through the request validator
         $validateData = $request->validate([
@@ -42,21 +43,21 @@ class FeedbackController extends Controller
         $feedback->save();
     }
 
-    public function topUsers() {
-        dump('test');
+    public function topUsers()
+    {
         $users = DB::table('users')
-            ->join('feedback','users.id','feedback.idTarget')
+            ->join('feedback', 'users.id', 'feedback.idTarget')
             ->select(
+                'users.id',
                 'users.profile_picture',
                 'users.name',
                 'users.surname',
-                'users.id',
-                'count(feedback.id)'
+                'users.eval'
             )
             ->limit(9)
+            ->orderBy('eval', 'desc')
             ->get();
 
-
-        return response([],200);
+        return response($users, 200);
     }
 }
