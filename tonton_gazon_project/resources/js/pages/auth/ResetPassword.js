@@ -1,5 +1,5 @@
 import React, {useEffect,useState} from 'react';
-import {useLocation,useHistory} from 'react-router-dom'
+import {Link, useLocation,useHistory} from 'react-router-dom'
 import axios from "axios";
 
 export default function ResetPassword() {
@@ -90,7 +90,11 @@ export default function ResetPassword() {
         )
     } else {
         return (
-            <div>Le lien auquel vous essayez d'acceder n'est plus valide ou n'existe pas.</div>
+            <div className="alert_text">
+                <p>Le lien de réinitialisation de mot de passe auquel vous essayez d'acceder n'est plus valide ou n'existe pas.</p>
+                <Link to="/login" className="navbar_element btn btn_secondary">Retourner à la connexion</Link>
+                <Link to="/" className="navbar_element btn btn_primary">Retourner à l'accueil</Link>
+            </div>
         )
     }
 }

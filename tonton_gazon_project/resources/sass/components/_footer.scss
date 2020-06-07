@@ -1,7 +1,6 @@
 .footer {
     background-color: $c-black;
     color: $c-white;
-    z-index: -1;
     @include full-width();
     a {
         color: $c-white;

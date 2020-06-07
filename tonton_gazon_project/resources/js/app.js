@@ -48,6 +48,7 @@ import Feedback_create from './pages/feedback/Feedback_create';
 
 //Disclaimer: Don't put exact if there are nested route inside the rendered component !
 ReactDOM.render(
+    <>
     <div className="container">
         <BrowserRouter>
             <Nav/>
@@ -84,8 +85,10 @@ ReactDOM.render(
                 <Route exact path='/form-template' component={FormTemplate}/>
                 <Route exact={false} component={Error}/>
             </Switch>
-            <Footer/>
+            
         </BrowserRouter>
-    </div>,
+    </div>
+    <Footer/>
+    </>,
     document.getElementById('app')
 );
