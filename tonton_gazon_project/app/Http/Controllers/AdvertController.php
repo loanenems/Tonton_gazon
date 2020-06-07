@@ -442,7 +442,23 @@ class AdvertController extends Controller
         }
     }
 
-    function lastAdverts() {
-        return response([Advert::all()->take(9)],200);
+    function lastAdverts()
+    {
+        $adverts = DB::table('advert')
+            ->join('garden', 'advert.idGarden', 'garden.id')
+            ->select(
+                "advert.id",
+                "advert.title",
+                "advert.description",
+                "advert.payout",
+                "advert.date",
+                "advert.type",
+                "garden.size",
+                "garden.image"
+            )
+            ->where('advert.state', 1)
+            ->limit(9)
+            ->get();
+        return response($adverts, 200);
     }
 }
