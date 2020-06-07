@@ -15,6 +15,7 @@ export default function MesAnnonces() {
                 }
             }
         ).then(res => {
+
             setData(res.data.data);
         });
     }, []);

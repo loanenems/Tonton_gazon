@@ -162,31 +162,67 @@ export default function MesJardins() {
 
         let movableChecked = () => { 
             if ( garden.movableObstacle ) {  return (
-                    <> <input type="checkbox" id="movableObstacle" name="movableObstacle" checked />  </>
+                    <> 
+                        <input type="checkbox" id="movableObstacle" name="movableObstacle" defaultChecked />  
+                        <div className="control_indicator"></div>
+                        <input type="text" className="form_input form_hidden" id="movableObstacle_details"
+                                name="movableObstacle_details" defaultValue={garden.movableObstacle}
+                                placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                    </>
             ); } else {  return (
-                    <> <input type="checkbox" id="movableObstacle" name="movableObstacle"  />  </>
+                    <> 
+                        <input type="checkbox" id="movableObstacle" name="movableObstacle"  /> 
+                        <div className="control_indicator"></div>
+                        <input type="text" className="form_input form_hidden" id="movableObstacle_details"
+                                name="movableObstacle_details"
+                                placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                    </>
             ); } 
         };
 
         let unmovableChecked = () => { 
             if ( garden.unmovableObstacle ) {  return (
-                    <> <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle" checked/>  </>
+                    <> 
+                        <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle" defaultChecked/>  
+                        <div className="control_indicator"></div>
+                        <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
+                                name="unmovableObstacle_details" defaultValue={garden.unmovableObstacle}
+                                placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                    </>
             ); } else {  return (
-                    <> <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>  </>
+                <> 
+                    <input type="checkbox" id="unmovableObstacle" name="unmovableObstacle"/>  
+                    <div className="control_indicator"></div>
+                    <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
+                            name="unmovableObstacle_details"
+                            placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                </>
             ); } 
         };
 
         let petsChecked = () => { 
             if ( garden.pets ) {  return (
-                    <> <input type="checkbox" id="pets" name="pets" checked />  </>
+                    <> 
+                        <input type="checkbox" id="pets" name="pets" defaultChecked />  
+                        <div className="control_indicator"></div>
+                        <input type="text" className="form_input form_hidden" id="pets_details" 
+                                name="pets_details" defaultValue={garden.pets}
+                                placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                    </>
             ); } else {  return (
-                    <> <input type="checkbox" id="pets" name="pets"  />  </>
+                    <> 
+                        <input type="checkbox" id="pets" name="pets" />  
+                        <div className="control_indicator"></div>
+                        <input type="text" className="form_input form_hidden" id="pets_details" 
+                                name="pets_details"
+                                placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
+                    </>
             ); } 
         };
 
         let equipmentChecked = () => { 
             if ( garden.equipment == 1 ) {  return (
-                    <> <input type="checkbox" id="equipment" name="equipment" checked/>  </>
+                    <> <input type="checkbox" id="equipment" name="equipment" defaultChecked/>  </>
             ); } else {  return (
                     <> <input type="checkbox" id="equipment" name="equipment"/>  </>
             ); } 
@@ -219,10 +255,6 @@ export default function MesJardins() {
                         <label htmlFor="movableObstacle" className="control control-checkbox">
                             MovableObstacle
                             {movableChecked()}
-                            <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="movableObstacle_details"
-                                   name="movableObstacle_details" defaultValue={garden.movableObstacle}
-                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -232,10 +264,6 @@ export default function MesJardins() {
                         <label htmlFor="unmovableObstacle" className="control control-checkbox">
                             UnmovableObstacle
                             {unmovableChecked()}
-                            <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="unmovableObstacle_details"
-                                   name="unmovableObstacle_details" defaultValue={garden.unmovableObstacle}
-                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
@@ -245,10 +273,6 @@ export default function MesJardins() {
                         <label htmlFor="pets" className="control control-checkbox">
                             Pets
                             {petsChecked()}
-                            <div className="control_indicator"></div>
-                            <input type="text" className="form_input form_hidden" id="pets_details" 
-                                    name="pets_details" defaultValue={garden.pets}
-                                   placeholder="Décrivez en quelques mots les objets pouvant être déplacés"/>
                         </label>
                     </div>
                 </div>
