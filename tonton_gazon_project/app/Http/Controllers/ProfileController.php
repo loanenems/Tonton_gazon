@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Advert;
+use App\Feedback;
 use App\Garden;
 use App\Rules\PhoneNumber;
 use App\User;
@@ -20,6 +21,7 @@ class ProfileController extends Controller
     {
         $userId = $request->get('id');
         $informations = User::where('id', $userId)->firstOrFail();
+        $nbRetours = Feedback::where('idTarget',$userId)->count();
         $listGardenId = [];
         $gardens = Garden::where('idOwner', $informations->id)->get();
         foreach ($gardens as $garden) {
@@ -27,7 +29,7 @@ class ProfileController extends Controller
         }
         $adverts = Advert::whereIn('idGarden', $listGardenId)->get();
 
-        return response(["User" => $informations, "Gardens" => $gardens, "Adverts" => $adverts], 200);
+        return response(["User" => $informations, "Gardens" => $gardens, "Adverts" => $adverts, "Statistiques" => $nbRetours], 200);
     }
 
     /**

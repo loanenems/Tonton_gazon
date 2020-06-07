@@ -45,7 +45,6 @@ class GardenController extends Controller
 
     public function addGarden(Request $request)
     {
-
         //We validate the data through the request validator
         $validateData = $request->validate([
             'description' => 'required|max:5000',
@@ -90,11 +89,10 @@ class GardenController extends Controller
                 'unmovableObstacle' => $validateData['unmovableObstacle'],
                 'pets' => $validateData['pets'],
                 'equipment' => $validateData['equipment'],
-                'image' => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert_Index/' . $validateData['image']->getClientOriginalName())]),
+                'image' => json_encode(['image_0' => asset('storage/' . auth()->id() . '/Advert/' . $validateData['image']->getClientOriginalName())]),
                 'address' => $validateData['address'],
             ]
         );
-
         //Then we return a response to the client
         return response([], 200);
     }

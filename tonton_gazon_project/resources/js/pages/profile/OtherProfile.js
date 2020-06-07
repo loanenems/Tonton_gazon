@@ -47,7 +47,7 @@ export default function OtherProfile() {
                             </div>
                             <div className="user_stat_solo user_stat_note">
                                 <p className="stat_title">Nombre de notes</p>
-                                <p className="stat_info">97</p>
+                                <p className="stat_info">{data.Statistiques}</p>
                             </div>
                             <div className="user_stat_solo user_stat_number">
                                 <p className="stat_title">Nombre de tonte</p>

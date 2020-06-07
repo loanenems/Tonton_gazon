@@ -24,10 +24,6 @@ import ResetPassword from './pages/auth/ResetPassword'
 import Profile from './pages/profile/index'
 import OtherProfile from "./pages/profile/OtherProfile";
 
-
-//Garden
-import Garden from './pages/garden/index'
-
 //Adverts
 import Advert_Index from './pages/adverts/Advert_Index'
 import Advert_create from './pages/adverts/Advert_create'
@@ -62,9 +58,6 @@ ReactDOM.render(
                 {/* Profile */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/mon-profil' component={Profile}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/profil/:id' component={OtherProfile}/>
-
-                {/* Garden */}
-                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/garden' component={Garden}/>
 
                 {/* Advert */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/adverts' component={Advert_Index}/>

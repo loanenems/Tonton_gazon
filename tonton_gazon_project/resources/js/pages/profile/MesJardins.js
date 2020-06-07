@@ -7,15 +7,15 @@ export default function MesJardins() {
     const [adress, setAdress] = useState([]);
     const [selectedAddress, setSelectedAddress] = useState({address: "", coordinates: {lat: null, lon: null}});
     const [gardens, setGardens] = useState([]);
+    const [cpt, setCpt] = useState(0);
     const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
         ).then(res => {
             setGardens(res.data.jardin);
-            console.log(res);
         });
-    }, []);
+    }, [cpt]);
 
     let errorsJSX = () => {
         //Ce tableau va contenir l'ensemble des messages d'erreur
@@ -26,7 +26,7 @@ export default function MesJardins() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
-                
+
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -78,17 +78,17 @@ export default function MesJardins() {
         //We make the post request to the GardenController who process the data
         axios({
             method: 'post',
-            url: '/api/garden_add',
+            url: '/api/gardenAdd',
             data: data,
             headers: {
                 'Content-Type': 'multipart/form-data',
             }
         })
             .then(function (reponse) {
-
+                setCpt(cpt + 1);
             }).catch(error => {
-                setErrors([error.response.data.errors]);
-            });
+            setErrors([error.response.data.errors]);
+        });
     };
 
     let handleRemove = (e, garden_id) => {
@@ -189,7 +189,8 @@ export default function MesJardins() {
                     <b>Superficie : {garden.size}m²</b>
                     <div>
                         <a href="#modifier" className="btn btn_primary btn_modify_garden">Modifier</a>
-                        <a href="" onClick={(e) => handleRemove(e,garden.id)}><img src="/img/trash.png" alt="supprimer l'annonce"></img></a>
+                        <a href="" onClick={(e) => handleRemove(e, garden.id)}><img src="/img/trash.png"
+                                                                                    alt="supprimer l'annonce"></img></a>
                     </div>
                 </div>
             </div>
