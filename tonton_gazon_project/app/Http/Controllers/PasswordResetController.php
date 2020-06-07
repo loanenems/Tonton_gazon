@@ -26,7 +26,7 @@ class PasswordResetController extends Controller
         $user = User::where('email', $request->email)->first();
         if (!$user)
             return response()->json([
-                'message' => "We can't find a user with that e - mail address . "
+                'message' => "Nous ne sommes pas parvenu à trouver un utilisateur avec cet email."
             ], 404);
         $passwordReset = PasswordReset::updateOrCreate(
             ['email' => $user->email],
@@ -40,7 +40,7 @@ class PasswordResetController extends Controller
                 new PasswordResetRequest($passwordReset->token)
             );
         return response()->json([
-            'message' => 'We have e - mailed your password reset link!'
+            'message' => 'Un lien de réinitialisation de votre mot de passe vous a été envoyé. Veuillez consulter votre boite mail.'
         ]);
     }
 
@@ -57,12 +57,12 @@ class PasswordResetController extends Controller
             ->first();
         if (!$passwordReset)
             return response()->json([
-                'message' => 'This password reset token is invalid . '
+                'message' => 'Le lien de réinitialisation est invalide.'
             ], 404);
         if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()) {
             $passwordReset->delete();
             return response()->json([
-                'message' => 'This password reset token is invalid . '
+                'message' => 'Le lien de réinitialisation est invalide.'
             ], 404);
         }
         return response()->json($passwordReset);
@@ -91,12 +91,12 @@ class PasswordResetController extends Controller
         ])->first();
         if (!$passwordReset)
             return response()->json([
-                'message' => 'This password reset token is invalid . '
+                'message' => 'Le lien de réinitialisation est invalide.'
             ], 404);
         $user = User::where('email', $passwordReset->email)->first();
         if (!$user)
             return response()->json([
-                'message' => "We can't find a user with that e-mail address."
+                'message' => "Nous ne sommes pas parvenu à trouver un utilisateur avec cet email."
             ], 404);
         $user->password = bcrypt($request->password);
         $user->save();

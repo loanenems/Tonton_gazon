@@ -40,7 +40,7 @@ class AuthController extends Controller
         ]);
 
         if (!auth()->attempt($validatedLogin)) {
-            return response(['message' => 'Invalid credentials'], 409);
+            return response(['message' => 'Les identifiants saisis sont incorrects.'], 409);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
@@ -57,7 +57,7 @@ class AuthController extends Controller
     {
         $request->user()->token()->revoke();
         return response()->json([
-            'message' => 'Successfully logged out'
+            'message' => 'Vous avez été déconnecté avec succès.'
         ]);
     }
 
@@ -78,15 +78,15 @@ class AuthController extends Controller
         $date = date("Y-m-d g:i:s");
         $user->email_verified_at = $date; // to enable the “email_verified_at field of that user be a current time stamp by mimicing the must verify email feature
         $user->save();
-        return response()->json("Email verified!");
+        return response()->json("Vous avez vérifié votre adresse email.");
     }
 
     public function resend(Request $request)
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return response()->json("User already have verified email!", 422);
+            return response()->json("Cet utilisateur a déjà vérifier son adresse email.", 422);
         }
         $request->user()->sendEmailVerificationNotification();
-        return response()->json("The notification has been resubmitted");
+        return response()->json("Un nouveau mail de vérification a été envoyé. Veuillez vérifier votre boite mail.");
     }
 }

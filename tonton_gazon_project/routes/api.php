@@ -59,11 +59,9 @@ Route::group([
     Route::get('advertGetOwner', 'AdvertController@fetchAdvertByAuthor'); //Fetch an advert by its author ID
     Route::post('addAdvert', 'AdvertController@addAdvert'); //Add an advert into database
     Route::get('searchAdvert', 'AdvertController@searchAdvert'); //Make a search into adverts table
-    Route::get('lastAdverts', 'AdvertController@lastAdverts'); //Get the 10 last adverts
 
     //Feedback
     Route::post('feedback_add', 'FeedbackController@addFeedback'); //Add a feedback into database
-    Route::get('topUsers', 'FeedbackController@topUsers'); //Add a feedback into database
 
     //Profile
     Route::get('userInformations','ProfileController@getInformations'); //Get all the necessary informations for one user
@@ -77,6 +75,10 @@ Route::group([
     Route::get('getResponses','ResponseController@fetchResponseByIdUser'); //Change the state of the response
 
 });
+
+//Homepage informations
+Route::get('topUsers', 'FeedbackController@topUsers'); //Add a feedback into database
+Route::get('lastAdverts', 'AdvertController@lastAdverts'); //Get the 10 last adverts
 
 Route::get("email/verify/{id}", "Auth\AuthController@verify")->name("verificationapi.verify");
 Route::get("email/resend", "Auth\AuthController@resend")->name("verificationapi.resend");
