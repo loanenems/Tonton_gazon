@@ -319,7 +319,7 @@ class AdvertController extends Controller
         $advert->description = $validatedData['description'];
         $advert->payout = $validatedData['payout'];
         $advert->date = str_replace('"', '', json_encode($finalDates));
-        $advert->type = $validatedData['type'];
+        $advert->type = intval($validatedData['type']);
 
         $advert->save();
     }
@@ -466,7 +466,7 @@ class AdvertController extends Controller
                 "garden.size",
                 "garden.image"
             )
-            ->where('advert.state', 1)
+            ->where('advert.state', 0)
             ->limit(9)
             ->get();
 
