@@ -50,8 +50,8 @@ export default function SearchFilters(props) {
                 {/* Advert type */}
                 <div className="advert_filter advert_filter_role_display">
                     <p>Annonce de : </p>
-                    <label><a className="btn btn_role_select tondu active" alt="Affichage des annonces de tondeur">Tondu</a> <input type="radio" id="" name="a"></input></label>
-                    <label><a className="btn btn_role_select tondeur" alt="Affichage des annonces de tondu">Tondeur</a> <input type="radio" id="" name="a"></input></label>
+                    <label><a className="btn btn_role_select tondu active" alt="Affichage des annonces de tondeur">Tondu</a> <input type="radio" id="tondu" name="type" defaultChecked={true}></input></label>
+                    <label><a className="btn btn_role_select tondeur" alt="Affichage des annonces de tondu">Tondeur</a> <input type="radio" id="tondeur" name="type"></input></label>
                 </div>
 
                 {/*Min payout for a job*/}

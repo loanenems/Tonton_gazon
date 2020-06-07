@@ -335,6 +335,7 @@ class AdvertController extends Controller
         $distance = $request->query('distance');
         $equipment = $request->query('equipment') === null ? false : $request->query('equipment');
         $userCoordinates = json_decode($request->query('position'), true);
+        $type = $request->query('type') === null ? 1 : $request->query('type');
 
         //The part above handle the geolocation filter. We are comparing positions between two geographical points to return distance.
         //If there is a match, we add the advert id to list of match
@@ -373,7 +374,7 @@ class AdvertController extends Controller
                 'users.name as name',
                 'users.surname as username'
             )
-            ->where('advert.type', 1)
+            ->where('advert.type', $type)
             ->where(function ($query) use ($search) {
                 $query->where('advert.title', 'like', '%' . $search . '%')
                     ->orWhere('advert.description', 'like', '%' . $search . '%');
@@ -442,6 +443,10 @@ class AdvertController extends Controller
         }
     }
 
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     * Fetch the 10 last active adverts from the database
+     */
     function lastAdverts()
     {
         $adverts = DB::table('advert')

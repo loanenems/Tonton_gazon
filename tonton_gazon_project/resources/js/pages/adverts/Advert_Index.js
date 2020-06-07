@@ -33,7 +33,8 @@ export default function Advert_Index() {
             position: query.get('position'),
             start_date: query.get('start_date'),
             end_date: query.get('end_date'),
-            equipment: query.get('equipment')
+            equipment: query.get('equipment'),
+            type: query.get('type'),
         };
 
         axios.get('/api/searchAdvert', {
