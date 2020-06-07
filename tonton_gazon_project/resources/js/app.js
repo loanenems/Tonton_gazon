@@ -78,7 +78,7 @@ ReactDOM.render(
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/politique-cookies' component={Cookies}/>
 
                 {/* Feedback */}
-                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/create_feedback' component={Feedback_create}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/create_feedback/:id' component={Feedback_create}/>
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>

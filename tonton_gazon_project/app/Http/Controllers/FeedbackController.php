@@ -43,6 +43,16 @@ class FeedbackController extends Controller
         $feedback->save();
     }
 
+    public function delete(Request $request) {
+        $data = $request->validate([
+            "id" => 'required'
+        ]);
+
+        Feedback::where('id',$data['id'])->delete();
+
+        return response(["message" => "Le commentaire a bien été supprimé"],200);
+    }
+
     public function topUsers()
     {
         $users = DB::table('users')

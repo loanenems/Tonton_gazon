@@ -45,20 +45,43 @@ export default function Advert() {
         history.push('/profil/' + data.User.id);
     };
 
+    let handleRemove = (e, idFeedback) => {
+        e.preventDefault();
+
+        axios.post('/api/removeFeedback', {
+            id: idFeedback
+        }).then(res => {
+            setCpt(cpt + 1);
+        }).catch(err => {
+
+        });
+    };
+
     let commentJSX = (() => {
-        return data.User.feedbacks.feedbacks.map((feedback,index) => {
+        return data.User.feedbacks.feedbacks.map((feedback, index) => {
             return (
                 <div className="advert_comment" key={index}>
                     <img src="./img/pierre-alain.jpg" alt=""/>
                     <div className="advert_comment_text">
-                        <p><strong>{feedback.id}</strong></p>
+                        <p><strong>{feedback.surname} {feedback.name}</strong></p>
                         <p>{feedback.comment}</p>
+                        {removeCommentJSX(feedback.userId, feedback.id)}
                     </div>
                 </div>
             )
         })
     });
 
+    let removeCommentJSX = (idUser, idFeedback) => {
+        if (parseInt(sessionStorage.getItem('user')) === idUser) {
+            return (
+                <>
+                    <a href="" className="btn btn_primary" onClick={(e) => handleRemove(e, idFeedback)}>Supprimer le
+                        commentaire</a>
+                </>
+            )
+        }
+    };
 
     let AdvertDetailJSX = (() => {
         if (!data.hasOwnProperty('User')) {
@@ -73,7 +96,7 @@ export default function Advert() {
             for (const image in data.Garden.image) {
                 imgList.push(data.Garden.image[image]);
             }
-            imgList.map((src,index) => {
+            imgList.map((src, index) => {
                 imgJSX.push(<img src={src} alt="" key={index}/>);
             });
             if (sessionStorage.getItem('user') !== data.User.id.toString()) {
@@ -144,9 +167,13 @@ export default function Advert() {
                                 <strong>Informations supplémentaires</strong>
                             </p>
                             <ul>
-                                <li> <b> Objets déplacables : </b> {data.Garden.movableObstacle !== "false" ? data.Garden.movableObstacle : "Aucun"}</li>
-                                <li> <b> Objets non déplacables : </b> {data.Garden.unmovableObstacle !== "false" ? data.Garden.unmovableObstacle : "Aucun"}</li>
-                                <li> <b> Animaux : </b> {data.Garden.pets !== "false" ? data.Garden.pets : "Aucun"}</li>
+                                <li><b> Objets déplacables
+                                    : </b> {data.Garden.movableObstacle !== "false" ? data.Garden.movableObstacle : "Aucun"}
+                                </li>
+                                <li><b> Objets non déplacables
+                                    : </b> {data.Garden.unmovableObstacle !== "false" ? data.Garden.unmovableObstacle : "Aucun"}
+                                </li>
+                                <li><b> Animaux : </b> {data.Garden.pets !== "false" ? data.Garden.pets : "Aucun"}</li>
                             </ul>
                         </div>
                     </div>
