@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('role')->nullable($value = true); //Ex: Admin, ancien, fondateur...
             $table->integer('xp')->default(0);
-            $table->integer('eval')->default(0);
+            $table->float('eval')->default(0);
             $table->string('name')->nullable($value = true);
             $table->string('surname')->nullable($value = true);
             $table->date('birthday')->nullable($value = true);

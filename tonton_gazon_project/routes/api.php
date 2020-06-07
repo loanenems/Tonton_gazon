@@ -49,8 +49,8 @@ Route::group([
     'middleware' => ['auth:api', 'verified']
 ], function () {
     //Garden
-    Route::post('garden_add', 'GardenController@addGarden'); //Add a garden into database
     Route::get('garden_get_id', 'GardenController@fetchGardenByIdOwner'); //Fetch all the gardens from database
+    Route::post('gardenAdd', 'GardenController@addGarden'); //Add a garden into database
     Route::post('deleteGarden', 'GardenController@delete'); //Remove a garden from the database
 
     //Adverts
@@ -62,6 +62,7 @@ Route::group([
 
     //Feedback
     Route::post('feedback_add', 'FeedbackController@addFeedback'); //Add a feedback into database
+    Route::post('removeFeedback', 'FeedbackController@delete'); //Add a feedback into database
 
     //Profile
     Route::get('userInformations','ProfileController@getInformations'); //Get all the necessary informations for one user

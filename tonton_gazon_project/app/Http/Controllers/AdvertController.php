@@ -113,7 +113,12 @@ class AdvertController extends Controller
             ->first();
 
         if ($nbAvisRecus) {
-            $feedbacks = Feedback::where('idTarget', $fetch->idOwner)->get();
+//            $feedbacks = Feedback::where('idTarget', $fetch->idOwner)->get();
+            $feedbacks = DB::table('feedback')
+                ->join('users', 'feedback.idAuthor', 'users.id')
+                ->select('feedback.title', 'feedback.rating', 'feedback.comment', 'users.name', 'users.surname','users.id as userId','feedback.id')
+                ->where('feedback.idTarget', $fetch->idOwner)
+                ->get();
             $sum = 0;
             foreach ($feedbacks as $feedback) {
                 $sum += $feedback->rating;

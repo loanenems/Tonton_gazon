@@ -30,6 +30,7 @@ export default function Profile() {
 
     let statistiquesJSX = () => {
         if (data.hasOwnProperty('User')) {
+            console.log(data);
             return (
                 <>
                     <h3>Vos statistiques</h3>
@@ -40,7 +41,7 @@ export default function Profile() {
                         </div>
                         <div className="stat">
                             <span className="text">Nombre de notes</span>
-                            <span className="num">97</span>
+                            <span className="num">{data.Statistiques}</span>
                         </div>
                         <div className="stat">
                             <span className="text">Nombre de tontes</span>

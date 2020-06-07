@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import axios from "axios";
 
 export default function OtherProfile() {
@@ -47,7 +47,7 @@ export default function OtherProfile() {
                             </div>
                             <div className="user_stat_solo user_stat_note">
                                 <p className="stat_title">Nombre de notes</p>
-                                <p className="stat_info">97</p>
+                                <p className="stat_info">{data.Statistiques}</p>
                             </div>
                             <div className="user_stat_solo user_stat_number">
                                 <p className="stat_title">Nombre de tonte</p>
@@ -55,7 +55,8 @@ export default function OtherProfile() {
                             </div>
                         </div>
                     </div>
-                    <a className="btn btn_primary" href="">Prendre contact avec Théo</a>
+                    <Link to={"/create_feedback/"+data.User.id} className="btn btn_primary">Déposer un avis</Link>
+
                 </div>
             );
         }

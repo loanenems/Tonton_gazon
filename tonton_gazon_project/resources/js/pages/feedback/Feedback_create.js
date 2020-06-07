@@ -1,10 +1,13 @@
 import React, {useState} from 'react';
+import {useParams, useHistory} from 'react-router-dom';
 import axios from 'axios';
 import FormData from 'form-data';
 
 export default function Feedback_create() {
 
     const [errors, setErrors] = useState([]);
+    let {id} = useParams();
+    let history = useHistory();
 
     let errorsJSX = () => {
         //Ce tableau va contenir l'ensemble des messages d'erreur
@@ -15,7 +18,7 @@ export default function Feedback_create() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
-                
+
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -39,10 +42,10 @@ export default function Feedback_create() {
         let data = new FormData();
 
         //We are building the formData object which is going to be sent to the server
-        data.append('idTarget',document.getElementById('idTarget').value);
-        data.append('title',document.getElementById('title').value);
-        data.append('comment',document.getElementById('comment').value);
-        data.append('rating',document.getElementById('rating').value);
+        data.append('idTarget', id);
+        data.append('title', document.getElementById('title').value);
+        data.append('comment', document.getElementById('comment').value);
+        data.append('rating', ($('.star_group').find(':checked').val() === undefined ? 0 : $('.star_group').find(':checked').val()));
 
         //We make the post request to the feedbackController who process the data
         axios({
@@ -53,7 +56,7 @@ export default function Feedback_create() {
                 'Content-Type': 'multipart/form-data',
             }
         }).then(function (reponse) {
-
+            history.push('/profil/'+id);
         }).catch(error => {
             setErrors([error.response.data.errors]);
         });
@@ -72,11 +75,6 @@ export default function Feedback_create() {
                 </div>
 
                 <div className="form_group">
-                    <label htmlFor="idTarget" className="form_label">Id de la target</label>
-                    <input type="text" className="form_input" id="idTarget" name="idTarget"/>
-                </div>
-
-                <div className="form_group">
                     <label htmlFor="title" className="form_label">Titre de l'avis</label>
                     <input type="text" className="form_input" id="title" name="title"/>
                 </div>
@@ -89,11 +87,11 @@ export default function Feedback_create() {
                 <div className="form_group form_star">
                     <p className="form_label">Evaluation</p>
                     <div className="star_group">
-                        <input type="radio" id="star5" name="rating" value="5" /><label for="star5"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label for="star4"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label for="star3"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label for="star2"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label for="star1"></label>
+                        <input type="radio" id="star5" name="rating" value="5"/><label htmlFor="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4"/><label htmlFor="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3"/><label htmlFor="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2"/><label htmlFor="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1"/><label htmlFor="star1"></label>
                     </div>
                 </div>
 

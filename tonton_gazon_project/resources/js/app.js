@@ -24,10 +24,6 @@ import ResetPassword from './pages/auth/ResetPassword'
 import Profile from './pages/profile/index'
 import OtherProfile from "./pages/profile/OtherProfile";
 
-
-//Garden
-import Garden from './pages/garden/index'
-
 //Adverts
 import Advert_Index from './pages/adverts/Advert_Index'
 import Advert_create from './pages/adverts/Advert_create'
@@ -56,16 +52,13 @@ ReactDOM.render(
                 <Route exact path='/' component={Index}/>
 
                 {/* Authentication */}
-                <Route exact path='/login' component={Login}/>
+                <Route path='/login' component={Login}/>
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/reset_password' component={ResetPassword}/>
 
                 {/* Profile */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/mon-profil' component={Profile}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/profil/:id' component={OtherProfile}/>
-
-                {/* Garden */}
-                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/garden' component={Garden}/>
 
                 {/* Advert */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/adverts' component={Advert_Index}/>
@@ -79,7 +72,7 @@ ReactDOM.render(
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/politique-cookies' component={Cookies}/>
 
                 {/* Feedback */}
-                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/create_feedback' component={Feedback_create}/>
+                <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/create_feedback/:id' component={Feedback_create}/>
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
