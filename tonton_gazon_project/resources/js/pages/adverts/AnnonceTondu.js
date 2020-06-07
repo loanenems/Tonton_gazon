@@ -5,6 +5,7 @@ import FormData from "form-data";
 
 export default function AnnonceTondu() {
     const [gardens, setGardens] = useState([]);
+    const [errors, setErrors] = useState([]);
 
     useEffect(() => {
         axios.get('/api/garden_get_id'
@@ -12,6 +13,32 @@ export default function AnnonceTondu() {
             setGardens(res.data.jardin);
         });
     }, []);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
 
     //This function handle the garden creation submit
     let handleSubmit = (e) => {
@@ -38,7 +65,9 @@ export default function AnnonceTondu() {
             }
         }).then((res) => {
             (res);
-        })
+        }).catch(error => {
+            setErrors([error.response.data.errors]);
+        });
     };
 
     let gardenSelectJSX =
@@ -53,6 +82,10 @@ export default function AnnonceTondu() {
             <div className="bloc_title">
                 <img src="../../img/waving-hand-sign.png"/>
                 <h3>Creer une annonce</h3>
+            </div>
+
+            <div className="form_error">
+                {errorsJSX()}
             </div>
 
             <div className="form_group">

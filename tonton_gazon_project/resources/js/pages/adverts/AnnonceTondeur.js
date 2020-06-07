@@ -1,9 +1,38 @@
-import React from "react";
+import React, {useEffect, useState} from 'react';
 import {addDynamicalForm} from "../../helpers";
 import FormData from "form-data";
 import axios from "axios";
 
 export default function AnnonceTondeur() {
+
+    const [errors, setErrors] = useState([]);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
+
     let handleSubmit = (e) => {
         e.preventDefault();
         let data = new FormData();
@@ -27,13 +56,19 @@ export default function AnnonceTondeur() {
             }
         }).then((res) => {
             (res);
-        })
+        }).catch(error => {
+            setErrors([error.response.data.errors]);
+        });
     };
     return (
         <form className="bloc bloc_form">
             <div className="bloc_title">
                 <img src="../../img/waving-hand-sign.png"/>
                 <h3>Creer une annonce</h3>
+            </div>
+
+            <div className="form_error">
+                {errorsJSX()}
             </div>
 
             <div className="form_group">

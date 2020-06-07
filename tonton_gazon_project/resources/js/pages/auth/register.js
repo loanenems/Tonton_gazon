@@ -16,6 +16,7 @@ export default function Register() {
             for (let [key, value] of Object.entries(error)) {
                 //Key = nom du champ
                 //value = tableau contenant un ou plusieurs messages d'erreur
+                
                 value.map((message, index) => {
                     messages.push(message);
                 });
@@ -63,7 +64,9 @@ export default function Register() {
                 <h3>Inscription</h3>
             </div>
 
-            {errorsJSX()}
+            <div className="form_error">
+                {errorsJSX()}
+            </div>
 
             <div className="form_group">
                 <label className="form_label" htmlFor="name">Nom</label>

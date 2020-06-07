@@ -18,6 +18,34 @@ export default function MesInfos() {
         });
     }, []);
 
+    const [errors, setErrors] = useState([]);
+
+    let errorsJSX = () => {
+        //Ce tableau va contenir l'ensemble des messages d'erreur
+        let messages = [];
+
+        //On parcours l'objet contenant la/les erreurs pour chaque champ
+        errors.map((error, index) => {
+            for (let [key, value] of Object.entries(error)) {
+                //Key = nom du champ
+                //value = tableau contenant un ou plusieurs messages d'erreur
+                
+                value.map((message, index) => {
+                    messages.push(message);
+                });
+            }
+        });
+
+        //On construit l'affichage
+        return messages.map((message, index) => {
+            return (
+                <div key={index}>
+                    <p>{message}</p>
+                </div>
+            )
+        })
+    };
+
     let handleChangeInformations = (e) => {
         e.preventDefault();
         axios.post('/api/updateInformations', {
@@ -28,8 +56,8 @@ export default function MesInfos() {
             about_me: $('#about_me').val(),
         }).then(res => {
 
-        }).catch(err => {
-
+        }).catch(error => {
+            setErrors([error.response.data.errors]);
         });
     };
 
@@ -38,6 +66,11 @@ export default function MesInfos() {
             <div className="mes-infos">
                 <div className="formulaire">
                     <form className="bloc bloc_form">
+
+                        <div className="form_error">
+                            {errorsJSX()}
+                        </div>
+
                         <div className="form_group">
                             <label className="form_label">Nom*</label>
                             <input id="name" name="name" className="form_input" type="text"

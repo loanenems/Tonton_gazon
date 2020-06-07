@@ -59,7 +59,6 @@ ReactDOM.render(
                 <Route exact path='/register' component={Register}/>
                 <Route exact path='/reset_password' component={ResetPassword}/>
 
-
                 {/* Profile */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/mon-profil' component={Profile}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/profil/:id' component={OtherProfile}/>
