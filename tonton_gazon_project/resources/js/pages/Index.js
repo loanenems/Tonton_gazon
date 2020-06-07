@@ -7,17 +7,17 @@ export default function Index() {
     const [top, setTop] = useState([]);
     const [cpt, setCpt] = useState([]);
 
+    console.log(sessionStorage);
+
     useEffect(() => {
         Axios.get("/api/lastAdverts")
             .then(res => {
                 setAdverts(res.data);
-                // console.log(res.data);
             });
     }, [cpt]);
 
 
     let AdvertsJSX = adverts.map((advert, index) => {
-        // console.log(advert);
         return (
             <div className="recent_element" id={index}>
                 <img src="./img/jardin.jpg" alt=""></img>
@@ -41,7 +41,6 @@ export default function Index() {
     }, [cpt]);
 
     let topUserJSX = top.map((user, index) => {
-        console.log(user);
         return (
             <div className="tondeur">
                 <img src="./img/tondeur.jpg" alt=""></img>

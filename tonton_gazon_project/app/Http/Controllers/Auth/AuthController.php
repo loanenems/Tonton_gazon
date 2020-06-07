@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\PasswordReset;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 class AuthController extends Controller
 {
@@ -38,6 +36,9 @@ class AuthController extends Controller
 
         if (!auth()->attempt($validatedLogin)) {
             return response(['message' => 'Les identifiants saisis sont incorrects.'], 409);
+        }
+        if(auth()->user()->email_verified_at === null) {
+            return response(['message' => 'Vous devez vérifier votre adresse mail avant de pouvoir vous connecter.'], 403);
         }
 
         $accessToken = auth()->user()->createToken('authToken')->accessToken;
@@ -75,7 +76,7 @@ class AuthController extends Controller
         $date = date("Y-m-d g:i:s");
         $user->email_verified_at = $date; // to enable the “email_verified_at field of that user be a current time stamp by mimicing the must verify email feature
         $user->save();
-        return response()->json("Vous avez vérifié votre adresse email.");
+        return redirect('/');
     }
 
     public function resend(Request $request)

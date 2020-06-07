@@ -19,6 +19,11 @@
 </head>
 <body>
 <div id="app"></div>
+<div style="display: none">
+    @if (session('status'))
+        {{ session('status') }}
+    @endif
+</div>
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="https://kit.fontawesome.com/41af39449f.js" crossorigin="anonymous"></script>
 </body>
