@@ -464,6 +464,7 @@ class AdvertController extends Controller
             ->where('advert.state', 1)
             ->limit(9)
             ->get();
+
         return response($adverts, 200);
     }
 }
