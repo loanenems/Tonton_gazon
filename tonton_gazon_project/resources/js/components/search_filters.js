@@ -63,7 +63,7 @@ export default function SearchFilters(props) {
 
                 {/*user's eval */}
                 <div className="advert_filter advert_filter_rate">
-                    <p>Évaluation minimum de l'utilisateur : </p>
+                    <label>Évaluation minimum de l'utilisateur : </label>
                     <fieldset className="rating">
                         <input type="radio" id="star5" name="rating" value="5" /><label className = "full" htmlFor="star5" title="Awesome - 5 stars"></label>
                         <input type="radio" id="star4" name="rating" value="4" /><label className = "full" htmlFor="star4" title="Pretty good - 4 stars"></label>
@@ -75,10 +75,10 @@ export default function SearchFilters(props) {
 
                 {/*Dates des annonces*/}
                 <div className="advert_filter advert_filter_date">
-                    <label htmlFor="start_date">Date début (ou simple date si non range)</label>
+                    <label htmlFor="start_date">Date début (ou simple date si non range)</label> <br/>
                     <input type="date" name="start_date" id="start_date" />
-                    <br />
-                    <label htmlFor="end_date">Date fin (si range)</label>
+                    <br /> <br />
+                    <label htmlFor="end_date">Date fin (si range)</label> <br/>
                     <input type="date" name="end_date" id="end_date" />
                 </div>
 
@@ -96,8 +96,8 @@ export default function SearchFilters(props) {
                 </div>
 
                 <div className="advert_filter advert_filter_equipment">
-                    <p>Matériel de tonte à disposition ?</p>
                     <input type="checkbox" name="equipment" id="equipment"/>
+                    <label>Matériel de tonte à disposition ?</label>
                 </div>
             </>
         )

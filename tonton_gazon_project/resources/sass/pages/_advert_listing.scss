@@ -119,6 +119,21 @@
             }
         }
 
+        .advert_filter {
+            label {
+                font-weight: bold;
+                margin-right: 8px;
+                font-size: 1.250rem;
+            }
+        }
+
+        .advert_filter_date {
+            margin-top: $space-medium;
+            input {
+                margin: $space-small 0;
+            }
+        }
+
         .advert_filter_payout {
             display: flex;
             align-items: center;
@@ -195,6 +210,16 @@
             }
         }
 
+        .advert_filter_equipment {
+            display: flex;
+            align-items: center;
+            input {
+                margin-right: $space-small;
+                width: 20px;
+                height: 20px;
+            }
+        }
+
         .advert_filter_role_display {
             .role_option {
                 display: inline-block;
@@ -212,6 +237,12 @@
                 &:hover {
                     cursor: pointer;
                 }
+            }
+
+            label {
+                font-weight: normal;
+                margin-right: 0;
+                font-size: 1rem;
             }
 
             input {
