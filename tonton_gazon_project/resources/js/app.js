@@ -19,6 +19,8 @@ import Index from './pages/Index'
 import Login from './pages/auth/login'
 import Register from './pages/auth/register'
 import ResetPassword from './pages/auth/ResetPassword'
+import Confirmation from "./pages/auth/Confirmation";
+
 
 //Profile
 import Profile from './pages/profile/index'
@@ -28,7 +30,7 @@ import OtherProfile from "./pages/profile/OtherProfile";
 import Advert_Index from './pages/adverts/Advert_Index'
 import Advert_create from './pages/adverts/Advert_create'
 
-//Informations
+//Confirmation
 import Legal from './pages/Legal'
 import Cgu from './pages/Cgu'
 import Aide from './pages/Aide'
@@ -63,7 +65,7 @@ ReactDOM.render(
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/adverts' component={Advert_Index}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} path='/create_advert' component={Advert_create}/>
 
-                {/* Informations */}
+                {/* Confirmation */}
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/mentions-legales' component={Legal}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/cgu' component={Cgu}/>
                 <PrivateRoute authenticated={sessionStorage.getItem("is_logged")} exact path='/aide' component={Aide}/>
@@ -75,6 +77,7 @@ ReactDOM.render(
 
                 {/* Others */}
                 <Route exact path='/form-template' component={FormTemplate}/>
+                <Route exact path='/confirmation' component={Confirmation}/>
                 <Route exact={false} component={Error}/>
             </Switch>
             <Footer/>

@@ -56,7 +56,7 @@ export default function Nav() {
                 </div>
                 <div className="navbar_group navbar_links">
                     <a href="/" className="navbar_element">Accueil</a>
-                    <a href="/comment-ca-marche" className="navbar_element">Comment ça marche ?</a>
+                    <a href="/adverts" className="navbar_element">Voir les annonces</a>
                     <a href="/contact" className="navbar_element">Contact</a>
                 </div>
                 <div className="navbar_group navbar_authentication">
