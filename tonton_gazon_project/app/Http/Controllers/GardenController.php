@@ -117,4 +117,16 @@ class GardenController extends Controller
 
         return response([],200);
     }
+
+    public function update(Request $request) {
+        $validateData = $request->validate([
+            'description' => 'required|max:5000',
+            'size' => 'numeric|gt:0|lt:2000',
+            'movableObstacle' => 'required',
+            'unmovableObstacle' => 'required',
+            'pets' => 'required',
+            'equipment' => 'required',
+            'address' => 'required',
+        ]);
+    }
 }
