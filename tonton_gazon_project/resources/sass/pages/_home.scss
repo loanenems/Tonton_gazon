@@ -44,7 +44,7 @@
 
         img {
             position: absolute;
-            bottom: 30%; right: 15%;
+            right: 15%;
             width: 40%;
             @include screen-md() {
                 bottom: 38%; right: 15%;
