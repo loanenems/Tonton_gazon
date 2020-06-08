@@ -90,7 +90,7 @@ export default function Nav() {
                         </div>
                         <div className="navbar_links">
                             <a href="/">Accueil</a><br/>
-                            <a href="/adverts">Les annonces</a><br/>
+                            <a href="/adverts?page=1&equipment=false&type=0">Les annonces</a><br/>
                             <a href="/contact">Contact</a><br/>
                         </div>
                         <div className="navbar_auth">
