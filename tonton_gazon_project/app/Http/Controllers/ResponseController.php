@@ -64,7 +64,7 @@ class ResponseController extends Controller
         $response->idAdvert = $data['advertId'];
 
         //If the current user is a mowerer
-        if ($data['advertType'] === 1) {
+        if ($data['advertType'] === 0) {
             $response->idMowerer = $user_id;
             $response->idMowered = $data['clientId'];
         } else {
