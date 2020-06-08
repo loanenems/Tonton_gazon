@@ -54,7 +54,7 @@ export default function AnnonceTondu() {
         data.append('description', document.getElementById('description').value);
         data.append('idGarden', document.getElementById('garden_id').value);
         data.append('payout', document.getElementById('salaire').value);
-        data.append('type', 1);
+        data.append('type', 0);
         for (let date of $('#date_group').find('input[type="date"]')) {
             dates[$(date).attr('id')] = $(date).val();
         }

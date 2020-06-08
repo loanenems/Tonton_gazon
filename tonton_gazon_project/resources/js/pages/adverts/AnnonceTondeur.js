@@ -43,7 +43,7 @@ export default function AnnonceTondeur() {
         data.append('title', document.getElementById('title').value);
         data.append('description', document.getElementById('description').value);
         data.append('payout', document.getElementById('payout').value);
-        data.append('type', 0);
+        data.append('type', 1);
         for (let date of $('#date_group').find('input[type="date"]')) {
             dates[$(date).attr('id')] = $(date).val();
         }
