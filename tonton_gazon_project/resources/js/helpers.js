@@ -93,7 +93,7 @@ export function sliderHome() {
             slidesToShow: 3,
             slidesToScroll: 2,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3500,
             swipe: true,
             responsive: [
             {
@@ -120,7 +120,7 @@ export function sliderHome() {
             slidesToShow: 4,
             slidesToScroll: 3,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 3500,
             centerMode: true,
             // centerPadding: '48px',
             // initialSlide: 2,
