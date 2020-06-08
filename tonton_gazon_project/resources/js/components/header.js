@@ -66,7 +66,7 @@ export default function Nav() {
                 </div>
                 <div className="navbar_group navbar_links">
                     <a href="/" className="navbar_element">Accueil</a>
-                    <a href="/adverts" className="navbar_element">Voir les annonces</a>
+                    <a href="/adverts?page=1&equipment=false&type=0" className="navbar_element">Voir les annonces</a>
                     {jsxAdvert()}
                     <a href="/contact" className="navbar_element">Contact</a>
                 </div>
