@@ -316,7 +316,7 @@ export default function MesJardins() {
                     <div className="form_group">
                         <div className="checkbox_group">
                             <label htmlFor="movableObstacle_edit" className="control control-checkbox">
-                                MovableObstacle
+                                Objets déplacables
                                 {movableChecked()}
                             </label>
                         </div>
@@ -325,7 +325,7 @@ export default function MesJardins() {
                     <div className="form_group">
                         <div className="checkbox_group">
                             <label htmlFor="unmovableObstacle_edit" className="control control-checkbox">
-                                UnmovableObstacle
+                                Objets non déplacables
                                 {unmovableChecked()}
                             </label>
                         </div>
@@ -334,7 +334,7 @@ export default function MesJardins() {
                     <div className="form_group">
                         <div className="checkbox_group">
                             <label htmlFor="pets_edit" className="control control-checkbox">
-                                Pets
+                                Animaux
                                 {petsChecked()}
                             </label>
                         </div>
@@ -343,7 +343,7 @@ export default function MesJardins() {
                     <div className="form_group">
                         <div className="checkbox_group">
                             <label htmlFor="equipment_edit" className="control control-checkbox">
-                                Equipment
+                                Equipement
                                 {equipmentChecked()}
                                 <div className="control_indicator"></div>
                             </label>
