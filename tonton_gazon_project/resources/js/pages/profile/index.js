@@ -80,7 +80,7 @@ export default function Profile() {
             if(data.User.profile_picture == null) {
                 console.log(data.User.profile_picture);
                 return(
-                    <img src="/img/pierre-alain.jpg" alt="Photo de profil"/>
+                    <img src="/img/basicPP.png" alt="Photo de profil"/>
                 );
             } else {
                 return(
