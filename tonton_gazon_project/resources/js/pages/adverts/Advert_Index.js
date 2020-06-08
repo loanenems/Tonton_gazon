@@ -96,6 +96,7 @@ export default function Advert_Index() {
     };
 
     let advertJSX = adverts.data.map((data) => {
+        console.log(data);
         return (
             // Image
             // Nom utilisateur
@@ -109,7 +110,7 @@ export default function Advert_Index() {
                 <div className="advert_infos">
                     <div className="infos_first">
                         {/* // Nom utilisateur */}
-                        <p className="info_name">{data.name}</p>
+                        <p className="info_name">{data.title}</p>
                         {/* // Prix */}
                         <p className="info_payout">{data.payout}€ ({(data.payout/data.size).toFixed(2)} par m²)</p>
                     </div>
