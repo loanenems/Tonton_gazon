@@ -51,7 +51,7 @@ export default function Register() {
                 'password_confirmation': document.getElementById('password-confirm').value,
             }).then(response => {
             // Redirect to homepage
-            history.push('/informations');
+            history.push('/confirmation');
         }).catch(error => {
             setErrors([error.response.data.errors]);
         });
