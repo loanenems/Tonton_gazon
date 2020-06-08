@@ -66,7 +66,7 @@ export default function Feedback_create() {
         <>
             <form className="bloc bloc_form" onSubmit={(e) => submit(e)} method="post">
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                     <h3>Creer un avis</h3>
                 </div>
 

@@ -42,7 +42,7 @@ export default function Index() {
     let topUserJSX = top.map((user, index) => {
         return (
             <div className="tondeur">
-                <img src="./img/tondeur.jpg" alt=""></img>
+                <img src="/img/tondeur.jpg" alt=""></img>
                 <div className="tondeur_info">
                     <a href="" className="tondeur_username">{user.name} {user.surname}</a>
                     <p className="tondeur_userstats"><b>{user.eval}</b> 340 avis</p>
@@ -60,12 +60,12 @@ export default function Index() {
                 <h2>Votre service de tonte de pelouse de particulier à particulier</h2>
                 <p>Avec Tonton Gazon, la tonte de votre pelouse n’aura jamais été aussi simple !</p>
                 <a href="">Commencez maintenant <img src=""></img></a>
-                <img src="./img/home_tonton_gazon.png" alt=""></img>
+                <img src="/img/home_tonton_gazon.png" alt=""></img>
             </div>
 
             <div className="bloc home_recent">
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png" alt=""></img>
+                    <img src="/img/waving-hand-sign.png" alt=""></img>
                     <h3>Annonces récentes</h3>
                     <p><a href="">Voir toutes les annonces</a></p>
                 </div>
@@ -77,7 +77,7 @@ export default function Index() {
 
             <div className="bloc home_explaination">
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png" alt=""></img>
+                    <img src="/img/waving-hand-sign.png" alt=""></img>
                     <h3>Comment ça marche ?</h3>
                 </div>
                 <div className="explaination_steps">
@@ -98,7 +98,7 @@ export default function Index() {
 
             <div className="bloc home_tondeurs">
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png" alt=""></img>
+                    <img src="/img/waving-hand-sign.png" alt=""></img>
                     <h3>Les tondeurs à la une</h3>
                     <p><a href="">Voir tous les tondeurs</a></p>
                 </div>

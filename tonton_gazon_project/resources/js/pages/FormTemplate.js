@@ -11,7 +11,7 @@ export default function FormTemplate() {
 
             <form className="bloc bloc_form">
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                     <h3>Formulaire type</h3>
                 </div>
 

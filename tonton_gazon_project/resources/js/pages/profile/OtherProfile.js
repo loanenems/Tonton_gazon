@@ -41,7 +41,7 @@ export default function OtherProfile() {
                         <div className="user_stat_container">
                             <div className="user_stat_solo user_stat_rate">
                                 <p className="stat_title">Note moyenne</p>
-                                <p className="stat_info">{data.User.eval} <img src="./img/etoile_verte.svg" alt="étoile(s)"/></p>
+                                <p className="stat_info">{data.User.eval} <img src="/img/etoile_verte.svg" alt="étoile(s)"/></p>
                             </div>
                             <div className="user_stat_solo user_stat_note">
                                 <p className="stat_title">Nombre de notes</p>

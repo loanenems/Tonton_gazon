@@ -60,7 +60,7 @@ export default function Register() {
     return (
         <form className="bloc bloc_form" role="form" method="POST">
             <div className="bloc_title">
-                <img src="./img/waving-hand-sign.png"></img>
+                <img src="/img/waving-hand-sign.png"></img>
                 <h3>Inscription</h3>
             </div>
 

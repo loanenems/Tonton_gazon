@@ -92,7 +92,7 @@ export default function Login() {
             <Route exact path={path}>
                 <form className="bloc bloc_form" role="form" method="POST">
                     <div className="bloc_title">
-                        <img src="./img/waving-hand-sign.png"></img>
+                        <img src="/img/waving-hand-sign.png"></img>
                         <h3>Connexion</h3>
                     </div>
 
@@ -129,7 +129,7 @@ export default function Login() {
             <Route path={`${path}/reset_password`}>
                 <form className="bloc bloc_form">
                     <div className="bloc_title">
-                        <img src="./img/waving-hand-sign.png"></img>
+                        <img src="/img/waving-hand-sign.png"></img>
                         <h3>Réinitialiser votre mot de passe</h3>
                     </div>
                     <div className="form_group">

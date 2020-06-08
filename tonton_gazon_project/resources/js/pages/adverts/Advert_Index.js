@@ -119,7 +119,7 @@ export default function Advert_Index() {
                     </div>
                     <div className="infos_second">
                         {/* // Evaluation */}
-                        <p className="info_note"><img src="./img/etoile_verte.svg"/>{data.xp}
+                        <p className="info_note"><img src="/img/etoile_verte.svg"/>{data.xp}
                             <mark>({data.nbAvis})</mark>
                         </p>
                         {/* // Superficie */}

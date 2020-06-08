@@ -62,7 +62,7 @@ export default function ResetPassword() {
             <div>
                 <form className="bloc bloc_form">
                     <div className="bloc_title">
-                        <img src="./img/waving-hand-sign.png"></img>
+                        <img src="/img/waving-hand-sign.png"></img>
                         <h3>Mot de passe oublié</h3>
                     </div>
 

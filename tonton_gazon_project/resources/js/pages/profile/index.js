@@ -44,7 +44,7 @@ export default function Profile() {
                         </div>
                         <div className="stat">
                             <span className="text">Nombre de tontes</span>
-                            <span className="num">12</span>
+                            <span className="num">0</span>
                         </div>
                     </div>
                 </>

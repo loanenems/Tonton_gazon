@@ -294,7 +294,7 @@ export default function MesJardins() {
             return (
                 <form className="bloc bloc_form" onSubmit={(e) => submit(e, "edit",garden.id)} method="post">
                     <div id="modifier" className="bloc_title">
-                        <img src="./img/waving-hand-sign.png"></img>
+                        <img src="/img/waving-hand-sign.png"></img>
                         <h3>Modifier le jardin selectionné</h3>
                     </div>
 
@@ -442,7 +442,7 @@ export default function MesJardins() {
 
             <form className="bloc bloc_form" onSubmit={(e) => submit(e, "add")} method="post">
                 <div id="modifier" className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                     <h3>Creer un jardin</h3>
                 </div>
 

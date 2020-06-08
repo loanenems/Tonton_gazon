@@ -77,7 +77,7 @@ export default function AnnonceTondu() {
     let gardenSelectJSX =
         gardens.map((g, i) => {
             return (
-                <option key={i} value={g.id}>{g.id}</option>
+                <option key={i} value={g.id}>{g.description}</option>
             )
         });
 
@@ -121,12 +121,13 @@ export default function AnnonceTondu() {
                 <input type="date" name="date" className="form_input" id="date" placeholder="date"/>
             </div>
 
-            <button onClick={(e) => {
+            <button className="btn btn_secondary" onClick={(e) => {
                 e.preventDefault();
                 addDynamicalForm();
             }}>Ajouter
             </button>
 
+            <br/>
             <br/>
             <a href="" className="btn btn_primary" onClick={(e) => handleSubmit(e)}>Envoyer le formulaire</a>
         </form>
