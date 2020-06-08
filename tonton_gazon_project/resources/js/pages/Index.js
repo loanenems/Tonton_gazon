@@ -19,7 +19,7 @@ export default function Index() {
     let AdvertsJSX = adverts.map((advert, index) => {
         return (
             <div className="recent_element" id={index}>
-                <img src="./img/jardin.jpg" alt=""></img>
+                <img src={JSON.parse(advert.image).image_0}></img>
                 <div className="garden_user">
                     <a href="" className="garden_username"> {advert.title}</a>
                     <p className="garden_userstats"><b>4.7</b> 340 avis</p>
