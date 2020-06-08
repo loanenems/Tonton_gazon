@@ -75,12 +75,27 @@ export default function Profile() {
         })
     };
 
+    let profilPicJSX = () => {
+        if(data.hasOwnProperty("User")) {
+            if(data.User.profile_picture == null) {
+                console.log(data.User.profile_picture);
+                return(
+                    <img src="/img/pierre-alain.jpg" alt="Photo de profil"/>
+                );
+            } else {
+                return(
+                    <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
+                );
+            }
+        }
+    }
+
     return (
         <div className="profile">
             <div className="sidebar">
                 <div className="boxed">
                     <label htmlFor="profile_pic">
-                        <img src={data.hasOwnProperty('User') ? data.User.profile_picture : ""} alt="Photo de profil"/>
+                        {profilPicJSX()}
                         <b className="profile_pic_change"><br />Changer de photo</b>
                         <input type="file" id="profile_pic" name="profile_pic" onChange={() => handleChangePicture()}/>
                     </label>
