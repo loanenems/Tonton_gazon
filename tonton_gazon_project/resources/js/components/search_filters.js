@@ -22,14 +22,14 @@ export default function SearchFilters(props) {
         return (
             <>
                 <div className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                     <h3>Annonces</h3>
                 </div>
 
                 <div id="advert_filter_display" className="bloc_title">
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                     <h4>Afficher les filtres</h4>
-                    <img src="./img/waving-hand-sign.png"></img>
+                    <img src="/img/waving-hand-sign.png"></img>
                 </div>
 
                 {/*Search bar*/}

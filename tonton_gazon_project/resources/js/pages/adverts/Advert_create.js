@@ -15,7 +15,7 @@ export default function Advert_create() {
         <Switch>
             <Route exact path={path}>
                 <div className="advert_role_select_container">
-                    <img src="./img/tondeur-tondu.png" alt=""/>
+                    <img src="/img/tondeur-tondu.png" alt=""/>
                     <Link to={`${url}/tondeur`} className="advert_role_select_tondeur">
                         <strong>Tondeur</strong>
                         <span>Voir les annonces des tondeurs</span>
