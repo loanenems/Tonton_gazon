@@ -30,7 +30,7 @@
         "gifsicle": "^5.0.0",
         "gulp": "^4.0.2",
         "gulp-sass": "^4.0.2",
-        "node-sass": "^4.13.1",
+        "node-sass": "^7.0.0",
         "react-router-dom": "^5.1.2",
         "react-router-modal": "^2.0.0-rc3",
         "sass": "^1.25.0",
